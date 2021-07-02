@@ -1,0 +1,41 @@
+{
+  "name": "site_web_silexia",
+  "version": "1.0.0",
+  "description": "Site web Silexia",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start_local": "node -r dotenv/config index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxLeh/Site_web_Silexia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.5",
+    "async": "^3.2.0",
+    "bcrypt": "^5.0.1",
+    "cloudinary": "^1.26.1",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
+    "forever": "^3.0.4",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-roles": "^1.0.1",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.9"
+  },
+  "bugs": {
+    "url": "https://github.com/MaxLeh/Site_web_Silexia/issues"
+  },
+  "homepage": "https://github.com/MaxLeh/Site_web_Silexia#readme"
+}
