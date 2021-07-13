@@ -5,7 +5,7 @@ import validateResourceMW from '#middleware/validateObject.middleware.js';
 import auth from '#middleware/auth.middleware.js';
 
 import { userLoginSchema, userCreateSchema, userForgetPasswordSchema, userUpdateSchema } from '#models/authentication/user.js';
-import authController from '#controllers/authentication/auth.controllers.js';
+import authController from '#controllers/authentication/authentication.controllers.js';
 
 const router = express.Router();
 

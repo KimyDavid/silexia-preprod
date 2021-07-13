@@ -45,7 +45,7 @@ app.use(fileUpload({
     tempFileDir : './src/tmp/'
 }));
 
-//app.use(express.static('client/build'));
+app.use(express.static('client/build'));
 //app.use(express.static('public'));
 
 app.use(express.json());
@@ -69,6 +69,10 @@ app.use('/v1', partners)
 app.use('/v1', autodiag)
 app.use('/v1', questions)
 app.use('/v1', categories)
+
+app.get('/*', function(req, res) {
+  res.sendFile('client/build/index.html', {root:'.'});
+});
 
 var server = http.createServer(app)
 server.listen(process.env.PORT)
