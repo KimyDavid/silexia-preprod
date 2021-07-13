@@ -8,26 +8,26 @@ All the routes check body of the request and returns a 400 error if some require
 
 ##  Authentication
 
-- [Authentication](../documentation/authentication/authentication.md)
-- [User](../documentation/authentication/user.md)
-- [Admin](../documentation/authentication/admin.md)
+- [Authentication](./documentation/authentication/authentication.md)
+- [User](./documentation/authentication/user.md)
+- [Admin](./documentation/authentication/admin.md)
 
 ##  Content
 
-- [Articles](../documentation/content/articles.md)
-- [Offres](../documentation/content/offres.md)
-- [Sectors](../documentation/content/sectors.md)
-- [Sizes](../documentation/content/sizes.md)
-- [Types](../documentation/content/types.md)
-- [Partners](../documentation/content/partners.md)
-- [Administrative Content](../documentation/content/administrative.md)
+- [Articles](./documentation/content/articles.md)
+- [Offres](./documentation/content/offres.md)
+- [Sectors](./documentation/content/sectors.md)
+- [Sizes](./documentation/content/sizes.md)
+- [Types](./documentation/content/types.md)
+- [Partners](./documentation/content/partners.md)
+- [Administrative Content](./documentation/content/administrative.md)
 
 ## Autodiag
 
-- [Autodiag](../documentation/autodiag/autodiag.md)
-- [Categories](../documentation/autodiag/categories.md)
-- [Questions](../documentation/autodiag/questions.md)
-- [Answers](../documentation/autodiag/answers.md)
+- [Autodiag](./documentation/autodiag/autodiag.md)
+- [Categories](./documentation/autodiag/categories.md)
+- [Questions](./documentation/autodiag/questions.md)
+- [Answers](./documentation/autodiag/answers.md)
 
 
 
