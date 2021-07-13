@@ -6,7 +6,6 @@
  * @param {*} resourceSchema is a yup schema
  */
 const validateResourceMW = (resourceSchema) => async (req, res, next) => {
-  console.log("ici", req.body, req.files)
   if(!req.body){
     res.status(400).json({errors: 'Validation error', details:"Empty body"})
   }
@@ -27,8 +26,7 @@ const validateResourceMW = (resourceSchema) => async (req, res, next) => {
     next()
   })
   .catch(function(error){
-    console.log(error)
-    res.status(400).json({errors: 'Validation error', details:error})
+    res.status(400).json({error: 'Validation error', details:error.message})
   })
 };
 

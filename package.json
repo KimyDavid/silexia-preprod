@@ -25,6 +25,7 @@
     "express-fileupload": "^1.2.1",
     "express-session": "^1.17.2",
     "forever": "^3.0.4",
+    "fs-extra": "^10.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mysql": "^2.18.1",
@@ -33,6 +34,15 @@
     "passport-local-roles": "^1.0.1",
     "uuid": "^8.3.2",
     "yup": "^0.32.9"
+  },
+  "imports": {
+    "#models/*": "./src/models/*",
+    "#routes/*": "./src/routes/*",
+    "#documentation/*": "./src/documentation/*",
+    "#utils/*": "./src/utils/*",
+    "#config/*": "./src/config/*",
+    "#controllers/*": "./src/controllers/*",
+    "#middleware/*": "./src/middleware/*"
   },
   "bugs": {
     "url": "https://github.com/MaxLeh/Site_web_Silexia/issues"

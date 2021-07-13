@@ -2,18 +2,19 @@ import passport from 'passport';
 import bcrypt from 'bcrypt';
 import { Strategy as LocalStrategy} from 'passport-local';
 
-import { Admin } from '../models/admin.js';
-import { User } from '../models/user.js';
+import { Admin } from '#models/authentication/admin.js';
+import { User } from '#models/authentication/user.js';
 
-import authController from '../controllers/auth.controllers.js';
+import authController from '#controllers/authentication/authentication.controllers.js';
+import userController from '#controllers/authentication/user.controllers.js';
+import adminController from '#controllers/authentication/admin.controllers.js';
 
 passport.use('local', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
   },
   function(username, password, done) {
-    authController.getUserFromEmail({"email":username}, function (err, results) {
-        console.log(password, results.password)
+    userController.getUserFromEmail({"email":username}, function (err, results) {
       if(!results){
         return done('Unregistered user');
       }else{
@@ -32,8 +33,7 @@ passport.use('local-admin', new LocalStrategy({
     passwordField: 'password'
   },
   function(username, password, done) {
-    authController.getAdminFromEmail({"email":username}, function (err, results) {
-        console.log(password, results.password)
+    adminController.getAdminFromEmail({"email":username}, function (err, results) {
       if(!results){
         return done('Unregistered user');
       }else{
@@ -48,18 +48,14 @@ passport.use('local-admin', new LocalStrategy({
 ))
 
 passport.serializeUser(function(user, done) {
-    console.log("serializeUser", user)
   done(null, {id:user.id, admin:user.admin});
 });
 
 passport.deserializeUser(function(data, done) {
-    console.log("deserializeUser", data)
 	authController.getFromId(data, function(err, results){
 		if(err){
-		    console.log(err)
 		  done("User not foud")
 		}else{
-		    console.log("deserializeUser res", results)
 		  done(null, results)
 		}
 	})
