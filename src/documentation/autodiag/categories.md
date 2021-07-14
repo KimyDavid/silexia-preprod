@@ -2,6 +2,24 @@
 
 ## Object
 
+Depending on the context, Categories have different properties.
+
+### Default
+
+Those categories are sent back from api endpoints to create or edit items.
+
+**Nom**               | **Type**          | **Description** 
+----------------------|-------------      |-------------------
+id                    | int               | Identifiant
+label                 | varchar(255)      | Label
+description           | description(255)  | Description
+order                 | smallint          | Order
+tiers                 | array(Tiers)      | Tiers
+
+### Autodiag (type = autodiag)
+
+Those categories are sent back from autodiag endpoints to prompt questions to user.
+
 **Nom**               | **Type**          | **Description** 
 ----------------------|-------------      |-------------------
 id                    | int               | Identifiant
@@ -9,9 +27,25 @@ label                 | varchar(255)      | Label
 description           | description(255)  | Description
 order                 | smallint          | Order
 questions             | array(Questions)  | Array of Questions (cf. Questions)
-results               | array(Results)    | Array of Results (cf. Results)
-image                 | url               | Url of category's illustration
-tiers                 | array(Tiers)      | Tiers
+
+
+### Results (type = results)
+
+Those categories are sent back from api endpoints to obtain user's results.
+
+**Nom**               | **Type**              | **Description** 
+----------------------|-----------------------|-------------------
+id                    | int                   | Identifiant
+label                 | varchar(255)          | Label
+description           | varchar(255)          | Description
+order                 | smallint              | Order
+score_user            | int                   | Score user
+score_total           | int                   | Score total
+flags                 | Array(varchar(255))   | List of flags raised for this user
+tier                  | varchar(255)          | Text describing the user ranking
+
+
+
 
 ## API
 
@@ -44,13 +78,12 @@ Admin only.
 
 * **Data Params**
 
-  Since image can be attached, the body must be a form-data.
-
   ***Required:***
    `label=[string]`
    `description=[string]`
    `order=[int]`
    `image=[file]`
+   `tiers=[ [Tier] ]`
 
 * **Success Response:**
 
@@ -69,7 +102,7 @@ Admin only.
 
 * **URL**
 
-  [PATCH] /v1/categories/:id_category
+  [PUT] /v1/categories/:id_category
 
 *  **URL Params**
 
@@ -78,13 +111,11 @@ Admin only.
 
 * **Data Params**
 
-  Since image can be attached, the body must be a form-data.
-
   ***Optionnal:***
    `label=[string]`
    `order=[int]`
    `description=[string]`
-   `image=[file]`
+   `tiers=[ [Tier] ]`
 
 * **Success Response:**
 
@@ -95,7 +126,7 @@ Admin only.
 
 ### Delete category
 
- Delete an existing category. IN PROGRESS
+ Delete an existing category.
 
 * **Authentication**
 

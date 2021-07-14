@@ -1,25 +1,14 @@
 import * as yup from 'yup';
-import { parseJSON } from '#utils/functions.js';
+import yup_test from '#models/utils/yup_test.js';
 
-import { Category } from '#models/autodiag/category.js';
+import apiController from '#controllers/utils/api.controllers.js';
 
-function Result(data) {
-    this.id                 = data.id;
-    this.score 				= Math.round(data.score*100)/100
-    this.tier              	= data.tier
-    this.category           = data.category ? parseJSON(data.category) : []
-
-    for(let i=0; i<this.category.length;i++){
-        this.category[i].score = Math.round(this.category[i].score*100)/100
-        this.category[i] = new Category(this.category[i])
-    }
-}
+yup_test.test({yup:yup, label:'exists', type:'number', _function:apiController.getItem, key:'id'})
 
 const autodiagSchema = yup.object({
-    answers:yup.array().of(yup.number().positive()).required()
+    answers:yup.array().of(yup.number().required().exists('Autodiag_Answers'))
 })
 
-
 export { 
-    Result, autodiagSchema
+    autodiagSchema
 }

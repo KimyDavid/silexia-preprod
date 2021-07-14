@@ -46,6 +46,8 @@ Admin only.
    `label=[string]`
    `description=[string]`
    `order=[int]`
+   `id_category=[int]`
+   `answers=[ [Answer] ]`
 
 * **Success Response:**
 
@@ -64,7 +66,7 @@ Admin only.
 
 * **URL**
 
-  [PATCH] /v1/autodiag/questions/:id_question
+  [PUT] /v1/autodiag/questions/:id_question
 
 *  **URL Params**
 
@@ -73,10 +75,12 @@ Admin only.
 
 * **Data Params**
 
-  ***Optionnal:***
+  ***Required:***
    `label=[string]`
    `description=[string]`
+  `id_category=[int]`
    `order=[int]`
+   `answers=[ [Answer] ]`
 
 * **Success Response:**
 

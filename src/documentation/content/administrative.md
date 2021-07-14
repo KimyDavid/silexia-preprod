@@ -5,7 +5,7 @@
 **Nom**               | **Type**      | **Description** 
 ----------------------|-------------  |-------------------
 id                    | int           | Identifiant
-text                  | text  		  | HTML content to be displayed
+text                  | text  		    | HTML content to be displayed
 type                  | varchar(100)  | Type of content, one of ['legal_mentions', 'cgv', 'cgu', 'privacy_policy']
 
 ## API
@@ -33,4 +33,33 @@ type                  | varchar(100)  | Type of content, one of ['legal_mentions
   * **Code:** 400 BAD REQUEST 
     **Description:** Params key provided in url doesn't match any of the accepted content
     **Content:** `{ error: 'Unknown administrative content'}`
+---
+
+### Update administrative content
+
+ Update an existing sector.
+
+* **Authentication**
+
+Admin only.
+
+* **URL**
+
+  [PUT] /v1/administrative/:type
+
+*  **URL Params**
+
+   ***Required:***
+   `type=[string]`
+
+* **Data Params**
+
+  ***Required:***
+   `text=[html]`
+
+* **Success Response:**
+
+  * **Code:** 200
+    **Content:** `[object Administrative]`
+
 ---

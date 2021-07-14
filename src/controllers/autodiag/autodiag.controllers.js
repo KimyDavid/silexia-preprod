@@ -6,7 +6,7 @@ import { Category } from '#models/autodiag/category.js';
 import userController from '#controllers/authentication/user.controllers.js';
 
 
-/* -------------------------------------------------------------------------- Get questions ------------------------------------------------------------ */
+/* -------------------------------------------------------------------------- Get questions autodiag ------------------------------------------------------------ */
 
 /* 
 
@@ -58,9 +58,7 @@ function getAutodiag(data, callback) {
 /* -------------------------------------------------------------------------- Respond to autodiag ------------------------------------------------------------ */
 
 /* 
-
-
-
+  When a user complete the autodiag, we create a new entry into users' table, register the answers, and respond with the user object.
 */
 
 
@@ -131,13 +129,13 @@ function getAutodiagUser(data, callback) {
       strsql += ' LEFT JOIN autodiag_tiers at2 ON at2.id_category = ac.id';
       strsql += ' GROUP BY ac.id';
       strsql += ' ORDER BY ac.order';
-
-    db.query(strsql, null, function (error, results) { 
-      for(let i=0; i<results.length; i++){
-        results[i] =  new Category(results[i], {results:true})
-      }  
-      callback(error, results)
-    });
+      
+      db.query(strsql, null, function (error, results) { 
+        for(let i=0; i<results.length; i++){
+          results[i] =  new Category(results[i], {results:true})
+        }  
+        callback(error, results)
+      });
 
 }
 

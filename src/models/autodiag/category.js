@@ -20,6 +20,7 @@ function Category(data, extraData) {
     this.id                 = data.id;
     this.label              = data.label
     this.description        = data.description
+    this.order              = data.order
 
     if(extraData && extraData.autodiag){
         this.questions          = data.questions ? parseJSON(data.questions) : []
@@ -41,9 +42,6 @@ function Category(data, extraData) {
             this.tiers[i] = new Tier(this.tiers[i])
         }
     }
-
-    this.result 			= data.result ? parseJSON(data.result) : null
-   
 }
 
 const TierSchema = yup.object({
@@ -55,14 +53,16 @@ const TierSchema = yup.object({
 const createCategorySchema = yup.object({
     label: yup.string().max(255).required(),
     description: yup.string().max(255).required(),
-    tiers:yup.array().of(TierSchema).required()
+    tiers:yup.array().of(TierSchema).required(),
+    order: yup.number().integer().positive().required()
 })
 
 const updateCategorySchema = yup.object({
     id:yup.number().required().exists('Autodiag_Categories'),
     label: yup.string().max(255).required(),
     description: yup.string().max(255).required(),
-    tiers:yup.array().of(TierSchema).required()
+    tiers:yup.array().of(TierSchema).required(),
+    order: yup.number().integer().positive().required()
 })
 
 

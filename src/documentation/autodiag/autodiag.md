@@ -1,11 +1,13 @@
 # Autodiag
 
+This part of the API handles everything that is related to the audiag ans its results.
+
 ## API
 
 ### Get autodiag
 
  Retrieve autodiag.
- The request returns an array of the categories, with questions ans answers nested into the corresponding properties.
+ The request returns an array of the categories, with questions and answers nested into the corresponding properties.
 
 * **URL**
 
@@ -14,7 +16,7 @@
 * **Success Response:**
 
   * **Code:** 200
-    **Content:** `[ [object Category] ]`
+    **Content:** `[ [object Category(type = autodiag)] ]`
 
 ---
 
@@ -56,6 +58,6 @@
 * **Success Response:**
 
   * **Code:** 201
-    **Content:** `[object Result]`
+    **Content:** `[object Category(type = results)]`
 
 ---
