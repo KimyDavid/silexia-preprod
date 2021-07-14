@@ -21,7 +21,7 @@ order                 | smallint      | Order
 
 * **URL**
 
-  [GET] /offres
+  [GET] /v1/offres
 
 * **Success Response:**
 
@@ -40,7 +40,7 @@ Admin only.
 
 * **URL**
 
-  [POST] /offres
+  [POST] /v1/offres
 
 * **Data Params**
   
@@ -70,7 +70,7 @@ Admin only.
 
 * **URL**
 
-  [PATCH] /offres/:id_offre
+  [PATCH] /v1/offres/:id_offre
 
 *  **URL Params**
 
@@ -105,7 +105,7 @@ Admin only.
 
 * **URL**
 
-  [DELETE] /offres/:id_offre
+  [DELETE] /v1/offres/:id_offre
 
 *  **URL Params**
 

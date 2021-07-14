@@ -36,7 +36,7 @@ Admin only.
 
 * **URL**
 
-  [POST] /sectors
+  [POST] /v1/sectors
 
 * **Data Params**
 
@@ -61,7 +61,7 @@ Admin only.
 
 * **URL**
 
-  [PUT] /sectors/:id_sector
+  [PUT] /v1/sectors/:id_sector
 
 *  **URL Params**
 
@@ -91,7 +91,7 @@ Admin only.
 
 * **URL**
 
-  [DELETE] /sectors/:id_sector
+  [DELETE] /v1/sectors/:id_sector
 
 *  **URL Params**
 

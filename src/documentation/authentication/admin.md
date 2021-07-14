@@ -20,7 +20,7 @@ admin                 | boolean       | True if admin
 
 * **URL**
 
-  [POST] /login
+  [POST] /v1/login
 
 * **Data Params**
 

@@ -21,7 +21,7 @@ tiers                 | array(Tiers)      | Tiers
 
 * **URL**
 
-  [GET] /categories
+  [GET] /v1/categories
 
 * **Success Response:**
 
@@ -40,7 +40,7 @@ Admin only.
 
 * **URL**
 
-  [POST] /categories
+  [POST] /v1/categories
 
 * **Data Params**
 
@@ -69,7 +69,7 @@ Admin only.
 
 * **URL**
 
-  [PATCH] /categories/:id_category
+  [PATCH] /v1/categories/:id_category
 
 *  **URL Params**
 
@@ -103,7 +103,7 @@ Admin only.
 
 * **URL**
 
-  [DELETE] /category/:id_category
+  [DELETE] /v1/category/:id_category
 
 *  **URL Params**
 

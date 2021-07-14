@@ -19,7 +19,7 @@ description           | description(255)| Description
 
 * **URL**
 
-  [GET] /autodiag/questions
+  [GET] /v1/autodiag/questions
 
 * **Success Response:**
 
@@ -38,7 +38,7 @@ Admin only.
 
 * **URL**
 
-  [POST] /autodiag/questions
+  [POST] /v1/autodiag/questions
 
 * **Data Params**
 
@@ -64,7 +64,7 @@ Admin only.
 
 * **URL**
 
-  [PATCH] /autodiag/questions/:id_question
+  [PATCH] /v1/autodiag/questions/:id_question
 
 *  **URL Params**
 
@@ -97,7 +97,7 @@ Admin only.
 
 * **URL**
 
-  [DELETE] /id_question/:id_question
+  [DELETE] /v1/id_question/:id_question
 
 *  **URL Params**
 

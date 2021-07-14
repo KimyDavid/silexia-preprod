@@ -10,7 +10,7 @@ This part handles all the login and authentification process of [users](./user.m
 
 * **URL**
 
-  [GET] /auth
+  [GET] /v1/auth
 
 * **Success Response:**
 

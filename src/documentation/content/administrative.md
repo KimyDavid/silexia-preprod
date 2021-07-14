@@ -16,7 +16,7 @@ type                  | varchar(100)  | Type of content, one of ['legal_mentions
 
 * **URL**
 
-  [GET] /administrative/:type
+  [GET] /v1/administrative/:type
 
 *  **URL Params**
 

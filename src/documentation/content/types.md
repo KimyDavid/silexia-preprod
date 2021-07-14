@@ -18,7 +18,7 @@ order                 | smallint      | Order
 
 * **URL**
 
-  [GET] /types
+  [GET] /v1/types
 
 * **Success Response:**
 
@@ -37,7 +37,7 @@ Admin only.
 
 * **URL**
 
-  [POST] /types
+  [POST] /v1/types
 
 * **Data Params**
 
@@ -62,7 +62,7 @@ Admin only.
 
 * **URL**
 
-  [PUT] /types/:id_type
+  [PUT] /v1/types/:id_type
 
 *  **URL Params**
 
@@ -92,7 +92,7 @@ Admin only.
 
 * **URL**
 
-  [DELETE] /types/:id_type
+  [DELETE] /v1/types/:id_type
 
 *  **URL Params**
 

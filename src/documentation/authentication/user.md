@@ -26,7 +26,7 @@ verif                 | tinyint       | Account's verification status (0: unsubs
 
 * **URL**
 
-  [POST] /login
+  [POST] /v1/login
 
 * **Data Params**
 
@@ -56,7 +56,7 @@ verif                 | tinyint       | Account's verification status (0: unsubs
 
 * **URL**
 
-  [POST] /forgot_password
+  [POST] /v1/forgot_password
 
 * **Data Params**
 
@@ -81,7 +81,7 @@ verif                 | tinyint       | Account's verification status (0: unsubs
 
 * **URL**
 
-  [GET] /reset_password/:key
+  [GET] /v1/reset_password/:key
 
 *  **URL Params**
 
@@ -105,7 +105,7 @@ verif                 | tinyint       | Account's verification status (0: unsubs
 
 * **URL**
 
-  [PATCH] /users/:id_user
+  [PATCH] /v1/users/:id_user
 
 *  **URL Params**
 

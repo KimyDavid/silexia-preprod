@@ -78,7 +78,7 @@ function updateInsertItem(data, callback){
         bol = true
       }
       strsql += strsql_key + ') VALUES(' + strsql_data + ')'
-      strsql += ' ON DUPLICATE KEY UPDATE ' + strsql_values
+      strsql += ' ON DUPLICATE KEY UPDATE last_modif = NOW(), ' + strsql_values
       
       
       db.query(strsql, null, function (error, results) { 
@@ -143,6 +143,8 @@ function createItem(data, callback){
 function handleInsertItem(data, callback){
 
   let id_item
+
+
   async.waterfall([
     function(callback){
       updateInsertItem({table:data.table, item:_.omit(data.item, "image")}, callback)

@@ -21,6 +21,7 @@ function getCategories(data, callback) {
   var strsql = ' SELECT ';
       strsql += ' Autodiag_Categories.id,';
       strsql += ' Autodiag_Categories.label,';
+      strsql += ' Autodiag_Categories.description,';
       strsql += ' CONCAT("[", GROUP_CONCAT(JSON_OBJECT(';
       strsql += '   "id", Autodiag_Tiers.id, ';
       strsql += '   "text", Autodiag_Tiers.text, ';
@@ -69,7 +70,7 @@ function updateCategory(data, callback) {
       apiController.editItem({table:"Autodiag_Categories", item:_.omit(data, "tiers"), order:true}, callback)
     },
     function(callback){
-      apiController.editItemsFromArray({table:"Autodiag_Tiers", item:data.tiers,  parent:{key:'id_category', value:data.id}}, callback)
+      apiController.editItemsFromArray({table:"Autodiag_Tiers", item:data.tiers.map(v => ({...v, id_category:data.id})),  parent:{key:'id_category', value:data.id}}, callback)
     }
   ], function(err, results){
     getCategories({id:data.id}, callback)
@@ -81,7 +82,7 @@ function deleteCategory(data, callback) {
 
   async.parallel([
     function(callback){
-      apiController.deleteItem({table:"Autodiag_Categories", id:data, order:true}, callback)
+      apiController.deleteItem({table:"Autodiag_Categories", id:data.id, order:true}, callback)
     },
     function(callback){
       apiController.deleteItemFromArray({table:"Autodiag_Tiers", parent:{key:'id_category', value:data.id}}, callback)

@@ -12,8 +12,9 @@ yup_test.test({yup:yup, label:'exists', type:'number', _function:apiController.g
 function Question(data, extraData) {
     this.id                 = data.id;
     this.label              = data.label
+    this.description        = data.description
     this.order              = data.order
-    this.category           = data.category
+    this.category           = parseJSON(data.category)
     this.answers            = data.answers ? parseJSON(data.answers) : []
 
     for(let i=0; i<this.answers.length;i++){
@@ -23,6 +24,7 @@ function Question(data, extraData) {
 
 const createQuestionSchema = yup.object({
     label: yup.string().max(255).required(),
+    description: yup.string().max(255).required(),
     order: yup.number().integer().positive().required(),
     id_category: yup.number().integer().positive().required().exists('Autodiag_Categories'),
     answers:yup.array().of(createAnswerSchema).required()
@@ -31,6 +33,7 @@ const createQuestionSchema = yup.object({
 const updateQuestionSchema = yup.object({
     id:yup.number().required().exists('Autodiag_Questions'),
     label: yup.string().max(255).required(),
+    description: yup.string().max(255).required(),
     order: yup.number().integer().positive().required(),
     id_category: yup.number().integer().positive().required().exists('Autodiag_Categories'),
     answers:yup.array().of(updateAnswerSchema).required()

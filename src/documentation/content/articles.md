@@ -19,7 +19,7 @@ TO DO : add abstract
 
 * **URL**
 
-  [GET] /articles
+  [GET] /v1/articles
 
 * **Success Response:**
 
@@ -38,7 +38,7 @@ Admin only.
 
 * **URL**
 
-  [POST] /articles
+  [POST] /v1/articles
 
 * **Data Params**
   
@@ -99,7 +99,7 @@ Admin only.
 
 * **URL**
 
-  [DELETE] /articles/:id_article
+  [DELETE] /v1/articles/:id_article
 
 *  **URL Params**
 

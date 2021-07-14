@@ -30,7 +30,7 @@ order                 | int           | Order
 
 * **URL**
 
-  [GET] /partners
+  [GET] /v1/partners
 
 * **Success Response:**
 
@@ -45,7 +45,7 @@ order                 | int           | Order
 
 * **URL**
 
-  [GET] /partner/:id_partner
+  [GET] /v1/partner/:id_partner
 
 *  **URL Params**
 
@@ -69,7 +69,7 @@ Admin only.
 
 * **URL**
 
-  [POST] /partners
+  [POST] /v1/partners
 
 * **Data Params**
 
@@ -97,7 +97,7 @@ Admin only.
 
 * **URL**
 
-  [PATCH] /partners/:id_partner
+  [PATCH] /v1/partners/:id_partner
 
 *  **URL Params**
 
@@ -130,7 +130,7 @@ Admin only.
 
 * **URL**
 
-  [DELETE] /partners/:id_partner
+  [DELETE] /v1/partners/:id_partner
 
 *  **URL Params**
 
@@ -150,7 +150,7 @@ Admin only.
 
 * **URL**
 
-  [GET] /partners_type
+  [GET] /v1/partners_type
 
 * **Success Response:**
 
@@ -169,7 +169,7 @@ Admin only.
 
 * **URL**
 
-  [POST] /partners_type
+  [POST] /v1/partners_type
 
 * **Data Params**
 
@@ -194,7 +194,7 @@ Admin only.
 
 * **URL**
 
-  [PATCH] /partners_type/:id_partner_type
+  [PATCH] /v1/partners_type/:id_partner_type
 
 *  **URL Params**
 
@@ -224,7 +224,7 @@ Admin only.
 
 * **URL**
 
-  [DELETE] /partners_type/:id_partner_type
+  [DELETE] /v1/partners_type/:id_partner_type
 
 *  **URL Params**
 

@@ -18,7 +18,7 @@ routes.api(
     get:(item, callback) => categoriesController.getCategories({}, callback),
     post:(item, callback) => categoriesController.createCategory(item, callback),
     put:(item, callback) => categoriesController.updateCategory(item, callback),
-    delete:(item, callback) => apiController.deleteItem({table:'Autodiag_Categories', item:item, order:true}, callback)
+    delete:(item, callback) => categoriesController.deleteCategory(item, callback)
   }
 )
 

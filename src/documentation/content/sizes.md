@@ -37,7 +37,7 @@ Admin only.
 
 * **URL**
 
-  [POST] /sizes
+  [POST] /v1/sizes
 
 * **Data Params**
 
@@ -62,7 +62,7 @@ Admin only.
 
 * **URL**
 
-  [PUT] /sizes/:id_size
+  [PUT] /v1/sizes/:id_size
 
 *  **URL Params**
 
@@ -92,7 +92,7 @@ Admin only.
 
 * **URL**
 
-  [DELETE] /sizes/:id_size
+  [DELETE] /v1/sizes/:id_size
 
 *  **URL Params**
 

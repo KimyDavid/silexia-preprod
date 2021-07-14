@@ -9,7 +9,7 @@
 
 * **URL**
 
-  [GET] /autodiag
+  [GET] /v1/autodiag
 
 * **Success Response:**
 
@@ -25,7 +25,7 @@
 
 * **URL**
 
-  [POST] /autodiag
+  [POST] /v1/autodiag
 
 * **Data Params**
 
@@ -46,7 +46,7 @@
 
 * **URL**
 
-  [GET] /autodiag/user/:id_user
+  [GET] /v1/autodiag/user/:id_user
 
 *  **URL Params**
 
