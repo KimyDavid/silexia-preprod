@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start_local": "node -r dotenv/config index.js"
+    "start_local": "node -r dotenv/config index.js",
+    "lint": "eslint *.js"
   },
   "repository": {
     "type": "git",
@@ -47,5 +48,8 @@
   "bugs": {
     "url": "https://github.com/MaxLeh/Site_web_Silexia/issues"
   },
-  "homepage": "https://github.com/MaxLeh/Site_web_Silexia#readme"
+  "homepage": "https://github.com/MaxLeh/Site_web_Silexia#readme",
+  "devDependencies": {
+    "eslint": "^7.30.0"
+  }
 }
