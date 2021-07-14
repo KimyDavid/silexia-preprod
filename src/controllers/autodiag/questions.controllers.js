@@ -1,13 +1,10 @@
 import db from '#config/db.js';
 import async from 'async';
-import mysql from 'mysql';
 import _ from 'lodash';
 
 import { Question } from '#models/autodiag/question.js';
 
 import apiController from '#controllers/utils/api.controllers.js';
-
-import { parseJSON, castData } from '#utils/functions.js';
 
 /* -------------------------------------------------------------------------- Get questions ------------------------------------------------------------ */
 
@@ -45,7 +42,7 @@ function getAutodiagQuestions(data, callback) {
         for(let i=0; i<results.length;i++){
           results[i] = new Question(results[i])
         }
-        callback(null, data.id && results.length === 1 ? results[0] : results)
+        callback(error, data.id && results.length === 1 ? results[0] : results)
       });
 
 }
@@ -64,8 +61,12 @@ function createQuestion(data, callback) {
       id_question = question.id
       apiController.createItemsFromArray({table:"Autodiag_Answers", parent:{key:'id_question', value:id_question}, item:data.answers.map(v => ({...v, id_question:id_question}))}, callback)
     }
-  ], function(err, results){
-    getAutodiagQuestions({id:id_question}, callback)
+  ], function(err){
+    if(err){
+      callback(err)
+    }else{
+      getAutodiagQuestions({id:id_question}, callback)
+    }
   })
 
 }
@@ -78,9 +79,12 @@ function updateQuestion(data, callback) {
     function(callback){
       apiController.editItemsFromArray({table:"Autodiag_Answers", item:data.answers.map(v => ({...v, id_question:data.id})),  parent:{key:'id_question', value:data.id}}, callback)
     }
-  ], function(err, results){
-    console.log(data)
-    getAutodiagQuestions({id:data.id}, callback)
+  ], function(err){
+    if(err){
+      callback(err)
+    }else{
+      getAutodiagQuestions({id:data.id}, callback)
+    }
   })
 
 }
@@ -94,7 +98,7 @@ function deleteQuestion(data, callback) {
     function(callback){
       apiController.deleteItemFromArray({table:"Autodiag_Answers", parent:{key:'id_question', value:data.id}}, callback)
     }
-  ], function(err, results){
+  ], function(err){
     callback(err, data)
   })
 

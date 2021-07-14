@@ -1,11 +1,10 @@
 import * as yup from 'yup';
-import { parseJSON } from '#utils/functions.js';
 import yup_test from '#models/utils/yup_test.js';
 
 import imageController from '#controllers/utils/image.controllers.js';
 import apiController from '#controllers/utils/api.controllers.js';
 
-function Article(data, extraData) {
+function Article(data) {
     this.id                 = data.id;
     this.title         		= data.title
     this.image          	= imageController.getImage("articles_" + data.id, data.version)

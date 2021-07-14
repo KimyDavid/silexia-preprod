@@ -1,5 +1,4 @@
 import mysql from 'mysql';
-import db from '../config/db.js';
 
 function parseJSON(input){
     try {
@@ -16,7 +15,7 @@ function parseJSON(input){
     catch (e) { }
 
     return input;
-};
+}
 
 function castData(data){
     if(data === parseInt(data)){

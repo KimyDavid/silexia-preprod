@@ -1,9 +1,6 @@
 import * as yup from 'yup';
-import util from 'util';
-import yup_test from '#models/utils/yup_test.js';
-import { parseJSON } from '#utils/functions.js';
 
-function Answer(data, extraData) {
+function Answer(data) {
     this.id                 = data.id;
     this.label              = data.label
     this.order              = data.order

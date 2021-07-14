@@ -1,8 +1,4 @@
-import * as yup from 'yup';
-import { parseJSON } from '#utils/functions.js';
-import yup_test from '#models/utils/yup_test.js';
-
-function Administrative(data, extraData) {
+function Administrative(data) {
     this.id                 = data.id;
     this.type         		= data.type
     this.text              	= data.text

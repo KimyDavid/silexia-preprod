@@ -1,8 +1,7 @@
 import express from 'express';
 import routes from '#routes/utils/routes.js';
 
-import { Question, createQuestionSchema, updateQuestionSchema } from '#models/autodiag/question.js';
-import apiController from '#controllers/utils/api.controllers.js';
+import { createQuestionSchema, updateQuestionSchema } from '#models/autodiag/question.js';
 import questionsController from '#controllers/autodiag/questions.controllers.js';
 
 const router = express.Router();

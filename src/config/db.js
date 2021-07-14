@@ -31,22 +31,21 @@ pool.on('connection', function (connection) {
 var db = (function () {
     function _query(query, params, callback) {
         let timer = new Date().getTime()
-        pool.query(query, params, function (err, rows) {
+        pool.query(query, function (err, rows) {
             if(err){
                 console.log("error query")
-                console.log(params)
                 console.log(query)
                 console.log(err)
             } 
-            if(params && !params.import){
-                let timer_end = new Date().getTime()
-                if(timer_end - timer > 1000){
-                    console.log("slow query", query, params, timer_end - timer)
-                }
+            
+            let timer_end = new Date().getTime()
+            if(timer_end - timer > 1000){
+                console.log("slow query", query, timer_end - timer)
             }
+
             callback(err, rows);
         });
-    };
+    }
 
     return {
         query: _query

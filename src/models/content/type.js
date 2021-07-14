@@ -1,10 +1,9 @@
 import * as yup from 'yup';
-import { parseJSON } from '#utils/functions.js';
 import yup_test from '#models/utils/yup_test.js';
 
 import apiController from '#controllers/utils/api.controllers.js';
 
-function Type(data, extraData) {
+function Type(data) {
     this.id                 = data.id;
     this.label              = data.label
     this.order              = data.order
@@ -16,7 +15,6 @@ const createTypeSchema = yup.object({
     label: yup.string().max(255).required(),
     order: yup.number().integer().positive().required()
 })
-
 
 const updateTypeSchema = yup.object({
     id:yup.number().required().exists(),

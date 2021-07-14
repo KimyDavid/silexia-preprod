@@ -1,13 +1,10 @@
 import db from '#config/db.js';
 import async from 'async';
-import mysql from 'mysql';
 import _ from 'lodash';
 
 import { Category } from '#models/autodiag/category.js';
 
 import apiController from '#controllers/utils/api.controllers.js';
-
-import { parseJSON, castData } from '#utils/functions.js';
 
 
 /* -------------------------------------------------------------------------- Get categories ------------------------------------------------------------ */
@@ -57,8 +54,12 @@ function createCategory(data, callback) {
       id_category = category.id
       apiController.createItemsFromArray({table:"Autodiag_Tiers", parent:{key:'id_category', value:id_category}, item:data.tiers.map(v => ({...v, id_category:id_category}))}, callback)
     }
-  ], function(err, results){
-    getCategories({id:id_category}, callback)
+  ], function(err){
+    if(err){
+      callback(err)
+    }else{
+      getCategories({id:id_category}, callback)
+    }
   })
 
 }
@@ -72,8 +73,12 @@ function updateCategory(data, callback) {
     function(callback){
       apiController.editItemsFromArray({table:"Autodiag_Tiers", item:data.tiers.map(v => ({...v, id_category:data.id})),  parent:{key:'id_category', value:data.id}}, callback)
     }
-  ], function(err, results){
-    getCategories({id:data.id}, callback)
+  ], function(err){
+    if(err){
+      callback(err)
+    }else{
+      getCategories({id:data.id}, callback)
+    }
   })
 
 }
@@ -87,7 +92,7 @@ function deleteCategory(data, callback) {
     function(callback){
       apiController.deleteItemFromArray({table:"Autodiag_Tiers", parent:{key:'id_category', value:data.id}}, callback)
     }
-  ], function(err, results){
+  ], function(err){
     callback(err, data)
   })
 
@@ -98,5 +103,6 @@ function deleteCategory(data, callback) {
 export default { 
   getCategories,
   createCategory,
-  updateCategory
+  updateCategory,
+  deleteCategory
 }

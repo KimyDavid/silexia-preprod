@@ -1,11 +1,10 @@
 import db from '#config/db.js';
 import async from 'async';
-import mysql from 'mysql';
 import _ from 'lodash';
 
 import imageController from '#controllers/utils/image.controllers.js';
 
-import { parseJSON, castData } from '#utils/functions.js';
+import { castData } from '#utils/functions.js';
 
 
 /* -------------------------------------------------------------------------- Utils ------------------------------------------------------------ */
@@ -40,14 +39,10 @@ function updateItem(data, callback) {
   
   let bol
 
-  let strsql_data = ''
-
   var strsql = ' UPDATE ' + data.table;
       strsql += ' SET last_modif = NOW(), ';
       for(var key in data.item){
         strsql += bol ? ',' : ''
-        strsql_data += bol ? ',' : ''
-
         strsql += data.table + '.' + key + ' = ' + castData(data.item[key])
         bol = true
       }
@@ -94,7 +89,7 @@ function deleteItem(data, callback) {
       strsql += ' SET last_modif = NOW(), deleted = 1';
       strsql += ' WHERE id = ' + data.id
       
-      db.query(strsql, null, function (error, results) { 
+      db.query(strsql, function (error) { 
         callback(error, {id:data.id})
       });
 }
@@ -114,8 +109,8 @@ function deleteItemFromArray(data, callback){
         strsql += ')';
       }
 
-      db.query(strsql, null, function (error, results) {   
-        callback(error, null)
+      db.query(strsql, null, function (error) {   
+        callback(error)
       });
 
 }
@@ -134,8 +129,12 @@ function createItem(data, callback){
       id_item = id
       updateOrder(data, callback)
     }
-  ], function(err, results){
-    getItem({table:data.table, model:data.model, id:id_item}, callback)
+  ], function(err){
+    if(err){
+      callback(err)
+    }else{
+      getItem({table:data.table, model:data.model, id:id_item}, callback)
+    }
   })
 
 }
@@ -164,8 +163,8 @@ function handleInsertItem(data, callback){
         callback(null, null)
       }
     }
-  ], function(err, results){
-    callback(err, id_item)
+  ], function(err){
+      callback(err, id_item)
   })
 
 }
@@ -174,37 +173,15 @@ function createItemsFromArray(data, callback){
 
   async.map(data.item, function(item, callback){
     handleInsertItem({table:data.table, item:item}, callback)
-  }, function(err, results){
-    updateOrder(data, callback)
+  }, function(err){
+    if(err){
+      callback(err)
+    }else{
+      updateOrder(data, callback)
+    }
   })
 
 }
-
-/*function insertItem(data, callback) {
-  
-  let bol
-  let strsql_key = ''
-  let strsql_data = ''
-
-  var strsql = ' INSERT INTO ' + data.table + '(';
-      for(var key in data.item){
-        strsql_key += bol ? ',' : ''
-        strsql_data += bol ? ',' : ''
-
-        strsql_key += data.table + '.' + key
-        strsql_data += castData(data.item[key])
-        bol = true
-      }
-      strsql += strsql_key + ') VALUES(' + strsql_data + ')';
-      
-      db.query(strsql, null, function (error, results) { 
-        callback(error, results.insertId)
-      });
-
-}*/
-
-
-
 
 /* -------------------------------------------------------------------------- Update item ------------------------------------------------------------ */
 
@@ -218,8 +195,12 @@ function editItem(data, callback){
     function(res, callback){
       updateOrder(data, callback)
     }
-  ], function(err, results){
-    getItem({table:data.table, model:data.model, id:data.item.id}, callback)
+  ], function(err){
+    if(err){
+      callback(err)
+    }else{
+      getItem({table:data.table, model:data.model, id:data.item.id}, callback)
+    }
   })
 
 }
@@ -241,7 +222,7 @@ function handleEditItem(data, callback){
       }
       updateInsertItem({table:data.table, item:_.omit(data.item, "image")}, callback)
     }
-  ], function(err, results){
+  ], function(err){
     callback(err, data.item.id)
   })
 
@@ -256,22 +237,21 @@ function editItemsFromArray(data, callback){
     function(callback){
       async.map(data.item, function(item, callback){
         handleInsertItem({table:data.table, item:item}, callback)
-      }, function(err, results){
-        callback(null, null)
+      }, function(err){
+        callback(err)
       })
     }
-  ], function(err, results){
-    updateOrder(data, callback)
+  ], function(err){
+    if(err){
+      callback(err)
+    }else{
+      updateOrder(data, callback)
+    }
   })
 
 }
 
-
-
-
 /* -------------------------------------------------------------------------- Order ------------------------------------------------------------ */
-
-
 
 function updateOrder(data, callback){
 
@@ -289,7 +269,7 @@ function updateOrder(data, callback){
       }
       strsql += ' ON DUPLICATE KEY UPDATE ' + data.table + '.order = VALUES(' + data.table + '.order)';
 
-      db.query(strsql, null, function (error, results) {   
+      db.query(strsql, null, function (error) {   
         callback(error)
       });
 

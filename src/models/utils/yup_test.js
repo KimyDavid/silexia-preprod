@@ -17,7 +17,7 @@ function test(data){
                       return data.reverse ? false : true
                   }
               })
-              .catch((error) => {
+              .catch(() => {
                   return false
               })
     });
@@ -38,7 +38,7 @@ function exists(yup, type, _function){
                       return true
                   }
               })
-              .catch((error) => {
+              .catch(() => {
                   return false
               })
     });

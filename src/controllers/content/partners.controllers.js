@@ -1,13 +1,6 @@
 import db from '#config/db.js';
-import async from 'async';
-import mysql from 'mysql';
-import _ from 'lodash';
 
 import { Partner, PartnerType } from '#models/content/partner.js';
-
-import imageController from '#controllers/utils/image.controllers.js';
-
-import { parseJSON, castData } from '#utils/functions.js';
 
 function getPartners(data, callback) {
 

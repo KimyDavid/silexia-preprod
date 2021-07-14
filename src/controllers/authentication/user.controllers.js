@@ -7,7 +7,7 @@ import { User } from '#models/authentication/user.js';
 
 import mailController from '#controllers/utils/mail.controllers.js';
 
-import { parseJSON, castData } from '#utils/functions.js';
+import { castData } from '#utils/functions.js';
 
 function getUserFromEmail(data, callback) {
 
@@ -18,9 +18,7 @@ function getUserFromEmail(data, callback) {
       db.query(strsql, null, function (error, results) { 
         callback(null, results.length === 1 ? results[0] : null)
       });
-
 }
-
 
 function getUserFromId(data, callback) {
 
@@ -31,7 +29,6 @@ function getUserFromId(data, callback) {
       db.query(strsql, null, function (error, results) { 
         callback(null, results.length === 1 ? new User(results[0]) : null)
       });
-
 }
 
 
@@ -48,12 +45,12 @@ function subscribe(data, callback) {
     }, 
     function(results, callback){
       user = results
-      insertKeyVerif({id:id, type:0}, callback)
+      insertKeyVerif({id:user.id, type:0}, callback)
     },
     function(key, callback){
       mailController.verifAccount({email:data.email, link:process.env.ENDPOINT + '/verif_account?key=' + key}, callback)
     }
-  ], function(err, results){
+  ], function(err){
     callback(err, user)
   })
 

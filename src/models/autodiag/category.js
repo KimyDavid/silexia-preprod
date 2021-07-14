@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-import util from 'util';
 import yup_test from '#models/utils/yup_test.js';
 import { parseJSON } from '#utils/functions.js';
 
@@ -10,7 +9,7 @@ import { Question } from '#models/autodiag/question.js';
 yup_test.test({yup:yup, label:'exists', type:'number', _function:apiController.getItem, key:'id'})
 
 
-function Tier(data, extraData) {
+function Tier(data) {
     this.id                 = data.id;
     this.text               = data.text
     this.order              = data.order

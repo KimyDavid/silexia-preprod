@@ -53,11 +53,11 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(data, done) {
 	authController.getFromId(data, function(err, results){
-		if(err){
-		  done("User not foud")
-		}else{
-		  done(null, results)
-		}
+    if(err){
+      done("User not foud")
+    }else{
+      done(null, results)
+    }
 	})
 });
 

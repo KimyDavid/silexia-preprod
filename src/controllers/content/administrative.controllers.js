@@ -1,13 +1,7 @@
 import db from '#config/db.js';
-import async from 'async';
 import mysql from 'mysql';
-import _ from 'lodash';
 
 import { Administrative } from '#models/content/administrative.js';
-
-import imageController from '#controllers/utils/image.controllers.js';
-
-import { parseJSON, castData } from '#utils/functions.js';
 
 function getAdministrativeContent(data, callback) {
 
@@ -27,8 +21,12 @@ function updateAdministrativeContent(data, callback) {
       strsql += ' SET last_modif = NOW(), text = ' + mysql.escape(data.text);
       strsql += ' WHERE Administrative.type = ' + mysql.escape(data.type);
       
-      db.query(strsql, null, function (error, results) { 
-        getAdministrativeContent(data.type, callback)
+      db.query(strsql, null, function (error) {
+        if(error){
+          callback(error)
+        }else{ 
+          getAdministrativeContent(data.type, callback)
+        }
       });
 
 }

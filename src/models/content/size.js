@@ -1,10 +1,9 @@
 import * as yup from 'yup';
-import { parseJSON } from '#utils/functions.js';
 import yup_test from '#models/utils/yup_test.js';
 
 import apiController from '#controllers/utils/api.controllers.js';
 
-function Size(data, extraData) {
+function Size(data) {
     this.id                 = data.id;
     this.label              = data.label
     this.order              = data.order

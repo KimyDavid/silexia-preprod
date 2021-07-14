@@ -2,10 +2,9 @@ import * as yup from 'yup';
 import { parseJSON } from '#utils/functions.js';
 import yup_test from '#models/utils/yup_test.js';
 
-import imageController from '#controllers/utils/image.controllers.js';
 import apiController from '#controllers/utils/api.controllers.js';
 
-function Partner(data, extraData) {
+function Partner(data) {
     this.id                 = data.id;
     this.name               = data.name
     this.type               = data.type
@@ -14,7 +13,7 @@ function Partner(data, extraData) {
     this.order              = data.order
 }
 
-function PartnerType(data, extraData) {
+function PartnerType(data) {
     this.id                 = data.id;
     this.label              = data.label
 

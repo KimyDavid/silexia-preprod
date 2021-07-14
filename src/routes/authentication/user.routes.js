@@ -14,7 +14,7 @@ router.post('/login', validateResourceMW(userLoginSchema), function(req, res, ne
     if(err){
       res.status(400).json({error:err})
     }else{
-      req.login(results, function(err){
+      req.login(results, function(){
         res.status(200).json(results)
       })
     }
@@ -27,7 +27,7 @@ router.post('/subscribe', validateResourceMW(userCreateSchema), function(req, re
     if(err){
       res.status(400).json({error:err})
     }else{
-      req.login({id:results.id}, function(err){
+      req.login({id:results.id}, function(){
         res.status(200).json(results)
       })
     }

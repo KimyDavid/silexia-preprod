@@ -27,13 +27,10 @@ function send_mail(input, callback){
       email.dynamic_template_data = input.data
     }
 
-    sgMail.send(email, (err, response) => {
-      if (err) {
-        console.log(err)
-        if(err.response){
-            console.log(err.response.body) 
-        }       
-        callback(null, null)
+    sgMail.send(email, (err) => {
+      if (err && err.response) {
+        console.log(err.response.body)     
+        callback(err)
       } else {
         callback(null, null)
       }
@@ -41,20 +38,20 @@ function send_mail(input, callback){
 }
 
 function verifAccount(data, callback){
-  send_mail({dest:data.email, data:{link:data.link}, template:"d-2bdca13d71c0496a9fb5aabcea91e5b7"}, function(err, results){
+  send_mail({dest:data.email, data:{link:data.link}, template:"d-2bdca13d71c0496a9fb5aabcea91e5b7"}, function(err){
     if(err){
         console.log(err)
     }
-    callback(null, null)
+    callback(err)
   })
 }
 
 function forgotPassword(data, callback){
-  send_mail({dest:data.email, data:{link:data.link}, template:"d-a46b10da9bdf43e48d08f4d3cda8898e"}, function(err, results){
+  send_mail({dest:data.email, data:{link:data.link}, template:"d-a46b10da9bdf43e48d08f4d3cda8898e"}, function(err){
     if(err){
         console.log(err)
     }
-    callback(null, null)
+    callback(err)
   })
 }
 

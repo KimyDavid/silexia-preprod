@@ -1,14 +1,9 @@
 import db from '#config/db.js';
 import async from 'async';
-import mysql from 'mysql';
-import _ from 'lodash';
 
 import { Category } from '#models/autodiag/category.js';
-import { Result } from '#models/autodiag/autodiag.js';
 
 import userController from '#controllers/authentication/user.controllers.js';
-
-import { parseJSON, castData } from '#utils/functions.js';
 
 
 /* -------------------------------------------------------------------------- Get questions ------------------------------------------------------------ */
@@ -55,7 +50,7 @@ function getAutodiag(data, callback) {
         for(let i=0; i<results.length;i++){
           results[i] = new Category(results[i], {autodiag:true})
         }
-        callback(null, results)
+        callback(error, results)
       });
 
 }
@@ -85,7 +80,7 @@ function subscribeAutodiag(data, callback) {
       userController.getUserFromId({id:id_user}, callback)
     }
   ], function(err, results){
-    callback(null, results)
+    callback(err, results)
   })
 
 }
@@ -99,7 +94,7 @@ function insertAutodiagUserAnswers(data, callback) {
         strsql += '(' + data.id_user + ',' + data.answers[i] + ')'
       }
 
-      db.query(strsql, null, function (error, results) {   
+      db.query(strsql, null, function (error) {   
         callback(error)
       });
 
@@ -137,7 +132,7 @@ function getAutodiagUser(data, callback) {
       strsql += ' GROUP BY ac.id';
       strsql += ' ORDER BY ac.order';
 
-  	db.query(strsql, null, function (error, results) { 
+    db.query(strsql, null, function (error, results) { 
       for(let i=0; i<results.length; i++){
         results[i] =  new Category(results[i], {results:true})
       }  
@@ -145,11 +140,6 @@ function getAutodiagUser(data, callback) {
     });
 
 }
-
-getAutodiagUser({id:20}, function(err, results){
-  console.log(results)
-})
-
 
 export default { 
   getAutodiag,

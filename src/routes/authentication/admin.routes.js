@@ -13,7 +13,7 @@ router.post('/admin/login', validateResourceMW(adminLoginSchema), function(req, 
     if(err){
       res.status(400).json({errors:err})
     }else{
-      req.login(results, function(err){
+      req.login(results, function(){
         res.status(200).json(results)
       })
     }

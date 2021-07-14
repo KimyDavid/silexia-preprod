@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-import util from 'util';
 import yup_test from '#models/utils/yup_test.js';
 import { parseJSON } from '#utils/functions.js';
 
@@ -9,7 +8,7 @@ import { Answer, updateAnswerSchema, createAnswerSchema } from '#models/autodiag
 
 yup_test.test({yup:yup, label:'exists', type:'number', _function:apiController.getItem, key:'id'})
 
-function Question(data, extraData) {
+function Question(data) {
     this.id                 = data.id;
     this.label              = data.label
     this.description        = data.description

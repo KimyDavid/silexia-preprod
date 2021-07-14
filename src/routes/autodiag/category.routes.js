@@ -1,8 +1,7 @@
 import express from 'express';
 import routes from '#routes/utils/routes.js';
 
-import { Category, createCategorySchema, updateCategorySchema } from '#models/autodiag/category.js';
-import apiController from '#controllers/utils/api.controllers.js';
+import { createCategorySchema, updateCategorySchema } from '#models/autodiag/category.js';
 import categoriesController from '#controllers/autodiag/categories.controllers.js';
 
 const router = express.Router();

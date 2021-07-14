@@ -1,9 +1,6 @@
 import express from 'express';
-import routes from '#routes/utils/routes.js';
 
 import auth from '#middleware/auth.middleware.js';
-
-import { Administrative } from '#models/content/administrative.js';
 
 import administrativeController from '#controllers/content/administrative.controllers.js';
 
@@ -16,7 +13,7 @@ const administrative_types = [
   'privacy_policy'
 ]
 
-const validateAdministrative = (resourceSchema) => async (req, res, next) => {
+const validateAdministrative = () => async (req, res, next) => {
 
   let index = administrative_types.findIndex(x => x === req.params.type)
   if(index === -1){

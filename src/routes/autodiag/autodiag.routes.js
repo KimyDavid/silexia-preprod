@@ -1,7 +1,6 @@
 import express from 'express';
 
 import validateResourceMW from '#middleware/validateObject.middleware.js';
-import auth from '#middleware/auth.middleware.js';
 
 import { autodiagSchema } from '#models/autodiag/autodiag.js';
 import autodiagController from '#controllers/autodiag/autodiag.controllers.js';
@@ -17,7 +16,7 @@ router.route('/autodiag')
   })
   .post(validateResourceMW(autodiagSchema), function(req, res) {
     autodiagController.subscribeAutodiag(req.body, function(err, results){
-      req.login(results, function(err){
+      req.login(results, function(){
         res.status(200).json(results)
       })
     })

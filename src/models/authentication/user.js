@@ -1,7 +1,5 @@
 import * as yup from 'yup';
-import util from 'util';
 import bcrypt from 'bcrypt';
-import { parseJSON } from '#utils/functions.js';
 import yup_test from '#models/utils/yup_test.js';
 
 import userController from '#controllers/authentication/user.controllers.js';
@@ -12,7 +10,7 @@ yup_test.test({yup:yup, label:'exists', type:'number', _function:apiController.g
 yup_test.test({yup:yup, label:'unique', type:'string', _function:userController.getUserFromEmail, message:'Email already registered', key:'email', reverse:true})
 yup_test.test({yup:yup, label:'registered', type:'string', _function:userController.getUserFromEmail, message:'Unknown email', key:'email'})
 
-function User(data, extraData) {
+function User(data) {
     this.id                 = data.id;
     this.company            = data.company
     this.email              = data.email

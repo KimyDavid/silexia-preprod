@@ -8,12 +8,10 @@ cloudinary.config({
   secure:true 
 });
 
-
 function getImage(data, version){
   var url = cloudinary.v2.url(data, {version:version, quality:"auto"})
   return url
 }
-
 
 function uploadImage(data, callback){
 
