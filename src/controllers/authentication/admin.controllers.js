@@ -9,7 +9,7 @@ function getAdminFromEmail(data, callback) {
       strsql += ' FROM Admin';
       strsql += ' WHERE email = ' + mysql.escape(data.email)
       
-      db.query(strsql, function (error, results) { 
+      db.query(strsql, null, function (error, results) { 
         callback(error, results.length === 1 ? results[0] : null)
       });
 
