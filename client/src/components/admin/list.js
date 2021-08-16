@@ -1,0 +1,75 @@
+import React, { useState, useEffect } from 'react'
+import Constants from '../../constants/Config';
+import { Link } from 'react-router-dom'
+import { FiDelete, FiEdit } from 'react-icons/fi'
+
+import SectionTitle from '../section-title'
+import Breadcrumb from '../breadcrumbs'
+import Widget from '../widget'
+
+import { useTranslation } from "react-i18next";
+
+const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
+    const { t } = useTranslation('admin');
+    const [items, setItems] = useState([]);
+    const slugTrans = slug.replace('/', '.');
+
+    const breadcrumbs = [
+        { title: 'Dashboard', url: '/admin', last: false },
+        { title: t(`${slugTrans}.label`), url: `/admin/${slug}`, last: true },
+    ]
+
+    useEffect(() => {
+        fetch(`${Constants.api_url}/${slug}`)
+            .then(res => res.json())
+            .then(
+                (result) => setItems(result)
+            )
+    }, []);
+
+    return (
+        <>
+            { showBreadcrumbs ?
+            <Breadcrumb items={ breadcrumbs } home={ true } icon="chevron" />
+            : '' }
+
+            <Link to = { `/admin/${slug}/new` } className="btn btn-default bg-blue-500 hover:bg-blue-600 text-white btn-rounded float-right">
+                <span>{ t(`${slugTrans}.new`) }</span>
+            </Link>
+
+            <SectionTitle title={ t(`${slugTrans}.label`) } subtitle={ t(`${slugTrans}.all`) } />
+
+            <Widget>
+                <table className="table no-border striped">
+                    <thead>
+                        <tr> 
+                            { fields.map((field, i) => (
+                                <th key={ i }> { field.name } </th>
+                            ))}
+                        </tr> 
+                    </thead>
+                    <tbody> 
+                        { items.map((item, i) => ( 
+                            <tr key = { i }> 
+                                { fields.map((field, j) => (
+                                    <td key={ j }> { item[field.key] } </td>
+                                ))} 
+                                <td className="text-right">
+                                    <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"
+                                    title="Modifier l'article" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { elem: item } } }>
+                                    <FiEdit className = "stroke-current" /></Link>
+                                    <button className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised ml-3"
+                                    title="Supprimer l'article" onClick={() => {  }}>
+                                    <FiDelete className="stroke-current" />
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </Widget> 
+        </>
+    )
+}
+
+export default ListElement

@@ -1,0 +1,287 @@
+.autodiag {
+    &-container {
+        border: 1px solid $color-red;
+        border-radius: 15px;
+        overflow: hidden;
+        animation: slideIn 1s ease forwards;
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateX(-30px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    &-header {
+        background: $color-red;
+        padding: 10px 30px;
+
+        @media (max-width: $md) {
+            padding: 10px 15px;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+
+    &-category {
+        &-title {
+            font-size: 18px;
+            color: white;
+        }
+        &-description {
+            font-size: 14px;
+            color: white;
+            font-style: italic;
+            font-weight: 200;
+        }
+    }
+
+    &-number {
+        width: 40px;
+        height: 40px;
+        background: white;
+        border-radius: 100%;
+        color: $color-red;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+    }
+
+    &-body {
+        padding: 30px;
+
+        @media (max-width: $md) {
+            padding: 20px 15px;
+        }
+    }
+
+    &-footer {
+        padding: 10px 30px;
+        border-top: 1px solid $color-red;
+
+        @media (max-width: $md) {
+            padding: 10px 15px;
+        }
+    }
+
+    &-progressbar {
+        height: 16px;
+        background: #cc4c4414;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+
+        span {
+            position: absolute;
+            width: calc(100% + 5px);
+            height: calc(100% + 10px);
+            left: -5px;
+            top: -5px;
+            background: linear-gradient(to right, $color-red, $color-red-dark, $color-red);
+            background-size: 50%;
+            transform: scaleX(.3) skew(-40deg);
+            transform-origin: left;
+            animation: progressbar 3s linear infinite;
+            transition: transform .5s ease;
+
+            @keyframes progressbar {
+                0% {
+                    background-position: 100%;
+                }
+
+                100% {
+                    background-position: 0;
+                }
+            }
+        }
+    }
+
+    &-question {
+        &-title {
+            margin-bottom: 0;
+            font-size: 18px;
+            color: $color-black;
+        }
+    }
+
+    &-choice {
+        &s {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            list-style: none;
+            padding-left: 0;
+            margin-top: 30px;
+        }
+
+        &-box {
+            flex: 1;
+
+            @media (max-width: $md) {
+                flex: 1 33%;
+                border-radius: 4px;
+                margin: 6px;
+                padding: 12px;
+                background:#cc4c4414;
+            }
+        }
+
+        display: none;
+
+        &-label {
+            position: relative;
+            padding-top: 25px;
+            cursor: pointer;
+            transition: color .4s ease;
+            font-size: 13px;
+            margin: 0;
+
+            &::before, &::after {
+                position: absolute;
+                content: '';
+                left: 50%;
+                border-radius: 100%;
+            }
+
+            &::before {
+                top: 0;
+                width: 18px;
+                height: 18px;
+                border: 2px solid $color-red;
+                transform: translateX(-50%);
+            }
+
+            &::after {
+                top: 4px;
+                width: 10px;
+                height: 10px;
+                transform: translateX(-50%) scale(0);
+                transition: transform .4s ease;
+                background: $color-red;
+            }
+
+            &:hover {
+                color: $color-red;
+            }
+        }
+
+        &:checked + &-label {
+            color: $color-red;
+
+            &::after {
+                transform: translateX(-50%) scale(1);
+            }
+        }
+    }
+
+    &-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        & > p {
+            font-size: 18px;
+            position: absolute;
+            transition: opacity .5s ease;
+
+            &.hide {
+                opacity: 0;
+            }
+        }
+
+        &-logo {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            margin-top: 80px;
+        }
+    }
+
+    &-form {
+        margin-top: 100px;
+    }
+
+    &-step {
+        $dot-size: 25px;
+
+        &s {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+            margin: 0 50px 30px;
+            list-style: none;
+            position: relative;
+            height: $dot-size;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                height: 2px;
+                width: 100%;
+                background: $color-red;
+                z-index: -1;
+            }
+        }
+
+        & {
+            position: relative;
+            width: $dot-size;
+            height: $dot-size;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $color-red;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid $color-red;
+            border-radius: 100%;
+            background: white;
+            cursor: pointer;
+            font-size: 12px;
+
+            &--active {
+                background: $color-red;
+                color: white;
+
+                & ~ .autodiag-step {
+                    pointer-events: none;
+                }
+            }
+
+            span {
+                position: absolute;
+                left: 50%;
+                width: max-content;
+                border-radius: 3px;
+                padding: 2px 4px;
+                font-size: 10px;
+                top: calc(-#{$dot-size} - 5px);
+                transform: translateX(-50%) translateY(20px);
+                background: $color-red;
+                color: white;
+                opacity: 0;
+                transition: opacity .5s ease, transform .5s ease;
+                z-index: 1;
+            }
+
+            &:hover {
+                span {
+                    opacity: 1;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
+}

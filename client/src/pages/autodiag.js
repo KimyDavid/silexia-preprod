@@ -1,0 +1,67 @@
+import React, { useState, useEffect } from 'react';
+import Pageheading from '../widgets/Pageheading';
+import Constants from '../constants/Config';
+import { sortById } from '../functions/sort';
+
+import Steps from './autodiag/steps';
+import Category from './autodiag/category';
+import Result from './autodiag/result';
+
+const Autodiag = () => {
+    const [autodiag, setAutodiag] = useState([]);
+    const [response, updateResponse] = useState([41, 45, 49, 39]);
+    const [category, setCategory] = useState('done');
+
+    useEffect(() => {
+        fetch(`${Constants.api_url}/autodiag`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setAutodiag(sortById(result));
+                }
+            )
+    }, []);
+
+    function goToCategory(category) {
+        setCategory(category);
+    }
+
+    function nextCategory(answers) {
+        window.scrollTo(0, 0)
+        if (category === autodiag.length-1) {
+            setCategory('done');
+        } else {
+            setCategory(category+1);
+        }
+        // updateResponse(response.push(answers));
+    }
+
+    return (
+        <div>
+            {/*hero section start*/}
+            <section className="position-relative">
+                <Pageheading title={"Autodiag"} />
+            </section>
+            {/*hero section end*/}
+
+            {/*body content start*/}
+            <section className="page-content">
+                <div className="container">
+                    <div className="col-12 col-lg-10 offset-lg-1">
+                        { category === 'done' ? '' : <Steps steps={autodiag} currentStep={category} goStep={goToCategory}/> }
+                        { category > 0 ? <p onClick={() => goToCategory(category-1)} className="link">Catégorie précédente</p> : '' }
+                        { autodiag[category] ?
+                        <Category category={autodiag[category]} index={category} categoriesLength={autodiag.length} nextCategory={nextCategory}/>
+                        : '' }
+                        { category === 'done' ?
+                        <Result response={response}/>
+                        : '' }
+                    </div>
+                </div>
+            </section>
+            {/*body content end*/}
+        </div>
+    );
+}
+
+export default Autodiag;

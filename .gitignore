@@ -19,3 +19,6 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/tmp/tmp*
+.lh
+client/dist
+.DS_Store

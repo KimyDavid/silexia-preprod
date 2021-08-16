@@ -31,7 +31,7 @@ app.use(session({
 }))
 
 app.use(cors({
-  "origin": ["http://localhost:3000"],
+  "origin": ["http://localhost:8080"],
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
   "optionsSuccessStatus": 204,
@@ -43,7 +43,7 @@ app.use(fileUpload({
     tempFileDir : './src/tmp/'
 }));
 
-app.use(express.static('client/build'));
+app.use(express.static('client/public'));
 //app.use(express.static('public'));
 
 app.use(express.json());
@@ -69,7 +69,7 @@ app.use('/v1', questions)
 app.use('/v1', categories)
 
 app.get('/*', function(req, res) {
-  res.sendFile('client/build/index.html', {root:'.'});
+  res.sendFile('client/dist/index.html', {root:'.'});
 });
 
 var server = http.createServer(app)
