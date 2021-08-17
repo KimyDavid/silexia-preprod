@@ -5,7 +5,7 @@ import validateResourceMW from '#middleware/validateObject.middleware.js';
 import auth from '#middleware/auth.middleware.js';
 
 import { userLoginSchema, userCreateSchema, userForgetPasswordSchema, userUpdateSchema } from '#models/authentication/user.js';
-import authController from '#controllers/authentication/authentication.controllers.js';
+import userController from '#controllers/authentication/user.controllers.js';
 
 const router = express.Router();
 
@@ -23,7 +23,7 @@ router.post('/login', validateResourceMW(userLoginSchema), function(req, res, ne
 
 router.post('/subscribe', validateResourceMW(userCreateSchema), function(req, res) {
   req.body.id = req.user.id
-  authController.subscribe(req.body, function(err, results){
+  userController.subscribe(req.body, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{
@@ -36,7 +36,7 @@ router.post('/subscribe', validateResourceMW(userCreateSchema), function(req, re
 
 
 router.get('/verif_account', auth(), function(req, res) {
-  authController.verifAccount({id_user:req.user.id, key:req.query ? req.query.key : null}, function(err, results){
+  userController.verifAccount({id_user:req.user.id, key:req.query ? req.query.key : null}, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{
@@ -46,7 +46,7 @@ router.get('/verif_account', auth(), function(req, res) {
 });
 
 router.post('/forgot_password', validateResourceMW(userForgetPasswordSchema), function(req, res) {
-  authController.forgotPassword(req.body, function(err, results){
+  userController.forgotPassword(req.body, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{
@@ -57,7 +57,7 @@ router.post('/forgot_password', validateResourceMW(userForgetPasswordSchema), fu
 
 
 router.get('/reset_password', function(req, res) {
-  authController.resetPassword({id_user:req.user.id, key:req.query ? req.query.key : null}, function(err, results){
+  userController.resetPassword({id_user:req.user.id, key:req.query ? req.query.key : null}, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{
@@ -67,7 +67,7 @@ router.get('/reset_password', function(req, res) {
 });
 
 router.patch('/users/:id', validateResourceMW(userUpdateSchema), function(req, res) {
-  authController.updateUser({id:req.params.id, body:req.body}, function(err, results){
+  userController.updateUser({id:req.params.id, body:req.body}, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{

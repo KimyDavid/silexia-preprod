@@ -88,7 +88,7 @@ function insertKeyVerif(data, callback){
   var strsql = ' INSERT INTO Verif_Key(id_user, Verif_Key.key, Verif_Key.type)';
       strsql += ' VALUES(' + data.id + ',' + mysql.escape(key) + ', ' + data.type + ')'
       
-      db.query(strsql, null, function (error, results) { 
+      db.query(strsql, null, function () { 
         callback(null, key)
       });
 
@@ -137,20 +137,17 @@ function updateUser(data, callback){
 
   let bol
 
-  let strsql_data = ''
-
   var strsql = ' UPDATE User';
       strsql += ' SET ';
       for(var key in data.body){
         strsql += bol ? ',' : ''
-        strsql_data += bol ? ',' : ''
 
         strsql += 'User.' + key + ' = ' + castData(data.body[key])
         bol = true
       }
       strsql += ' WHERE id = ' + data.id;
       
-      db.query(strsql, null, function (error, results) {
+      db.query(strsql, null, function (error) {
         if(error){
           callback(error)
         }else{
@@ -173,7 +170,7 @@ function forgotPassword(data, callback){
     function(key, callback){
       mailController.forgotPassword({email:data.email, link:process.env.ENDPOINT + '/reset_password?key=' + key}, callback)
     }
-  ], function(err, results){
+  ], function(err){
     callback(err, null)
   })
 }
