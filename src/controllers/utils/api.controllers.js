@@ -89,7 +89,7 @@ function deleteItem(data, callback) {
       strsql += ' SET last_modif = NOW(), deleted = 1';
       strsql += ' WHERE id = ' + data.id
       
-      db.query(strsql, function (error) { 
+      db.query(strsql, null, function (error) { 
         callback(error, {id:data.id})
       });
 }
