@@ -17,7 +17,7 @@ routes.api(
     get:(item, callback) => apiController.getItem({table:'Sectors', model:Sector, item:item, sort:'label'}, callback),
     post:(item, callback) => apiController.createItem({table:'Sectors', model:Sector, item:item, sort:'label'}, callback),
     put:(item, callback) => apiController.editItem({table:'Sectors', model:Sector, item:item, sort:'label'}, callback),
-    delete:(item, callback) => apiController.deleteItem({table:'Sectors', item:item, sort:'label'}, callback)
+    delete:(item, callback) => apiController.deleteItem({table:'Sectors', id:item.id, sort:'label'}, callback)
   }
 )
 
