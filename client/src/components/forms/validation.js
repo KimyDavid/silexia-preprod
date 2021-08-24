@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useForm} from 'react-hook-form'
 import Alert from '../alerts'
 import ReactQuill from 'react-quill';
 
 const FormValidation = ({items, onSubmit, alerts}) => {
   const {handleSubmit, errors, register} = useForm()
-  
+
   const onSubmitFn = data => {
     if (onSubmit) {
       onSubmit(data)
@@ -145,11 +145,14 @@ const FormValidation = ({items, onSubmit, alerts}) => {
             )
           }
           if (item.type === 'wysiwyg') {
+            console.log(item.value)
+            console.log(item)
             return (
               <>
                 <div key={i} className="form-element">
                   {item.label && <div className="form-label">{item.label}</div>}
                   <ReactQuill theme="snow" defaultValue={item.value} />
+
                   {/* <textarea
                     ref={item.ref}
                     name={item.name}

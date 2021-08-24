@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import navLinks from '../../constants/NavSilexia';
+import navLinks from '../../constants/NavSilexia2';
 import { BrowserRouter, Link } from 'react-router-dom';
 import {
     Collapse,

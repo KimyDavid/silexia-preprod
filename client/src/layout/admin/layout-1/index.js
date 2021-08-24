@@ -1,9 +1,8 @@
 import React from 'react'
 import {useSelector, shallowEqual} from 'react-redux'
 import Loader from '../../../components/loader'
-import LeftSidebar1 from '../../../components/left-sidebar-1'
-import Navbar1 from '../../../components/navbar-1'
-import Backdrop from '../../../components/backdrop'
+import LeftSidebar from '../../../components/left-sidebar'
+import Navbar from '../../../components/navbar'
 import {NotificationContainer} from 'react-notifications'
 
 const Layout1 = ({children}) => {
@@ -40,12 +39,11 @@ const Layout1 = ({children}) => {
         data-right-sidebar={rightSidebar}
         className={`${background === 'dark' ? 'dark-mode' : 'default-mode'}`}>
         <Loader />
-        <Backdrop />
         <NotificationContainer />
         <div className="wrapper">
-          <LeftSidebar1 />
+          <LeftSidebar />
           <div className="main w-full bg-grey-50 text-grey-900 dark:bg-grey-900 dark:text-white">
-            <Navbar1 />
+            <Navbar />
             <div className="min-h-screen w-full p-4">{children}</div>
           </div>
         </div>

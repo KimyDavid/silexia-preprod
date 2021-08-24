@@ -11,4 +11,5 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';  
  
 import 'antd/dist/antd.css';
-import '../src/assets/css/theme.min.css';
+import './assets/css/theme.min.css';
+import './assets/css/owl.carousel.css';

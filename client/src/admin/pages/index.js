@@ -2,26 +2,31 @@ import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 
 import List from './list'
-import New from '../../components/admin/new'
+import Update from './update'
 
 const Pages = () => {
     const slug = 'administrative';
 
-    const listFields = [
+    const pages = [
       {
-        name: 'Page',
-        key: 'type'
+          name: 'Conditions générales de vente',
+          slug: 'cgv'
       },
-    ]
+      {
+          name: 'Mentions légales',
+          slug: 'legal_mentions'
+      },
+      {
+          name: 'Conditions générales d\'utilisation',
+          slug: 'cgu'
+      },
+      {
+          name: 'Politique de confidentialité',
+          slug: 'privacy_policy'
+      },
+  ];
 
     const formFields = [
-      {
-        label: 'Type',
-        error: {required: 'Merci d\'ajouter un type'},
-        name: 'type',
-        type: 'text',
-        placeholder: 'Ajouter un type'
-      },
       {
         label: 'Texte',
         error: {required: 'Merci d\'ajouter un contenu'},
@@ -34,8 +39,8 @@ const Pages = () => {
     return (
       <>
         <Switch>
-          <Route path={`/admin/pages/new`} component={() => <New slug={slug} fields={formFields} />} />
-          <Route path={`/admin/pages`} component={() => <List slug={slug} fields={listFields} />} />
+          <Route path={`/admin/pages/update/:type`} component={() => <Update slug={slug} fields={formFields} />} />
+          <Route path={`/admin/pages`} component={() => <List slug={slug} fields={pages} />} />
         </Switch>
       </>
     )

@@ -2,15 +2,18 @@ import React, { useEffect, useState } from 'react';
 import Constants from '../../constants/Config';
 import {useForm} from 'react-hook-form';
 
-const SignUpForm = ({profile = null}) => {
+const SignUpForm = ({profile = null, setToken = null}) => {
   const {handleSubmit, errors, register} = useForm();
 
   const [sectors, setSectors] = useState([]);
   const [types, setTypes] = useState([]);
   const [sizes, setSizes] = useState([]);
 
+  const [currentSector, setCurrentSector] = useState(profile.sector);
+  const [currentType, setCurrentType] = useState(profile.type);
+  const [currentSize, setCurrentSize] = useState(profile.size);
+
   const submitForm = data => {
-    console.log(JSON.stringify(data));
     if (validatePassword()) {
       if (profile) {
         fetch(`${Constants.api_url}/users/${profile.id}`,
@@ -23,7 +26,10 @@ const SignUpForm = ({profile = null}) => {
           .then(res => res.json())
           .then(
             (result) => {
-              console.log(result);
+              if (setToken) {
+                setToken(result);
+                window.location.href = `${window.location.origin}/profile`;
+              }
             },
           )
           .catch(
@@ -174,8 +180,12 @@ const SignUpForm = ({profile = null}) => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="form-label">Secteur de l'entreprise</label>
-                        <select className={`form-control ${errors['sector'] ? 'error' : ''}`} defaultValue={profile ? profile.sector : ''} ref={register({required: "Le secteur de l'entreprise est obligatoire."})} name="sector">
-                          {profile ? '' : <option value="">Secteur de l'entreprise</option> }
+                        <select className={`form-control ${errors['sector'] ? 'error' : ''}`}
+                        value={currentSector}
+                        ref={register({required: "Le secteur de l'entreprise est obligatoire."})}
+                        onChange={(e) => setCurrentSector(e.target.value)}
+                        name="sector">
+                          <option value="">Secteur de l'entreprise</option>
                           { sectors ? sectors.map((sector, i) => (
                               <option key={i} value={sector.id}>{sector.label}</option>
                            )) : '' }
@@ -186,8 +196,12 @@ const SignUpForm = ({profile = null}) => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="form-label">Type d'entreprise</label>
-                        <select className={`form-control ${errors['type'] ? 'error' : ''}`} defaultValue={profile ? profile.type : ''} ref={register({required: "Le type de l'entreprise est obligatoire."})} name="type">
-                          { profile ? '' : <option value="">Type d'entreprise</option> }
+                        <select className={`form-control ${errors['type'] ? 'error' : ''}`}
+                        value={currentType}
+                        ref={register({required: "Le type de l'entreprise est obligatoire."})}
+                        onChange={(e) => setCurrentType(e.target.value)}
+                        name="type">
+                          <option value="">Type d'entreprise</option>
                           { types ? types.map((type, i) => (
                               <option key={i} value={type.id}>{type.label}</option>
                           )) : '' }
@@ -198,8 +212,12 @@ const SignUpForm = ({profile = null}) => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="form-label">Taille de l'entreprise</label>
-                        <select className={`form-control ${errors['size'] ? 'error' : ''}`} defaultValue={profile ? profile.size : ''} ref={register({required: "La taille de l'entreprise est obligatoire."})} name="size">
-                          {profile ? '' : <option value="">Taille de l'entreprise</option>}
+                        <select className={`form-control ${errors['size'] ? 'error' : ''}`}
+                          value={currentSize}
+                          ref={register({required: "La taille de l'entreprise est obligatoire."})}
+                          onChange={(e) => setCurrentSize(e.target.value)}
+                          name="size">
+                          <option value="">Taille de l'entreprise</option>
                           { sizes ? sizes.map((size, i) => (
                             <option key={i} value={size.id}>{size.label}</option>
                           )) : '' }

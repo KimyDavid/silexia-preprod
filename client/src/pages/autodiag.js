@@ -9,8 +9,8 @@ import Result from './autodiag/result';
 
 const Autodiag = () => {
     const [autodiag, setAutodiag] = useState([]);
-    const [response, updateResponse] = useState([41, 45, 49, 39]);
-    const [category, setCategory] = useState('done');
+    const [category, setCategory] = useState(0);
+    const [autodiagResponse, setAutodiagResponse] = useState({});
 
     useEffect(() => {
         fetch(`${Constants.api_url}/autodiag`)
@@ -26,14 +26,15 @@ const Autodiag = () => {
         setCategory(category);
     }
 
-    function nextCategory(answers) {
+    const updateAutodiagResponse = response => {
+        console.log(response);
+
         window.scrollTo(0, 0)
         if (category === autodiag.length-1) {
             setCategory('done');
         } else {
             setCategory(category+1);
         }
-        // updateResponse(response.push(answers));
     }
 
     return (
@@ -51,10 +52,15 @@ const Autodiag = () => {
                         { category === 'done' ? '' : <Steps steps={autodiag} currentStep={category} goStep={goToCategory}/> }
                         { category > 0 ? <p onClick={() => goToCategory(category-1)} className="link">Catégorie précédente</p> : '' }
                         { autodiag[category] ?
-                        <Category category={autodiag[category]} index={category} categoriesLength={autodiag.length} nextCategory={nextCategory}/>
-                        : '' }
+                        <Category category={autodiag[category]} index={category} categoriesLength={autodiag.length} onNextCategory={updateAutodiagResponse} />
+                        : <div className="autodiag-loading-logo">
+                            <div className="loader clear-loader">
+                                <p>Chargement</p>
+                                <span />
+                            </div>
+                        </div> }
                         { category === 'done' ?
-                        <Result response={response}/>
+                        <Result />
                         : '' }
                     </div>
                 </div>

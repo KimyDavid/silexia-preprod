@@ -27,6 +27,19 @@ const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
             )
     }, []);
 
+    function deleteItem(id) {
+        console.log(id);
+        fetch(`${Constants.api_url}/${slug}/${id}`, {
+            method: "DELETE",
+            credentials: 'include',
+          })
+            .then(res => res.json())
+            .then(result => {
+              console.log(result);
+              // TODO RELOAD PAGE
+            });
+    }
+
     return (
         <>
             { showBreadcrumbs ?
@@ -59,7 +72,7 @@ const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
                                     title="Modifier l'article" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { elem: item } } }>
                                     <FiEdit className = "stroke-current" /></Link>
                                     <button className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised ml-3"
-                                    title="Supprimer l'article" onClick={() => {  }}>
+                                    title="Supprimer l'article" onClick={() => { deleteItem(item['id']) }}>
                                     <FiDelete className="stroke-current" />
                                     </button>
                                 </td>

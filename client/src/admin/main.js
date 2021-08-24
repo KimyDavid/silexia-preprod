@@ -27,13 +27,12 @@ const Wrapper = ({children}) => {
 const Main = () => {
     const { token, setToken } = useToken();
 
-    console.log(token);
-
     useEffect(() => {
         fetch(`${Constants.api_url}/auth`)
             .then(res => console.log(res))
             .then(
                 (result) => {
+                    console.log(result);
                     if (!result) {
                         setToken(result)
                     }

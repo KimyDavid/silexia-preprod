@@ -56,9 +56,9 @@ const Profile = () => {
                                         <p className="m-0"><i className="la la-envelope mr-3" />{token.email}</p>
                                         <p className="m-0"><i className="la la-phone mr-3" />{token.phone}</p>
                                         <p><i className="la la-building mr-3" />{token.function}, {token.company}</p>
-                                        <p className="m-0">Type d'entreprise : {types[token.type]?.label }</p>
-                                        <p className="m-0">Taille d'entreprise : {sizes[token.size]?.label }</p>
-                                        <p className="m-0">Secteur d'entreprise : {sectors[token.sector]?.label }</p>
+                                        <p className="m-0">Type d'entreprise : {types.filter(type => type.id === token.type)[0]?.label }</p>
+                                        <p className="m-0">Taille d'entreprise : {sizes.filter(size => size.id === token.size)[0]?.label }</p>
+                                        <p className="m-0">Secteur d'entreprise : {sectors.filter(sector => sector.id === token.sector)[0]?.label }</p>
                                     </div>
                                 </div>
                                 <Link to="/profile/edit" className="btn btn-primary shadow mt-2">Modifier mes informations</Link>

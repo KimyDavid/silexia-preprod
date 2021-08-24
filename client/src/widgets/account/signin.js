@@ -21,7 +21,7 @@ const SigninForm = ({setToken}) => {
             .then(res => res.json())
             .then(result => {
                 if (result.error) {
-                    setMessage(result.error);
+                    setMessage(result.details);
                 } else if (setToken) {
                     setToken(result);
                 }

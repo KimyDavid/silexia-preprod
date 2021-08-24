@@ -7,6 +7,12 @@
     },
     "administrative": {
         "label": "Pages",
+        "pages": {
+            "privacy_policy": "Politique de confidentialité",
+            "cgv": "Conditions générales de vente",
+            "cgu": "Conditions générales d'utilisation",
+            "legal_mentions": "Mentions légales"
+        },
         "all": "Toutes les pages",
         "new": "Créer une nouvelle page",
         "update": "Modifier une page"

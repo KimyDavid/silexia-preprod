@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react';
 import Constants from '../../constants/Config';
 import useToken from '../../functions/useTokenAccount';
 import {Radar} from 'react-chartjs-2'
+import Modal from '../../widgets/common/modal';
 
 const AutodiagResult = () => {
     const { token, setToken } = useToken();
     const [ autodiag, setAutodiag ] = useState();
 
+    // Modal handler
+    const [showDetails, setShowDetails] = useState(false);
+
     let categories = [];
+    let scoreTotal = 0;
+    let scoreUser = 0;
 
     useEffect(() => {
         fetch(`${Constants.api_url}/autodiag/user/1`)
@@ -21,10 +27,15 @@ const AutodiagResult = () => {
         categories = autodiag.map((category) => {
             return category.label;
         });
+
+        autodiag.forEach((category) => {
+            scoreTotal = scoreTotal + category.score_total;
+            scoreUser = scoreUser + category.score_user;
+        });
     }
 
     const data = {
-      labels: ['cat 1', 'cat 2', 'cat 3', 'cat 4', 'cat 5'],
+      labels: categories,
       datasets: [
         {
           label: 'Votre score',
@@ -47,36 +58,53 @@ const AutodiagResult = () => {
         <>
             <div className="container">
                 <div className="row">
-                    <div className="col-8">
-                        <h2 className="mt-4 mb-0 h3">Bonjour {token.first_name} !</h2>
-                        <p>Voici le résultat de votre diagnostic</p>
+                    <div className="col-12">
+                        <h2 className="text-center h4 mt-5 shadow py-3 font-w-5 account-score">Votre score global est <strong className="text-primary">{scoreUser}/{scoreTotal}</strong>
+                        <i className="action-score-infos las la-question-circle" onClick={ () => setShowDetails(true) }></i></h2>
+                    </div>
+                    <div className="col-12 col-lg-7">
+                        <h3 className="mt-4 mb-0">Bonjour {token.first_name} !</h3>
+                        <p className="mb-5">Voici le résultat de votre diagnostic</p>
                         <Radar
                             data={data}
                             options={options}
                         />
+                        <div className="account-score-categories mt-5">
+                            <p>Détails de vos résultats par catégories.</p>
+                            { categories.map((category) => (
+                                <div className="account-score-category shadow">
+                                    {category}
+                                </div>
+                            )) }
+                        </div>
                     </div>
-                    <div className="col-4">
-                        <div className="account-sidebar">
-                            <h3 className="account-sidebar-title mt-4 mb-0 h3"><strong className="text-primary ">Nos recommendations</strong> à partir de votre diagnostic</h3>
-                            <div className="account-sidebar-card shadow p-3">
-                                Thème 1 : Recommendation
-                            </div>
-                            <div className="account-sidebar-card shadow p-3">
-                                Thème 1 : Recommendation
-                            </div>
-                            <div className="account-sidebar-card shadow p-3">
-                                Thème 1 : Recommendation
-                            </div>
-                            <div className="account-sidebar-card shadow p-3">
-                                Thème 1 : Recommendation
-                            </div>
-                            <div className="account-sidebar-card shadow p-3">
-                                Thème 1 : Recommendation
-                            </div>
+                    <div className="col-12 col-lg-5">
+                        <div className="account-sidebar bg-primary p-4">
+                            <h3 className="my-2 h5 font-w-5 text-white"><strong>Vos actions</strong> à mettre en oeuvre</h3>
+                            { categories.map((category) => (
+                                <>
+                                    <div className="account-sidebar-card p-3 bg-white">
+                                        <p>{ category }</p>
+                                        <div className="account-sidebar-progressbar">
+                                            <span>50%</span>
+                                        </div>
+                                    </div>
+                                    
+                                    {/* <Modal show={show} onHide={handleClose}/> */}
+                                </>
+                            )) }
                         </div>
                     </div>
                 </div>
             </div>
+
+            <Modal 
+                title="Plus d'informations à propos de votre score."
+                body="Woohoo, you're reading this text in a modal!"
+                closeButton="Entendu !"
+                show={showDetails}
+                setShow={setShowDetails}
+            />
         </>
     )
 }

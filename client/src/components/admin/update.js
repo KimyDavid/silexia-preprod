@@ -42,7 +42,7 @@ const UpdateElement = ({slug, fields}) => {
         <div className="w-full flex">
           <div className="w-full lg:w-1/2">
             { loaded ? 
-              <Form url={`${slug}/${id}`} fields={fields} />
+              <Form url={`${slug}/${id}`} fields={fields} method="PUT"/>
             : '' }
           </div>
         </div>

@@ -18,7 +18,7 @@ const Profile = () => {
                     {/*login start*/}
                     <section className="register">
                         <Container>
-                            <SignUpForm profile={token} />
+                            <SignUpForm profile={token} setToken={setToken} />
                         </Container>
                     </section>
                     {/*login end*/}

@@ -4,7 +4,7 @@
 export default [
    {
       "menu_title": "L'agence",
-      "path": "/",
+      "path": "/home2",
       "icon": "home",
    },
    {

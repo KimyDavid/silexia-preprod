@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import SignUpForm from '../../widgets/account/signup';
 import Constants from '../../constants/Config';
+import useToken from '../../functions/useTokenAccount';
 
 const Response = ({ response }) => {
-    const [profile, setProfile] = useState({});
+    const [ profile, setProfile ] = useState({});
+    const { token, setToken } = useToken();
 
     useEffect(() => {
         // Duration of loading
@@ -67,7 +69,7 @@ const Response = ({ response }) => {
                         </div>
                     </div>
                     <div className="col-12">
-                        <SignUpForm profile={profile} />
+                        <SignUpForm profile={profile} setToken={setToken} />
                     </div>
                 </div>
             </div>

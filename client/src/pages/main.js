@@ -12,6 +12,9 @@ import Scrolltop from '../layout/back-to-top';
 import Home from './home';
 import Autodiag from './autodiag';
 
+import Home2 from './home2';
+import Offers from './offers';
+
 import BlogList from './blog/bloglist';
 import BlogSingle from './blog/blogsingle';
 
@@ -50,6 +53,10 @@ function App() {
             { token ? <HeaderConnected/> : <Header /> }
             <Switch>
               <Route exact path="/" component={Home} />
+
+              <Route exact path="/home2" component={Home2} />
+              <Route exact path="/offres" component={Offers} />
+
               <Route exact path="/autodiag" component={Autodiag} />
               
               {/* BLOG */}

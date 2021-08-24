@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Constants from '../../constants/Config';
 import { Link } from 'react-router-dom'
-import { FiDelete, FiEdit } from 'react-icons/fi'
+import { FiEdit } from 'react-icons/fi'
 
 import SectionTitle from '../../components/section-title'
 import Breadcrumb from '../../components/breadcrumbs'
@@ -11,7 +11,6 @@ import { useTranslation } from "react-i18next";
 
 const ListElement = ({ slug, fields }) => {
     const { t } = useTranslation('admin');
-    const [items, setItems] = useState([]);
     const slugTrans = slug.replace('/', '.');
 
     const breadcrumbs = [
@@ -25,9 +24,27 @@ const ListElement = ({ slug, fields }) => {
 
             <SectionTitle title={ t(`${slugTrans}.label`) } subtitle={ t(`${slugTrans}.all`) } />
 
-            <Link to = { `/admin/pages/new` } className="btn btn-default bg-blue-500 hover:bg-blue-600 text-white btn-rounded mb-2 float-right">
-                <span>{ t(`${slugTrans}.new`) }</span>
-            </Link>
+            <Widget>
+                <table className="table no-border striped">
+                    <thead>
+                        <tr> 
+                            <th>Page name</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        { fields.map((page, i) => 
+                            <tr key={i}> 
+                                <td>{page.name}</td>
+                                <td className="text-right">
+                                    <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"
+                                    title="Modifier la page" to={`/admin/pages/update/${page.slug}`}>
+                                    <FiEdit className = "stroke-current" /></Link>
+                                </td>
+                            </tr>
+                         )}
+                    </tbody>
+                </table>
+            </Widget> 
         </>
     )
 }
