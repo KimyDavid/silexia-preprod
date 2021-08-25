@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Constants from '../../constants/Config';
+import { API_GET, API_REMOVE } from '../../functions/apiRequest';
 import { Link } from 'react-router-dom'
 import { FiDelete, FiEdit } from 'react-icons/fi'
 
@@ -20,24 +20,11 @@ const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
     ]
 
     useEffect(() => {
-        fetch(`${Constants.api_url}/${slug}`)
-            .then(res => res.json())
-            .then(
-                (result) => setItems(result)
-            )
+        API_GET(slug).then(response => setItems(response));
     }, []);
 
     function deleteItem(id) {
-        console.log(id);
-        fetch(`${Constants.api_url}/${slug}/${id}`, {
-            method: "DELETE",
-            credentials: 'include',
-          })
-            .then(res => res.json())
-            .then(result => {
-              console.log(result);
-              // TODO RELOAD PAGE
-            });
+        API_REMOVE(`${slug}/${id}`);
     }
 
     return (
@@ -53,33 +40,35 @@ const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
             <SectionTitle title={ t(`${slugTrans}.label`) } subtitle={ t(`${slugTrans}.all`) } />
 
             <Widget>
-                <table className="table no-border striped">
-                    <thead>
-                        <tr> 
-                            { fields.map((field, i) => (
-                                <th key={ i }> { field.name } </th>
+                { items ?
+                    <table className="table no-border striped">
+                        <thead>
+                            <tr> 
+                                { fields.map((field, i) => (
+                                    <th key={ i }> { field.name } </th>
+                                ))}
+                            </tr> 
+                        </thead>
+                        <tbody> 
+                            { items.map((item, i) => ( 
+                                <tr key = { i }> 
+                                    { fields.map((field, j) => (
+                                        <td key={ j }> { item[field.key] } </td>
+                                    ))} 
+                                    <td className="text-right">
+                                        <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"
+                                        title={t(`${slugTrans}.update`)} to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { elem: item } } }>
+                                        <FiEdit className = "stroke-current" /></Link>
+                                        <button className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised ml-3"
+                                        title={t(`${slugTrans}.delete`)} onClick={() => { deleteItem(item['id']) }}>
+                                        <FiDelete className="stroke-current" />
+                                        </button>
+                                    </td>
+                                </tr>
                             ))}
-                        </tr> 
-                    </thead>
-                    <tbody> 
-                        { items.map((item, i) => ( 
-                            <tr key = { i }> 
-                                { fields.map((field, j) => (
-                                    <td key={ j }> { item[field.key] } </td>
-                                ))} 
-                                <td className="text-right">
-                                    <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"
-                                    title="Modifier l'article" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { elem: item } } }>
-                                    <FiEdit className = "stroke-current" /></Link>
-                                    <button className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised ml-3"
-                                    title="Supprimer l'article" onClick={() => { deleteItem(item['id']) }}>
-                                    <FiDelete className="stroke-current" />
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                : '' }
             </Widget> 
         </>
     )

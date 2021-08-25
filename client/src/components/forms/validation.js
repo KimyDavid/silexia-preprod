@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {useForm} from 'react-hook-form'
 import Alert from '../alerts'
-import ReactQuill from 'react-quill';
+import Quill from './quill';
 
 const FormValidation = ({items, onSubmit, alerts}) => {
   const {handleSubmit, errors, register} = useForm()
@@ -45,7 +45,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
         {items.map((item, i) => {
           if (item.type === 'checkbox') {
             return (
-              <div key={i} className="form-element">
+              <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <div className="flex items-center justify-start space-x-2">
                   {item.options.map((option, j) => (
@@ -73,7 +73,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           }
           if (item.type === 'radio') {
             return (
-              <div key={i} className="form-element">
+              <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <div className="flex items-center justify-start space-x-2">
                   {item.options.map((option, j) => (
@@ -101,7 +101,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           }
           if (item.type === 'select') {
             return (
-              <div key={i} className="form-element">
+              <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <select
                   ref={item.ref}
@@ -124,7 +124,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           if (item.type === 'textarea') {
             return (
               <>
-                <div key={i} className="form-element">
+                <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
                   <textarea
                     ref={item.ref}
@@ -145,22 +145,13 @@ const FormValidation = ({items, onSubmit, alerts}) => {
             )
           }
           if (item.type === 'wysiwyg') {
-            console.log(item.value)
-            console.log(item)
             return (
               <>
-                <div key={i} className="form-element">
+                <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
-                  <ReactQuill theme="snow" defaultValue={item.value} />
 
-                  {/* <textarea
-                    ref={item.ref}
-                    name={item.name}
-                    className={`form-textarea ${
-                      errors[item.name] ? 'border border-red-500' : ''
-                    }`}
-                    rows="3"
-                    placeholder={item.placeholder}></textarea> */}
+                  <Quill item={item} />
+
                   {!alerts && errors[item.name] && (
                     <div className="form-error">
                       {errors[item.name].message}
@@ -172,7 +163,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           }
           return (
             <>
-              <div key={i} className="form-element">
+              <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <input
                   ref={item.ref}

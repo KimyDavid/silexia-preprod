@@ -2,7 +2,7 @@ import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 
 import ListCustom from './list'
-import New from '../../../components/admin/new'
+import New from './new'
 import Update from '../../../components/admin/update'
 
 const AutodiagCategories = () => {

@@ -10,14 +10,6 @@ const Offres = () => {
         key: 'title'
       },
       {
-        name: 'Texte',
-        key: 'text'
-      },
-      {
-        name: 'Résumé',
-        key: 'abstract'
-      },
-      {
         name: 'Ordre',
         key: 'order'
       },
@@ -35,21 +27,21 @@ const Offres = () => {
         label: 'Texte',
         error: {required: 'Merci d\'ajouter un contenu'},
         name: 'text',
-        type: 'textarea',
+        type: 'wysiwyg',
         placeholder: 'Ajouter votre contenu'
-      },
-      {
-        label: 'Image',
-        error: {required: 'Merci d\'ajouter une image'},
-        name: 'image',
-        type: 'file',
-        placeholder: 'Illustration offre'
       },
       {
         label: 'Résumé',
         error: {required: 'Merci d\'ajouter un résumé'},
         name: 'abstract',
         type: 'textarea',
+        placeholder: 'Illustration offre'
+      },
+      {
+        label: 'Image',
+        error: {required: 'Merci d\'ajouter une image'},
+        name: 'image',
+        type: 'file',
         placeholder: 'Illustration offre'
       },
       {
@@ -63,7 +55,7 @@ const Offres = () => {
 
     return (
       <>
-        <ElementRoutes slug={slug} formFields={formFields} listFields={listFields} />
+        <ElementRoutes slug={slug} formFields={formFields} listFields={listFields} updateMethod="PATCH"/>
       </>
     )
   }

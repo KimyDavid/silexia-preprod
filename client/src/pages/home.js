@@ -1,18 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Services from '../widgets/sections/services';
 import Herosection from '../widgets/sections/herosection';
 import Faq from '../widgets/sections/faq';
-import Pricingplan from '../widgets/sections/pricingplan';
 import Blog from '../widgets/sections/blog';
 
-class Index extends Component {
-    constructor(props) {
-        super(props)
-    }
-    componentDidMount() {
-        window.scrollTo(0, 0)
-    }
-    render() {
+const Index = () => {
+
         return (
             <div>
                 <section>
@@ -40,29 +33,6 @@ class Index extends Component {
                     </section>
                     {/*faq end*/}
                     
-                    {/*pricing start*/}
-                    {/* <section>
-                        <div className="container">
-                        <div className="row align-items-end justify-content-between">
-                            <div className="col-12 col-md-6 col-lg-5 mb-5 mb-md-0">
-                            <div>
-                                <h2 className="mt-3">Les offres Silexia</h2>
-                            </div>
-                            </div>
-                            <div className="col-12 col-md-6 col-lg-6">
-                            <nav>
-                                <div className="nav nav-tabs d-flex justify-content-md-end border-0" id="nav-tab" role="tablist">
-                                    <a className="nav-item nav-link border-0 active" id="nav-tab-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Monthly</a>
-                                    <a className="nav-item nav-link border-0" id="nav-tab-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Yearly</a>
-                                </div>
-                            </nav>
-                            </div>
-                        </div>
-                        <Pricingplan />
-                        </div>
-                    </section> */}
-                    {/*pricing end*/}
-                    
                     {/*blog start*/}
                     <section>
                         <div className="container">
@@ -88,7 +58,6 @@ class Index extends Component {
                 </div>
             </div>
         );
-    }
 }
 
 export default Index;

@@ -9,10 +9,6 @@ const Articles = () => {
         name: 'Titre',
         key: 'title'
       },
-      {
-        name: 'Texte',
-        key: 'text'
-      },
     ]
 
     const formFields = [
@@ -27,7 +23,7 @@ const Articles = () => {
         label: 'Texte',
         error: {required: 'Merci d\'ajouter un contenu'},
         name: 'text',
-        type: 'textarea',
+        type: 'wysiwyg',
         placeholder: 'Ajouter votre contenu'
       },
       {
@@ -40,7 +36,7 @@ const Articles = () => {
     ]
 
     return (
-      <ElementRoutes slug={slug} formFields={formFields} listFields={listFields} />
+      <ElementRoutes slug={slug} formFields={formFields} listFields={listFields} updateMethod="PATCH"/>
     )
   }
 

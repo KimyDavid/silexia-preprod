@@ -6,10 +6,6 @@ const Sectors = () => {
 
     const listFields = [
       {
-        name: 'Id',
-        key: 'id'
-      },
-      {
         name: 'Label',
         key: 'label'
       },

@@ -51,6 +51,12 @@ li {
     color: $color-red;
 }
 
+.message {
+    background: $color-red-overlay;
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
 .form {
     &-label {
         text-align: left;
@@ -65,5 +71,34 @@ li {
         text-align: left;
         font-size: 12px;
         display: block;
+    }
+}
+
+.cms {
+    h2, h3 {
+        color: $color-red;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+}
+
+.abstract {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+    &-3 {
+        -webkit-line-clamp: 3; /* number of lines to show */
+    }
+
+    &-4 {
+        -webkit-line-clamp: 4; /* number of lines to show */
     }
 }

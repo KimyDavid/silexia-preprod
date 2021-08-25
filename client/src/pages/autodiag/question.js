@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Answer from './answer';
 import { sortByOrder } from '../../functions/sort';
 
 const Question = ({question, index, emitResponses, currentChoices = []}) => {
-    const choices = [];
-
-    console.log(currentChoices);
+    let choices = currentChoices;
 
     function onAnswerChange(e) {
         const answer = e.target;
@@ -15,6 +13,7 @@ const Question = ({question, index, emitResponses, currentChoices = []}) => {
         } else {
             newChoices.splice(newChoices.indexOf(answer.id), 1);
         }
+        console.log(newChoices);
         emitResponses(index, newChoices);
     }
 
@@ -25,7 +24,7 @@ const Question = ({question, index, emitResponses, currentChoices = []}) => {
                 <p><em>Plusieurs réponses possibles</em></p>
                 <ul className="autodiag-choices text-center">
                     { question.answers ? sortByOrder(question.answers).map((answer, j) => (
-                        <Answer key={j} answer={answer} onChange={onAnswerChange} isChecked={currentChoices.contains(answer.id)} />
+                        <Answer key={j} answer={answer} onChange={onAnswerChange} currentChoices={choices} />
                     )) : '' }
                 </ul>
             </div>

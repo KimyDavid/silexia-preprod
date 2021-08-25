@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import SignUpForm from '../../widgets/account/signup';
-import Constants from '../../constants/Config';
 import useToken from '../../functions/useTokenAccount';
+import { API_POST } from '../../functions/apiRequest';
 
-const Response = ({ response }) => {
+const Response = ({ answers }) => {
     const [ profile, setProfile ] = useState({});
     const { token, setToken } = useToken();
 
@@ -24,17 +24,15 @@ const Response = ({ response }) => {
             resultBlock.classList.remove('d-none');
         }, timeout);
 
-        // fetch(`${Constants.api_url}/autodiag`, {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         answers: response
-        //     }),
-        //     headers: { 'Content-Type': 'application/json' },
-        //   })
-        //     .then(res => res.json())
-        //     .then(result => {
-        //         setProfile(result);
-        //     })
+        let data = [];
+        for (const category in answers) {
+            for (const question in answers[category]) {
+                data = data.concat(answers[category][question]);
+            }
+        }
+        data.map((answer) => parseInt(answer, 10));
+        console.log(data);
+        // API_POST('autodiag', 'POST', {answers: data}).then(response => setProfile(response));
     }, []);
 
     return (

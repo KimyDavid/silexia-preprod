@@ -41,19 +41,19 @@ const initialState = [
       {
         url: '/admin/sectors',
         icon: <FiCompass size={20} />,
-        title: 'Secteurs',
+        title: 'Secteurs d\'entreprise',
         items: []
       },
       {
         url: '/admin/sizes',
         icon: <FiCompass size={20} />,
-        title: 'Tailles',
+        title: 'Tailles d\'entreprise',
         items: []
       },
       {
         url: '/admin/types',
         icon: <FiCompass size={20} />,
-        title: 'Types',
+        title: 'Types d\'entreprise',
         items: []
       },
       {

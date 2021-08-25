@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import SectionTitle from '../section-title'
-import Breadcrumb from '../breadcrumbs'
-import Widget from '../widget'
+import SectionTitle from '../../../components/section-title'
+import Breadcrumb from '../../../components/breadcrumbs'
+import Widget from '../../../components/widget'
 import {useTranslation} from "react-i18next";
 
-import Form from './form'
+import Form from '../../../components/admin/form'
 
 const CreateElement = ({slug, fields}) => {
   const { t } = useTranslation('admin');
@@ -23,12 +23,27 @@ const CreateElement = ({slug, fields}) => {
         _field.value = null;
       }
     });
+
+    fields.push(
+      {
+        label: '',
+        error: {required: ''},
+        name: 'answers',
+        type: 'select',
+        value: [],
+        hidden: false,
+        options: [
+          {value: [], label: ''},
+        ]
+      }
+    );
+
     setLoaded(true);
   }, [])
 
   return (
     <>
-      <Breadcrumb items={breadcrumbs} home={true} icon="chevron" />
+     )- <Breadcrumb items={breadcrumbs} home={true} icon="chevron" />
 
       <SectionTitle title={t(`${slugTrans}.label`)} subtitle={t(`${slugTrans}.new`)} />
 

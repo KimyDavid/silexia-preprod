@@ -8,7 +8,7 @@ import Breadcrumb from '../breadcrumbs'
 import Widget from '../widget'
 import Form from './form'
 
-const UpdateElement = ({slug, fields}) => {
+const UpdateElement = ({slug, fields, method = 'PUT'}) => {
   const { t } = useTranslation('admin');
   const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
@@ -40,9 +40,9 @@ const UpdateElement = ({slug, fields}) => {
 
       <Widget>
         <div className="w-full flex">
-          <div className="w-full lg:w-1/2">
+          <div className="w-full">
             { loaded ? 
-              <Form url={`${slug}/${id}`} fields={fields} method="PUT"/>
+              <Form url={`${slug}/${id}`} fields={fields} method={method} />
             : '' }
           </div>
         </div>

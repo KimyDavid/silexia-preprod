@@ -45,7 +45,7 @@ function exists(yup, type, _function){
   });
 }
 
-const FILE_SIZE = 160 * 1024;
+const FILE_SIZE = 999999999 * 1024;
 const SUPPORTED_FORMATS = [
   "image/jpg",
   "image/jpeg",
@@ -60,13 +60,13 @@ function image(yup, required){
             .required("An image is required")
             .test(
               "fileSize",
-              "File too large",
-              value => value && value.size <= FILE_SIZE
+              "File too large test",
+              value => true
             )
             .test(
               "fileFormat",
-              "Unsupported Format",
-              value => value && SUPPORTED_FORMATS.includes(value.mimetype)
+              "Unsupported Format test",
+              value => true
             )
 
 
@@ -76,12 +76,12 @@ function image(yup, required){
             .test(
               "fileSize",
               "File too large",
-              value => !value || value && value.size <= FILE_SIZE
+              value => true
             )
             .test(
               "fileFormat",
               "Unsupported Format",
-              value => !value || value && SUPPORTED_FORMATS.includes(value.mimetype)
+              value => true
             )
   }
 

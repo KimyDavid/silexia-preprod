@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Question from './question';
 
-const Category = ({category, index, categoriesLength, onNextCategory}) => {
+const Category = ({category, index, categoriesLength, onNextCategory, currentAnswers = {}}) => {
     const progress = ((index+1)/categoriesLength);
     const [question, setQuestion] = useState(0);
-    const [answers, setAnswers] = useState({});
+    const [answers, setAnswers] = useState(currentAnswers);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        setAnswers(currentAnswers);
+    }, [index]);
 
     function goToQuestion(question) {
         setQuestion(question);
     }
 
     function nextStep() {
-        if (question === category.questions.length-1) {
-            setQuestion(0);
-            onNextCategory(answers);
+        if (!answers[question] || answers[question].length < 1) {
+            setError('Merci de sélectionner au moins une réponse');
         } else {
-            setQuestion(question+1);
+            setError();
+            if (question === category.questions.length-1) {
+                setQuestion(0);
+                onNextCategory(answers);
+            } else {
+                setQuestion(question+1);
+            }
         }
     }
 
@@ -40,6 +50,7 @@ const Category = ({category, index, categoriesLength, onNextCategory}) => {
                 </header>
                 <div className="autodiag-body">
                     { question > 0 ? <p onClick={() => goToQuestion(question-1)} className="link">Question précédente</p> : '' }
+                    { error ? <p className="error message">{error}</p> : '' }
                     <Question question={category.questions[question]} index={question} emitResponses={handleQuestionResponse} currentChoices={answers[question]} />
                 </div>
                 <footer className="autodiag-footer row align-items-center justify-content-between">

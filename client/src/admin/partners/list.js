@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Constants from '../../constants/Config';
+import { API_GET, API_REMOVE } from '../../functions/apiRequest';
 import { Link } from 'react-router-dom'
 import { FiDelete, FiEdit } from 'react-icons/fi'
 
@@ -20,12 +20,12 @@ const ListElement = ({ slug, fields }) => {
     ]
 
     useEffect(() => {
-        fetch(`${Constants.api_url}/${slug}`)
-            .then(res => res.json())
-            .then(
-                (result) => setItems(result)
-            )
+        API_GET(slug).then(response => setItems(response));
     }, []);
+
+    function deleteItem(id) {
+        API_REMOVE(`${slug}/${id}`);
+    }
 
     return (
         <>
@@ -33,9 +33,9 @@ const ListElement = ({ slug, fields }) => {
 
             <SectionTitle title={ t(`${slugTrans}.label`) } subtitle={ t(`${slugTrans}.all`) } />
 
-            { items.map((item, i) => (
-                <Widget key={i} title={item.label} description={`Tous les partenaires du groupe : ${item.label}`}>
-                    <Link to = { `/admin/${slug}/new` } className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white btn-rounded mb-2">
+            { items ? items.map((type, i) => (
+                <Widget key={i} title={type.label} description={`Tous les partenaires du groupe : ${type.label}`}>
+                    <Link to={ {pathname: `/admin/${slug}/new`, state: {partner_type: type.id} }} className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white btn-rounded mb-2">
                         <span>{ t(`${slugTrans}.new`) }</span>
                     </Link>
                     <table className="table no-border striped">
@@ -47,17 +47,17 @@ const ListElement = ({ slug, fields }) => {
                             </tr> 
                         </thead>
                         <tbody>
-                            { item.partners ? item.partners.map((item, i) => ( 
+                            { type.partners ? type.partners.map((item, i) => ( 
                                 <tr key={ i }> 
                                     { fields.map((field, j) => (
                                         <td key={ j }> { item[field.key] } </td>
                                     ))} 
                                     <td className="text-right">
                                         <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"
-                                        title="Modifier l'article" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { elem: item } } }>
+                                        title="Modifier l'article" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { elem: item, partner_type: type.id } } }>
                                         <FiEdit className = "stroke-current" /></Link>
                                         <button className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised ml-3"
-                                        title="Supprimer l'article" onClick={() => {  }}>
+                                        title="Supprimer l'article" onClick={() => { deleteItem(item['id']) }}>
                                         <FiDelete className="stroke-current" />
                                         </button>
                                     </td>
@@ -66,7 +66,7 @@ const ListElement = ({ slug, fields }) => {
                         </tbody>
                     </table>
                 </Widget> 
-            ))}
+            )) : ''}
         </>
     )
 }

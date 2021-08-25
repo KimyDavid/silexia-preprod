@@ -14,6 +14,7 @@ import Autodiag from './autodiag';
 
 import Home2 from './home2';
 import Offers from './offers';
+import Offer from './offer';
 
 import BlogList from './blog/bloglist';
 import BlogSingle from './blog/blogsingle';
@@ -26,9 +27,7 @@ import ProfileLogout from './account/logout';
 import Profile from './account/profile';
 import AutodiagResult from './account/result';
 
-import CGV from './legals/cgv';
-import Confidentialite from './legals/confidentialite';
-import MentionsLegales from './legals/mentions-legales';
+import Page from './legals/page';
 
 import Maintenance from './utilities/maintenance';
 import ComingSoon from './utilities/comingsoon';
@@ -37,6 +36,24 @@ import PageNotFound from './utilities/404';
 function App() {
   const websiteInProgress = false;
   const { token, setToken } = useToken();
+
+  const staticPages = [
+    {
+      slug: 'legal_mentions',
+      url: 'mentions-legales'
+    },
+    {
+      slug: 'cgv',
+      url: 'conditions-generales-de-vente'
+    },
+    {
+      slug: 'cgu',
+      url: 'conditions-generales-utilisation'
+    },
+    {
+      slug: 'privacy_policy',
+      url: 'politique-de-confidentialite'
+    }];
 
   return (
     <Fragment>{
@@ -55,6 +72,7 @@ function App() {
               <Route exact path="/" component={Home} />
 
               <Route exact path="/home2" component={Home2} />
+              <Route exact path="/offres/:id" component={() => <Offer />} />
               <Route exact path="/offres" component={Offers} />
 
               <Route exact path="/autodiag" component={Autodiag} />
@@ -64,10 +82,10 @@ function App() {
               <Route exact path="/blog" component={BlogList} />
               
               {/* LÉGALS */}
-              <Route exact path="/mentions-legales" component={MentionsLegales} />
-              <Route exact path="/politique-de-confidentialite" component={Confidentialite} />
-              <Route exact path="/conditions-generales-de-vente" component={CGV} />
-
+              { staticPages.map((page, i) => 
+                <Route exact path={`/${page.url}`} component={() => <Page slug={page.slug} />} key={i} />
+              )}
+              
               {/* ACCOUNT */}
               { token ? 
                 <>

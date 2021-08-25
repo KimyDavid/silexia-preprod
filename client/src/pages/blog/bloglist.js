@@ -62,7 +62,7 @@ class Bloglisting1 extends Component {
                     ))}
                   {/* End Blog Card */}
 
-                  <div className="row mt-11">
+                  {/* <div className="row mt-11">
                     <div className="col-12">
                       <nav aria-label="...">
                         <ul className="pagination">
@@ -83,47 +83,8 @@ class Bloglisting1 extends Component {
                         </ul>
                       </nav>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
-
-                {/* <div className="col-12 col-lg-4">
-                  <div>
-                    <h4 className="mb-5">Recent Stories</h4>
-                    <article>
-                      <div className="media align-items-center">
-                        <div className="media-body">
-                          <h5 className="h6">
-                            <Link className="link-title" to="/blog-single">Bootsland Perfect Performance landing Page</Link>
-                          </h5>
-                          <Link className="d-inline-block text-muted small font-w-5" to="/">27 November 2019</Link>
-                        </div>
-                        <img src={require(`../../assets/images/blog/blog-thumb/01.png`)} className="ml-3" alt="..." />
-                      </div>
-                    </article>
-                    <article className="mt-5">
-                      <div className="media align-items-center">
-                        <div className="media-body">
-                          <h5 className="h6">
-                            <Link className="link-title" to="/blog-single">The most powerfull template that make you.</Link>
-                          </h5>
-                          <Link className="d-inline-block text-muted small font-w-5" to="/">15 November 2019</Link>
-                        </div>
-                        <img src={require(`../../assets/images/blog/blog-thumb/02.png`)} className="ml-3" alt="..." />
-                      </div>
-                    </article>
-                    <article className="mt-5">
-                      <div className="media align-items-center">
-                        <div className="media-body">
-                          <h5 className="h6">
-                            <Link className="link-title" to="/blog-single">A brand for a company is like a reputation person.</Link>
-                          </h5>
-                          <Link className="d-inline-block text-muted small font-w-5" to="/">5 November 2019</Link>
-                        </div>
-                        <img src={require(`../../assets/images/blog/blog-thumb/03.png`)} className="ml-3" alt="..." />
-                      </div>
-                    </article>
-                  </div>
-                </div> */}
               </div>
             </div>
           </section>

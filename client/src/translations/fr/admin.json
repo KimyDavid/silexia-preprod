@@ -3,7 +3,8 @@
         "label": "Articles",
         "all": "Tous les articles",
         "new": "Créer un nouvel article",
-        "update": "Modifier un article"
+        "update": "Modifier l'article",
+        "delete": "Supprimer l'article"
     },
     "administrative": {
         "label": "Pages",
@@ -14,69 +15,78 @@
             "legal_mentions": "Mentions légales"
         },
         "all": "Toutes les pages",
-        "new": "Créer une nouvelle page",
-        "update": "Modifier une page"
+        "update": "Modifier la page"
     },
     "users": {
         "label": "Utilisateurs",
         "all": "Toutes les utilisateurs",
         "new": "Créer un nouvel utilisateur",
-        "update": "Modifier un utilisateur"
+        "update": "Modifier l'utilisateur",
+        "delete": "Supprimer l'utilisateur"
     },
     "offres": {
         "label": "Offres",
         "all": "Toutes les offres",
         "new": "Créer une nouvelle offre",
-        "update": "Modifier une offre"
+        "update": "Modifier l'offre",
+        "delete": "Supprimer l'offre"
     },
     "sectors": {
         "label": "Secteurs",
         "all": "Tous les secteurs",
         "new": "Créer un nouveau secteur",
-        "update": "Modifier un secteur"
+        "update": "Modifier le secteur",
+        "delete": "Supprimer le secteur"
     },
     "sizes": {
-        "label": "Tailles",
-        "all": "Toutes les tailles",
-        "new": "Créer une nouvelle taille",
-        "update": "Modifier une taille"
+        "label": "Tailles d'entreprise",
+        "all": "Toutes les tailles d'entreprise",
+        "new": "Créer une taille d'entreprise",
+        "update": "Modifier cette taille",
+        "delete": "Supprimer cette taille"
     },
     "types": {
-        "label": "Types",
-        "all": "Tous les types",
-        "new": "Créer un nouveau type",
-        "update": "Modifier un type"
+        "label": "Types d'entreprise",
+        "all": "Tous les types d'entreprise",
+        "new": "Créer un type d'entreprise",
+        "update": "Modifier ce type",
+        "delete": "Supprimer ce type"
     },
     "partners": {
         "label": "Partenaires",
         "all": "Tous les partenaires",
         "new": "Ajouter un nouveau partenaire",
-        "update": "Modifier un partenaire"
+        "update": "Modifier le partenaire",
+        "delete": "Supprimer le partenaire"
     },
     "partners_type": {
         "label": "Types de partenaire",
         "all": "Tous les types de partenaire",
         "new": "Créer un nouveau type de partenaire",
-        "update": "Modifier un type de partenaire"
+        "update": "Modifier un type de partenaire",
+        "delete": "Supprimer ce type de partenaire"
     },
     "autodiag": {
         "categories": {
             "label": "Catégories de questions",
             "all": "Toutes les catégories",
             "new": "Créer une nouvelle catégorie",
-            "update": "Modifier une catégorie"
+            "update": "Modifier une catégorie",
+            "delete": "Supprimer cette catégorie"
         },
         "questions": {
             "label": "Questions",
             "all": "Toutes les questions",
             "new": "Ajouter une nouvelle question",
-            "update": "Modifier une question"
+            "update": "Modifier une question",
+            "delete": "Supprimer cette question"
         },
         "answers": {
             "label": "Réponses aux questions",
             "all": "Toutes les réponses",
             "new": "Ajouter une nouvelle réponse",
-            "update": "Modifier une réponse"
+            "update": "Modifier une réponse",
+            "delete": "Supprimer cette réponse"
         }
     }
 }

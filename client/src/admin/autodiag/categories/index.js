@@ -47,10 +47,7 @@ const AutodiagCategories = () => {
         type: 'select',
         placeholder: 'Ajouter des tiers',
         options: [
-          {value: null, label: 'Selectionner des tiers'},
-          {value: 'english', label: 'English'},
-          {value: 'spanish', label: 'Spanish'},
-          {value: 'portuguese', label: 'Portuguese'}
+          {value: [], label: 'Selectionner des tiers'},
         ]
       }
     ]

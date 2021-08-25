@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import SectionTitle from '../section-title'
-import Breadcrumb from '../breadcrumbs'
-import Widget from '../widget'
+import SectionTitle from '../../components/section-title'
+import Breadcrumb from '../../components/breadcrumbs'
+import Widget from '../../components/widget'
 import {useTranslation} from "react-i18next";
+import { useLocation } from "react-router-dom";
 
-import Form from './form'
+import Form from '../../components/admin/form'
 
 const CreateElement = ({slug, fields}) => {
   const { t } = useTranslation('admin');
   const [loaded, setLoaded] = useState(false);
   const slugTrans = slug.replace('/', '.');
+
+  const location = useLocation();
 
   const breadcrumbs = [
     {title: 'Dashboard', url: '/admin', last: false},
@@ -22,6 +25,14 @@ const CreateElement = ({slug, fields}) => {
       if (_field['type'] !== 'file') {
         _field.value = null;
       }
+    });
+    fields.push({
+      label: '',
+      error: {required: ''},
+      name: 'partner_type',
+      type: 'number',
+      value: location.state.partner_type,
+      hidden: true
     });
     setLoaded(true);
   }, [])

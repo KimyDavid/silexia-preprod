@@ -1,51 +1,58 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import { useTranslation } from "react-i18next";
-import { API_GET } from '../../functions/apiRequest';
+import { useLocation } from "react-router-dom";
 
 import SectionTitle from '../../components/section-title'
 import Breadcrumb from '../../components/breadcrumbs'
 import Widget from '../../components/widget'
 import Form from '../../components/admin/form'
 
-const UpdateElement = ({slug, fields}) => {
+const UpdateElement = ({slug, fields, method = 'PUT'}) => {
   const { t } = useTranslation('admin');
-  const { type } = useParams();
+  const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
 
-  const [currentFields, setCurrentFields] = useState(fields);
-
+  const { state } = useLocation();
+  const item = state.elem;
   const slugTrans = slug.replace('/', '.');
 
   const breadcrumbs = [
     {title: 'Dashboard', url: '/admin', last: false},
-    {title: t(`${slugTrans}.label`), url: `/admin/pages`, last: false},
-    {title: `${t(`${slugTrans}.update`)} : ${t(`${slugTrans}.pages.${type}`)}`, url: `/admin/pages/update/${type}`, last: true},
+    {title: t(`${slugTrans}.label`), url: `/admin/${slug}`, last: false},
+    {title: t(`${slugTrans}.update`), url: `/admin/${slug}/update/:id`, last: true},
   ]
-
+    
   useEffect(() => {
-    API_GET(`${slug}/${type}`).then(response => {
-      fields.map((_field) => {
-        if (_field['type'] !== 'file') {
-          _field.value = response[_field['name']];
-        }
-      });
-      setCurrentFields(fields);
-      setLoaded(true);
+    fields.map((_field) => {
+      if (_field['type'] !== 'file') {
+        _field.value = item[_field['name']];
+      }
     });
+
+    fields.push({
+      label: '',
+      error: {required: ''},
+      name: 'partner_type',
+      type: 'number',
+      value: state.partner_type,
+      hidden: false
+    });
+
+    setLoaded(true);
   }, [])
 
   return (
     <>
       <Breadcrumb items={breadcrumbs} home={true} icon="chevron" />
 
-      <SectionTitle title={t(`${slugTrans}.update`)} subtitle={t(`${slugTrans}.pages.${type}`)} />
+      <SectionTitle title={t(`${slugTrans}.label`)} subtitle={t(`${slugTrans}.update`)} />
 
       <Widget>
         <div className="w-full flex">
           <div className="w-full">
             { loaded ? 
-              <Form url={`${slug}/${type}`} fields={currentFields} method='PUT' />
+              <Form url={`${slug}/${id}`} fields={fields} method={method} />
             : '' }
           </div>
         </div>

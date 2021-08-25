@@ -1,29 +1,20 @@
-import React, {useState} from 'react'
-import Constants from '../../constants/Config';
-import Validation from '../forms/validation'
-import Alert from '../alerts'
+import React, {useState} from 'react';
+import { API_POST } from '../../functions/apiRequest';
+import Validation from '../forms/validation';
+import Alert from '../alerts';
 
 const FormElement = ({url, fields, method = 'POST'}) => {
-  const [data, updatedData] = useState(null)
   const [message, setMessage] = useState(null)
 
   const sendCreationRequest = (e) => {
     const formData = e;
-    fetch(`${Constants.api_url}/${url}`, {
-        method: method,
-        body: JSON.stringify(formData),
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-      })
-        .then(res => res.json())
-        .then(result => {
-          if (result.error) {
-            setMessage(result.details)
-          } else {
-            console.log(result);
-            // TODO REDIRECTION TO LIST
-          }
-        })
+    API_POST(url, method, formData).then(response => {
+      if (response.error) {
+        setMessage(response.details)
+      } else {
+        window.history.back();
+      }
+    });
   }
 
   return (
