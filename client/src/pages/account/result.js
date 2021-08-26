@@ -69,10 +69,10 @@ const AutodiagResult = () => {
                             data={data}
                             options={options}
                         />
-                        <div className="account-score-categories mt-5">
-                            <p>Détails de vos résultats par catégories.</p>
-                            { categories.map((category) => (
-                                <div className="account-score-category shadow">
+                        <p className="text-center mt-5">Détails de vos résultats par catégories.</p>
+                        <div className="account-score-categories">
+                            { categories.map((category, i) => (
+                                <div key={i} className="account-score-category shadow">
                                     {category}
                                 </div>
                             )) }
@@ -81,8 +81,8 @@ const AutodiagResult = () => {
                     <div className="col-12 col-lg-5">
                         <div className="account-sidebar bg-primary p-4">
                             <h3 className="my-2 h5 font-w-5 text-white"><strong>Vos actions</strong> à mettre en oeuvre</h3>
-                            { categories.map((category) => (
-                                <>
+                            { categories.map((category, i) => (
+                                <div key={i}>
                                     <div className="account-sidebar-card p-3 bg-white">
                                         <p>{ category }</p>
                                         <div className="account-sidebar-progressbar">
@@ -91,7 +91,7 @@ const AutodiagResult = () => {
                                     </div>
                                     
                                     {/* <Modal show={show} onHide={handleClose}/> */}
-                                </>
+                                </div>
                             )) }
                         </div>
                     </div>

@@ -15,6 +15,7 @@ import Autodiag from './autodiag';
 import Home2 from './home2';
 import Offers from './offers';
 import Offer from './offer';
+import AboutUs from './about-us';
 
 import BlogList from './blog/bloglist';
 import BlogSingle from './blog/blogsingle';
@@ -74,6 +75,7 @@ function App() {
               <Route exact path="/home2" component={Home2} />
               <Route exact path="/offres/:id" component={() => <Offer />} />
               <Route exact path="/offres" component={Offers} />
+              <Route exact path="/about-us" component={AboutUs} />
 
               <Route exact path="/autodiag" component={Autodiag} />
               

@@ -17,17 +17,17 @@ const Category = ({category, index, categoriesLength, onNextCategory, currentAns
     }
 
     function nextStep() {
-        if (!answers[question] || answers[question].length < 1) {
-            setError('Merci de sélectionner au moins une réponse');
-        } else {
-            setError();
+        // if (!answers[question] || answers[question].length < 1) {
+        //     setError('Merci de sélectionner au moins une réponse');
+        // } else {
+            // setError();
             if (question === category.questions.length-1) {
                 setQuestion(0);
                 onNextCategory(answers);
             } else {
                 setQuestion(question+1);
             }
-        }
+        // }
     }
 
     const handleQuestionResponse = (questionId, answer) => {
@@ -49,7 +49,7 @@ const Category = ({category, index, categoriesLength, onNextCategory, currentAns
                     </div>
                 </header>
                 <div className="autodiag-body">
-                    { question > 0 ? <p onClick={() => goToQuestion(question-1)} className="link">Question précédente</p> : '' }
+                    { question > 0 ? <p onClick={() => goToQuestion(question-1)} className="link"><i className="las la-arrow-left"></i> Question précédente</p> : '' }
                     { error ? <p className="error message">{error}</p> : '' }
                     <Question question={category.questions[question]} index={question} emitResponses={handleQuestionResponse} currentChoices={answers[question]} />
                 </div>
@@ -58,7 +58,7 @@ const Category = ({category, index, categoriesLength, onNextCategory, currentAns
                         <div className="autodiag-progressbar"><span style={{transform: 'scaleX(' + progress + ')'}}></span></div>
                     </div>
                         <div className="col-12 col-md-3 mt-2 mt-md-0 d-flex justify-content-end">
-                        <button onClick={nextStep} className="autodiag-next btn btn-primary btn-small shadow w-100">{ (progress === 1) ? 'Voir les résultats' : 'Prochaine question'}</button>
+                        <button onClick={nextStep} className="autodiag-next btn btn-primary btn-small shadow w-100">{ (progress === 1) ? 'Voir les résultats' : 'Prochaine question'}<i className="las la-arrow-right"></i></button>
                     </div>
                 </footer>
             </div>

@@ -28,7 +28,7 @@ const Skillbox = () => {
                                                 <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="" />
                                             </div>
                                             <div>
-                                                <h5 className="mb-3 text-primary">{offer.title}</h5>
+                                                <h5 className="mb-2 text-primary">{offer.title}</h5>
                                                 <p className="mb-0 abstract abstract-3">{offer.abstract}</p>
                                             </div>
                                         </div>

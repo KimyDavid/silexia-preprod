@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import SignUpForm from '../../widgets/account/signup';
 import useToken from '../../functions/useTokenAccount';
-import { API_POST } from '../../functions/apiRequest';
 
-const Response = ({ answers }) => {
-    const [ profile, setProfile ] = useState({});
+const Response = ({ profile }) => {
     const { token, setToken } = useToken();
+
+    console.log(profile);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         // Duration of loading
@@ -23,16 +27,6 @@ const Response = ({ answers }) => {
             loadingBlock.classList.add('d-none');
             resultBlock.classList.remove('d-none');
         }, timeout);
-
-        let data = [];
-        for (const category in answers) {
-            for (const question in answers[category]) {
-                data = data.concat(answers[category][question]);
-            }
-        }
-        data.map((answer) => parseInt(answer, 10));
-        console.log(data);
-        // API_POST('autodiag', 'POST', {answers: data}).then(response => setProfile(response));
     }, []);
 
     return (

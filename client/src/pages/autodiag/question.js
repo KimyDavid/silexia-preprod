@@ -13,7 +13,6 @@ const Question = ({question, index, emitResponses, currentChoices = []}) => {
         } else {
             newChoices.splice(newChoices.indexOf(answer.id), 1);
         }
-        console.log(newChoices);
         emitResponses(index, newChoices);
     }
 
@@ -21,7 +20,7 @@ const Question = ({question, index, emitResponses, currentChoices = []}) => {
         <>
             <div className="autodiag-question">
                 <p className="autodiag-question-title">Question {index + 1} : {question.label}</p>
-                <p><em>Plusieurs réponses possibles</em></p>
+                <p>{question.description} <em>(Plusieurs réponses possibles)</em></p>
                 <ul className="autodiag-choices text-center">
                     { question.answers ? sortByOrder(question.answers).map((answer, j) => (
                         <Answer key={j} answer={answer} onChange={onAnswerChange} currentChoices={choices} />

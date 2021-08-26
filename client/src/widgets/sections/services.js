@@ -20,8 +20,8 @@ const Services = () => {
                             <h2 className="mt-3 mb-0">Les domaines évalués lors de ce diagnostic</h2>
                             </div>
                         </div>
-                        { offers ? offers.map((offer) => 
-                            <div className="col-lg-6 col-md-6 mt-6">
+                        { offers ? offers.map((offer, i) => 
+                            <div key={i} className="col-lg-6 col-md-6 mt-6">
                                 <div className="bg-primary-soft rounded">
                                 <div className="d-flex align-items-center mb-4">
                                     <div className="mr-3">
