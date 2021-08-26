@@ -19,7 +19,7 @@ routes.api(
     get:(item, callback) => partnersController.getPartners({}, callback),
     post:(item, callback) => apiController.createItem({table:'Partners', model:Partner, item:item, order:true}, callback),
     put:(item, callback) => apiController.editItem({table:'Partners', model:Partner, item:item, order:true}, callback),
-    delete:(item, callback) => apiController.deleteItem({table:'Partners', item:item, order:true}, callback)
+    delete:(item, callback) => apiController.deleteItem({table:'Partners', id:item.id, order:true}, callback)
   }
 )
 
