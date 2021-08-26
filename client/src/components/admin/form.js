@@ -3,12 +3,27 @@ import { API_POST } from '../../functions/apiRequest';
 import Validation from '../forms/validation';
 import Alert from '../alerts';
 
-const FormElement = ({url, fields, method = 'POST'}) => {
+const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
   const [message, setMessage] = useState(null)
 
+  console.log(method);
+
   const sendCreationRequest = (e) => {
-    const formData = e;
-    API_POST(url, method, formData).then(response => {
+    let data = e;
+    let formData = new FormData();
+
+    if (isFormData) {
+      for ( let key in data ) {
+        if (data[key][0] instanceof Blob) {
+          formData.append(key, data[key][0]);
+        } else {
+          formData.append(key, data[key]);
+        }
+      }
+      data = formData;
+    }
+
+    API_POST(url, method, data, isFormData).then(response => {
       if (response.error) {
         setMessage(response.details)
       } else {

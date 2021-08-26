@@ -12,7 +12,7 @@ const CreateElement = ({slug, fields}) => {
   const [loaded, setLoaded] = useState(false);
   const slugTrans = slug.replace('/', '.');
 
-  const location = useLocation();
+  const { state } = useLocation();
 
   const breadcrumbs = [
     {title: 'Dashboard', url: '/admin', last: false},
@@ -31,7 +31,7 @@ const CreateElement = ({slug, fields}) => {
       error: {required: ''},
       name: 'partner_type',
       type: 'number',
-      value: location.state.partner_type,
+      value: state.partner_type,
       hidden: true
     });
     setLoaded(true);

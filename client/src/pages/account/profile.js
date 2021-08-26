@@ -61,7 +61,7 @@ const Profile = () => {
                                         <p className="m-0">Secteur d'entreprise : {sectors.filter(sector => sector.id === token.sector)[0]?.label }</p>
                                     </div>
                                 </div>
-                                <Link to="/profile/edit" className="btn btn-primary shadow mt-2">Modifier mes informations</Link>
+                                {/* <Link to="/profile/edit" className="btn btn-primary shadow mt-2">Modifier mes informations</Link> */}
                             </div>
                         </div>
                     </div>

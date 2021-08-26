@@ -1,11 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SignUpForm from '../../widgets/account/signup';
 import useToken from '../../functions/useTokenAccount';
+import { API_GET } from '../../functions/apiRequest';
 
 const Response = ({ profile }) => {
     const { token, setToken } = useToken();
+    const [userAutodiag, setUserAutodiag] = useState();
 
     console.log(profile);
+    console.log(userAutodiag);
+
+    useEffect(() => {
+        if (profile.id) {
+            API_GET(`autodiag/user/${profile.id}`).then(response => setUserAutodiag(response));
+        }
+    }, [profile]);
 
     useEffect(() => {
         window.scrollTo(0, 0);

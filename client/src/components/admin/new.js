@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 
 import Form from './form'
 
-const CreateElement = ({slug, fields}) => {
+const CreateElement = ({slug, fields, isFormData}) => {
   const { t } = useTranslation('admin');
   const [loaded, setLoaded] = useState(false);
   const slugTrans = slug.replace('/', '.');
@@ -36,7 +36,7 @@ const CreateElement = ({slug, fields}) => {
         <div className="w-full flex">
           <div className="w-full">
           { loaded ? 
-              <Form url={`${slug}`} fields={fields} />
+              <Form url={`${slug}`} fields={fields} isFormData={isFormData}/>
             : '' }
           </div>
         </div>

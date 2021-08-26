@@ -3,7 +3,8 @@ import {Switch, Route} from 'react-router-dom'
 
 import ListCustom from './list'
 import List from '../../components/admin/list'
-import New from './new'
+import New from '../../components/admin/new'
+import NewCustom from './new'
 import Update from './update'
 
 const Partners = () => {
@@ -83,7 +84,7 @@ const Partners = () => {
           <Route path={`/admin/${slug2}/new`} component={() => <New slug={slug2} fields={partnersTypeForm} />} />
 
           <Route path={`/admin/${slug}/update/:id`} component={() => <Update slug={slug} fields={partnersForm} />} />
-          <Route path={`/admin/${slug}/new`} component={() => <New slug={slug} fields={partnersForm} />} />
+          <Route path={`/admin/${slug}/new`} component={() => <NewCustom slug={slug} fields={partnersForm} />} />
 
           <Route path={`/admin/${slug2}`} component={() => <List slug={slug2} fields={partnersTypeFields} />} />
           <Route path={`/admin/${slug}`} component={() => <ListCustom slug={slug} fields={partnersType} />} />

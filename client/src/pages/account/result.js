@@ -8,6 +8,8 @@ const AutodiagResult = () => {
     const { token, setToken } = useToken();
     const [ autodiag, setAutodiag ] = useState();
 
+    console.log(autodiag);
+
     // Modal handler
     const [showDetails, setShowDetails] = useState(false);
 
@@ -73,7 +75,8 @@ const AutodiagResult = () => {
                         <div className="account-score-categories">
                             { categories.map((category, i) => (
                                 <div key={i} className="account-score-category shadow">
-                                    {category}
+                                    <p className="text-primary">{category}</p>
+                                    <p>{autodiag[i].tier.text}</p>
                                 </div>
                             )) }
                         </div>

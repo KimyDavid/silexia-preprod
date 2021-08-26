@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Constants from '../../constants/Config';
 import {useForm} from 'react-hook-form';
+import { API_POST } from '../../functions/apiRequest';
 
 const SignUpForm = ({profile = null, setToken = null}) => {
   const {handleSubmit, errors, register} = useForm();
@@ -16,27 +17,13 @@ const SignUpForm = ({profile = null, setToken = null}) => {
   const submitForm = data => {
     if (validatePassword()) {
       if (profile) {
-        fetch(`${Constants.api_url}/users/${profile.id}`,
-            {
-              method: 'PATCH',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(data),
-            },
-          )
-          .then(res => res.json())
-          .then(
-            (result) => {
+        API_POST(`users/${profile.id}`, 'PATCH', data)
+            .then(response => {
               if (setToken) {
-                setToken(result);
+                setToken(response);
                 window.location.href = `${window.location.origin}/profile`;
               }
-            },
-          )
-          .catch(
-            (error) => {
-              console.log(error);
-            }
-          )
+            });
       }
     }
   }

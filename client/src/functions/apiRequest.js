@@ -21,12 +21,14 @@ export const API_REMOVE = (slug) => {
         .catch(error => console.warn(error));
 }
 
-export const API_POST = (slug, method, data) => {
+export const API_POST = (slug, method, data, isFormData) => {
+    data = isFormData ? data : JSON.stringify(data);
+    const headers = isFormData ? {'Content-Type': 'multipart/form-data'} : {'Content-Type': 'application/json'}
     return fetch(`${Constants.api_url}/${slug}`, {
         method: method,
-        body: JSON.stringify(data),
+        body: data,
         credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
+        headers: headers,
       })
         .then(res => res.json())
         .then(result => result)

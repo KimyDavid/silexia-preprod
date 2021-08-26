@@ -54,7 +54,7 @@ const ListElement = ({ slug, fields }) => {
                                     ))} 
                                     <td className="text-right">
                                         <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"
-                                        title="Modifier l'article" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { elem: item, partner_type: type.id } } }>
+                                        title="Modifier l'article" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { partner_type: type.id } } }>
                                         <FiEdit className = "stroke-current" /></Link>
                                         <button className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised ml-3"
                                         title="Supprimer l'article" onClick={() => { deleteItem(item['id']) }}>
