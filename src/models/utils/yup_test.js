@@ -45,7 +45,7 @@ function exists(yup, type, _function){
   });
 }
 
-const FILE_SIZE = 160 * 1024;
+const FILE_SIZE = 500 * 1024;
 const SUPPORTED_FORMATS = [
   "image/jpg",
   "image/jpeg",
