@@ -6,8 +6,6 @@ import Alert from '../alerts';
 const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
   const [message, setMessage] = useState(null)
 
-  console.log(method);
-
   const sendCreationRequest = (e) => {
     let data = e;
     let formData = new FormData();
@@ -22,9 +20,8 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
       }
       data = formData;
     }
-
     API_POST(url, method, data, isFormData).then(response => {
-      if (response.error) {
+      if (response && response.error) {
         setMessage(response.details)
       } else {
         window.history.back();

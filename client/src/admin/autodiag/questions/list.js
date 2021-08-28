@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Constants from '../../../constants/Config';
 import { Link } from 'react-router-dom'
 import { FiDelete, FiEdit } from 'react-icons/fi'
+import { API_GET, API_REMOVE } from '../../../functions/apiRequest';
 
 import SectionTitle from '../../../components/section-title'
 import Breadcrumb from '../../../components/breadcrumbs'
@@ -12,7 +12,10 @@ import { useTranslation } from "react-i18next";
 const ListElement = ({ url, slug, fields }) => {
     const { t } = useTranslation('admin');
     const [items, setItems] = useState([]);
+    const [questions, setQuestions] = useState([]);
     const slugTrans = slug.replace('/', '.');
+
+    console.log(questions)
 
     const breadcrumbs = [
         { title: 'Dashboard', url: '/admin', last: false },
@@ -20,12 +23,13 @@ const ListElement = ({ url, slug, fields }) => {
     ]
 
     useEffect(() => {
-        fetch(`${Constants.api_url}/${url}`)
-            .then(res => res.json())
-            .then(
-                (result) => setItems(result)
-            )
+        API_GET(url).then(response => setItems(response));
+        API_GET(`${url}/questions`).then(response => setQuestions(response));
     }, []);
+
+    function deleteItem(id) {
+        API_REMOVE(`${url}/questions/${id}`);
+    }
 
     return (
         <>
@@ -33,9 +37,9 @@ const ListElement = ({ url, slug, fields }) => {
 
             <SectionTitle title={ t(`${slugTrans}.label`) } subtitle={ t(`${slugTrans}.all`) } />
 
-            { items.map((item, i) => (
-                <Widget key={i} title={item.label} description={`Toutes les questions de la catégorie : ${item.label}`}>
-                    <Link to = { `/admin/${slug}/new` } className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white btn-rounded mb-2">
+            { items.map((category, i) => (
+                <Widget key={i} title={category.label} description={`Toutes les questions de la catégorie : ${category.label}`}>
+                    <Link to = {{ pathname: `/admin/${slug}/new`, state: {id_category: category.id} }} className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white btn-rounded mb-2">
                         <span>{ t(`${slugTrans}.new`) }</span>
                     </Link>
                     <table className="table no-border striped">
@@ -47,17 +51,17 @@ const ListElement = ({ url, slug, fields }) => {
                             </tr> 
                         </thead>
                         <tbody>
-                            { item.questions ? item.questions.map((item, i) => ( 
+                            { category.questions ? category.questions.map((item, i) => ( 
                                 <tr key={ i }> 
                                     { fields.map((field, j) => (
                                         <td key={ j }> { item[field.key] } </td>
                                     ))} 
                                     <td className="text-right">
                                         <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"
-                                        title="Modifier l'article" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { elem: item } } }>
+                                        title="Modifier la question" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { id_category: category.id, elem: questions.find(x => x.id === item.id)}}}>
                                         <FiEdit className = "stroke-current" /></Link>
                                         <button className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised ml-3"
-                                        title="Supprimer l'article" onClick={() => {  }}>
+                                        title="Supprimer la question" onClick={() => { deleteItem(item.id) }}>
                                         <FiDelete className="stroke-current" />
                                         </button>
                                     </td>

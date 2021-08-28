@@ -42,7 +42,7 @@ const UpdateElement = ({slug, fields, method = 'PUT', isFormData}) => {
         <div className="w-full flex">
           <div className="w-full">
             { loaded ? 
-              <Form url={`${slug}/${id}`} fields={fields} method={method} isFormData={isFormData} />
+              <Form url={`${slug}/${id}`} fields={fields} method={method} isFormData={isFormData}/>
             : '' }
           </div>
         </div>

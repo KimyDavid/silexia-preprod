@@ -17,7 +17,6 @@ import Types from './types'
 import Login from './login'
 import AutodiagCategories from './autodiag/categories'
 import AutodiagQuestions from './autodiag/questions'
-import AutodiagAnswers from './autodiag/answers'
 import Users from './users'
 
 const Wrapper = ({children}) => {
@@ -54,7 +53,6 @@ const Main = () => {
                     <Types />
                     <AutodiagCategories />
                     <AutodiagQuestions />
-                    <AutodiagAnswers />
                     <Users />
                     <Route exact path="/admin" component={Dashboard} />
                     <Route exact path="/admin/logout" component={() => <Logout setToken={setToken}/> } />

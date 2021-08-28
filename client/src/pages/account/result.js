@@ -16,6 +16,7 @@ const AutodiagResult = () => {
     let categories = [];
     let scoreTotal = 0;
     let scoreUser = 0;
+    let scores = [];
 
     useEffect(() => {
         fetch(`${Constants.api_url}/autodiag/user/1`)
@@ -30,9 +31,14 @@ const AutodiagResult = () => {
             return category.label;
         });
 
+        scores = autodiag.map((category) => {
+            return category.score_user ?? 0;
+        });
+
         autodiag.forEach((category) => {
             scoreTotal = scoreTotal + category.score_total;
             scoreUser = scoreUser + category.score_user;
+            console.log(category);
         });
     }
 
@@ -48,7 +54,7 @@ const AutodiagResult = () => {
           pointHoverBackgroundColor: '#cc4c44',
           pointHoverBorderColor: '#cc4c44',
           borderWidth: 1,
-          data: [2, 5, 3, 8, 1]
+          data: scores
         },
       ]
     }
@@ -76,7 +82,7 @@ const AutodiagResult = () => {
                             { categories.map((category, i) => (
                                 <div key={i} className="account-score-category shadow">
                                     <p className="text-primary">{category}</p>
-                                    <p>{autodiag[i].tier.text}</p>
+                                    <p>{autodiag[i].tier ? autodiag[i].tier.text : ''}</p>
                                 </div>
                             )) }
                         </div>
@@ -89,7 +95,7 @@ const AutodiagResult = () => {
                                     <div className="account-sidebar-card p-3 bg-white">
                                         <p>{ category }</p>
                                         <div className="account-sidebar-progressbar">
-                                            <span>50%</span>
+                                            <span style={{width: 10 + '%'}}>10%</span>
                                         </div>
                                     </div>
                                     

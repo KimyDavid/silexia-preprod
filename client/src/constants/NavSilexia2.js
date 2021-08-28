@@ -14,7 +14,7 @@ export default [
    },
    {
       "menu_title": "Réseau",
-      "path": "/",
+      "path": "/reseau",
       "icon": "home",
    },
    {

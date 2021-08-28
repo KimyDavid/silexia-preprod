@@ -36,7 +36,7 @@ const CreateElement = ({slug, fields, isFormData}) => {
         <div className="w-full flex">
           <div className="w-full">
           { loaded ? 
-              <Form url={`${slug}`} fields={fields} isFormData={isFormData}/>
+              <Form url={`${slug}`} fields={fields} isFormData={isFormData} />
             : '' }
           </div>
         </div>

@@ -1,21 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useForm} from 'react-hook-form'
 import Alert from '../alerts'
 import Quill from './quill';
+import Collection from './collections'
 
 const FormValidation = ({items, onSubmit, alerts}) => {
   const {handleSubmit, errors, register} = useForm()
 
+  const getCurrentCollection = () => {
+    let collection;
+    items.forEach((item) => {
+      if (item.type === 'collection' && item.value) {
+        collection = {
+          name: item.name,
+          data : item.value
+        }
+      }
+    });
+    return collection
+  }
+
+  const [collection, setCollection] = useState(getCurrentCollection);
+
   const onSubmitFn = data => {
+    if (collection) {
+      collection.data.map((item) => {
+        delete item.id;
+        return item;
+      });
+      data[collection.name] = collection.data
+    }
+
     if (onSubmit) {
       onSubmit(data)
     }
   }
 
-  items = items.map(item => {
+  items = items.map((item, i) => {
     item['ref'] = register(item['error'])
     return item
   })
+
+  const collectionData = (data, item) => {
+    setCollection({
+      name: item.name,
+      data: data
+    })
+  }
 
   return (
     <form
@@ -158,6 +189,13 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                     </div>
                   )}
                 </div>
+              </>
+            )
+          }
+          if (item.type === 'collection') {
+            return (
+              <>
+                <Collection key={i} collection={item} onChange={(data) => collectionData(data, item)} currentCollection={item.value} />
               </>
             )
           }

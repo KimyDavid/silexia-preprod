@@ -85,12 +85,6 @@ const initialState = [
         title: 'Questions',
         items: []
       },
-      {
-        url: '/admin/autodiag/answers',
-        icon: <FiCompass size={20} />,
-        title: 'Réponses',
-        items: []
-      },
     ]
   },
   {

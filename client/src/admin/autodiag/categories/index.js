@@ -34,27 +34,18 @@ const AutodiagCategories = () => {
         placeholder: 'Ajouter un ordre'
       },
       {
-        label: 'Image',
-        error: {required: 'Merci d\'ajouter une image'},
-        name: 'image',
-        type: 'file',
-        placeholder: 'Ajouter une image'
-      },
-      {
-        label: 'Tiers',
-        error: {required: 'Merci d\'ajouter des tiers'},
+        label: 'Niveaux',
         name: 'tiers',
-        type: 'select',
-        placeholder: 'Ajouter des tiers',
-        options: [
-          {value: [], label: 'Selectionner des tiers'},
-        ]
+        type: 'collection',
+        dataCollection: {
+          fields: ['text', 'order']
+        }
       }
     ]
 
     return (
       <>
-        <ElementRoutes slug={slug} formFields={formFields} listFields={listFields} />
+        <ElementRoutes slug={slug} formFields={formFields} listFields={listFields} updateMethod="PUT"/>
       </>
     )
   }

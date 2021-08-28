@@ -20,14 +20,15 @@
             &ies {
                 display: flex;
                 justify-content: center;
+                flex-wrap: wrap;
                 margin: 20px -7px 10px;
             }
 
             &y {
                 font-size: 13px;
                 text-align: center;
-                flex: 1;
-                margin: 0 7px;
+                flex: 1 33.33%;
+                margin: 7px;
                 padding: 10px;
                 cursor: pointer;
             }
@@ -61,7 +62,7 @@
             span {
                 background: $color-red;
                 height: 100%;
-                width: 50%;
+                width: 100%;
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -71,6 +72,7 @@
                 justify-content: center;
                 font-weight: 500;
                 font-size: 12px;
+                transform-origin: left;
             }
         }
     }

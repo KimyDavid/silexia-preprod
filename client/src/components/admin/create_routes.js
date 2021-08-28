@@ -10,7 +10,7 @@ const CreateAdminRoutes = ({slug, formFields, listFields, updateMethod, isFormDa
   return (
     <>
       <Switch>
-          <Route path={`/admin/${slug}/update/:id`} component={() => <Update slug={slug} fields={formFields} method={updateMethod} isFormData={isFormData}/>} />
+          <Route path={`/admin/${slug}/update/:id`} component={() => <Update slug={slug} fields={formFields} method={updateMethod} isFormData={isFormData} />} />
           <Route path={`/admin/${slug}/new`} component={() => <New slug={slug} fields={formFields} isFormData={isFormData} />} />
           <Route path={`/admin/${slug}`} component={() => <List slug={slug} fields={listFields} />} />
       </Switch>
