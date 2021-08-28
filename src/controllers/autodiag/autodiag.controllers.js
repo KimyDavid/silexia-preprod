@@ -39,10 +39,12 @@ function getAutodiag(data, callback) {
       strsql += '   "order", Autodiag_Answers.order';
       strsql += ' ) ORDER BY Autodiag_Answers.order), "]") AS answers';
       strsql += ' FROM Autodiag_Questions';
-      strsql += ' INNER JOIN Autodiag_Answers ON Autodiag_Answers.id_question = Autodiag_Questions.id';
+      strsql += ' INNER JOIN Autodiag_Answers ON Autodiag_Answers.id_question = Autodiag_Questions.id AND Autodiag_Answers.deleted IS NULL';
+      strsql += ' WHERE Autodiag_Questions.deleted IS NULL'
       strsql += ' GROUP BY Autodiag_Questions.id';
       strsql += ' )Autodiag ';
       strsql += ' INNER JOIN Autodiag_Categories ON Autodiag_Categories.id = Autodiag.id_category';
+      strsql += ' WHERE Autodiag_Categories.deleted IS NULL';
       strsql += ' GROUP BY Autodiag_Categories.id';
       strsql += ' ORDER BY Autodiag_Categories.order';
 
@@ -129,6 +131,8 @@ function getAutodiagUser(data, callback) {
       strsql += ' LEFT JOIN autodiag_tiers at2 ON at2.id_category = ac.id';
       strsql += ' GROUP BY ac.id';
       strsql += ' ORDER BY ac.order';
+
+      console.log(strsql)
       
       db.query(strsql, null, function (error, results) { 
         for(let i=0; i<results.length; i++){
