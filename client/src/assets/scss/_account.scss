@@ -1,0 +1,79 @@
+.account {
+    &-score {
+        border-radius: 10px;
+        position: relative;
+
+        .action-score-infos {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+
+            &:before {
+                font-size: 50px;
+                opacity: .5;
+            }
+        }
+
+        &-categor {
+            &ies {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin: 20px -7px 10px;
+            }
+
+            &y {
+                font-size: 13px;
+                text-align: center;
+                flex: 1 33.33%;
+                margin: 7px;
+                padding: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &-sidebar {
+        margin-top: 50px;
+        padding-bottom: 100px;
+        border-radius: 10px;
+
+        &-card {
+            margin-top: 15px;
+            border-radius: 10px;
+            transition: box-shadow .5s ease;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 5px 10px rgba(139, 44, 37, .7);
+            }
+        }
+
+        &-progressbar {
+            height: 22px;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            background: #cc4c4414;
+
+            span {
+                background: $color-red;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 500;
+                font-size: 12px;
+                transform-origin: left;
+            }
+        }
+    }
+}

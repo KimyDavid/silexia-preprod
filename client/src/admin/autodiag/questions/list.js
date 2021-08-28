@@ -1,0 +1,78 @@
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { FiDelete, FiEdit } from 'react-icons/fi'
+import { API_GET, API_REMOVE } from '../../../functions/apiRequest';
+
+import SectionTitle from '../../../components/section-title'
+import Breadcrumb from '../../../components/breadcrumbs'
+import Widget from '../../../components/widget'
+
+import { useTranslation } from "react-i18next";
+
+const ListElement = ({ url, slug, fields }) => {
+    const { t } = useTranslation('admin');
+    const [items, setItems] = useState([]);
+    const [questions, setQuestions] = useState([]);
+    const slugTrans = slug.replace('/', '.');
+
+    console.log(questions)
+
+    const breadcrumbs = [
+        { title: 'Dashboard', url: '/admin', last: false },
+        { title: t(`${slugTrans}.label`), url: `/admin/${slug}`, last: true },
+    ]
+
+    useEffect(() => {
+        API_GET(url).then(response => setItems(response));
+        API_GET(`${url}/questions`).then(response => setQuestions(response));
+    }, []);
+
+    function deleteItem(id) {
+        API_REMOVE(`${url}/questions/${id}`);
+    }
+
+    return (
+        <>
+            <Breadcrumb items={ breadcrumbs } home={ true } icon="chevron" />
+
+            <SectionTitle title={ t(`${slugTrans}.label`) } subtitle={ t(`${slugTrans}.all`) } />
+
+            { items.map((category, i) => (
+                <Widget key={i} title={category.label} description={`Toutes les questions de la catégorie : ${category.label}`}>
+                    <Link to = {{ pathname: `/admin/${slug}/new`, state: {id_category: category.id} }} className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white btn-rounded mb-2">
+                        <span>{ t(`${slugTrans}.new`) }</span>
+                    </Link>
+                    <table className="table no-border striped">
+                        <thead>
+                            <tr> 
+                                { fields.map((field, i) => (
+                                    <th key={ i }> { field.name } </th>
+                                ))}
+                            </tr> 
+                        </thead>
+                        <tbody>
+                            { category.questions ? category.questions.map((item, i) => ( 
+                                <tr key={ i }> 
+                                    { fields.map((field, j) => (
+                                        <td key={ j }> { item[field.key] } </td>
+                                    ))} 
+                                    <td className="text-right">
+                                        <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"
+                                        title="Modifier la question" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { id_category: category.id, elem: questions.find(x => x.id === item.id)}}}>
+                                        <FiEdit className = "stroke-current" /></Link>
+                                        <button className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised ml-3"
+                                        title="Supprimer la question" onClick={() => { deleteItem(item.id) }}>
+                                        <FiDelete className="stroke-current" />
+                                        </button>
+                                    </td>
+                                </tr>
+                            )) : null }
+                        </tbody>
+                    </table>
+                </Widget> 
+            ))}
+        </>
+    )
+}
+
+export default ListElement
