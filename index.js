@@ -43,9 +43,6 @@ app.use(fileUpload({
     tempFileDir : './src/tmp/'
 }));
 
-app.use(express.static('client/public'));
-//app.use(express.static('public'));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
@@ -68,9 +65,26 @@ app.use('/v1', autodiag)
 app.use('/v1', questions)
 app.use('/v1', categories)
 
-app.get('/*', function(req, res) {
+app.get([
+  '/',
+  '/offres',
+  '/offres/*',
+  '/about-us',
+  '/blog',
+  '/blog/*',
+  '/reseau',
+  '/reseau/*',
+  '/profile',
+  '/autodiag',
+  '/mentions-legales',
+  '/conditions-generales-de-vente',
+  '/politique-de-confidentialite'
+], function(req, res) {
   res.sendFile('client/dist/index.html', {root:'.'});
 });
+
+app.use(express.static('client/public'));
+app.use(express.static('client/dist'))
 
 var server = http.createServer(app)
 server.listen(process.env.PORT)
