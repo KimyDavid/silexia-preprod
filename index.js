@@ -78,7 +78,8 @@ app.get([
   '/autodiag',
   '/mentions-legales',
   '/conditions-generales-de-vente',
-  '/politique-de-confidentialite'
+  '/politique-de-confidentialite',
+  '/admin'
 ], function(req, res) {
   res.sendFile('client/dist/index.html', {root:'.'});
 });
