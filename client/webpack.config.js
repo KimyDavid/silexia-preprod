@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -102,5 +103,6 @@ module.exports = {
         jQuery: 'jquery',
         'window.jQuery': 'jquery'
     }),
+    new Dotenv()
   ]
 };
