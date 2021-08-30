@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start_local": "node -r dotenv/config index.js",
-    "lint": "eslint *.js"
+    "lint": "eslint *.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
