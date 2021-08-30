@@ -103,6 +103,6 @@ module.exports = {
         jQuery: 'jquery',
         'window.jQuery': 'jquery'
     }),
-    new Dotenv()
+    new Dotenv({ systemvars: true })
   ]
 };
