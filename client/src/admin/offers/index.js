@@ -55,7 +55,7 @@ const Offres = () => {
 
     return (
       <>
-        <ElementRoutes slug={slug} formFields={formFields} listFields={listFields} updateMethod="PATCH"/>
+        <ElementRoutes slug={slug} formFields={formFields} listFields={listFields} updateMethod="PATCH" isFormData={true}/>
       </>
     )
   }

@@ -2,32 +2,35 @@ import React, { useState, useEffect } from 'react';
 
 import Question from './question';
 
-const Category = ({category, index, categoriesLength, onNextCategory, currentAnswers = {}}) => {
-    const progress = ((index+1)/categoriesLength);
+const Category = ({category, index, categoriesLength, progressLength, onNextCategory, currentAnswers = {}}) => {
+    const [progress, setProgress] = useState(index+1);
     const [question, setQuestion] = useState(0);
     const [answers, setAnswers] = useState(currentAnswers);
     const [error, setError] = useState();
 
     useEffect(() => {
         setAnswers(currentAnswers);
+        setProgress(index+1);
     }, [index]);
 
     function goToQuestion(question) {
         setQuestion(question);
+        setProgress(index + 1 + question);
     }
 
     function nextStep() {
-        // if (!answers[question] || answers[question].length < 1) {
-        //     setError('Merci de sélectionner au moins une réponse');
-        // } else {
-            // setError();
+        if (!answers[question] || answers[question].length < 1) {
+            setError('Merci de sélectionner au moins une réponse');
+        } else {
+            setError();
             if (question === category.questions.length-1) {
                 setQuestion(0);
                 onNextCategory(answers);
             } else {
                 setQuestion(question+1);
             }
-        // }
+            setProgress(progress + 1);
+        }
     }
 
     const handleQuestionResponse = (questionId, answer) => {
@@ -55,10 +58,10 @@ const Category = ({category, index, categoriesLength, onNextCategory, currentAns
                 </div>
                 <footer className="autodiag-footer row align-items-center justify-content-between">
                     <div className="col-12 col-md-9">
-                        <div className="autodiag-progressbar"><span style={{transform: 'scaleX(' + progress + ')'}}></span></div>
+                        <div className="autodiag-progressbar"><span style={{transform: 'scaleX(' + (progress/progressLength) + ')'}}></span></div>
                     </div>
                         <div className="col-12 col-md-3 mt-2 mt-md-0 d-flex justify-content-end">
-                        <button onClick={nextStep} className="autodiag-next btn btn-primary btn-small shadow w-100">{ (progress === 1) ? 'Voir les résultats' : 'Prochaine question'}<i className="las la-arrow-right"></i></button>
+                        <button onClick={nextStep} className="autodiag-next btn btn-primary btn-small shadow w-100">{ (progress/progressLength === 1) ? 'Voir les résultats' : 'Prochaine question'}<i className="las la-arrow-right"></i></button>
                     </div>
                 </footer>
             </div>

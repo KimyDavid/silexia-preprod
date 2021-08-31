@@ -1,3 +1,3 @@
 module.exports = {
-    api_url: process.env.REACT_APP_ENDPOINT,
+    api_url: 'http://localhost:8443/v1',
 }

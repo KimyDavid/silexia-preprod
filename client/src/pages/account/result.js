@@ -60,6 +60,11 @@ const AutodiagResult = () => {
     }
 
     const options = {
+        scales: {
+            r: {
+                beginAtZero: true
+            }
+        }
     }
     
     return (

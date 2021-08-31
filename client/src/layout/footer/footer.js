@@ -45,6 +45,8 @@ class Footer extends Component {
                             </li>
                             <li className="mb-3 nav-item"><Link className="nav-link" to="/conditions-generales-de-vente">Conditions générales de vente</Link> 
                             </li>
+                            <li className="mb-3 nav-item"><Link className="nav-link" to="/conditions-generales-utilisation">Conditions générales d'utilisation</Link> 
+                            </li>
                             <li className="nav-item"><Link className="nav-link" to="/politique-de-confidentialite">Politique de confidentialité</Link> 
                             </li>
                         </ul>

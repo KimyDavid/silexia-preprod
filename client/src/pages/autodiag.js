@@ -13,9 +13,19 @@ const Autodiag = () => {
     const [autodiagResponse, setAutodiagResponse] = useState({});
     const [profile, setProfile] = useState({});
     const [message, setMessage] = useState();
+    const [progressionTotal, setProgressionTotal] = useState();
+    const [progression, setProgression] = useState(0);
 
     useEffect(() => {
-        API_GET('autodiag').then(response => setAutodiag(sortById(response)));
+        API_GET('autodiag').then(response => {
+            setAutodiag(sortById(response));
+            let length = 0;
+            response.forEach((category) => {
+                length = length + 1;
+                category.questions.forEach(() => length = length + 1);
+            });
+            setProgressionTotal(length);
+        });
     }, []);
 
     function goToCategory(category) {
@@ -67,7 +77,7 @@ const Autodiag = () => {
                             { category === 'done' ? '' : <Steps steps={autodiag} currentStep={category} goStep={goToCategory}/> }
                             { category > 0 ? <p onClick={() => goToCategory(category-1)} className="link"><i className="las la-arrow-left"></i> Catégorie précédente</p> : '' }
                             { autodiag[category] ?
-                            <Category category={autodiag[category]} index={category} categoriesLength={autodiag.length} onNextCategory={updateAutodiagResponse} currentAnswers={autodiagResponse[category]} />
+                            <Category category={autodiag[category]} index={category} categoriesLength={autodiag.length} progressLength={progressionTotal} onNextCategory={updateAutodiagResponse} currentAnswers={autodiagResponse[category]} />
                             : '' }
                             { message ? <p className="error message">{message}</p> : '' }
                             { category === 'done' ?

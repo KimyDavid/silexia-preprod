@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SigninForm from '../../widgets/account/signin';
 import { Col, Container, Row } from 'reactstrap';
 import Pageheading from '../../widgets/Pageheading';
 
 const SignIn1 = ({setToken}) => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
         return (
             <div>
