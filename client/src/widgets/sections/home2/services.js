@@ -18,7 +18,7 @@ const FeatureServices = () => {
                     <div>
                         <div className={`px-4 py-7 rounded hover-translate text-center shadow`}>
                             <div>
-                                <img className="img-fluid" src={require(`../../../assets/images/svg/01.svg`)} alt="" />
+                                <img className="img-fluid" src={offer.image} alt="" />
                             </div>
                             <h5 className="mt-4 mb-3">{offer.title}</h5>
                             <p className="abstract abstract-4">{offer.abstract}</p>

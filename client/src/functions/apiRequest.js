@@ -24,7 +24,6 @@ export const API_REMOVE = (slug) => {
 export const API_POST = (slug, method, data, isFormData) => {
     data = isFormData ? data : JSON.stringify(data);
     const headers = isFormData ? {'Content-Type': 'multipart/form-data'} : {'Content-Type': 'application/json'}
-    console.log(data);
     return fetch(`${Constants.api_url}/${slug}`, {
         method: method,
         body: data,

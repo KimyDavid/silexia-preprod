@@ -5,10 +5,15 @@ const Collection = ({ collection, onChange, currentCollection = null }) => {
   const [number, setNumber] = useState(0);
   const [id, setId] = useState(1);
   const [list, setList] = useState([]);
+
+  const addList = (item = null) => {
+    const newItem = createItem(item);
+    list.push(newItem);
+    setNumber(number + 1);
+  }
   
   useEffect(() => {
     setList([]);
-    console.log(currentCollection);
     if (currentCollection) {
       currentCollection.forEach((item) => {
         addList(item);
@@ -30,13 +35,6 @@ const Collection = ({ collection, onChange, currentCollection = null }) => {
     });
     newItem['id'] = id;
     return newItem;
-  }
-
-  const addList = (item = null) => {
-    console.log(item);
-    const newItem = createItem(item);
-    list.push(newItem);
-    setNumber(number + 1);
   }
 
   const removeList = id => {

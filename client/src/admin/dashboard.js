@@ -7,8 +7,7 @@ const Index = () => (
   <>
     <SectionTitle title="Tableau de bord" subtitle="Dashboard" />
     <div className="flex flex-col lg:flex-row w-full lg:space-x-2 space-y-2 lg:space-y-0 mb-2 lg:mb-4">
-        {/*widget*/}
-        <div className="w-full lg:w-1/4">
+        {/* <div className="w-full lg:w-1/4">
           <Widget1
             title="Users"
             description={588}
@@ -17,7 +16,6 @@ const Index = () => (
             }
           />
         </div>
-        {/*widget*/}
         <div className="w-full lg:w-1/4">
           <Widget1
             title="Sessions"
@@ -27,7 +25,6 @@ const Index = () => (
             }
           />
         </div>
-        {/*widget*/}
         <div className="w-full lg:w-1/4">
           <Widget1
             title="Bounce rate"
@@ -40,7 +37,6 @@ const Index = () => (
             }
           />
         </div>
-        {/*widget*/}
         <div className="w-full lg:w-1/4">
           <Widget1
             title="Session duration"
@@ -49,8 +45,8 @@ const Index = () => (
               <FiClock size={24} className="stroke-current text-grey-500" />
             }
           />
-        </div>
-      </div>
+        </div> */}
+    </div>
 
   </>
 )

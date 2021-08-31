@@ -5,36 +5,35 @@ import { useTranslation } from "react-i18next";
 
 const Page = ({slug}) => {
     const [content, setContent] = useState('');
+    const [loaded, setLoaded] = useState(false);
     const { t } = useTranslation('admin');
 
     useEffect(() => {
         window.scrollTo(0, 0)
         API_GET(`administrative/${slug}`).then(response => setContent(response));
+        setLoaded(true);
     }, []);
 
         return (
             <div>
-                {/*hero section start*/}
-                <section className="position-relative">
-                <Pageheading foldername={"Légal"} title={t(`administrative.pages.${content.type}`)} />
-                </section>
-                {/*hero section end*/}
-                {/*body content start*/}
-                <div className="page-content">
-                    {/*privacy start*/}
-                    <section>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-12 col-md-12 cms" dangerouslySetInnerHTML={{__html: content.text}}>
+                { loaded ?
+                    <>
+                        <section className="position-relative">
+                            <Pageheading foldername={"Légal"} title={t(`administrative.pages.${content.type}`)} />
+                        </section>
+                        <div className="page-content">
+                            <section>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-lg-12 col-md-12 cms" dangerouslySetInnerHTML={{__html: content.text}}>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </section>
                         </div>
-                    </section>
-                    {/*privacy end*/}
-                </div>
-                {/*body content end*/}
+                    </>
+                : '' }
             </div>
-
         );
 }
 

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {useForm} from 'react-hook-form'
 import Alert from '../alerts'
 import Quill from './quill';
 import Collection from './collections'
 
 const FormValidation = ({items, onSubmit, alerts}) => {
-  const {handleSubmit, errors, register} = useForm()
+  const {handleSubmit, formState: { errors }, register, setValue} = useForm()
 
   const getCurrentCollection = () => {
     let collection;
@@ -20,7 +20,32 @@ const FormValidation = ({items, onSubmit, alerts}) => {
     return collection
   }
 
+  const getCurrentQuill = () => {
+    let quill;
+    items.forEach((item) => {
+      if (item.type === 'wysiwyg') {
+        quill = item
+      }
+    });
+    return quill
+  }
+
+  const [quill, setQuill] = useState(getCurrentQuill);
   const [collection, setCollection] = useState(getCurrentCollection);
+
+  useEffect(() => {
+    if (quill) {
+      register(quill.name, quill.error);
+
+      if (quill.value) {
+        onEditorStateChange(quill.value);
+      }
+    }
+  }, [register]);
+
+  const onEditorStateChange = (editorState) => {
+    setValue(quill.name, editorState);
+  };
 
   const onSubmitFn = data => {
     if (collection) {
@@ -31,15 +56,12 @@ const FormValidation = ({items, onSubmit, alerts}) => {
       data[collection.name] = collection.data
     }
 
+    console.log(data);
+
     if (onSubmit) {
       onSubmit(data)
     }
   }
-
-  items = items.map((item, i) => {
-    item['ref'] = register(item['error'])
-    return item
-  })
 
   const collectionData = (data, item) => {
     setCollection({
@@ -82,10 +104,9 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                   {item.options.map((option, j) => (
                     <label key={j} className="flex items-center justify-start space-x-2">
                       <input
-                        ref={item.ref}
+                        {...register(item.name, item.error)}
                         type="checkbox"
                         value={option.value}
-                        name={item.name}
                         className={`form-checkbox h-4 w-4 ${
                           errors[item.name] ? 'text-red-500' : ''
                         }`}
@@ -112,8 +133,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                       <input
                         type="radio"
                         value={option.value}
-                        name={item.name}
-                        ref={register({required: true})}
+                        {...register(item.name, item.error)}
                         className={`form-radio h-4 w-4 ${
                           errors[item.name] ? 'text-red-500' : ''
                         }`}
@@ -135,8 +155,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
               <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <select
-                  ref={item.ref}
-                  name={item.name}
+                  {...register(item.name, item.error)}
                   className={`form-select ${
                     errors[item.name] ? 'border border-red-500' : ''
                   }`}>
@@ -158,8 +177,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                 <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
                   <textarea
-                    ref={item.ref}
-                    name={item.name}
+                    {...register(item.name, item.error)}
                     defaultValue={item.value}
                     className={`form-textarea ${
                       errors[item.name] ? 'border border-red-500' : ''
@@ -181,7 +199,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                 <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
 
-                  <Quill item={item} />
+                  <Quill item={item} onChange={onEditorStateChange} />
 
                   {!alerts && errors[item.name] && (
                     <div className="form-error">
@@ -204,8 +222,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
               <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <input
-                  ref={item.ref}
-                  name={item.name}
+                  {...register(item.name, item.error)}
                   type={item.type}
                   defaultValue={item.value}
                   className={`form-input ${

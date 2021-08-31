@@ -5,6 +5,7 @@ import Alert from '../alerts';
 
 const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
   const [message, setMessage] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const sendCreationRequest = (e) => {
     let data = e;
@@ -13,6 +14,7 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
     if (isFormData) {
       for ( let key in data ) {
         if (data[key][0] instanceof Blob) {
+          console.log(data[key][0]);
           formData.append(key, data[key][0]);
         } else {
           formData.append(key, data[key]);
@@ -20,7 +22,11 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
       }
       data = formData;
     }
+
+    setLoading(true);
     API_POST(url, method, data, isFormData).then(response => {
+      console.log(response);
+      setLoading(false);
       if (response && response.error) {
         setMessage(response.details)
       } else {
@@ -31,7 +37,7 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className={`flex flex-col ${loading ? 'loading' : '' }`}>
         {message ? 
           <div className="w-full mb-4">
             <Alert
