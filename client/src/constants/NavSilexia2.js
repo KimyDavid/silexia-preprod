@@ -3,7 +3,7 @@
  */
 export default [
    {
-      "menu_title": "Agence",
+      "menu_title": "À propos",
       "path": "/about-us",
       "icon": "home",
    },
@@ -21,5 +21,9 @@ export default [
       "menu_title": "Blog",
       "path": "/blog",
       "icon": "home",
+   },
+   {
+      "menu_title": "Prendre rendez-vous",
+      "path": "https://outlook.office365.com/owa/calendar/Silexia@silexia.onmicrosoft.com/bookings/"
    }
 ]

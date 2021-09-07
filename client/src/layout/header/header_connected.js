@@ -107,7 +107,11 @@ class Header extends React.Component {
                                                             </UncontrolledDropdown>
                                                             :
                                                             <NavItem key={index}>
-                                                                <NavLink href={navLink.path}> {navLink.menu_title}</NavLink>
+                                                                { navLink.path.includes('://') ?
+                                                                    <NavLink target="_blank" href={navLink.path}> {navLink.menu_title}</NavLink>
+                                                                : 
+                                                                    <NavLink href={navLink.path}> {navLink.menu_title}</NavLink>
+                                                                }
                                                             </NavItem>
                                                     ))}
                                                 </Nav>

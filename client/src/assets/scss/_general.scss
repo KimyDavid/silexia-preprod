@@ -7,6 +7,10 @@ li {
     line-height: 1.7;
 }
 
+strong {
+    font-weight: 600;
+}
+
 .logo {
     width: 180px;
 }
@@ -25,6 +29,22 @@ li {
     &-small {
         padding: .5rem 1rem;
         font-size: 14px;
+    }
+}
+
+.columns {
+    &-3 {
+        column-count: 3;
+        text-align: justify;
+        column-gap: 40px;
+
+        @media (max-width: $xl) {
+            column-count: 2;
+        }
+
+        @media (max-width: $md) {
+            column-count: 1;
+        }
     }
 }
 
@@ -94,6 +114,10 @@ li {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 
+    &-2 {
+        -webkit-line-clamp: 2; /* number of lines to show */
+    }
+
     &-3 {
         -webkit-line-clamp: 3; /* number of lines to show */
     }
@@ -137,4 +161,10 @@ li {
           transform: translate(-50%, -50%) rotate(360deg);
         }
       }
+}
+
+.portfolio {
+    &-item {
+        min-height: 150px;
+    }
 }

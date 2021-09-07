@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_GET } from '../../../functions/apiRequest';
 import { toSnakeCase } from '../../../functions/string';
+import OwlCarousel from 'react-owl-carousel';
 
 const FeatureServices = () => {
     const [offers, setOffers] = useState([]);
@@ -12,21 +13,26 @@ const FeatureServices = () => {
     }, []);
 
         return (
-            <div className="row align-items-center">
-                { offers ? offers.map((offer, i) => 
-                <Link key={i} to={{pathname: `offres/${toSnakeCase(offer.title)}`, state: {offer: offer}}} className="col-xl-4 col-lg-4 mb-8 mb-lg-0 mt-3">
-                    <div>
-                        <div className={`px-4 py-7 rounded hover-translate text-center shadow`}>
-                            <div>
-                                <img className="img-fluid" src={offer.image} alt="" />
-                            </div>
-                            <h5 className="mt-4 mb-3">{offer.title}</h5>
-                            <p className="abstract abstract-4">{offer.abstract}</p>
-                            <p className="btn-link">Read Details</p>
-                        </div>
-                    </div>
-                </Link>
-                ) : '' }
+            <div className="row mt-5">
+                <div className="col-12 mt-5">
+                { offers.length > 0 ?  
+                    <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} > 
+                        {offers.map((offer, i) => 
+                            <Link to={{pathname: `offres/${toSnakeCase(offer.title)}`, state: {offer: offer}}} className="item" key={i}>
+                                <div className="portfolio-item position-relative overflow-hidden">
+                                    <img className="img-center w-100" src={offer.image ?? require("../../../assets/images/about/06.png")} alt="" />
+                                    <div className="portfolio-title d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 className="btn-link text-white" >{offer.title}</h6>
+                                            <small className="text-light mb-2 abstract abstract-2">{offer.abstract}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        )}
+                    </OwlCarousel>
+                : null }
+                </div>
             </div>
 
         );
