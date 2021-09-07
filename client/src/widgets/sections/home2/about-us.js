@@ -7,13 +7,13 @@ class Memberaboutus extends Component {
                 <div className="col-12 col-lg-6 mb-6 mb-lg-0 order-lg-1">
                   <div className="row align-items-center">
                     <div className="col-6">
-                      <img src={require(`../../../assets/images/about/10.jpg`)} className="img-fluid rounded shadow-lg" alt="..." />
+                      <img src={require(`../../../assets/images/about/silexia2.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" />
                     </div>
                     <div className="col-6">
-                      <img src={require(`../../../assets/images/about/12.jpg`)} className="img-fluid rounded shadow-lg mt-10" alt="..." />
+                      {/* <img src={require(`../../../assets/images/about/12.jpg`)} className="img-fluid rounded shadow-lg mt-10" alt="..." /> */}
                     </div>
-                    <div className="col-10 ml-auto mr-auto mt-n11">
-                      <img src={require(`../../../assets/images/about/11.jpg`)} className="img-fluid rounded shadow-lg" alt="..." />
+                    <div className="col-10 ml-auto mr-auto mt-n8">
+                      <img src={require(`../../../assets/images/about/silexia1.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" />
                     </div>
                   </div>
                 </div>
@@ -21,9 +21,9 @@ class Memberaboutus extends Component {
                   <div> <span className="badge badge-primary-soft p-2">
                       <i className="la la-exclamation ic-3x rotation" />
                     </span>
-                    <h2 className="mt-3 font-w-5">Bootsland Small Team Crafting Beautiful Experience</h2>
-                    <p className="lead">We use the latest technologies it voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                    <p className="mb-0">We use the latest technologies it voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    <h2 className="mt-3 font-w-5">Spécialiste de la transition numérique</h2>
+                    <p className="lead">Nous apportons aux petites organisations <strong>des compétences</strong> et <strong>une expertise</strong> trop souvent réservées aux grands groupes.</p>
+                    <p className="mb-0">Nous construisons avec des clients exigeants les bases de leur succès par le numérique ! Aux côtés de nos partenaires, nous fournissons des solutions clés en main aux petites organisations dans le cadre de stratégies performantes sur-mesure...</p>
                   </div>
                 </div>
               </div>

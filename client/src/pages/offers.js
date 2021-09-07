@@ -21,18 +21,18 @@ class Index extends Component {
                 <div className="page-content">
                     <section>
                         <div className="container">
-                        <div className="row justify-content-center text-center">
-                            <div className="col-12 col-md-12 col-lg-8 mb-8 mb-lg-0">
-                            <div className="mb-8"> <span className="badge badge-primary-soft p-2 font-w-6">
-                                Ce que nous proposons
-                                </span>
-                                <h2 className="mt-3 font-w-5">Creative Design And Creative Services</h2>
-                                <p className="lead mb-0">All types of businesses need access to development resources, so we give you the option to decide how much you need to use.</p>
+                            <div className="row">
+                                <div className="col-lg-5 col-12">
+                                    <img className="img-fluid w-75" src={require(`../assets/images/about/06.png`)} alt="" />
+                                </div>
+                                <div className="col-lg-7 col-12">
+                                    <h2 className="title">Ce que nous faisons pour nos clients ?</h2>
+                                    <p className="lead mb-5">Activer les leviers numériques à fort impact sur leur organisation ! Découvrez comment le numérique est capable de faire évoluer votre organisation.</p>
+                                </div>
                             </div>
-                            </div>
-                        </div>
-                        {/* / .row */}
-                        <FeatureServices />
+                            
+                            {/* / .row */}
+                            <FeatureServices />
                         </div>
                     </section>
                 </div>

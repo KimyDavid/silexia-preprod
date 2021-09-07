@@ -212,7 +212,7 @@ Contact
 /* ------------------------
 Tab
 ------------------------*/
-.nav-tabs .nav-item .nav-link { padding: 1.5rem 2rem; font-size: 1.2rem; color: #1d1d33; margin: 0 5px; border-radius: .25rem; box-shadow: 0 10px 55px 5px rgba(137, 173, 255, .15) !important; }
+.nav-tabs .nav-item .nav-link { padding: .8rem 2rem; font-size: 1rem; color: #1d1d33; margin: 0 5px; border-radius: .25rem; box-shadow: 0 10px 55px 5px rgba(137, 173, 255, .15) !important; }
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active, .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover { background: #cc4c44; color: #ffffff; }
 @media (max-width:575.98px) {
 	.nav-tabs .nav-item .nav-link { padding: .5rem 1rem; }
@@ -391,7 +391,7 @@ Other
 .dark-bg .owl-carousel .owl-dots .owl-dot span { background: #ffffff }
 .owl-carousel .owl-dots .owl-dot:hover span, .owl-carousel .owl-dots .owl-dot.active span { background: #cc4c44; border-color: #546c5c; }
 .owl-carousel .owl-nav { display: block; position: absolute; text-indent: inherit; text-align: center; bottom: -20px; transform: translateX(-50%); -webkit-transform: translateX(-50%); -o-transform: translateX(-50%); -ms-transform: translateX(-50%); -moz-transform: translateX(-50%); left: 50%; z-index: 999; }
-.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next { width: 50px; height: 50px; line-height: 50px; font-size: 40px; font-weight: normal; background: #ffffff; border-radius: 50%; color: #02060b; cursor: pointer; display: inline-block; margin: 0 10px; -webkit-box-shadow: 0 0.5rem 1rem rgba(110, 0, 255, 0.4) !important; box-shadow: 0 0.5rem 1rem rgba(110, 0, 255, 0.4) !important; }
+.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next { width: 50px; height: 50px; line-height: 1; font-size: 50px; font-weight: 100; background: #ffffff; border-radius: 50%; color: #02060b; cursor: pointer; display: inline-block; margin: 0 10px; -webkit-box-shadow: 0 0.5rem 1rem rgba(255, 0, 0, 0.4) !important; box-shadow: 0 0.5rem 1rem rgba(255, 0, 0, 0.4) !important; }
 .owl-carousel .owl-nav button.owl-prev:hover, .owl-carousel .owl-nav button.owl-next:hover { background-color: #cc4c44; color: #ffffff }
 .owl-carousel.owl-center .owl-item { opacity: 0.3; }
 .owl-carousel .owl-item.center { transform: scale(1.1); z-index: 99; opacity: 1; }
