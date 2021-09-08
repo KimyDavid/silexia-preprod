@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start_local": "node -r dotenv/config index.js",
-    "start":"node index.js",
+    "start_local": "nodemon -r dotenv/config index.js",
+    "start": "node index.js",
     "lint": "eslint *.js",
     "heroku-postbuild": "cd client && npm install --dev && npm run build"
   },
@@ -46,6 +46,7 @@
     "madge": "^3.9.2",
     "moment": "^2.29.1",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.12",
     "nprogress": "^0.2.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

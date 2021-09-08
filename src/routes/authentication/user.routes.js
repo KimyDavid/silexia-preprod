@@ -22,8 +22,11 @@ router.post('/login', validateResourceMW(userLoginSchema), function(req, res, ne
 });
 
 router.post('/subscribe', validateResourceMW(userCreateSchema), function(req, res) {
-  req.body.id = req.user.id
-  userController.subscribe(req.body, function(err, results){
+  if(!req.user){
+    res.status(400).json({error:'Unknown user'});
+    return
+  }
+  userController.subscribe({body:req.body, id:req.user.id}, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{

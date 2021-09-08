@@ -48,7 +48,7 @@ function subscribe(data, callback) {
       insertKeyVerif({id:user.id, type:0}, callback)
     },
     function(key, callback){
-      mailController.verifAccount({email:data.email, link:process.env.ENDPOINT + '/verif_account?key=' + key}, callback)
+      mailController.verifAccount({email:data.body.email, link:process.env.ENDPOINT + '/verif_account?key=' + key}, callback)
     }
   ], function(err){
     callback(err, user)
@@ -134,7 +134,7 @@ function useKey(data, callback){
 
 
 function updateUser(data, callback){
-
+  
   let bol
 
   var strsql = ' UPDATE User';

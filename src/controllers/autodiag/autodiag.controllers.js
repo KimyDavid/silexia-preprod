@@ -132,8 +132,6 @@ function getAutodiagUser(data, callback) {
       strsql += ' GROUP BY ac.id';
       strsql += ' ORDER BY ac.order';
 
-      console.log(strsql)
-      
       db.query(strsql, null, function (error, results) { 
         for(let i=0; i<results.length; i++){
           results[i] =  new Category(results[i], {results:true})
