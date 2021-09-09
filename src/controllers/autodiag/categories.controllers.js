@@ -25,7 +25,7 @@ function getCategories(data, callback) {
       strsql += '   "order", Autodiag_Tiers.order';
       strsql += ' ) ORDER BY Autodiag_Tiers.order), "]") AS tiers';
       strsql += ' FROM Autodiag_Categories';
-      strsql += ' INNER JOIN Autodiag_Tiers ON Autodiag_Tiers.id_category = Autodiag_Categories.id';
+      strsql += ' INNER JOIN Autodiag_Tiers ON Autodiag_Tiers.id_category = Autodiag_Categories.id AND Autodiag_Tiers.deleted = 0';
       if(data.id){
         strsql += ' WHERE Autodiag_Categories.id = ' + data.id
       }

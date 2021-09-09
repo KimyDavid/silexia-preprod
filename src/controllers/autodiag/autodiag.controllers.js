@@ -128,7 +128,7 @@ function getAutodiagUser(data, callback) {
       strsql += '   WHERE aq.deleted IS NULL AND aa.deleted IS NULL';
       strsql += '   GROUP BY aq.id_category ';
       strsql += ' )Results ON Results.id_category = ac.id';
-      strsql += ' LEFT JOIN autodiag_tiers at2 ON at2.id_category = ac.id';
+      strsql += ' LEFT JOIN autodiag_tiers at2 ON at2.id_category = ac.id AND at2.deleted = 0';
       strsql += ' GROUP BY ac.id';
       strsql += ' ORDER BY ac.order';
 
