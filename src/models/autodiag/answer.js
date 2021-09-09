@@ -10,15 +10,15 @@ function Answer(data) {
 
 const createAnswerSchema = yup.object({
     label: yup.string().max(255).required(),
-    order: yup.number().integer().positive().required(),
-    score: yup.number().integer().positive().required()
+    order: yup.number().integer().min(0).required(),
+    score: yup.number().integer().min(0).required()
 })
 
 const updateAnswerSchema = yup.object({
     id:yup.number().nullable().default(null),
     label: yup.string().max(255).required(),
-    order: yup.number().integer().positive().required(),
-    score: yup.number().integer().positive().required()
+    order: yup.number().integer().min(0).required(),
+    score: yup.number().integer().min(0).required()
 })
 
 
