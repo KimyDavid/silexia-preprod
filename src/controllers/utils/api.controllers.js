@@ -211,7 +211,7 @@ function handleEditItem(data, callback){
   async.waterfall([
     function(callback){
       if(data.item.image){
-        imageController.uploadImage({image:data.item.image ? data.item.image.tempFilePath : null, name:data.table.toLowerCase() + '_' + data.id}, callback)
+        imageController.uploadImage({image:data.item.image ? data.item.image.tempFilePath : null, name:data.table.toLowerCase() + '_' + data.item.id}, callback)
       }else{
         callback(null, null)
       }
