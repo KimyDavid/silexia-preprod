@@ -18,7 +18,7 @@ const FeatureServices = () => {
                 { offers.length > 0 ?  
                     <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} > 
                         {offers.map((offer, i) => 
-                            <Link to={{pathname: `offres/${toSnakeCase(offer.title)}`, state: {offer: offer}}} className="item" key={i}>
+                            <Link to={{pathname: `offres/${toSnakeCase(offer.title)}`}} className="item" key={i}>
                                 <div className="portfolio-item position-relative overflow-hidden">
                                     <img className="img-center w-100" src={offer.image ?? require("../../../assets/images/about/06.png")} alt="" />
                                     <div className="portfolio-title d-flex justify-content-between align-items-center">

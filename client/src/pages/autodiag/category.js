@@ -8,14 +8,21 @@ const Category = ({category, index, categoriesLength, progressLength, onNextCate
     const [answers, setAnswers] = useState(currentAnswers);
     const [error, setError] = useState();
 
+    console.log('progress : ' + progress);
+
     useEffect(() => {
         setAnswers(currentAnswers);
-        setProgress(index+1);
+        if (index !== 0) {
+            const diff = category.questions.length;
+            console.log(diff);
+            setProgress(progress + index - diff);
+        }
     }, [index]);
 
-    function goToQuestion(question) {
-        setQuestion(question);
-        setProgress(index + 1 + question);
+    function goToQuestion(_question) {
+        const diff = question - _question;
+        setQuestion(_question);
+        setProgress(progress - diff);
     }
 
     function nextStep() {

@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
     const { t } = useTranslation('admin');
     const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(false);
     const slugTrans = slug.replace('/', '.');
 
     const breadcrumbs = [
@@ -20,7 +21,11 @@ const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
     ]
 
     useEffect(() => {
-        API_GET(slug).then(response => setItems(response));
+        setLoading(true)
+        API_GET(slug).then(response => {
+            setLoading(false)
+            setItems(response)
+        });
     }, []);
 
     function deleteItem(id) {
@@ -41,7 +46,7 @@ const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
 
             <Widget>
                 { items ?
-                    <table className="table no-border striped">
+                    <table className={`table no-border striped ${loading ? 'loading' : '' }`}>
                         <thead>
                             <tr> 
                                 { fields.map((field, i) => (

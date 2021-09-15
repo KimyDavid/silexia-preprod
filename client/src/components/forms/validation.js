@@ -10,10 +10,10 @@ const FormValidation = ({items, onSubmit, alerts}) => {
   const getCurrentCollection = () => {
     let collection;
     items.forEach((item) => {
-      if (item.type === 'collection' && item.value) {
+      if (item.type === 'collection') {
         collection = {
           name: item.name,
-          data : item.value
+          data : item.value ?? ''
         }
       }
     });
@@ -30,8 +30,19 @@ const FormValidation = ({items, onSubmit, alerts}) => {
     return quill
   }
 
+  const getCurrentImage = () => {
+    let image;
+    items.forEach((item) => {
+      if (item.type === 'file' && item.value) {
+        image = item.value
+      }
+    });
+    return image
+  }
+
   const [quill, setQuill] = useState(getCurrentQuill);
   const [collection, setCollection] = useState(getCurrentCollection);
+  const [currentImage, setCurrentImage] = useState(getCurrentImage);
 
   useEffect(() => {
     if (quill) {
@@ -50,13 +61,13 @@ const FormValidation = ({items, onSubmit, alerts}) => {
   const onSubmitFn = data => {
     if (collection) {
       collection.data.map((item) => {
-        delete item.id;
+        if (item.customId) {
+          delete item.customId;
+        }
         return item;
       });
       data[collection.name] = collection.data
     }
-
-    console.log(data);
 
     if (onSubmit) {
       onSubmit(data)
@@ -213,7 +224,39 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           if (item.type === 'collection') {
             return (
               <>
-                <Collection key={i} collection={item} onChange={(data) => collectionData(data, item)} currentCollection={item.value} />
+                <Collection key={i} field={item} collection={collection} onChange={(data) => collectionData(data, item)} />
+              </>
+            )
+          }
+          if (item.type === 'file') {
+            return (
+              <>
+                <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
+                  {item.label && <div className="form-label">{item.label}</div>}
+                  <div className="mb-4">
+                    <img src={currentImage} width="300" alt=""/>
+                  </div>
+
+                  <input
+                    {...register(item.name, item.error)}
+                    type={item.type}
+                    className={`form-input ${
+                      errors[item.name] ? 'border-red-500' : ''
+                    }`}
+                    placeholder={item.placeholder}
+                    onChange={(e) => {
+                      let reader = new FileReader();
+                      reader.onload = function() {
+                        setCurrentImage(reader.result)
+                      };
+                      reader.readAsDataURL(e.target.files[0]);
+                    }}
+                  />
+
+                  {!alerts && errors[item.name] && (
+                    <div className="form-error">{errors[item.name].message}</div>
+                  )}
+                </div>
               </>
             )
           }
@@ -240,7 +283,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
       </div>
       <input
         type="submit"
-        className="btn btn-default bg-blue-500 hover:bg-blue-600 text-white btn-rounded"
+        className="btn btn-default bg-blue-500 hover:bg-blue-600 text-white btn-rounded mt-4"
       />
     </form>
   )

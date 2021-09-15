@@ -69,7 +69,7 @@ class Index extends Component {
                                 <div className="col-12 col-md-12 col-lg-8">
                                     <div>
                                         <span className="badge badge-primary-soft p-2"><i className="la la-bold ic-3x rotation" /></span>
-                                        <h2 className="mt-4 mb-0">Notre blog dédié à la transition numérique des TPE/PME</h2>
+                                        <h2 className="mt-4 mb-0 h3">Notre blog dédié à la transition numérique des TPE/PME</h2>
                                     </div>
                                 </div>
                             </div>

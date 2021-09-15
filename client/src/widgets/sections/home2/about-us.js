@@ -7,13 +7,17 @@ class Memberaboutus extends Component {
                 <div className="col-12 col-lg-6 mb-6 mb-lg-0 order-lg-1">
                   <div className="row align-items-center">
                     <div className="col-6">
-                      <img src={require(`../../../assets/images/about/silexia2.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" />
+                      {/* <div className="filter-red rounded"> */}
+                        <img src={require(`../../../assets/images/about/silexia-filter-2.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" />
+                      {/* </div> */}
                     </div>
                     <div className="col-6">
                       {/* <img src={require(`../../../assets/images/about/12.jpg`)} className="img-fluid rounded shadow-lg mt-10" alt="..." /> */}
                     </div>
-                    <div className="col-10 ml-auto mr-auto mt-n8">
-                      <img src={require(`../../../assets/images/about/silexia1.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" />
+                    <div className="col-10 ml-auto mr-auto mt-n6">
+                      {/* <div className="filter-red rounded"> */}
+                        <img src={require(`../../../assets/images/about/silexia-filter-1.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" />
+                      {/* </div> */}
                     </div>
                   </div>
                 </div>

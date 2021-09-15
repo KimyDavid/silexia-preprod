@@ -7,7 +7,7 @@ const ForgotPassword = ({setToken}) => {
         return (
             <div>
                 {/*hero section start*/}
-                <section className="position-relative">
+                <section className="position-relative py-6">
                     <Pageheading foldername={"Compte"} title={"Mot de passe oublié"} />
                 </section>
                 {/*hero section end*/}

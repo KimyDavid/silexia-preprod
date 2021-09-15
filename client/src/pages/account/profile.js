@@ -39,7 +39,7 @@ const Profile = () => {
         return (
             <div>
                 {/*hero section start*/}
-                <section className="position-relative">
+                <section className="position-relative py-6">
                     <Pageheading title={"Mon compte"} />
                 </section>
                 {/*body content start*/}

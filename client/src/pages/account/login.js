@@ -11,7 +11,7 @@ const SignIn1 = ({setToken}) => {
         return (
             <div>
                 {/*hero section start*/}
-                <section className="position-relative">
+                <section className="position-relative py-6">
                     <Pageheading foldername={"Compte"} title={"Connexion"} />
                 </section>
                 {/*hero section end*/}

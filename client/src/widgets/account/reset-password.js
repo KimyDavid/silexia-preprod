@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Constants from '../../constants/Config';
 import { Link } from 'react-router-dom';
 
-const ResetPasswordForm = ({setToken}) => {
+const ResetPasswordForm = ({userID}) => {
     
     const [password, setPassword] = useState();
     const [verifPassword, setVerifPassword] = useState();
@@ -13,8 +13,8 @@ const ResetPasswordForm = ({setToken}) => {
         if (password !== verifPassword) {
             setMessage('Les mots de passe ne sont pas identiques');
         } else {
-            fetch(`${Constants.api_url}/reset_password`, {
-                method: 'POST',
+            fetch(`${Constants.api_url}/users/${userID}`, {
+                method: 'PATCH',
                 body: JSON.stringify({
                     password: password
                 }),
@@ -24,8 +24,8 @@ const ResetPasswordForm = ({setToken}) => {
                 .then(result => {
                     if (result.error) {
                         setMessage(result.details);
-                    } else if (setToken) {
-                        setToken(result);
+                    } else {
+                        window.location.href = `${window.location.origin}/profile`;
                     }
                 })
         }

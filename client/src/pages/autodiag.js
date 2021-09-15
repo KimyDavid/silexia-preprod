@@ -16,6 +16,8 @@ const Autodiag = () => {
     const [progressionTotal, setProgressionTotal] = useState();
     const [progression, setProgression] = useState(0);
 
+    console.log('category : ' + category);
+
     useEffect(() => {
         API_GET('autodiag').then(response => {
             setAutodiag(sortById(response));
@@ -62,7 +64,7 @@ const Autodiag = () => {
     return (
         <div>
             {/*hero section start*/}
-            <section className="position-relative">
+            <section className="position-relative py-6">
                 <Pageheading title={"Autodiag"} />
             </section>
             {/*hero section end*/}

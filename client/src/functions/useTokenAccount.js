@@ -11,6 +11,7 @@ export default function useTokenAdmin() {
   const [token, setToken] = useState(getToken());
 
   const saveToken = userToken => {
+    console.log(userToken);
     localStorage.setItem('silexia_account_token', JSON.stringify(userToken));
     setToken(userToken);
   };

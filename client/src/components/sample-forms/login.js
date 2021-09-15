@@ -19,8 +19,10 @@ const Login = ({setToken, message = null}) => {
       .then(res => res.json())
       .then(
         (result) => {
-          if (setToken) {
+          if (setToken && result.admin) {
             setToken(result);
+          } else {
+            alert('Unauthorized user')
           }
         },
       )

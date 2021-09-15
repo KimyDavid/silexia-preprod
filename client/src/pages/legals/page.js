@@ -18,7 +18,7 @@ const Page = ({slug}) => {
             <div>
                 { loaded ?
                     <>
-                        <section className="position-relative">
+                        <section className="position-relative py-6">
                             <Pageheading foldername={"Légal"} title={t(`administrative.pages.${content.type}`)} />
                         </section>
                         <div className="page-content">

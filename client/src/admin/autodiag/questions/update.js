@@ -14,7 +14,7 @@ const UpdateElement = ({slug, fields, method = 'PUT', isFormData}) => {
   const [loaded, setLoaded] = useState(false);
 
   const { state } = useLocation();
-  const item = state.elem;
+  const item = state.item.elem;
   const slugTrans = slug.replace('/', '.');
 
   let newFields = fields;
@@ -24,27 +24,33 @@ const UpdateElement = ({slug, fields, method = 'PUT', isFormData}) => {
     {title: t(`${slugTrans}.label`), url: `/admin/${slug}`, last: false},
     {title: t(`${slugTrans}.update`), url: `/admin/${slug}/update/:id`, last: true},
   ]
-    
+
   useEffect(() => {
+    newFields = fields;
     fields.map((_field) => {
       if (_field['type'] !== 'file') {
         _field.value = item[_field['name']];
       }
     });
 
-    newFields.push(
-      {
-        label: '',
-        error: {required: ''},
-        name: 'id_category',
-        type: 'number',
-        value: state.id_category,
-        hidden: true,
-        options: [
-          {value: [], label: ''},
-        ]
-      }
-    );
+    const fieldCategory = newFields[newFields.length-1];
+    if (!(fieldCategory.name === 'id_category')) {
+      newFields.push(
+        {
+          label: '',
+          error: {required: ''},
+          name: 'id_category',
+          type: 'number',
+          value: state.item.id_category,
+          hidden: false,
+          options: [
+            {value: [], label: ''},
+          ]
+        }
+      );
+    } else if (fieldCategory.value !== state.item.id_category) {
+      fieldCategory.value = state.item.id_category
+    }
 
     setLoaded(true);
   }, [])

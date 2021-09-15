@@ -11,21 +11,28 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
     let data = e;
     let formData = new FormData();
 
+    for ( let key in data ) {
+      if (data[key] === "") {
+        delete data[key];
+      } else if (data[key].length < 1) {
+        delete data[key];
+      } 
+    }
+
     if (isFormData) {
       for ( let key in data ) {
         if (data[key][0] instanceof Blob) {
-          console.log(data[key][0]);
-          formData.append(key, data[key][0]);
+          formData.append(key, data[key][0], data[key][0].name);
         } else {
           formData.append(key, data[key]);
         }
       }
+     
       data = formData;
     }
 
     setLoading(true);
     API_POST(url, method, data, isFormData).then(response => {
-      console.log(response);
       setLoading(false);
       if (response && response.error) {
         setMessage(response.details)
@@ -48,7 +55,7 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
             </Alert>
           </div>
         : ''}
-        <Validation items={fields} onSubmit={sendCreationRequest} />
+        <Validation items={fields} onSubmit={sendCreationRequest}/>
       </div>
     </>
   )

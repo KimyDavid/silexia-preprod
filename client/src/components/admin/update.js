@@ -25,9 +25,8 @@ const UpdateElement = ({slug, fields, method = 'PUT', isFormData}) => {
     
   useEffect(() => {
     fields.map((_field) => {
-      if (_field['type'] !== 'file') {
-        _field.value = item[_field['name']];
-      }
+      _field.value = item[_field['name']];
+      _field.error = {}
     });
     setLoaded(true);
   }, [])

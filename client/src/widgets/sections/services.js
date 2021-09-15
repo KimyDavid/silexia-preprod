@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {toSnakeCase} from '../../functions/string';
 import { API_GET } from '../../functions/apiRequest';
 
 const Services = () => {
@@ -25,7 +26,7 @@ const Services = () => {
                                 <div className="bg-primary-soft rounded">
                                 <div className="d-flex align-items-center mb-4">
                                     <div className="mr-3">
-                                    <img className="img-fluid services-icons" src={require(`../../assets/images/icon/acquisition-client.png`)} alt="" />
+                                        <img className="img-fluid services-icons" src={require(`../../assets/images/icon/${offer.id}.png`)} alt="" />
                                     </div>
                                     <h5 className="m-0 text-light">{offer.title}</h5>
                                 </div>
