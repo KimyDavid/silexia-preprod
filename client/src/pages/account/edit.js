@@ -10,7 +10,7 @@ const Profile = () => {
         return (
             <div>
                 {/*hero section start*/}
-                <section className="position-relative">
+                <section className="position-relative py-6">
                     <Pageheading foldername={"Compte"} title={"Modifier mes informations"} />
                 </section>
                 {/*body content start*/}

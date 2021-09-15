@@ -15,8 +15,6 @@ const ListElement = ({ url, slug, fields }) => {
     const [questions, setQuestions] = useState([]);
     const slugTrans = slug.replace('/', '.');
 
-    console.log(questions)
-
     const breadcrumbs = [
         { title: 'Dashboard', url: '/admin', last: false },
         { title: t(`${slugTrans}.label`), url: `/admin/${slug}`, last: true },
@@ -58,7 +56,7 @@ const ListElement = ({ url, slug, fields }) => {
                                     ))} 
                                     <td className="text-right">
                                         <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"
-                                        title="Modifier la question" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { id_category: category.id, elem: questions.find(x => x.id === item.id)}}}>
+                                        title="Modifier la question" to={ { pathname: `/admin/${slug}/update/${item['id']}`, state: { item: {id_category: category.id, elem: questions.find(x => x.id === item.id)}}}}>
                                         <FiEdit className = "stroke-current" /></Link>
                                         <button className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised ml-3"
                                         title="Supprimer la question" onClick={() => { deleteItem(item.id) }}>

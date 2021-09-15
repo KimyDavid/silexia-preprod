@@ -31,7 +31,7 @@ class Bloglisting1 extends Component {
     return (
       <div>
         {/*hero section start*/}
-        <section className="position-relative">
+        <section className="position-relative py-6">
         <Pageheading foldername={"Blog"} title={"Nos articles"} />
           
         </section>
@@ -44,7 +44,7 @@ class Bloglisting1 extends Component {
               <div className="row">
                   {/* Blog Card */}
 
-                  {items.slice(0, 3).map((item, i) => (
+                  {items.map((item, i) => (
                       <>
                       <div className="col-12 col-lg-6 mb-6 mb-lg-0">
                         <div key={i} className="card border-0 bg-transparent">

@@ -129,6 +129,7 @@ strong {
 
 .loading {
     position: relative;
+    opacity: .5;
 
     &::before {
         content: '';
@@ -166,5 +167,38 @@ strong {
 .portfolio {
     &-item {
         min-height: 150px;
+    }
+}
+
+.filter {
+    &-red {
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: $color-red;
+            opacity: .3;
+        }
+    }
+}
+
+.badge {
+    &--large {
+        font-size: 18px;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+
+    &-col {
+        &-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 }

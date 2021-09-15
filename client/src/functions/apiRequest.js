@@ -23,13 +23,19 @@ export const API_REMOVE = (slug) => {
 
 export const API_POST = (slug, method, data, isFormData) => {
     data = isFormData ? data : JSON.stringify(data);
-    const headers = isFormData ? {'Content-Type': 'multipart/form-data'} : {'Content-Type': 'application/json'}
-    return fetch(`${Constants.api_url}/${slug}`, {
-        method: method,
-        body: data,
-        credentials: 'include',
-        headers: headers,
-      })
+
+    let options = {
+      method: method,
+      body: data,
+      credentials: 'include',
+      redirect: 'follow',
+    }
+    
+    if (!isFormData) {
+      options.headers = {'Content-Type': 'application/json'}
+    }
+    
+    return fetch(`${Constants.api_url}/${slug}`, options)
         .then(res => res.json())
         .then(result => result)
         .catch(error => console.warn(error));

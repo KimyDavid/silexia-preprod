@@ -77,7 +77,7 @@ class Footer extends Component {
                 </Row>
                 <Row className="text-white text-center mt-8">
                     <Col>
-                    <hr className="mb-8" />Copyright 2021 Silexia | All Rights Reserved</Col>
+                    <hr className="mb-8" />Copyright 2021 Silexia | Tous droits réservés.</Col>
                 </Row>
                 </Container>
             </footer>

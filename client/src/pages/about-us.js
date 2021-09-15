@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Memberaboutus from '../widgets/sections/home2/about-us';
-import Testimonial from '../widgets/sections/home2/testimonial';
+import FeatureServices from '../widgets/sections/home2/services';
 import Pageheading from '../widgets/Pageheading';
 import ModalVideo from 'react-modal-video';
+import Blog from '../widgets/sections/blog';
 
 class Aboutus extends Component {
     constructor() {
@@ -19,7 +20,7 @@ class Aboutus extends Component {
     render() {
         return (
             <div>
-                <section className="position-relative">
+                <section className="position-relative py-6">
                     <Pageheading title={"À propos de Silexia"}/>
                 </section>
                 <div className="page-content">
@@ -35,7 +36,7 @@ class Aboutus extends Component {
                                 <div className="row justify-content-center text-center">
                                   <div className="col-12 col-md-12 col-lg-8 mb-lg-0 mb-8">
                                     <div>
-                                      <span className="badge badge-primary-soft p-2 font-w-6">Nos valeurs</span>
+                                      <span className="badge badge--large badge-primary-soft p-2 font-w-6">Nos valeurs</span>
                                       <h2 className="mt-3 font-w-5 mb-0 h3">Nous accompagnons les TPE et PME dans le traitement de leurs enjeux et le développement de leur rôle social.</h2>
                                     </div>
                                   </div>
@@ -111,31 +112,30 @@ class Aboutus extends Component {
                                 </div>
                               </div>
                             </div>
-                        </div>
-                    </section>
-                    {/*about end*/}
-                    {/*testimonial start*/}
-                    {/* <section className="position-relative">
-                        <div className="shape-2 transform-md-rotate" style={{ overflow: 'hidden' }}>
-                            <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: '100%', width: '100%' }}>
-                                <path d="M208.09,0.00 C152.70,67.10 262.02,75.98 200.80,150.00 L0.00,150.00 L0.00,0.00 Z" style={{ stroke: 'none', fill: '#cc4c44' }} />
-                            </svg>
-                        </div>
-                        <div className="container-fluid">
-                            <div className="row align-items-center">
-                                <div className="col-12 col-md-12 col-lg-4 mb-6 mb-lg-0">
-                                    <div> <span className="badge badge-light-soft p-2">
-                                        <i className="la la-users ic-3x rotation" />
-                                    </span>
-                                        <h2 className="mt-4 text-white">Discover Our Client Feedback</h2>
-                                        <p className="lead mb-0 text-white">All types of businesses need access to development resources, so we give you the option to decide how much you need to use.</p>
+
+                            <div className="row align-items-end mb-5">
+                                <div className="col-12 col-md-12 col-lg-8">
+                                    <div>
+                                        <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
+                                        <h2 className="mt-4 mb-0 h3">Nos offres</h2>
                                     </div>
                                 </div>
-                                <Testimonial />
                             </div>
+                            <FeatureServices />
+
+                            <div className="row align-items-end mb-5 mt-10">
+                                <div className="col-12 col-md-12 col-lg-8">
+                                    <div>
+                                        <span className="badge badge-primary-soft p-2"><i className="la la-bold ic-3x rotation" /></span>
+                                        <h2 className="mt-4 mb-0 h3">Notre blog dédié à la transition numérique des TPE/PME</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <Blog />
                         </div>
-                    </section> */}
-                    {/*testimonial end*/}
+                    </section>
+
+                    
 
                     {/* <section>
                       <div className="container">

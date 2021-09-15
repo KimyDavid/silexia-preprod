@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment , useEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import useToken from '../functions/useTokenAccount';
+import { API_AUTH } from '../functions/apiRequest';
 
 import '../App.css';
 import '../Vendor.js';
@@ -16,6 +17,7 @@ import Home2 from './home2';
 import Offers from './offers';
 import Offer from './offer';
 import AboutUs from './about-us';
+import Reseau from './partners';
 
 import BlogList from './blog/bloglist';
 import BlogSingle from './blog/blogsingle';
@@ -76,6 +78,7 @@ function App() {
               <Route exact path="/offres/:id" component={() => <Offer />} />
               <Route exact path="/offres" component={Offers} />
               <Route exact path="/about-us" component={AboutUs} />
+              <Route exact path="/reseau" component={Reseau} />
 
               <Route exact path="/autodiag" component={Autodiag} />
               
@@ -99,7 +102,7 @@ function App() {
                 :
                 <>
                   <Route path="/forgot-password" component={ForgotPassword} />
-                  <Route path="/reset-password" component={ResetPassword} />
+                  <Route path="/reset-password" component={() => <ResetPassword userID={null} />} />
                   <Route path="/profile" component={() => <Login setToken={setToken} />} />
                 </>
               }

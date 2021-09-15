@@ -28,19 +28,24 @@ const CreateElement = ({slug, fields}) => {
       }
     });
 
-    newFields.push(
-      {
-        label: '',
-        error: {required: ''},
-        name: 'id_category',
-        type: 'number',
-        value: state.id_category,
-        hidden: true,
-        options: [
-          {value: [], label: ''},
-        ]
-      }
-    );
+    const fieldCategory = newFields[newFields.length-1];
+    if (!(fieldCategory.name === 'id_category')) {
+      newFields.push(
+        {
+          label: '',
+          error: {required: ''},
+          name: 'id_category',
+          type: 'number',
+          value: state.id_category,
+          hidden: false,
+          options: [
+            {value: [], label: ''},
+          ]
+        }
+      );
+    } else if (fieldCategory.value !== state.id_category) {
+      fieldCategory.value = state.id_category
+    }
 
     setLoaded(true);
   }, [])

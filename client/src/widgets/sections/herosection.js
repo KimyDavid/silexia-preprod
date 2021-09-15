@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ModalVideo from 'react-modal-video'
+import Typed from 'react-typed';
 
 class Herosection6 extends Component {
   constructor() {
@@ -26,7 +27,12 @@ class Herosection6 extends Component {
         </div>
         <div className="col-12 col-lg-7 col-xl-6 order-lg-1">
           {/* Heading */}
-          <h1 className="display-5 mt-3">Prêt à démarrer votre <span className="text-primary font-w-5">transition numérique</span> ?</h1>
+          <h1 className="display-5 mt-3">Prêt à accélerer votre <br/><Typed
+                    className="text-primary font-w-5"
+                    strings={['transition numérique','acquisition de clients','développement']}
+                    typeSpeed={40}
+                    backSpeed={20}
+                    loop ></Typed> ?</h1>
           {/* Text */}
           <p className="lead text-muted">Il n'a jamais été aussi simple de faire du numérique un allié du quotidien.</p>
           {/* Buttons */} 

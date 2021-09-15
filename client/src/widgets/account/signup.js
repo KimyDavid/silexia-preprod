@@ -4,11 +4,13 @@ import {useForm} from 'react-hook-form';
 import { API_POST } from '../../functions/apiRequest';
 
 const SignUpForm = ({profile = null, setToken = null}) => {
-  const {handleSubmit, errors, register} = useForm();
+  const {handleSubmit, formState: { errors }, register} = useForm();
 
   const [sectors, setSectors] = useState([]);
   const [types, setTypes] = useState([]);
   const [sizes, setSizes] = useState([]);
+
+  const [message, setMessage] = useState();
 
   const [currentSector, setCurrentSector] = useState(profile.sector);
   const [currentType, setCurrentType] = useState(profile.type);
@@ -16,14 +18,18 @@ const SignUpForm = ({profile = null, setToken = null}) => {
 
   const submitForm = data => {
     if (validatePassword()) {
+      console.log(data)
       if (profile) {
-        API_POST(`users/${profile.id}`, 'PATCH', data)
-            .then(response => {
-              if (setToken) {
-                setToken(response);
-                window.location.href = `${window.location.origin}/profile`;
-              }
-            });
+        API_POST('subscribe', 'POST', data)
+          .then(response => {
+            if (response.error) {
+              setMessage(response.details);
+            } else if (setToken) {
+              setMessage();
+              setToken(response);
+              window.location.href = `${window.location.origin}/profile`;
+            }
+          });
       }
     }
   }
@@ -72,20 +78,21 @@ const SignUpForm = ({profile = null, setToken = null}) => {
             <div className="col-lg-8 col-md-10 ml-auto mr-auto">
               <div className="register-form text-center">
                 <form id="contact-form" method="post" onSubmit={handleSubmit(submitForm)}>
-                  <div className="messages" />
+                  { message ? <div className="messages">
+                    <p className="error message">{message}</p>
+                  </div> : '' }
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="form-label">Prénom</label>
                         <input 
-                          defaultValue={profile ? profile.first_name : ''} 
+                          defaultValue={profile ? profile.first_name : ''}
+                          {...register('first_name', {required: 'Le prénom est obligatoire.'})}
                           id="form_name" 
-                          type="text" 
-                          name="first_name" 
+                          type="text"
                           className={`form-control ${errors['first_name'] ? 'error' : ''}`}
                           placeholder="Prénom" 
-                          required="required"
-                          ref={register({required: 'Le prénom est obligatoire.'})} />
+                          required="required" />
                           {errors['first_name'] ? <span className="form-error error">Le prénom est obligatoire.</span> : '' }
                       </div>
                     </div>
@@ -96,11 +103,10 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                           defaultValue={profile ? profile.last_name : ''} 
                           id="form_name" 
                           type="text" 
-                          name="last_name" 
+                          {...register('last_name', {required: 'Le nom est obligatoire.'})}
                           className={`form-control ${errors['last_name'] ? 'error' : ''}`}
                           placeholder="Nom" 
-                          required="required" 
-                          ref={register({required: 'Le nom est obligatoire.'})} />
+                          required="required" />
                           {errors['last_name'] ? <span className="form-error error">Le nom est obligatoire.</span> : '' }
                       </div>
                     </div>
@@ -110,12 +116,11 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                         <input
                           defaultValue={profile ? profile.email : ''}
                           id="form_name"
+                          {...register('email', {required: "L'email est obligatoire."})}
                           type="text"
-                          name="email"
                           className={`form-control ${errors['email'] ? 'error' : ''}`}
                           placeholder="Email"
-                          required="required"
-                          ref={register({required: "L'email est obligatoire."})} />
+                          required="required" />
                           {errors['email'] ? <span className="form-error error">L'email est obligatoire.</span> : '' }
                       </div>
                     </div>
@@ -125,12 +130,11 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                         <input
                           defaultValue={profile ? profile.phone : ''}
                           id="form_name"
+                          {...register('phone', {required: 'Le téléphone est obligatoire.'})}
                           type="text"
-                          name="phone"
                           className={`form-control ${errors['phone'] ? 'error' : ''}`}
                           placeholder="Téléphone"
-                          required="required"
-                          ref={register({required: 'Le téléphone est obligatoire.'})} />
+                          required="required" />
                           {errors['phone'] ? <span className="form-error error">Le téléphone est obligatoire.</span> : '' }
                       </div>
                     </div>
@@ -141,11 +145,10 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                           defaultValue={profile ? profile.function : ''}
                           id="form_name"
                           type="text"
-                          name="function"
+                          {...register('function', {required: 'La fonction est obligatoire.'})}
                           className={`form-control ${errors['function'] ? 'error' : ''}`}
                           placeholder="Fonction"
-                          required="required"
-                          ref={register({required: 'La fonction est obligatoire.'})} />
+                          required="required" />
                           {errors['function'] ? <span className="form-error error">La fonction est obligatoire.</span> : '' }
                       </div>
                     </div>
@@ -156,11 +159,10 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                           defaultValue={profile ? profile.company : ''}
                           id="form_name"
                           type="text"
-                          name="company"
                           className={`form-control ${errors['company'] ? 'error' : ''}`}
+                          {...register('company', {required: "Le nom de l'entreprise est obligatoire."})}
                           placeholder="Nom de l'entreprise"
-                          required="required"
-                          ref={register({required: "L'entreprise est obligatoire."})} />
+                          required="required" />
                           {errors['company'] ? <span className="form-error error">L'entreprise est obligatoire.</span> : '' }
                       </div>
                     </div>
@@ -169,9 +171,8 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                         <label className="form-label">Secteur de l'entreprise</label>
                         <select className={`form-control ${errors['sector'] ? 'error' : ''}`}
                         value={currentSector}
-                        ref={register({required: "Le secteur de l'entreprise est obligatoire."})}
-                        onChange={(e) => setCurrentSector(e.target.value)}
-                        name="sector">
+                        {...register('sector', {required: "Le secteur de l'entreprise est obligatoire."})}
+                        onChange={(e) => setCurrentSector(e.target.value)}>
                           <option value="">Secteur de l'entreprise</option>
                           { sectors ? sectors.map((sector, i) => (
                               <option key={i} value={sector.id}>{sector.label}</option>
@@ -185,9 +186,8 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                         <label className="form-label">Type d'entreprise</label>
                         <select className={`form-control ${errors['type'] ? 'error' : ''}`}
                         value={currentType}
-                        ref={register({required: "Le type de l'entreprise est obligatoire."})}
-                        onChange={(e) => setCurrentType(e.target.value)}
-                        name="type">
+                        {...register('type', {required: "Le type de l'entreprise est obligatoire."})}
+                        onChange={(e) => setCurrentType(e.target.value)}>
                           <option value="">Type d'entreprise</option>
                           { types ? types.map((type, i) => (
                               <option key={i} value={type.id}>{type.label}</option>
@@ -201,9 +201,8 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                         <label className="form-label">Taille de l'entreprise</label>
                         <select className={`form-control ${errors['size'] ? 'error' : ''}`}
                           value={currentSize}
-                          ref={register({required: "La taille de l'entreprise est obligatoire."})}
-                          onChange={(e) => setCurrentSize(e.target.value)}
-                          name="size">
+                          {...register('size', {required: "La taille de l'entreprise est obligatoire."})}
+                          onChange={(e) => setCurrentSize(e.target.value)}>
                           <option value="">Taille de l'entreprise</option>
                           { sizes ? sizes.map((size, i) => (
                             <option key={i} value={size.id}>{size.label}</option>
@@ -217,7 +216,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="form-label">Mot de passe</label>
-                        <input id="form_password" type="password" name="password" className="form-control" placeholder="Mot de passe" required="required" ref={register({required: "Le mot de passe est obligatoire."})}/>
+                        <input id="form_password" type="password" className="form-control" placeholder="Mot de passe" required="required" {...register('password', {required: "Le mot de passe est obligatoire."})}/>
                       </div>
                     </div>
                     <div className="col-md-6">

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { API_AUTH } from '../functions/apiRequest';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import useToken from '../functions/useTokenAdmin';
@@ -25,18 +25,16 @@ const Wrapper = ({children}) => {
 
 const Main = () => {
     const { token, setToken } = useToken();
-    const { loaded, setLoaded} = useToken(false);
 
     useEffect(() => {
-        if (!loaded && token == 'null') {
-            API_AUTH().then(result => {
-                if (result) {
-                    setToken(result)
-                }
-            });
-            setLoaded(true);
-        }
-    });
+        API_AUTH().then(result => {
+            if (result && result.admin) {
+                setToken(result)
+            } else {
+                setToken();
+            }
+        });
+    }, []);
   
     if(!token) {
       return <Login setToken={setToken} />
