@@ -8,7 +8,9 @@ function getPartners(data, callback) {
       strsql += ' IF(partners.id IS NULL, NULL, CONCAT("[", GROUP_CONCAT(JSON_OBJECT(';
       strsql += '   "id", partners.id,';
       strsql += '   "name", partners.name,';
-      strsql += '   "abstract", partners.abstract';
+      strsql += '   "abstract", partners.abstract,';
+      strsql += '   "url", partners.url,';
+      strsql += '   "version", partners.version';
       strsql += ' ) ORDER BY partners.order), "]")) AS partners';
       strsql += ' FROM partners_type pt';
       strsql += ' LEFT JOIN partners ON partners.partner_type = pt.id AND partners.deleted IS NULL';
