@@ -38,8 +38,8 @@ router.post('/subscribe', validateResourceMW(userCreateSchema), function(req, re
 });
 
 
-router.get('/verif_account', auth(), function(req, res) {
-  userController.verifAccount({id_user:req.user.id, key:req.query ? req.query.key : null}, function(err, results){
+router.post('/verif_account', auth(), function(req, res) {
+  userController.verifAccount({id_user:req.user.id, key:req.body.key}, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{
@@ -59,8 +59,8 @@ router.post('/forgot_password', validateResourceMW(userForgetPasswordSchema), fu
 });
 
 
-router.get('/reset_password', function(req, res) {
-  userController.resetPassword({id_user:req.user.id, key:req.query ? req.query.key : null}, function(err, results){
+router.post('/reset_password', function(req, res) {
+  userController.resetPassword({id_user:req.user.id, key:req.body.key}, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{

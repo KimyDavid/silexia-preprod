@@ -81,12 +81,12 @@ verif                 | tinyint       | Account's verification status (0: unsubs
 
 * **URL**
 
-  [GET] /v1/reset_password/:key
+  [POST] /v1/reset_password?key=[key]
 
-*  **URL Params**
+*  **Data Params**
 
    ***Required:***
-   `id=[integer]`
+   `key=[string]`
 
 * **Success Response:**
 
@@ -121,6 +121,31 @@ verif                 | tinyint       | Account's verification status (0: unsubs
 
   * **Code:** 200
     **Content:** `[object User]`
+
+---
+
+### Verif account
+  Verify user's account.
+
+* **URL**
+
+  [POST] /v1/veif_account?key=[key]
+
+* **Data Params**
+
+  ***Required:***
+   `key=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 
+    **Content:** `[object User]`
+ 
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST 
+    **Description:** Provided key isn't recognized in db, or has already been used
+    **Content:** `{ error: 'wrong key'}`
 
 ---
 

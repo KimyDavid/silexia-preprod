@@ -79,7 +79,9 @@ app.get([
   '/mentions-legales',
   '/conditions-generales-de-vente',
   '/politique-de-confidentialite',
-  '/admin'
+  '/admin',
+  '/verif_account',
+  '/reset_password',
 ], function(req, res) {
   res.sendFile('client/dist/index.html', {root:'.'});
 });
