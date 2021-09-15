@@ -55,4 +55,37 @@ function forgotPassword(data, callback){
   })
 }
 
-export default { verifAccount, forgotPassword }
+function sendEmailContactPartner(data, callback){
+  send_mail({dest:process.env.EMAIL_CONTACT, data:data, template:"d-8fc0fd22f2fe4bf2a8e416be4da7f502"}, function(err){
+    if(err){
+        console.log(err)
+    }
+    callback(err)
+  })
+}
+
+function sendEmailContactOffre(data, callback){
+  send_mail({dest:process.env.EMAIL_CONTACT, data:data, template:"d-511b9fb25cd04d9db003956219b7df70"}, function(err){
+    if(err){
+        console.log(err)
+    }
+    callback(err)
+  })
+}
+
+function sendEmailContactNewsletter(data, callback){
+  send_mail({dest:process.env.EMAIL_CONTACT, data:data, template:"d-8f4de8154be24a0d98b3c022b835dda5"}, function(err){
+    if(err){
+        console.log(err)
+    }
+    callback(err)
+  })
+}
+
+export default { 
+  verifAccount, 
+  forgotPassword,
+  sendEmailContactPartner,
+  sendEmailContactOffre,
+  sendEmailContactNewsletter
+}

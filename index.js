@@ -21,6 +21,8 @@ import autodiag from '#routes/autodiag/autodiag.routes.js';
 import questions from '#routes/autodiag/question.routes.js';
 import categories from '#routes/autodiag/category.routes.js';
 
+import contact from '#routes/contact/contact.routes.js';
+
 var app = express();
 
 app.use(session({
@@ -64,6 +66,8 @@ app.use('/v1', partners)
 app.use('/v1', autodiag)
 app.use('/v1', questions)
 app.use('/v1', categories)
+
+app.use('/v1', contact)
 
 app.get([
   '/',
