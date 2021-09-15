@@ -1,6 +1,7 @@
 import db from '#config/db.js';
 import async from 'async';
 import _ from 'lodash';
+import mysql from 'mysql';
 
 import imageController from '#controllers/utils/image.controllers.js';
 
@@ -16,6 +17,12 @@ function getItem(data, callback) {
       strsql += ' WHERE deleted IS NULL';
       if(data.id){
         strsql += ' AND id = ' + data.id
+      }
+      if(data.filter){
+        for(let i=0; i<data.filter.length; i++){
+          strsql += ' AND ' + data.table + '.' + data.filter[i].key 
+          strsql += data.filter[i].value || data.filter[i].value === 0 ? ' = ' + mysql.escape(data.filter[i].value) : ' IS NULL ';        
+        }
       }
       if(data.order){
         strsql += ' ORDER BY ' + data.table + '.order'
@@ -75,7 +82,6 @@ function updateInsertItem(data, callback){
       strsql += strsql_key + ') VALUES(' + strsql_data + ')'
       strsql += ' ON DUPLICATE KEY UPDATE last_modif = NOW(), ' + strsql_values
       
-      
       db.query(strsql, null, function (error, results) { 
         callback(error, results.insertId)
       });
@@ -133,7 +139,7 @@ function createItem(data, callback){
     if(err){
       callback(err)
     }else{
-      getItem({table:data.table, model:data.model, id:id_item}, callback)
+      getItem({table:data.table, model:data.model, id:id_item, filter:data.filter}, callback)
     }
   })
 
@@ -199,7 +205,7 @@ function editItem(data, callback){
     if(err){
       callback(err)
     }else{
-      getItem({table:data.table, model:data.model, id:data.item.id}, callback)
+      getItem({table:data.table, model:data.model, id:data.item.id, filter:data.filter}, callback)
     }
   })
 

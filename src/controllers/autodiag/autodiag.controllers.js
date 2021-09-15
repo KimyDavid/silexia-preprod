@@ -109,6 +109,32 @@ function insertAutodiagUserAnswers(data, callback) {
 
 function getAutodiagUser(data, callback) {
 
+  async.parallel([
+    function(callback){
+      getMainTierAutodiagUser(data, callback)
+    },
+    function(callback){
+      getResultsAutodiagUser(data, callback)
+    }
+  ], function(err, results){
+    let _data = {autodiag:results[1], global:null}
+    let total = 0
+    let user_total = 0
+    for(let i=0; i<results[1].length; i++){
+      total += results[1][i].score_total ? results[1][i].score_total : 0
+      user_total += results[1][i].score_user ? results[1][i].score_user : 0
+    }
+
+    let ind   = Math.floor(user_total/total*results[0].length)
+    let tier  = results[0][ind === results[0].length ? ind - 1 : ind]
+    _data.global = {score_user:user_total, score_total:total, tier:tier.text}
+
+    callback(err, _data)
+  })
+}
+
+function getResultsAutodiagUser(data, callback) {
+
   var strsql = ' SELECT ac.id, ac.label, ac.description, ';
       strsql += ' CONCAT("[", GROUP_CONCAT(JSON_OBJECT("text", at2.text, "order", at2.order) ORDER BY at2.order), "]") AS tiers,';
       strsql += ' Results.score_user, ';
@@ -136,6 +162,19 @@ function getAutodiagUser(data, callback) {
         for(let i=0; i<results.length; i++){
           results[i] =  new Category(results[i], {results:true})
         }  
+        callback(error, results)
+      });
+
+}
+
+function getMainTierAutodiagUser(data, callback) {
+
+  var strsql = ' SELECT id, text ';
+      strsql += ' FROM Autodiag_Tiers';
+      strsql += ' WHERE Autodiag_Tiers.deleted IS NULL ';
+      strsql += ' ORDER BY Autodiag_Tiers.order';
+
+      db.query(strsql, null, function (error, results) { 
         callback(error, results)
       });
 

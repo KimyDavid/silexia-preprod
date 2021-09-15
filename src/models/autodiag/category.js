@@ -67,5 +67,6 @@ const updateCategorySchema = yup.object({
 
 
 export { 
-    Category, createCategorySchema, updateCategorySchema
+    Category, createCategorySchema, updateCategorySchema, 
+    Tier, TierSchema
 }
