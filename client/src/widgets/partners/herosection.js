@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Clientlogo from '../common/Clientlogo';
+import Clientlogo from '../common/clientlogo';
 
 class Herosection extends Component {
     render() {
