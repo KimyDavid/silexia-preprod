@@ -1,3 +1,3 @@
 module.exports = {
-    api_url: process.env.ENDPOINT,
+    api_url: process.env.REACT_APP_ENDPOINT,
 }
