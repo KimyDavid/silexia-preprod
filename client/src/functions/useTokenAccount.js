@@ -3,9 +3,9 @@ import { useState } from 'react';
 export default function useTokenAdmin() {
   const getToken = () => {
     const tokenString = localStorage.getItem('silexia_account_token');
-    const userToken = JSON.parse(tokenString);
+    const userToken = tokenString !== '' ? JSON.parse(tokenString) : null;
 
-    return userToken ? userToken : null;
+    return userToken;
   }
 
   const [token, setToken] = useState(getToken());

@@ -30,8 +30,8 @@ class Herosection6 extends Component {
           <h1 className="display-5 mt-3">Prêt à accélerer votre <br/><Typed
                     className="text-primary font-w-5"
                     strings={['transition numérique','acquisition de clients','développement']}
-                    typeSpeed={40}
-                    backSpeed={20}
+                    typeSpeed={80}
+                    backSpeed={50}
                     loop ></Typed> ?</h1>
           {/* Text */}
           <p className="lead text-muted">Il n'a jamais été aussi simple de faire du numérique un allié du quotidien.</p>

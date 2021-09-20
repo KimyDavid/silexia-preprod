@@ -30,11 +30,10 @@ class Index extends Component {
                                     <p className="lead mb-5">Activer les leviers numériques à fort impact sur leur organisation ! Découvrez comment le numérique est capable de faire évoluer votre organisation.</p>
                                 </div>
                             </div>
-
                         
                             <div className="row justify-content-center text-center mt-8">
-                              <div className="col-12 col-md-12 col-lg-10 mb-4 mb-lg-0">
-                                <div className="mb-8">
+                              <div className="col-12 mb-4 mb-lg-0">
+                                <div>
                                   <h2 className="mt-3 font-w-6 h3 mb-5">Votre bureau de pilotage du numérique dans votre organisation</h2>
                                   <div className="row text-justify">
                                     <div className="col-12 col-md-6 col-lg-4">
@@ -52,20 +51,10 @@ class Index extends Component {
                             </div>
                         </div>
 
-                            
-
                         <div className="container-fluid">
                             {/*how it work start*/}
                             <section className="position-relative bg-light mt-10" data-bg-img={require(`../assets/images/bg/02.png`)}>
                               <div className="container mt-8 mb-10">
-                                <div className="row justify-content-center text-center">
-                                  <div className="col-12 col-md-12 col-lg-8 mb-lg-0 mb-8">
-                                    <div>
-                                      <span className="badge badge-primary-soft p-2 font-w-6">Nos valeurs</span>
-                                      <h2 className="mt-3 font-w-5 mb-0 h3">Nous accompagnons les TPE et PME dans le traitement de leurs enjeux et le développement de leur rôle social.</h2>
-                                    </div>
-                                  </div>
-                                </div>
                                 {/* / .row */}
                                 <div className="row align-items-center justify-content-between mb-10 mt-8">
                                   <div className="col-12 col-lg-4 mb-6 mb-lg-0">
@@ -74,8 +63,8 @@ class Index extends Component {
                                   <div className="col-12 col-lg-6">
                                     <div>
                                       <h2><span className="badge badge-primary-soft p-2">01</span></h2>
-                                      <h4 className="mt-3">Innovation</h4>
-                                      <p className="mb-0">Nous fournissons des solutions numériques clés en main tout en conseillant nos clients dans leurs choix technologiques en fonction de leur stratégie et objectifs.</p>
+                                      <h4 className="mt-3">Évaluation des usages numériques de votre organisation</h4>
+                                      <p className="mb-0">Étape incontournable, Silexia dresse un état des lieux de l'intégration du numérique dans votre organisation en relation avec l'état de l'art de votre secteur d'activité et des pratiques de vos concurrents. L'objectif ? Situer votre niveau de digitalisation pour commencer à concevoir votre plan de transformation sur mesure !</p>
                                     </div>
                                   </div>
                                 </div>
@@ -86,8 +75,8 @@ class Index extends Component {
                                   <div className="col-12 col-lg-6">
                                     <div>
                                       <h2><span className="badge badge-primary-soft p-2">02</span></h2>
-                                      <h4 className="mt-3">Made in Europe</h4>
-                                      <p className="mb-0">Nous prenons le parti de favoriser des solutions numériques made in Europe car nous croyons à l’émergence d’une tech européenne, respectueuse de la vie privée et efficace dans leurs services aux organisations.</p>
+                                      <h4 className="mt-3">Analyse de vos besoins et définition de vos objectifs</h4>
+                                      <p className="mb-0">Nous identifions les leviers numériques déterminants pour parvenir à des objectifs atteignables et quantifiables. Une solution unique n'existe pas et la compréhension des enjeux de votre organisation est primordiale. L'objectif ? Identifier les leviers de votre succès par le numérique !</p>
                                     </div>
                                   </div>
                                 </div>
@@ -98,8 +87,32 @@ class Index extends Component {
                                   <div className="col-12 col-lg-6 mb-10">
                                     <div>
                                       <h2><span className="badge badge-primary-soft p-2">03</span></h2>
-                                      <h4 className="mt-3">Environnement</h4>
-                                      <p className="mb-0">Lorsque nous déployons des solutions numériques chez nos clients, nous favorisons toujours des services, logiciels, hébergements ou serveurs respectueux de l’environnement.</p>
+                                      <h4 className="mt-3">Fixation d'un duget dédié au numérique et construction de votre plan d'actions</h4>
+                                      <p className="mb-0">En fonction de vos besoins et objectifs, nous vous soumettons plusieurs scénarios de transition numérique chiffrés pour déterminer ensemble le budget le plus adapté à votre organisation en termes de retours sur investissements. L'objectif ? Élaborer votre plan d'actions de transition, détaillé selon les charges, coûts et temps de déploiement !</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="row align-items-center justify-content-between">
+                                  <div className="col-12 col-lg-4 order-lg-1 mb-6 mb-lg-0">
+                                    <img src={require(`../assets/images/about/environnement.svg`)} alt="Silexia valeur environnement" className="img-fluid" />
+                                  </div>
+                                  <div className="col-12 col-lg-6 mb-10">
+                                    <div>
+                                      <h2><span className="badge badge-primary-soft p-2">04</span></h2>
+                                      <h4 className="mt-3">Association de vos collaborateurs et parties prenantes</h4>
+                                      <p className="mb-0">Nous nous assurons que les évolutions envisagées répondent aux besoins métiers de vos collaborateurs et nous les accompagnons lors du déploiement des solutions choisies. L'objectif ? Que vos collaborateurs exploitent parfaitement les nouvelles briques numériques mises en place !</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="row align-items-center justify-content-between">
+                                  <div className="col-12 col-lg-4 mb-6 mb-lg-0">
+                                    <img src={require(`../assets/images/about/environnement.svg`)} alt="Silexia valeur environnement" className="img-fluid" />
+                                  </div>
+                                  <div className="col-12 col-lg-6 mb-10">
+                                    <div>
+                                      <h2><span className="badge badge-primary-soft p-2">05</span></h2>
+                                      <h4 className="mt-3">Suivi de votre feuille de route et mesure des avancées</h4>
+                                      <p className="mb-0">Nous débutons les différents chantiers de votre transition numérique selon le calendrier décidé et nous réalisons des points de suivi réguliers pour évaluer les retours sur investissements attendus. L'objectif ? Piloter votre transition numérique pour que le digital devienne votre allié du quotidien.</p>
                                     </div>
                                   </div>
                                 </div>

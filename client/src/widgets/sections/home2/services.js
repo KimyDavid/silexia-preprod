@@ -5,7 +5,7 @@ import { toSnakeCase } from '../../../functions/string';
 import OwlCarousel from 'react-owl-carousel';
 
 const FeatureServices = () => {
-    const [offers, setOffers] = useState([]);
+    const [offers, setOffers] = useState();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -15,7 +15,7 @@ const FeatureServices = () => {
         return (
             <div className="row mt-5">
                 <div className="col-12 mt-5">
-                { offers.length > 0 ?  
+                { offers ?  
                     <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} > 
                         {offers.map((offer, i) => 
                             <Link to={{pathname: `offres/${toSnakeCase(offer.title)}`}} className="item" key={i}>

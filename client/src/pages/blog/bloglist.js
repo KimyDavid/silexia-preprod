@@ -44,23 +44,25 @@ class Bloglisting1 extends Component {
               <div className="row">
                   {/* Blog Card */}
 
-                  {items.map((item, i) => (
-                      <>
-                      <div className="col-12 col-lg-6 mb-6 mb-lg-0">
-                        <div key={i} className="card border-0 bg-transparent">
-                          <Link to={{pathname: `/blog/${item['id']}`, state: { items: item }}}><img className="card-img-top shadow rounded" src={item['image']} alt={item['title']} /></Link>
-                          <div className="card-body pt-5">
-                            <h2 className="h5 font-weight-medium">
-                              <Link className="link-title" to={{pathname: `/blog/${item['id']}`, state: { items: item }}}>{item['title']}</Link>
-                            </h2>
-                            <div dangerouslySetInnerHTML={{__html: item['text']}}></div> 
+                  {items.map((item, i) => {
+                    let abstract = document.createElement('div');
+                    abstract.innerHTML = item['text'];
+                      return (
+                        <div key={i} className="col-12 col-lg-6 mb-6 mb-lg-0">
+                          <div className="card border-0 bg-transparent">
+                            <Link to={{pathname: `/blog/${item['id']}`, state: { items: item }}}><img className="card-img-top shadow rounded" src={item['image']} alt={item['title']} /></Link>
+                            <div className="card-body pt-5">
+                              <h2 className="h5 font-weight-medium">
+                                <Link className="link-title" to={{pathname: `/blog/${item['id']}`, state: { items: item }}}>{item['title']}</Link>
+                              </h2>
+                              <p className="abstract abstract-4">{ abstract.innerText }</p>
+                              <Link className="link link-primary" to={{pathname: `/blog/${item['id']}`, state: { items: item }}}>En savoir plus</Link>
+                            </div>
                           </div>
-                        </div>
 
                           <hr className="my-8" />
-                        </div>
-                      </>
-                    ))}
+                        </div> )
+                    })}
                   {/* End Blog Card */}
 
               </div>

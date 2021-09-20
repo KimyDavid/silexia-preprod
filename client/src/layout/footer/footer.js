@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Container, Row } from 'reactstrap';
+import ContactNewsletter from './contact';
 
 class Footer extends Component {
     render() {
@@ -13,66 +14,59 @@ class Footer extends Component {
                 </div>
                 <Container  className=" mt-11">
                 <Row>
-                    <div className="col-12 col-lg-5 col-xl-4 mr-auto mb-6 mb-lg-0">
-                    <div className="subscribe-form bg-warning-soft p-5 rounded">
-                        <h5 className="mb-4 text-white">Newsletter</h5>
-                        <h6 className="text-light">Souscrivez à notre newsletter pour ne rien rater !</h6>
-                        <form id="mc-form" className="group">
-                        <input type="email"  name="EMAIL" className="email form-control" id="mc-email" placeholder="Adresse email" required style={{height: '60px'}} />
-                        <input className="btn btn-outline-light btn-block mt-3 mb-2" type="submit" name="subscribe" defaultValue="Subscribe" />
-                        </form>
+                    <div className="col-12 col-lg-5 col-xl-5 mr-auto mb-6 mb-lg-0">
+                        <ContactNewsletter/>
                     </div>
-                    </div>
-                    <div className="col-12 col-lg-6 col-xl-7">
-                    <Row>
-                        <Col className="col-12 col-sm-6 navbar-dark">
-                        <h5 className="mb-4 text-white">Pages</h5>
-                        <ul className="navbar-nav list-unstyled mb-0">
-                            <li className="mb-3 nav-item"><Link className="nav-link" to="/">L'agence</Link> 
-                            </li>
-                            <li className="mb-3 nav-item"><Link className="nav-link" to="/blog">Blog</Link> 
-                            </li>
-                            <li className="mb-3 nav-item"><Link className="nav-link" to="/profile">Mon compte</Link> 
-                            </li>
-                            <li className="mb-3 nav-item"><Link className="nav-link" to="/autodiag">Autodiag</Link> 
-                            </li>
-                        </ul>
-                        </Col>
-                        <Col className="col-12 col-sm-6 mt-6 mt-sm-0 navbar-dark">
-                        <h5 className="mb-4 text-white">Legal</h5>
-                        <ul className="navbar-nav list-unstyled mb-0">
-                            <li className="mb-3 nav-item"><Link className="nav-link" to="/mentions-legales">Mentions légales</Link> 
-                            </li>
-                            <li className="mb-3 nav-item"><Link className="nav-link" to="/conditions-generales-de-vente">Conditions générales de vente</Link> 
-                            </li>
-                            <li className="mb-3 nav-item"><Link className="nav-link" to="/conditions-generales-utilisation">Conditions générales d'utilisation</Link> 
-                            </li>
-                            <li className="nav-item"><Link className="nav-link" to="/politique-de-confidentialite">Politique de confidentialité</Link> 
-                            </li>
-                        </ul>
-                        </Col>
-                    </Row>
-                    <Row className="mt-5" >
-                        <Col className="col-12 col-sm-6">
-                            <Link className="footer-logo text-white h2 mb-0" to="/">
-                                <img className="logo img-fluid" src={require(`../../assets/images/logo_white.png`)} alt="Logo Silexia" />
-                            </Link> 
-                        </Col>
-                        <Col className="col-12 col-sm-6 mt-6 mt-sm-0">
-                        <ul className="list-inline mb-0">
-                            <li className="list-inline-item"><Link className="text-light ic-2x" to="https://www.facebook.com/Silexias"><i className="la la-facebook" /></Link> 
-                            </li>
-                            <li className="list-inline-item"><Link className="text-light ic-2x" to="tel:0635266607"><i className="la la-phone" /></Link> 
-                            </li>
-                            <li className="list-inline-item"><Link className="text-light ic-2x" to="mailto:contact@silexia.fr"><i className="la la-envelope" /></Link> 
-                            </li>
-                            <li className="list-inline-item"><Link className="text-light ic-2x" to=""><i className="la la-instagram" /></Link> 
-                            </li>
-                            <li className="list-inline-item"><Link className="text-light ic-2x" to="https://www.linkedin.com/company/silexias/"><i className="la la-linkedin" /></Link> 
-                            </li>
-                        </ul>
-                        </Col>
-                    </Row>
+                    <div className="col-12 col-lg-6 col-xl-6">
+                        <Row>
+                            <Col className="col-12 col-sm-6 navbar-dark">
+                            <h5 className="mb-4 text-white">Pages</h5>
+                            <ul className="navbar-nav list-unstyled mb-0">
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/">L'agence</Link> 
+                                </li>
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/blog">Blog</Link> 
+                                </li>
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/profile">Mon compte</Link> 
+                                </li>
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/autodiag">Autodiag</Link> 
+                                </li>
+                            </ul>
+                            </Col>
+                            <Col className="col-12 col-sm-6 mt-6 mt-sm-0 navbar-dark">
+                            <h5 className="mb-4 text-white">Legal</h5>
+                            <ul className="navbar-nav list-unstyled mb-0">
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/mentions-legales">Mentions légales</Link> 
+                                </li>
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/conditions-generales-de-vente">Conditions générales de vente</Link> 
+                                </li>
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/conditions-generales-utilisation">Conditions générales d'utilisation</Link> 
+                                </li>
+                                <li className="nav-item"><Link className="nav-link" to="/politique-de-confidentialite">Politique de confidentialité</Link> 
+                                </li>
+                            </ul>
+                            </Col>
+                        </Row>
+                        <Row className="mt-5" >
+                            <Col className="col-12 col-sm-6">
+                                <Link className="footer-logo text-white h2 mb-0" to="/">
+                                    <img className="logo img-fluid" src={require(`../../assets/images/logo_white.png`)} alt="Logo Silexia" />
+                                </Link> 
+                            </Col>
+                            <Col className="col-12 col-sm-6 mt-6 mt-sm-0">
+                            <ul className="list-inline mb-0">
+                                <li className="list-inline-item"><Link className="text-light ic-2x" to="https://www.facebook.com/Silexias"><i className="la la-facebook" /></Link> 
+                                </li>
+                                <li className="list-inline-item"><Link className="text-light ic-2x" to="tel:0635266607"><i className="la la-phone" /></Link> 
+                                </li>
+                                <li className="list-inline-item"><Link className="text-light ic-2x" to="mailto:contact@silexia.fr"><i className="la la-envelope" /></Link> 
+                                </li>
+                                <li className="list-inline-item"><Link className="text-light ic-2x" to=""><i className="la la-instagram" /></Link> 
+                                </li>
+                                <li className="list-inline-item"><Link className="text-light ic-2x" to="https://www.linkedin.com/company/silexias/"><i className="la la-linkedin" /></Link> 
+                                </li>
+                            </ul>
+                            </Col>
+                        </Row>
                     </div>
                 </Row>
                 <Row className="text-white text-center mt-8">

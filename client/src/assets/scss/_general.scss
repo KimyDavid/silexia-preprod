@@ -75,6 +75,11 @@ strong {
     background: $color-red-overlay;
     border-radius: 5px;
     padding: 5px 15px;
+
+    &.valid {
+        background: $color-green-overlay;
+        color: $color-green;
+    }
 }
 
 .form {
@@ -105,6 +110,10 @@ strong {
 
     h3 {
         font-size: 20px;
+    }
+
+    p {
+        margin: 0;
     }
 }
 
@@ -165,6 +174,17 @@ strong {
 }
 
 .portfolio {
+    &-title {    
+        padding: 15px 30px;
+        opacity: 1;
+        visibility: visible;
+        transform: translate3d(0, 53%, 0);
+
+        h6 {
+            margin-bottom: 15px;
+        }
+    }
+
     &-item {
         min-height: 150px;
     }
@@ -200,5 +220,33 @@ strong {
         &-2 {
             grid-template-columns: repeat(2, 1fr);
         }
+    }
+}
+
+.article {
+    &-heading {
+        padding: 0;
+        position: relative;
+        height: 400px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: black;
+            opacity: 0.3;
+        }
+    }
+
+    &-title {
+        color: white;
+        z-index: 2;
+        max-width: 80%;
+        margin: auto; 
     }
 }

@@ -15,19 +15,19 @@ class Faq extends Component {
                 <Accordion className="text-left">
                     { questions.map((faq, i) => (
                         <AccordionItem key={i} className="accordion__item mb-2">
-                            <AccordionItemTitle className="border mb-0 bg-transparent card-header">
+                            <AccordionItemTitle className="border mb-0 card-header bg-white text-primary">
                                 <h6 className="mb-0">
                                     <a className="text-dark" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true">{ faq.question }</a>
                                 </h6>
                             </AccordionItemTitle>
                             <AccordionItemBody>
-                                <div className="text-muted">{ faq.answer }</div>
+                                <div className="text-white">{ faq.answer }</div>
                             </AccordionItemBody>
                         </AccordionItem>
                     )) }
                 </Accordion>
                 
-                <Link to="/autodiag" className="btn btn-primary shadow mt-5 ml-auto">Répondre au questionnaire</Link>
+                <Link to="/autodiag" className="btn btn-secondary mt-5 ml-auto">Répondre au questionnaire</Link>
             </>
         );
     }

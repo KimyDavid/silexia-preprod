@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
-
-import Pageheading from '../../widgets/Pageheading';
+import { Parallax } from 'react-parallax';
 import Blog from '../../widgets/sections/blog';
 
 const BlogSingle = () => {
@@ -18,14 +17,13 @@ const BlogSingle = () => {
 
     return (
         <div>
-            {/*hero section start*/}
-            <section className="position-relative py-6">
-            <Pageheading foldername={"Blog"} title={article.title} />
-     
-            </section>
-            {/*hero section end*/}
             {/*body content start*/}
             <div className="page-content">
+                <Parallax bgImage={article.image} bgImageAlt={article.title} strength={200}>
+                    <div className="article-heading">
+                        <h2 className="font-w-5 article-title">{article.title}</h2>
+                    </div>
+                </Parallax>
             {/*blog start*/}
                 <section>
                     <div className="container">
@@ -33,10 +31,8 @@ const BlogSingle = () => {
                             <div className="col-12">
                             { loaded ?
                                     <div className="card border-0 bg-transparent">
-                                        <img className="card-img-top shadow rounded" src={article.image} alt="Image" />
                                         <div className="card-body pt-5 px-0">
-                                            <h2 className="font-weight-medium">{article.title}</h2>
-                                            <div dangerouslySetInnerHTML={{__html: article.text}}></div>
+                                            <div className="cms" dangerouslySetInnerHTML={{__html: article.text}}></div>
                                         </div>
         
                                         {/*blog start*/}
