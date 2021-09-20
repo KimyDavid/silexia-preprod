@@ -21,7 +21,7 @@ const SignIn1 = ({setToken}) => {
                     <section>
                         <Container>
                             <Row  className="justify-content-center">
-                                <Col className="col-5">
+                                <Col className="col-12 col-lg-5">
                                   <SigninForm setToken={setToken} />
                                 </Col>
                             </Row>

@@ -250,3 +250,25 @@ strong {
         margin: auto; 
     }
 }
+
+.partner {
+    &-section {
+        padding: 40px 0;
+
+        &:nth-child(even) {
+            background-color: $color-red;
+            margin-top: 40px;
+            padding-bottom: 60px;
+
+            h2 {
+                color: white;
+            }
+        }
+    }
+
+    &-img {
+        max-height: 200px;
+        object-fit: contain;
+        margin: auto;
+    }
+}

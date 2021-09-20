@@ -1,7 +1,6 @@
-import React, { Fragment , useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import useToken from '../functions/useTokenAccount';
-import { API_AUTH } from '../functions/apiRequest';
 
 import '../App.css';
 import '../Vendor.js';
@@ -25,6 +24,7 @@ import BlogSingle from './blog/blogsingle';
 import Login from './account/login';
 import ForgotPassword from './account/forgot-password';
 import ResetPassword from './account/reset-password';
+import VerifAccount from './account/verif-account';
 import ProfileEdit from './account/edit';
 import ProfileLogout from './account/logout';
 import Profile from './account/profile';
@@ -104,6 +104,7 @@ function App() {
                   <Route path="/forgot-password" component={ForgotPassword} />
                   <Route path="/reset-password" component={() => <ResetPassword userID={null} />} />
                   <Route path="/profile" component={() => <Login setToken={setToken} />} />
+                  <Route path="/verif_account" component={() => <VerifAccount />} />
                 </>
               }
 

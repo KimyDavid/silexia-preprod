@@ -9,7 +9,7 @@ import Breadcrumb from '../../components/breadcrumbs'
 import Widget from '../../components/widget'
 import Form from '../../components/admin/form'
 
-const UpdateElement = ({slug, fields, method = 'PUT'}) => {
+const UpdateElement = ({slug, fields, method = 'PATCH'}) => {
   const { t } = useTranslation('admin');
   const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
@@ -53,7 +53,7 @@ const UpdateElement = ({slug, fields, method = 'PUT'}) => {
         <div className="w-full flex">
           <div className="w-full">
             { loaded ? 
-              <Form url={`${slug}/${id}`} fields={fields} method={method} />
+              <Form url={`${slug}/${id}`} fields={fields} method={method} isFormData={true} />
             : '' }
           </div>
         </div>

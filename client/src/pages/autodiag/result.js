@@ -57,7 +57,7 @@ const Response = ({ profile }) => {
                     <div className="col-12 col-lg-6 col-xl-5">
                         <div>
                             <h3 className="font-w-4">Bravo, votre diagnostic s’est déroulé avec succès !</h3>
-                            <p className="lead">Votre organisation semble être débutante dans l’usage du numérique pour son développement. Découvrez plus en détail comment le numérique peut dynamiser vos activités.</p>
+                            {userAutodiag ? <p className="lead">{userAutodiag.tier}</p> : ''}
                         </div>
                         <a href="#create-account" className="btn btn-primary mt-5">Voir mon tableau de bord</a>
                     </div>

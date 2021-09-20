@@ -16,10 +16,6 @@ const Partners = () => {
         name: 'Nom',
         key: 'name'
       },
-      {
-        name: 'Extrait',
-        key: 'abstract'
-      },
     ]
 
     const partnersTypeFields = [
@@ -50,6 +46,20 @@ const Partners = () => {
         name: 'text',
         type: 'wysiwyg',
         placeholder: 'Entrer un contenu'
+      },
+      {
+        label: 'Image',
+        error: {required: 'Merci d\'ajouter une image'},
+        name: 'image',
+        type: 'file',
+        placeholder: 'Ajouter une image'
+      },
+      {
+        label: 'Url',
+        error: {required: 'Merci d\'écrire une url'},
+        name: 'url',
+        type: 'text',
+        placeholder: 'Entrer une url'
       },
       {
         label: 'Ordre',

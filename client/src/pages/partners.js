@@ -22,21 +22,20 @@ const Partners = () => {
 
                 <div className="page-content">
                     {/*team start*/}
-                    { partners ? partners.map((partner_type, i) => 
-                        <section key={i}>
-                            <div className="container-fluid px-lg-8">
-                                <div className="row align-items-center">
-                                    <div className="col-12 col-md-12 col-lg-4">
-                                    <div>
-                                        <h2 className="mt-3 font-w-5">Les {partner_type.label}</h2>
-                                    </div>
-                                    </div>
-                                    <Team partners={partner_type.partners} />
-                                </div>
-                                {/* / .row */}
+                    { partners ? partners.map((partner_type, i) => {
+                        return (
+                            <div key={i} className="partner-section">
+                                { partner_type.partners ? 
+                                        <div className="container-fluid px-lg-8">
+                                            <div className="text-center">
+                                                <h2 className="mt-3 h3 font-w-5">{partner_type.label}</h2>
+                                            </div>
+                                            <Team partners={partner_type.partners} />
+                                        </div>
+                                : '' }
                             </div>
-                        </section>
-                    ) : ''}
+                        )
+                    }) : ''}
                     {/*team end*/}
 
                     <section>
