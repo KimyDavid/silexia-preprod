@@ -26,7 +26,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
               setMessage(response.details);
             } else if (setToken) {
               setMessage();
-              setToken(response);
+              setToken('');
               window.location.href = `${window.location.origin}/profile`;
             }
           });

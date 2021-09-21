@@ -8,14 +8,10 @@ const AutodiagResult = () => {
     const { token, setToken } = useToken();
     const [ autodiag, setAutodiag ] = useState();
 
-    console.log(autodiag);
-
     // Modal handler
     const [showDetails, setShowDetails] = useState(false);
 
     let categories = [];
-    let scoreTotal = 0;
-    let scoreUser = 0;
     let scores = [];
 
     useEffect(() => {
@@ -29,16 +25,6 @@ const AutodiagResult = () => {
     if (autodiag) {
         categories = autodiag.map((category) => {
             return category.label;
-        });
-
-        scores = autodiag.map((category) => {
-            return category.score_user ?? 0;
-        });
-
-        autodiag.forEach((category) => {
-            scoreTotal = scoreTotal + category.score_total;
-            scoreUser = scoreUser + category.score_user;
-            console.log(category);
         });
     }
 
@@ -72,7 +58,7 @@ const AutodiagResult = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <h2 className="text-center h4 mt-5 shadow py-3 font-w-5 account-score">Votre score global est <strong className="text-primary">{scoreUser}/{scoreTotal}</strong>
+                        <h2 className="text-center h4 mt-5 shadow py-3 font-w-5 account-score">Votre score global est <strong className="text-primary">{autodiag.global.score_user}/{autodiag.global.score_total}</strong>
                         <i className="action-score-infos las la-question-circle" onClick={ () => setShowDetails(true) }></i></h2>
                     </div>
                     <div className="col-12 col-lg-7">
@@ -87,7 +73,7 @@ const AutodiagResult = () => {
                             { categories.map((category, i) => (
                                 <div key={i} className="account-score-category shadow">
                                     <p className="text-primary">{category}</p>
-                                    <p>{autodiag[i].tier ? autodiag[i].tier.text : ''}</p>
+                                    <p>{autodiag.autodiag[i].tier ? autodiag.autodiag[i].tier.text : ''}</p>
                                 </div>
                             )) }
                         </div>
@@ -114,7 +100,7 @@ const AutodiagResult = () => {
 
             <Modal 
                 title="Plus d'informations à propos de votre score."
-                body="Woohoo, you're reading this text in a modal!"
+                body={autodiag.global.tier}
                 closeButton="Entendu !"
                 show={showDetails}
                 setShow={setShowDetails}

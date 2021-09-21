@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import ContactOffre from './contact';
+import Modal from '../../widgets/common/modal';
 
-const Pricingplan = ( {offer} ) => {
+const Pricingplan = ( {title, offer} ) => {
   const [selectedTab, setSelectedTab] = useState(0);
+
+  const [selectedFormule, setSelectedFormule] = useState('');
+  const [showContact, setShowContact] = useState(false);
+
+  const updateContactForm = (name) => {
+    setSelectedFormule(`${title} : ${name}`);
+    setShowContact(true);
+  }
   
         return (
           <>
@@ -30,6 +39,7 @@ const Pricingplan = ( {offer} ) => {
               <div className="row align-items-center justify-content-between mb-10">
                 <div className="col-12 col-md-12 col-lg-6 mb-8 mb-lg-0">
                   <div className="mb-0">
+                    { item.image ? <img src={require(`../../assets/images/offers/offre_${item.image}.svg`)} className="img-fluid w-75 mb-5" alt={`Offre Silexia ${item.title}`} /> : '' }
                     <h2 className="mt-3">{item.title}</h2>
                     <p className="lead mb-0">{item.description}</p>
                   </div>
@@ -62,7 +72,7 @@ const Pricingplan = ( {offer} ) => {
                               )}
                             </>
                           : '' }
-                          <Link to="#" className="btn btn-block btn-primary mt-5">Plus d'informations</Link>
+                          <a className="btn btn-block btn-primary mt-5" onClick={ () => updateContactForm(item.title) }>Plus d'informations</a>
                         </div>
                       </div>
                 </div>
@@ -70,6 +80,14 @@ const Pricingplan = ( {offer} ) => {
             </TabPane>
             )}
           </TabContent>
+
+          <Modal 
+                title={`Demande d'information - ${selectedFormule}`}
+                body={<ContactOffre offre={selectedFormule}/>}
+                closeButton="Fermer"
+                show={showContact}
+                setShow={setShowContact}
+            />
         </>
         
         );

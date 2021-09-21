@@ -15,30 +15,32 @@ const Index = () => {
                     </div>
                 </section>
                 <div className="page-content">
-                    {/*services start*/}
-                    <Services />
-                    {/*services end*/}
-                    
-                    {/*faq start*/}
-                    <section className="pt-0">
-                        <div className="container">
-                        <div className="row align-items-center justify-content-between">
-                            <div className="col-12 col-lg-4 mb-8 mb-lg-0">
-                                <div className="text-center">
-                                    <span className="badge badge-primary-soft p-2"><i className="la la-question ic-3x rotation" /></span>
-                                    <h2 className="mt-4 mb-5 h3">Les réponses à vos questions</h2>
+                    <section className="custom-pt-1 custom-pb-1 bg-primary position-relative" data-bg-img={require(`../assets/images/bg/02.png`)}>
+                        {/*services start*/}
+                        <Services />
+                        {/*services end*/}
+                        
+                        {/*faq start*/}
+                        <section className="mt-10">
+                            <div className="container">
+                            <div className="row align-items-center justify-content-between">
+                                <div className="col-12 col-lg-4 mb-8 mb-lg-0">
+                                    <div className="text-center">
+                                        <span className="badge badge-light-soft p-2"><i className="la la-question ic-3x rotation" /></span>
+                                        <h2 className="mt-4 mb-5 h3 text-white font-w-5">Les réponses à vos questions</h2>
+                                    </div>
+                                    <img src={require(`../assets/images/about/04.svg`)} alt="Image" className="img-fluid" />
                                 </div>
-                                <img src={require(`../assets/images/about/04.svg`)} alt="Image" className="img-fluid" />
+                                <div className="col-12 col-lg-8 text-center">
+                                    <Faq />
+                                </div>
                             </div>
-                            <div className="col-12 col-lg-8 text-center">
-                                <Faq />
                             </div>
-                        </div>
-                        </div>
+                        </section>
                     </section>
                     {/*faq end*/}
 
-                    <section>
+                    <section className="p-0">
                         <div className="container">
                             <div className="row align-items-end mb-5">
                                 <div className="col-12">

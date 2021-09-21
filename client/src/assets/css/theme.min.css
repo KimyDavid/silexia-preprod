@@ -89,6 +89,8 @@ Button
 .btn { font-weight: 500; padding: 0.75rem 1rem; }
 .btn-primary { color: #fff; background-color: #cc4c44; border-color: #cc4c44; }
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show > .btn-outline-primary.dropdown-toggle { color: #fff; background-color: #546c5c !important; border-color: #546c5c !important; }
+.btn-secondary { background: #fff; color: #cc4c44; border-color: #cc4c44; }
+.btn-secondary:hover, .btn-secondary:active { background: #fff; color: #cc4c44; border-color: #cc4c44; }
 .btn-outline-primary { color: #cc4c44; border-color: #cc4c44; }
 .btn-outline-primary:hover { background-color: #546c5c; border-color: #546c5c; }
 .btn-dark { background-color: #060927; border-color: #060927; }

@@ -42,7 +42,7 @@ const Offer = () => {
                                     </div>
                                 </div>
 
-                                {offerContent ? <PricingPlan offer={offerContent} /> : '' }
+                                {offerContent ? <PricingPlan offer={offerContent} title={offers.find(x => toSnakeCase(x.title) === id).title} /> : '' }
                             </div>
                         </section>
                         {/*privacy end*/}

@@ -26,7 +26,9 @@ const ListElement = ({ url, slug, fields }) => {
     }, []);
 
     function deleteItem(id) {
-        API_REMOVE(`${url}/questions/${id}`);
+        if (window.confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
+            API_REMOVE(`${url}/questions/${id}`);
+        }
     }
 
     return (

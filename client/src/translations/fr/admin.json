@@ -74,6 +74,13 @@
             "update": "Modifier une catégorie",
             "delete": "Supprimer cette catégorie"
         },
+        "tiers": {
+            "label": "Niveaux généraux",
+            "all": "Toutes les niveaux",
+            "new": "Créer un nouveau niveau",
+            "update": "Modifier un niveau",
+            "delete": "Supprimer ce niveau"
+        },
         "questions": {
             "label": "Questions",
             "all": "Toutes les questions",

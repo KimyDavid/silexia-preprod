@@ -5,6 +5,7 @@ export default {
    'acquisition-client': [
       {
          'title': 'Coaching',
+         'image': 'coaching',
          'description': 'Mise en place des bases de votre succès par le numérique',
          'content': [
             'Atelier découverte growth marketing',
@@ -25,6 +26,7 @@ export default {
       },
       {
          'title': 'Booster',
+         'image': 'booster',
          'description': 'Votre prestation de services et conseil pour accélérer votre acquisition clients',
          'content': [
             'La formule coaching + …',
@@ -37,6 +39,7 @@ export default {
       },
       {
          'title': 'Service support',
+         'image': 'dedie',
          'description': 'Nous nous accupons de A à Z de votre acquisition de clientèle',
          'content': [
             'La formule coaching + booster + …',
@@ -51,6 +54,7 @@ export default {
    'relation-client': [
       {
          'title': 'Coaching',
+         'image': 'coaching',
          'description': "Mise en place des bases de l'optimisation de vos parcours utilisateurs",
          'content': [
             "Atelier découverte : Les parcours utilisateurs et l'expériencce client à l'heure du numérique",
@@ -63,6 +67,7 @@ export default {
       },
       {
          'title': 'Booster',
+         'image': 'booster',
          'description': 'Votre prestation de services et conseil pour optimiser votre relation clients',
          'content': [
             'La formule coaching + …',
@@ -75,6 +80,7 @@ export default {
       },
       {
          'title': 'Service support',
+         'image': 'dedie',
          'description': "Nous prenons en main de A à Z l'optimisation de votre relation client par le numérique",
          'content': [
             'La formule coaching + booster + …',
@@ -89,6 +95,7 @@ export default {
    "gestion-d'organisation": [
       {
          'title': 'Coaching',
+         'image': 'coaching',
          'description': "Mise en place des bases de l'optimisation de votre gestion d'organisation",
          'content': [
             "Atelier découverte : La gestion d'une organisation à l'heure du numérique",
@@ -101,6 +108,7 @@ export default {
       },
       {
          'title': 'Booster',
+         'image': 'booster',
          'description': 'Optimisation de la gestion de votre organisation',
          'content': [
             "Atelier découverte : La gestion d'une organisation à l'heure du numérique",
@@ -115,6 +123,7 @@ export default {
    'métiers': [
       {
          'title': 'Booster',
+         'image': 'booster',
          'description': "Optimisation de l'environnement numérique de travail de vos collaborateurs",
          'content': [
             "Atelier découverte : Le travail collaboratif à l'heure du numérique",
@@ -128,6 +137,7 @@ export default {
       },
       {
          'title': 'Service support',
+         'image': 'dedie',
          'description': "Nous prenons en main de A à Z l'environnement numérique de travail de vos collaborateurs",
          'content': [
             'La formule booster + …',
@@ -145,6 +155,7 @@ export default {
    'sécurité-et-conformité': [
       {
          'title': 'Coaching',
+         'image': 'coaching',
          'description': "Mise en place des bases de votre conformité au RGPD et des mesures de sécurité techniques et organisationnelles essentielles ",
          'content': [
             "Atelier découverte : la conformité au RGPD et la cybersécurité pour les petites entreprises",
@@ -158,6 +169,7 @@ export default {
       },
       {
          'title': 'Booster',
+         'image': 'booster',
          'description': 'Mise en conformité de votre organisation au RGPD et implémentation des mesures de sécurité essentielles',
          'content': [
             'La formule coaching + …',
@@ -180,6 +192,7 @@ export default {
       },
       {
          'title': 'Service support',
+         'image': 'dedie',
          'description': "Votre délégué à la protection des données dédié",
          'content': [
             'La formule coaching + booster + …',

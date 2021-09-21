@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  FiActivity,
-  FiCompass,
-  FiHelpCircle,
-} from 'react-icons/fi'
+import { FiCompass } from 'react-icons/fi'
 
 const initialState = [
   {
@@ -73,6 +69,12 @@ const initialState = [
   {
     title: 'Gestion des diag',
     items: [
+      {
+        url: '/admin/autodiag/tiers',
+        icon: <FiCompass size={20} />,
+        title: 'Niveaux généraux',
+        items: []
+      },
       {
         url: '/admin/autodiag/categories',
         icon: <FiCompass size={20} />,
