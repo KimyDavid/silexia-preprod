@@ -18,11 +18,15 @@ passport.use('local', new LocalStrategy({
       if(!results){
         return done('Unregistered user');
       }else{
+        if(results.verif !== 1){
+          return done('Merci de confirmer votre compte par email');
+        }
+
         if(!bcrypt.compareSync(password, results.password)) {
             return done('Invalid password');
-        }else{
-            return done(null, new User(results));
         }
+
+        return done(null, new User(results));
       }
     });
   }

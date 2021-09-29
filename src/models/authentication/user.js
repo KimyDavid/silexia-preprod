@@ -50,6 +50,7 @@ const userForgetPasswordSchema = yup.object({
 
 const userUpdateSchema = yup.object({
     id:yup.number().required().exists('User'),
+    key: yup.string().required(),
     password:yup.string().required().transform(function (value) {
       return bcrypt.hashSync(value, 10);
     })

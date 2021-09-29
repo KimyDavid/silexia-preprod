@@ -20,9 +20,8 @@ const validateResourceMW = (resourceSchema) => async (req, res, next) => {
   }
   
   // throws an error if not valid
-  resourceSchema.validate(resource)
+  resourceSchema.noUnknown().validate(resource)
   .then(function(value){
-    value = resourceSchema.noUnknown().cast(value)
     req.body = value
     next()
   })

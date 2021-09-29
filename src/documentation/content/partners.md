@@ -20,6 +20,7 @@ order                 | int           | Order
 ----------------------|-------------  |-------------------
 id                    | int           | Identifiant
 label                 | varchar(100)  | Label
+description           | text          | Decription
 partners              | Array(Partner)| Array of partners in this category
 order                 | int           | Order
 
@@ -114,6 +115,7 @@ Admin only.
    `abstract=[string]`
    `partner_type=[int]`
    `order=[int]`
+   `image=[image]`
 
 * **Success Response:**
 
@@ -177,6 +179,7 @@ Admin only.
 
   ***Required:***
    `label=[string]`
+   `description=[text]`
    `order=[int]`
 
 * **Success Response:**
@@ -188,7 +191,7 @@ Admin only.
 
 ### Update partner
 
- Update an existing partner.
+ Update an existing partner type.
 
 * **Authentication**
 
@@ -196,7 +199,7 @@ Admin only.
 
 * **URL**
 
-  [PATCH] /v1/partners_type/:id_partner_type
+  [PUT] /v1/partners_type/:id_partner_type
 
 *  **URL Params**
 
@@ -205,8 +208,9 @@ Admin only.
 
 * **Data Params**
 
-  ***Optionnal:***
+  ***Required:***
    `label=[string]`
+   `description=[text]`
    `order=[int]`
 
 * **Success Response:**
