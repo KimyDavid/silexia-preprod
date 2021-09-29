@@ -267,7 +267,7 @@ function updateOrder(data, callback){
   }
 
   var strsql = ' INSERT INTO ' + data.table + '(id, ' + data.table + '.order)';
-      strsql += ' SELECT tab.id, RANK() OVER(ORDER BY tab.ORDER, tab.last_modif DESC)';
+      strsql += ' SELECT tab.id, RANK() OVER(ORDER BY tab.ORDER, tab.last_modif)';
       strsql += ' FROM ' + data.table + ' tab ';
       strsql += ' WHERE tab.deleted IS NULL';
       if(data.parent){
