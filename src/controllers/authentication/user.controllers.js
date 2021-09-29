@@ -106,6 +106,9 @@ function verifAccount(data, callback){
 
   async.waterfall([
     function(callback){
+      getUserFromKey({key:data.key}, callback)
+    }, 
+    function(callback){
       useKey({key:data.key, id_user:data.id_user}, callback)
     }, 
     function(callback){
@@ -135,6 +138,9 @@ function useKey(data, callback){
 
 function updatePassword(data, callback){
   async.waterfall([
+    function(callback){
+      getUserFromKey({key:data.body.key}, callback)
+    }, 
     function(callback){
       useKey({key:data.body.key, id_user:data.id}, callback)
     }, 
@@ -208,12 +214,14 @@ function resetPassword(data, callback){
 
 function getUserFromKey(data, callback){
 
-  var strsql = ' SELECT id_user FROM Verif_Key';
-      strsql += ' WHERE Verif_Key.key = ' + mysql.escape(data.key) + ' AND deleted IS NULL';
+  var strsql = ' SELECT * FROM Verif_Key';
+      strsql += ' WHERE Verif_Key.key = ' + mysql.escape(data.key);
       
       db.query(strsql, null, function (error, results) {
         if(results.length === 0){
           callback("wrong key")
+        }else if(results[0].deleted){
+          callback("Key already used")
         }else{
           callback(error, results[0].id_user)
         }
