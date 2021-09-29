@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Constants from '../../constants/Config';
 import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 const SigninForm = ({setToken}) => {
+    const { t } = useTranslation('error');
     
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -21,7 +23,7 @@ const SigninForm = ({setToken}) => {
             .then(res => res.json())
             .then(result => {
                 if (result.error) {
-                    setMessage(result.details);
+                    setMessage(t(result.details ?? result.error));
                 } else if (setToken) {
                     setToken(result);
                 }
@@ -41,7 +43,7 @@ const SigninForm = ({setToken}) => {
                         <input id="form_password" type="password" name="password" className="form-control" placeholder="Mot de passe" required="required" data-error="Password is required." onChange={e => setPassword(e.target.value)} />
                         <div className="help-block with-errors" />
                     </div>
-                    <div className="text-center error">{message}</div>
+                    { message ? <div className="text-center message error">{message}</div> : '' }
                     <div className="form-group mt-4 mb-5">
                         <div className="remember-checkbox d-flex align-items-center justify-content-between">
                             <Link to="/forgot-password">Mot de passe oublié ?</Link>

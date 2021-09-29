@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import ResetPasswordForm from '../../widgets/account/reset-password';
+import { API_POST } from '../../functions/apiRequest';
 import { Col, Container, Row } from 'reactstrap';
 import Pageheading from '../../widgets/Pageheading';
 
-const ForgotPassword = ({userID}) => {
-    console.log(userID)
+const ForgotPassword = ({setToken}) => {
+    const params =  new URLSearchParams(window.location.search);
+    const key = params.get('key');
+
+    const [verified, setVerified] = useState(false);
+    const [error, setError] = useState(false);
+    useEffect(() => {
+        API_POST('reset_password', 'POST', {'key': key}, false).then(result => {
+            console.log(result);
+            if (result.error) {
+                setError(true);
+            } else {
+                setVerified(true);
+            }
+        });
+    }, [])
         return (
             <div>
                 {/*hero section start*/}
@@ -20,8 +35,9 @@ const ForgotPassword = ({userID}) => {
                         <Container>
                             <Row  className="justify-content-center">
                                 <Col className="col-5">
-                                    { userID ?
-                                        <ResetPasswordForm userID={userID} />
+                                    { setToken ?
+                                        <></>
+                                        // <ResetPasswordForm setToken={setToken} />
                                     : 
                                         <div className="text-center">
                                             <p className="lead">Lien de réinitialisation de mot de passe obsolète. Merci de repasser par le formulaire de <Link className="link" to="/forgot-password">mot de passe oublié</Link>.</p>

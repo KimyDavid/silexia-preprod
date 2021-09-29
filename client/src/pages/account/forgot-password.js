@@ -18,7 +18,7 @@ const ForgotPassword = ({setToken}) => {
                         <Container>
                             <Row  className="justify-content-center">
                                 <Col className="col-5">
-                                  <ForgotPasswordForm />
+                                  <ForgotPasswordForm setToken={setToken} />
                                 </Col>
                             </Row>
                         </Container>

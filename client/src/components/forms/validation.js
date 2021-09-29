@@ -184,7 +184,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           }
           if (item.type === 'textarea') {
             return (
-              <>
+              
                 <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
                   <textarea
@@ -201,12 +201,12 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                     </div>
                   )}
                 </div>
-              </>
+              
             )
           }
           if (item.type === 'wysiwyg') {
             return (
-              <>
+              
                 <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
 
@@ -218,19 +218,19 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                     </div>
                   )}
                 </div>
-              </>
+              
             )
           }
           if (item.type === 'collection') {
             return (
-              <>
-                <Collection key={i} field={item} collection={collection} onChange={(data) => collectionData(data, item)} />
-              </>
+              
+                <Collection key={i} field={item} collection={collection} onCollectionChange={(data) => collectionData(data, item)} />
+              
             )
           }
           if (item.type === 'file') {
             return (
-              <>
+              
                 <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
                   <div className="mb-4">
@@ -257,11 +257,11 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                     <div className="form-error">{errors[item.name].message}</div>
                   )}
                 </div>
-              </>
+              
             )
           }
           return (
-            <>
+            
               <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <input
@@ -277,7 +277,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                   <div className="form-error">{errors[item.name].message}</div>
                 )}
               </div>
-            </>
+            
           )
         })}
       </div>

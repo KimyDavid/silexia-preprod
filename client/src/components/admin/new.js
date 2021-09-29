@@ -19,9 +19,7 @@ const CreateElement = ({slug, fields, isFormData}) => {
     
   useEffect(() => {
     fields.forEach((_field) => {
-      if (_field['type'] !== 'file') {
         _field.value = null;
-      }
     });
     setLoaded(true);
   }, [])

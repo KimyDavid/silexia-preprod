@@ -34,7 +34,7 @@ class Herosection6 extends Component {
                     backSpeed={50}
                     loop ></Typed> ?</h1>
           {/* Text */}
-          <p className="lead text-muted">Il n'a jamais été aussi simple de faire du numérique un allié du quotidien.</p>
+          <p className="lead text-muted">Il n'a jamais été aussi simple de faire du <br/> numérique un allié du quotidien.</p>
           {/* Buttons */} 
           <Link to="/autodiag" className="btn btn-primary shadow mr-1">C'est parti !</Link>
         </div>

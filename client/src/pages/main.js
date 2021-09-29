@@ -70,9 +70,9 @@ function App() {
        :
         <div className="page-wrapper">
           <BrowserRouter>
-            { token ? <HeaderConnected/> : <Header /> }
+            { token ? <HeaderConnected/> : <Header setToken={setToken} /> }
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={() => <Home />} />
 
               <Route exact path="/home2" component={Home2} />
               <Route exact path="/offres/:id" component={() => <Offer />} />
@@ -102,7 +102,7 @@ function App() {
                 :
                 <>
                   <Route path="/forgot-password" component={ForgotPassword} />
-                  <Route path="/reset-password" component={() => <ResetPassword userID={null} />} />
+                  <Route path="/reset_password" component={() => <ResetPassword setToken={setToken} />} />
                   <Route path="/profile" component={() => <Login setToken={setToken} />} />
                   <Route path="/verif_account" component={() => <VerifAccount />} />
                 </>

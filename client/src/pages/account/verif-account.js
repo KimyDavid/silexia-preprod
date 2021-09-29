@@ -7,10 +7,10 @@ const VerifAccount = () => {
     const [error, setError] = useState(false);
     const params =  new URLSearchParams(window.location.search);
     const key = params.get('key');
-    console.log(key);
 
     useEffect(() => {
         API_POST('verif_account', 'POST', {'key': key}, false).then(result => {
+            console.log(result);
             if (result.error) {
                 setError(true);
             } else {

@@ -46,12 +46,12 @@ const initialState = [
         title: 'Tailles d\'entreprise',
         items: []
       },
-      {
-        url: '/admin/types',
-        icon: <FiCompass size={20} />,
-        title: 'Types d\'entreprise',
-        items: []
-      },
+      // {
+      //   url: '/admin/types',
+      //   icon: <FiCompass size={20} />,
+      //   title: 'Types d\'entreprise',
+      //   items: []
+      // },
       {
         url: '/admin/partners_type',
         icon: <FiCompass size={20} />,

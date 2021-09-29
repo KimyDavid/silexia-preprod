@@ -8,17 +8,20 @@ import {store} from './store'
 import {I18nextProvider} from "react-i18next";
 import i18next from "i18next";
 import admin_fr from "./translations/fr/admin.json";
+import error_fr from "./translations/fr/error.json";
 
 import 'react-quill/dist/quill.snow.css';
 
 require("./assets/scss/styles.scss");
 
+// TRANSLATIONS
 i18next.init({
   interpolation: { escapeValue: false },
   lng: 'fr',
   resources: {
     fr: {
-        admin: admin_fr
+        admin: admin_fr,
+        error: error_fr
     },
 },
 });

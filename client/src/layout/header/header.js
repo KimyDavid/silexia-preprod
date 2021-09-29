@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import navLinks from '../../constants/NavSilexia2';
-import { BrowserRouter, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import navLinks from '../../constants/NavSilexia';
+import { useLocation, Link } from 'react-router-dom';
 import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink,
@@ -13,76 +12,72 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
-    NavbarText
 } from 'reactstrap'
 
+import Modal from '../../widgets/common/modal';
+import SigninForm from '../../widgets/account/signin';
 
-class Header extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-            visible: false,
-            loader: true
+
+const Header = ({setToken}) => {
+    const [ isOpen, setIsOpen ] = useState(false);
+    const [ visible, setVisible ] = useState(false);
+    const [ loader, setLoader ] = useState(true);
+
+    const location = useLocation();
+    const [showLogin, setShowLogin] = useState(false);
+  
+    useEffect(() => {
+      setShowLogin(false);
+    }, [location]);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    }
+
+    const handleScroll = () => {
+        var scrollTop = (document.documentElement && document.documentElement.scrollTop) ||
+            document.body.scrollTop;
+        if (scrollTop > 100) {
+            setVisible(true);
         }
-        this.toggle = this.toggle.bind(this);
-        this.handleScroll = this.handleScroll.bind(this);
+        else {
+            setVisible(false);
+        }
     }
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
-    handleClick(event) {
+    
+    const handleClick = (e) => {
         var elems = document.querySelectorAll(".childsubmenu");
         [].forEach.call(elems, function(el) {
           el.classList.remove("show");
         });
     }
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-    }
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
 
-    handleScroll() {
-        var scrollTop = (document.documentElement && document.documentElement.scrollTop) ||
-            document.body.scrollTop;
-        if (scrollTop > 100) {
-            this.setState({
-                visible: true
-            });
-        }
-        else {
-            this.setState({
-                visible: false
-            });
-        }
-    }
+    useEffect(() => {
+        window.addEventListener('scroll', () => {handleScroll()});
 
-    render() {
-        const { visible } = this.state;
-        if (this.state.loader == true) {
-            setTimeout(function () {
-                this.setState({ loader: false });
-            }.bind(this), 2000);
-        }
-        return (
+        return window.removeEventListener('scroll', handleScroll);
+    },[]);
+
+    return (
+        <>
+            { loader ? 
+                setTimeout(() => { setLoader(false); }, 2000)
+            : '' } 
             <header className="site-header">
-                {(this.state.loader == false) ?
-                    <div id="header-wrap" className={`${(visible) ? "fixed-header " : ""}`}>
+                { (!loader) ?
+                    <div id="header-wrap" className={`${visible ? "fixed-header " : ""}`}>
                         <div className="container">
                             <div className="row">
                                 {/*menu start*/}
                                 <div className="col d-flex align-items-center justify-content-between"> 
                                     <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.png`)} alt="Logo Silexia" /></Link>
                                     <Navbar className="navbar-expand-lg navbar-light ml-auto">
-                                            <NavbarToggler onClick={this.toggle} />
-                                            <Collapse isOpen={this.state.isOpen} className=" navbar-collapse" navbar>
+                                            <NavbarToggler onClick={toggle} />
+                                            <Collapse isOpen={isOpen} className=" navbar-collapse" navbar>
                                                 <Nav className="ml-auto" navbar>
                                                     {navLinks.map((navLink, index) => (
                                                         (navLink.type && navLink.type === 'subMenu') ?
+                                                            // Submenu link
                                                             <UncontrolledDropdown nav inNavbar key={index}>
                                                                 <DropdownToggle nav  caret >
                                                                     {navLink.menu_title}
@@ -96,7 +91,7 @@ class Header extends React.Component {
                                                                                     </DropdownToggle>
                                                                                     <DropdownMenu id={`childsubmenu_${index}`}>
                                                                                         {subNavLink.child_routes && subNavLink.child_routes.map((ChildsubNavLink, i) =>
-                                                                                            <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path}  onClick={this.handleClick.bind(this)} >{ChildsubNavLink.menu_title}
+                                                                                            <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path}  onClick={(e) => handleClick(e)} >{ChildsubNavLink.menu_title}
                                                                                             </DropdownItem>
                                                                                         )}
                                                                                     </DropdownMenu>
@@ -110,8 +105,14 @@ class Header extends React.Component {
                                                             :
                                                             <NavItem key={index}>
                                                                 { navLink.path.includes('://') ?
+                                                                    // Extern link
                                                                     <NavLink target="_blank" href={navLink.path}> {navLink.menu_title}</NavLink>
                                                                 : 
+                                                                    navLink.modal ? 
+                                                                    // Modal Link
+                                                                        location.pathname !== '/profile' ? <NavLink onClick={() => {setShowLogin(true)}}>{navLink.menu_title}</NavLink> : ''
+                                                                    : 
+                                                                    // Basic link
                                                                     <NavLink href={navLink.path}> {navLink.menu_title}</NavLink>
                                                                 }
                                                             </NavItem>
@@ -119,7 +120,7 @@ class Header extends React.Component {
                                                 </Nav>
                                             </Collapse>
                                         </Navbar>
-                                    <Link className="btn btn-primary ml-3 d-none d-lg-block" to="/autodiag">Démarrer mon diagnostic</Link>
+                                    <Link className="btn btn-primary btn-small ml-3" to="/autodiag">Démarrer mon diagnostic</Link>
                                 </div>
                                 {/*menu end*/}
                             </div>
@@ -134,8 +135,16 @@ class Header extends React.Component {
                     </div>
                 }
             </header>
-        );
-    }
+
+            <Modal 
+                title={`Connexion`}
+                body={<SigninForm setToken={setToken} />}
+                closeButton="Fermer"
+                show={showLogin}
+                setShow={setShowLogin}
+            />
+        </>
+    );
 }
 
 export default Header;

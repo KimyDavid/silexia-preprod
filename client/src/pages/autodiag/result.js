@@ -7,9 +7,6 @@ const Response = ({ profile }) => {
     const { token, setToken } = useToken();
     const [userAutodiag, setUserAutodiag] = useState();
 
-    console.log(profile);
-    console.log(userAutodiag);
-
     useEffect(() => {
         if (profile.id) {
             API_GET(`autodiag/user/${profile.id}`).then(response => setUserAutodiag(response));

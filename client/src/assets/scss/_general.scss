@@ -266,6 +266,14 @@ strong {
         }
     }
 
+    &-item {
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.03) translateY(-5px);
+            transition: transform .5s ease;
+        }
+    }
+
     &-img {
         max-height: 200px;
         object-fit: contain;
