@@ -49,11 +49,11 @@ const updatePartnerSchema = yup.object({
     id:yup.number().required().exists('Partners'),
     name: yup.string().max(100),
     text:yup.string(),
-    image: yup_test.image(yup, true),
+    image: yup_test.image(yup),
     url:yup.string().url(),
     abstract:yup.string(255),
     order: yup.number().integer().positive(),
-    partner_type: yup.number().required().exists('Partners_Type')
+    partner_type: yup.number().exists('Partners_Type')
 })
 
 

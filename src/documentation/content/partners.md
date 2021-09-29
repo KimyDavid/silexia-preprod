@@ -99,17 +99,22 @@ Admin only.
 
 * **URL**
 
-  [PUT] /v1/partners/:id_partner
+  [PATCH] /v1/partners/:id_partner
 
 *  **URL Params**
 
    ***Required:***
    `id_partner=[int]`
+
+* **Data Params**
+
+  ***Optionnal:***
    `name=[string]`
    `text=[text]`
    `abstract=[string]`
    `partner_type=[int]`
    `order=[int]`
+   `image=[image]`
 
 * **Success Response:**
 
