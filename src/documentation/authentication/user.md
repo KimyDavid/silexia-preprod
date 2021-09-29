@@ -116,6 +116,7 @@ verif                 | tinyint       | Account's verification status (0: unsubs
 
   ***Required:***
    `password=[string]`
+   `key=[string]`
 
 * **Success Response:**
 

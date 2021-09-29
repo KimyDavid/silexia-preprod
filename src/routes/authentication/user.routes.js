@@ -60,7 +60,7 @@ router.post('/forgot_password', validateResourceMW(userForgetPasswordSchema), fu
 
 
 router.post('/reset_password', function(req, res) {
-  userController.resetPassword({id_user:req.user.id, key:req.body.key}, function(err, results){
+  userController.resetPassword({key:req.body.key}, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{
@@ -70,7 +70,7 @@ router.post('/reset_password', function(req, res) {
 });
 
 router.patch('/users/:id', validateResourceMW(userUpdateSchema), function(req, res) {
-  userController.updateUser({id:req.params.id, body:req.body}, function(err, results){
+  userController.updatePassword({id:req.params.id, body:req.body}, function(err, results){
     if(err){
       res.status(400).json({error:err})
     }else{

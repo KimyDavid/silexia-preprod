@@ -2,6 +2,7 @@ import db from '#config/db.js';
 import async from 'async';
 import mysql from 'mysql';
 import { v4 as uuidv4 } from 'uuid';
+import _ from 'lodash';
 
 import { User } from '#models/authentication/user.js';
 
@@ -132,6 +133,20 @@ function useKey(data, callback){
 
 }
 
+function updatePassword(data, callback){
+  async.waterfall([
+    function(callback){
+      useKey({key:data.body.key, id_user:data.id}, callback)
+    }, 
+    function(callback){
+      updateUser({id:data.id, body:_.omit(data.body, 'key')}, callback)
+    }
+  ], function(err, results){
+    callback(err, results)
+  })
+
+}
+
 
 function updateUser(data, callback){
   
@@ -180,14 +195,29 @@ function resetPassword(data, callback){
 
   async.waterfall([
     function(callback){
-      useKey({key:data.key, id_user:data.id_user}, callback)
+      getUserFromKey({key:data.key}, callback)
     }, 
-    function(callback){
-      getUserFromId({id:data.id_user}, callback)
+    function(id_user, callback){
+      getUserFromId({id:id_user}, callback)
     }
   ], function(err, results){
     callback(err, results)
   })
+
+}
+
+function getUserFromKey(data, callback){
+
+  var strsql = ' SELECT id_user FROM Verif_Key';
+      strsql += ' WHERE Verif_Key.key = ' + mysql.escape(data.key) + ' AND deleted IS NULL';
+      
+      db.query(strsql, null, function (error, results) {
+        if(results.length === 0){
+          callback("wrong key")
+        }else{
+          callback(error, results[0].id_user)
+        }
+      });
 
 }
 
@@ -200,5 +230,6 @@ export default {
   forgotPassword,
   resetPassword,
   updateUser,
-  insertUser
+  insertUser,
+  updatePassword,
 }
