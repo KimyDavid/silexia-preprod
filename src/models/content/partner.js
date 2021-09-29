@@ -18,7 +18,8 @@ function Partner(data) {
 
 function PartnerType(data) {
     this.id                 = data.id;
-    this.label              = data.label
+    this.label              = data.label;
+    this.description        = data.description;
 
     if(data.partners){
         this.partners           = data.partners ? parseJSON(data.partners) : []
@@ -59,6 +60,7 @@ const updatePartnerSchema = yup.object({
 
 const createPartnerTypeSchema = yup.object({
     label: yup.string().max(100).required(),
+    description: yup.string().required(),
     order: yup.number().integer().positive().required()
 })
 
@@ -66,6 +68,7 @@ const createPartnerTypeSchema = yup.object({
 const updatePartnerTypeSchema = yup.object({
     id:yup.number().required().exists('Partners_Type'),
     label: yup.string().max(100),
+    description: yup.string().required(),
     order: yup.number().integer().positive().required()
 })
 
