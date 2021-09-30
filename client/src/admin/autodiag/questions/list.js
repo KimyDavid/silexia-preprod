@@ -23,6 +23,9 @@ const ListElement = ({ url, slug, fields }) => {
     useEffect(() => {
         API_GET(url).then(response => setItems(response));
         API_GET(`${url}/questions`).then(response => setQuestions(response));
+
+        console.log(items)
+        console.log(questions)
     }, []);
 
     function deleteItem(id) {

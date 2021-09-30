@@ -9,7 +9,7 @@ import Breadcrumb from '../../components/breadcrumbs'
 import Widget from '../../components/widget'
 import Form from '../../components/admin/form'
 
-const UpdateElement = ({slug, fields, method = 'PUT'}) => {
+const UpdateElement = ({slug, fields, method = 'PATCH'}) => {
   const { t } = useTranslation('admin');
   const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
@@ -25,8 +25,9 @@ const UpdateElement = ({slug, fields, method = 'PUT'}) => {
 
   useEffect(() => {
     API_GET(`partners/${id}`).then(response => {
+      console.log(response);
       fields.map((_field) => {
-        _field.value = response[_field['name']];
+        _field.value = response[_field['name']] ?? '';
         _field.error = {}
       });
   

@@ -32,6 +32,8 @@ const Partners = () => {
                                         <div className="container-fluid px-lg-8">
                                             <div className="text-center">
                                                 <h2 className="mt-3 h3 font-w-5">{partner_type.label}</h2>
+                                                { partner_type.description ? <p className="lead text-center">{ partner_type.description }</p> : '' }
+                                                <p className="lead text-center">erioerg oierjgoeirjg oeigj oerjgoeijg </p>
                                             </div>
                                             <Team partners={partner_type.partners} setSelectedPartner={setSelectedPartner} setShowModal={setShowModal} />
                                         </div>

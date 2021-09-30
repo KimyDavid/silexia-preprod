@@ -33,6 +33,7 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
 
     setLoading(true);
     API_POST(url, method, data, isFormData).then(response => {
+      console.log(response);
       setLoading(false);
       if (response && response.error) {
         setMessage(response.details)

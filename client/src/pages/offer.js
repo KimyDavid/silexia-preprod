@@ -52,7 +52,7 @@ const Offer = () => {
                                         { offerFlux ? offerFlux.flux.map((item, i) => 
                                             <div key={i} className="row align-items-center justify-content-between mb-10 mt-8">
                                                 <div className={`col-12 col-lg-4 ${ (i%2 === 0) ? 'order-lg-1' : '' } mb-6 mb-lg-0`}>
-                                                    <img src={require(`../assets/images/offers/offre_${item.image}`)} alt={`Silexia ${item.title}`} className="img-fluid" />
+                                                    <img src={require(`../assets/images/offers/offre_${item.image}`)} alt={`Silexia ${item.title}`} className="img-fluid steps-img" />
                                                 </div>
                                                 <div className="col-12 col-lg-6">
                                                     <div>

@@ -79,6 +79,13 @@ const Partners = () => {
         placeholder: 'Entrer un nom'
       },
       {
+        label: 'Description',
+        error: {required: 'Merci d\'écrire une description'},
+        name: 'description',
+        type: 'textarea',
+        placeholder: 'Entrer une description'
+      },
+      {
         label: 'Ordre',
         error: {required: 'Merci d\'ajouter un ordre'},
         name: 'order',

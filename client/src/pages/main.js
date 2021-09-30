@@ -102,7 +102,7 @@ function App() {
                 :
                 <>
                   <Route path="/forgot-password" component={ForgotPassword} />
-                  <Route path="/reset_password" component={() => <ResetPassword setToken={setToken} />} />
+                  <Route path="/reset_password" component={() => <ResetPassword />} />
                   <Route path="/profile" component={() => <Login setToken={setToken} />} />
                   <Route path="/verif_account" component={() => <VerifAccount />} />
                 </>

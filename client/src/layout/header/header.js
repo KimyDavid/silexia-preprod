@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import navLinks from '../../constants/NavSilexia';
+import navLinks from '../../constants/NavSilexia2';
 import { useLocation, Link } from 'react-router-dom';
 import {
     Collapse,

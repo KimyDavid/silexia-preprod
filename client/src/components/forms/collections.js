@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-const Collection = ({ field, collection, onCollectionChange, noEdit = false }) => {
+const Collection = ({ field, onCollectionChange, noEdit = false }) => {
   const [customId, setCustomId] = useState(1);
-
   const collectionFields = field.dataCollection.fields;
 
   const createModel = () => {
@@ -31,6 +30,7 @@ const Collection = ({ field, collection, onCollectionChange, noEdit = false }) =
     const newlist = [...list];
     newlist[index][name] = value;
     setList(newlist);
+    onCollectionChange(list, field.name);
   };
 
   const handleRemoveClick = index => {
@@ -53,7 +53,7 @@ const Collection = ({ field, collection, onCollectionChange, noEdit = false }) =
                   { collectionFields.map((field, j) => (
                       <div key={j} className="form-element">
                         <label htmlFor={`${field}-${item.customId}`} className="form-label">{field}</label>
-                        <input name={field} id={`${field}-${item.customId}`} type="text" defaultValue={item[field]} className={`form-input`} onChange={e => handleInputChange(e, i)} />
+                        <input name={field} id={`${field}-${item.customId}`} type="text" value={item[field]} className={`form-input`} onChange={e => handleInputChange(e, i)} />
                       </div>
                   )) }
                   { noEdit || (i === 0) ? '' : <p onClick={() => handleRemoveClick(i) } className="btn btn-sm mb-2 bg-blue-500 hover:bg-blue-600 text-white btn-rounded">Supprimer</p> }

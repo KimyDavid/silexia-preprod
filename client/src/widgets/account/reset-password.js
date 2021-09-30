@@ -1,40 +1,32 @@
 import React, { useState } from 'react';
-import Constants from '../../constants/Config';
 import { Link } from 'react-router-dom';
+import { API_POST } from '../../functions/apiRequest';
 
-const ResetPasswordForm = ({setToken}) => {
+const ResetPasswordForm = ({profile, resetKey}) => {
     
     const [password, setPassword] = useState();
     const [verifPassword, setVerifPassword] = useState();
     const [message, setMessage] = useState();
-    const params =  new URLSearchParams(window.location.search);
-    const key = params.get('key');
 
-    function signIn(e) {
+    const handleResetPassword = (e) => {
         e.preventDefault();
         if (password !== verifPassword) {
             setMessage('Les mots de passe ne sont pas identiques');
         } else {
-            fetch(`${Constants.api_url}/reset_password/${key}`, {
-                method: 'POST',
-                body: JSON.stringify({'key': key}),
-                headers: { 'Content-Type': 'application/json' },
-              })
-                .then(res => res.json())
-                .then(result => {
-                    console.log(result);
-                    // if (result.error) {
-                    //     setMessage(result.details);
-                    // } else {
-                    //     window.location.href = `${window.location.origin}/profile`;
-                    // }
-                })
+            API_POST(`users/${profile.id}`, 'PATCH', {'key': resetKey, 'password': password}, false).then(result => {
+                console.log(result);
+                // if (result.error) {
+                //     setError(true);
+                // } else {
+                //     setVerified(true);
+                // }
+            });
         }
     }
 
     return (
         <div>
-            <form id="contact-form" onSubmit={signIn}>
+            <form id="contact-form" onSubmit={handleResetPassword}>
                     <div className="form-group">
                         <label>Mot de passe</label>
                         <input id="form_password" type="password" name="password" className="form-control" placeholder="Mot de passe" required="required" onChange={e => setPassword(e.target.value)}/>
@@ -45,8 +37,8 @@ const ResetPasswordForm = ({setToken}) => {
                         <input id="form_password_confirm" type="password" name="confirm_password" className="form-control" placeholder="Confirmation mot de passe" required="required" onChange={e => setVerifPassword(e.target.value)}/>
                         <div className="help-block with-errors" />
                     </div>
-                    <div className="text-center error mb-3">{message}</div>
-                    <button type="submit" className="btn btn-primary btn-block">Réinitialiser mon mot de passe</button>
+                    {message ? <div className="text-center error mb-3">{message}</div> : '' }
+                    <button type="submit" className="btn btn-primary btn-block">Modifier mon mot de passe</button>
             </form>
             <div className="mt-4">
                 <Link to="/profile">Retour à la connexion</Link>

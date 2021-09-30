@@ -5,12 +5,14 @@ import { API_POST } from '../../functions/apiRequest';
 import { Col, Container, Row } from 'reactstrap';
 import Pageheading from '../../widgets/Pageheading';
 
-const ForgotPassword = ({setToken}) => {
+const ResetPassword = () => {
     const params =  new URLSearchParams(window.location.search);
     const key = params.get('key');
 
     const [verified, setVerified] = useState(false);
     const [error, setError] = useState(false);
+    const [profile, setProfile] = useState();
+
     useEffect(() => {
         API_POST('reset_password', 'POST', {'key': key}, false).then(result => {
             console.log(result);
@@ -18,9 +20,11 @@ const ForgotPassword = ({setToken}) => {
                 setError(true);
             } else {
                 setVerified(true);
+                setProfile(result);
             }
         });
     }, [])
+
         return (
             <div>
                 {/*hero section start*/}
@@ -35,14 +39,14 @@ const ForgotPassword = ({setToken}) => {
                         <Container>
                             <Row  className="justify-content-center">
                                 <Col className="col-5">
-                                    { setToken ?
-                                        <></>
-                                        // <ResetPasswordForm setToken={setToken} />
-                                    : 
-                                        <div className="text-center">
-                                            <p className="lead">Lien de réinitialisation de mot de passe obsolète. Merci de repasser par le formulaire de <Link className="link" to="/forgot-password">mot de passe oublié</Link>.</p>
-                                            <p><Link className="btn btn-primary" to="/profile">Retour à la connexion</Link></p>
-                                        </div>
+                                    { verified ?
+                                        <ResetPasswordForm profile={profile} resetKey={key} />
+                                    :
+                                        error ? 
+                                            <div className="text-center">
+                                                <p className="lead">Lien de réinitialisation de mot de passe obsolète. Merci de repasser par le formulaire de <Link className="link" to="/forgot-password">mot de passe oublié</Link>.</p>
+                                                <p><Link className="btn btn-primary" to="/profile">Retour à la connexion</Link></p>
+                                            </div> : ''
                                     }
                                 </Col>
                             </Row>
@@ -55,4 +59,4 @@ const ForgotPassword = ({setToken}) => {
         );
 }
 
-export default ForgotPassword;
+export default ResetPassword;

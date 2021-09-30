@@ -3,7 +3,7 @@ import Constants from '../../constants/Config';
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 
-const ForgotPasswordForm = ({setToken}) => {
+const ForgotPasswordForm = () => {
     const { t } = useTranslation('error');
     
     const [email, setEmail] = useState();
@@ -21,7 +21,6 @@ const ForgotPasswordForm = ({setToken}) => {
             .then(res => res.json())
             .then(result => {
                 setMessage(result ? result.error : `Un email a été envoyé à votre l'adresse ${email}`);
-                setToken(result);
             })
     }
 
