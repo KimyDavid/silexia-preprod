@@ -108,7 +108,7 @@ function verifAccount(data, callback){
     function(callback){
       getUserFromKey({key:data.key}, callback)
     }, 
-    function(callback){
+    function(user, callback){
       useKey({key:data.key, id_user:data.id_user}, callback)
     }, 
     function(callback){
@@ -141,7 +141,7 @@ function updatePassword(data, callback){
     function(callback){
       getUserFromKey({key:data.body.key}, callback)
     }, 
-    function(callback){
+    function(user, callback){
       useKey({key:data.body.key, id_user:data.id}, callback)
     }, 
     function(callback){
