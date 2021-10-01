@@ -27,12 +27,13 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
           formData.append(key, data[key]);
         }
       }
-     
+    
       data = formData;
     }
 
     setLoading(true);
     API_POST(url, method, data, isFormData).then(response => {
+      console.log(response);
       setLoading(false);
       if (response && response.error) {
         setMessage(response.details)
@@ -55,7 +56,7 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
             </Alert>
           </div>
         : ''}
-        <Validation items={fields} onSubmit={sendCreationRequest}/>
+        <Validation items={fields} onSubmit={sendCreationRequest} noEdit={(method === 'PUT' || method === 'POST')}/>
       </div>
     </>
   )

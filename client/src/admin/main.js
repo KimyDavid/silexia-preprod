@@ -13,7 +13,7 @@ import Offers from './offers'
 import Partners from './partners'
 import Sectors from './sectors'
 import Sizes from './sizes'
-import Types from './types'
+// import Types from './types'
 import Login from './login'
 import AutodiagCategories from './autodiag/categories'
 import AutodiagQuestions from './autodiag/questions'
@@ -49,7 +49,7 @@ const Main = () => {
                     <Partners />
                     <Sectors />
                     <Sizes />
-                    <Types />
+                    {/* <Types /> */}
                     <AutodiagCategories />
                     <AutodiagQuestions />
                     <AutodiagTiers />

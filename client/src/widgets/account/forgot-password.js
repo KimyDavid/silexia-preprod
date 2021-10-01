@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Constants from '../../constants/Config';
 import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
-const ForgotPasswordForm = ({setToken}) => {
+const ForgotPasswordForm = () => {
+    const { t } = useTranslation('error');
     
     const [email, setEmail] = useState();
     const [message, setMessage] = useState();
@@ -18,11 +20,7 @@ const ForgotPasswordForm = ({setToken}) => {
           })
             .then(res => res.json())
             .then(result => {
-                if (result.error) {
-                    setMessage(result.details);
-                } else if (setToken) {
-                    setToken(result);
-                }
+                setMessage(result ? result.error : `Un email a été envoyé à votre l'adresse ${email}`);
             })
     }
 
@@ -34,7 +32,7 @@ const ForgotPasswordForm = ({setToken}) => {
                         <input id="form_name" type="text" name="email" className="form-control" placeholder="Email" required="required" data-error="Email is required." onChange={e => setEmail(e.target.value)} />
                         <div className="help-block with-errors" />
                     </div>
-                    <div className="text-center error mb-3">{message}</div>
+                    { message ? <div className="text-center error mb-3 message">{t(message)}</div> : '' }
                     <button type="submit" className="btn btn-primary btn-block">Réinitialiser mon mot de passe</button>
             </form>
             <div className="mt-4">

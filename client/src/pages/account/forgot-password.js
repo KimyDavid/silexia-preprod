@@ -3,7 +3,7 @@ import ForgotPasswordForm from '../../widgets/account/forgot-password';
 import { Col, Container, Row } from 'reactstrap';
 import Pageheading from '../../widgets/Pageheading';
 
-const ForgotPassword = ({setToken}) => {
+const ForgotPassword = () => {
         return (
             <div>
                 {/*hero section start*/}
@@ -17,7 +17,7 @@ const ForgotPassword = ({setToken}) => {
                     <section>
                         <Container>
                             <Row  className="justify-content-center">
-                                <Col className="col-5">
+                                <Col className="col-12 col-lg-5">
                                   <ForgotPasswordForm />
                                 </Col>
                             </Row>

@@ -7,19 +7,6 @@ import Collection from './collections'
 const FormValidation = ({items, onSubmit, alerts}) => {
   const {handleSubmit, formState: { errors }, register, setValue} = useForm()
 
-  const getCurrentCollection = () => {
-    let collection;
-    items.forEach((item) => {
-      if (item.type === 'collection') {
-        collection = {
-          name: item.name,
-          data : item.value ?? ''
-        }
-      }
-    });
-    return collection
-  }
-
   const getCurrentQuill = () => {
     let quill;
     items.forEach((item) => {
@@ -41,7 +28,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
   }
 
   const [quill, setQuill] = useState(getCurrentQuill);
-  const [collection, setCollection] = useState(getCurrentCollection);
+  const [collection, setCollection] = useState();
   const [currentImage, setCurrentImage] = useState(getCurrentImage);
 
   useEffect(() => {
@@ -59,6 +46,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
   };
 
   const onSubmitFn = data => {
+    console.log(collection)
     if (collection) {
       collection.data.map((item) => {
         if (item.customId) {
@@ -74,11 +62,8 @@ const FormValidation = ({items, onSubmit, alerts}) => {
     }
   }
 
-  const collectionData = (data, item) => {
-    setCollection({
-      name: item.name,
-      data: data
-    })
+  const updateCollection = (data, name) => {
+    setCollection({'name': name, 'data': data});
   }
 
   return (
@@ -184,7 +169,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           }
           if (item.type === 'textarea') {
             return (
-              <>
+              
                 <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
                   <textarea
@@ -201,12 +186,12 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                     </div>
                   )}
                 </div>
-              </>
+              
             )
           }
           if (item.type === 'wysiwyg') {
             return (
-              <>
+              
                 <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
 
@@ -218,19 +203,19 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                     </div>
                   )}
                 </div>
-              </>
+              
             )
           }
           if (item.type === 'collection') {
             return (
-              <>
-                <Collection key={i} field={item} collection={collection} onChange={(data) => collectionData(data, item)} />
-              </>
+              
+                <Collection key={i} field={item} onCollectionChange={updateCollection} />
+              
             )
           }
           if (item.type === 'file') {
             return (
-              <>
+              
                 <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
                   <div className="mb-4">
@@ -257,11 +242,11 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                     <div className="form-error">{errors[item.name].message}</div>
                   )}
                 </div>
-              </>
+              
             )
           }
           return (
-            <>
+            
               <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <input
@@ -277,7 +262,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                   <div className="form-error">{errors[item.name].message}</div>
                 )}
               </div>
-            </>
+            
           )
         })}
       </div>

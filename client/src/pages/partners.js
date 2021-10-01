@@ -3,13 +3,20 @@ import Herosection from '../widgets/partners/herosection'
 import Team from '../widgets/partners/team'
 import Contact from '../widgets/partners/contact'
 import { API_GET } from '../functions/apiRequest'
+import Modal from '../widgets/common/modal';
 
 const Partners = () => {
     const [partners, setPartners] = useState([]);
+    const [partnerTypes, setPartnerTypes] = useState([]);
+    const [selectedPartner, setSelectedPartner] = useState();
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        API_GET('partners').then(response => setPartners(response));
+        API_GET('partners_type').then(response => {
+            setPartnerTypes(response);
+            API_GET('partners').then(response => setPartners(response));
+        });
     }, []);
     
         return (
@@ -23,20 +30,37 @@ const Partners = () => {
                 <div className="page-content">
                     {/*team start*/}
                     { partners ? partners.map((partner_type, i) => {
+                        const type = partnerTypes.find(x => x.id === partner_type.id);
+                        const description =  type.description;
                         return (
                             <div key={i} className="partner-section">
                                 { partner_type.partners ? 
-                                        <div className="container-fluid px-lg-8">
-                                            <div className="text-center">
-                                                <h2 className="mt-3 h3 font-w-5">{partner_type.label}</h2>
-                                            </div>
-                                            <Team partners={partner_type.partners} />
+                                    <div className="container-fluid px-lg-8">
+                                        <div className="text-center">
+                                            <h2 className="mt-3 h3 font-w-5">{partner_type.label}</h2>
+                                            { description ? <p className="lead text-center">{ description }</p> : '' }
                                         </div>
+                                        <Team partners={partner_type.partners} setSelectedPartner={setSelectedPartner} setShowModal={setShowModal} />
+                                    </div>
                                 : '' }
                             </div>
                         )
                     }) : ''}
                     {/*team end*/}
+
+                    {selectedPartner ? 
+                    <Modal 
+                        title={`Plus d'information sur ${selectedPartner.name}`}
+                        body={
+                            <>
+                                <img className="mb-5" width="220" src={selectedPartner.image} alt={selectedPartner.name} />
+                                <div dangerouslySetInnerHTML={{__html: selectedPartner.text}}></div>
+                                { selectedPartner.url ? <a href={selectedPartner.url} target="_blank" className="btn btn-primary mt-5">Voir le site web</a> : '' }
+                            </>}
+                        closeButton="Fermer"
+                        show={showModal}
+                        setShow={setShowModal}
+                    /> : '' }
 
                     <section>
                         <div className="container">

@@ -1,24 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { API_GET } from '../../functions/apiRequest';
+import OwlCarousel from 'react-owl-carousel';
+import { sortByOrder } from '../../functions/sort';
 
-const Team2 = ({partners}) => {
-  console.log(partners)
+const Team2 = ({partners, setSelectedPartner, setShowModal}) => {
+
+  const updateSelectedPartner = (partner) => {
+    setShowModal(true)
+    API_GET(`partners/${partner.id}`).then(result => setSelectedPartner(result));
+  }
         return (
           <div className="col-12">
-            <div className="row justify-content-center">
-              { partners ? partners.map((partner, i) => 
-                <div key={i} className="col-12 col-lg-4 col-xl-3 col-md-6 mb-0">
-                  <div className="p-3 d-flex align-items-center shadow bg-white rounded mt-4">
+            <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} > 
+              { partners ? sortByOrder(partners).map((partner, i) => 
+                <div key={i} className="mb-0">
+                  <div className="p-3 partner-item d-flex align-items-center shadow bg-white rounded mt-4" onClick={() => updateSelectedPartner(partner)}>
                     <div className="w-100 text-center">
                       { partner.image ? <img src={partner.image} alt={`${partner.name}`} className="img-fluid mb-2 partner-img" />: '' }
                       <h5 className="mb-2">{partner.name}</h5>            
                       <p>{partner.abstract}</p>
-                      { partner.url ? <Link to={partner.url} className="link-primary">En savoir plus</Link> : '' }
+                      { partner.text !== '' ? 
+                        <a onClick={() => updateSelectedPartner(partner)} className="link-primary">En savoir plus</a>
+                      : 
+                        partner.url ? <a href={partner.url} className="link-primary">En savoir plus</a> : '' 
+                      }
                     </div>
                   </div>
                 </div>
               ) : ''}
-            </div>
+            </OwlCarousel>
           </div>
        
         );

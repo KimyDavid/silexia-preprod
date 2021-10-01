@@ -4,8 +4,9 @@ import {Switch, Route} from 'react-router-dom'
 import ListCustom from './list'
 import List from '../../components/admin/list'
 import New from '../../components/admin/new'
+import Update from '../../components/admin/update'
 import NewCustom from './new'
-import Update from './update'
+import UpdateCustom from './update'
 
 const Partners = () => {
     const slug = 'partners';
@@ -22,6 +23,10 @@ const Partners = () => {
       {
         name: 'Nom',
         key: 'label'
+      },
+      {
+        name: 'Ordre',
+        key: 'order'
       },
     ]
 
@@ -79,6 +84,13 @@ const Partners = () => {
         placeholder: 'Entrer un nom'
       },
       {
+        label: 'Description',
+        error: {required: 'Merci d\'écrire une description'},
+        name: 'description',
+        type: 'textarea',
+        placeholder: 'Entrer une description'
+      },
+      {
         label: 'Ordre',
         error: {required: 'Merci d\'ajouter un ordre'},
         name: 'order',
@@ -93,7 +105,7 @@ const Partners = () => {
           <Route path={`/admin/${slug2}/update/:id`} component={() => <Update slug={slug2} fields={partnersTypeForm} />} />
           <Route path={`/admin/${slug2}/new`} component={() => <New slug={slug2} fields={partnersTypeForm} />} />
 
-          <Route path={`/admin/${slug}/update/:id`} component={() => <Update slug={slug} fields={partnersForm} />} />
+          <Route path={`/admin/${slug}/update/:id`} component={() => <UpdateCustom slug={slug} fields={partnersForm} />} />
           <Route path={`/admin/${slug}/new`} component={() => <NewCustom slug={slug} fields={partnersForm} />} />
 
           <Route path={`/admin/${slug2}`} component={() => <List slug={slug2} fields={partnersTypeFields} />} />

@@ -21,8 +21,8 @@ const Skillbox = () => {
                                 <h2 className="font-w-6">One Platform, Deep Insight Why Choose Bootsland</h2>
                             </div>
                             <div className="row">
-                                { offers ? offers.map((offer) => 
-                                    <div className="col-lg-6 col-md-6 mt-5">
+                                { offers ? offers.map((offer, i) => 
+                                    <div key={i} className="col-lg-6 col-md-6 mt-5">
                                         <div className="d-flex align-items-start">
                                             <div className="mr-3 p-3 border rounded border-light shadow-primary">
                                                 <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="" />

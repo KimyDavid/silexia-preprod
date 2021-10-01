@@ -10,13 +10,13 @@ import HeaderConnected from '../layout/header/header_connected';
 import Footer from '../layout/footer/footer';
 import Scrolltop from '../layout/back-to-top';
 import Home from './home';
-import Autodiag from './autodiag';
+// import Autodiag from '../widgets/autodiag/autodiag';
 
 import Home2 from './home2';
 import Offers from './offers';
 import Offer from './offer';
 import AboutUs from './about-us';
-import Reseau from './partners';
+import partners from './partners';
 
 import BlogList from './blog/bloglist';
 import BlogSingle from './blog/blogsingle';
@@ -25,7 +25,7 @@ import Login from './account/login';
 import ForgotPassword from './account/forgot-password';
 import ResetPassword from './account/reset-password';
 import VerifAccount from './account/verif-account';
-import ProfileEdit from './account/edit';
+// import ProfileEdit from './account/edit';
 import ProfileLogout from './account/logout';
 import Profile from './account/profile';
 import AutodiagResult from './account/result';
@@ -70,21 +70,21 @@ function App() {
        :
         <div className="page-wrapper">
           <BrowserRouter>
-            { token ? <HeaderConnected/> : <Header /> }
+            { token ? <HeaderConnected/> : <Header setToken={setToken} /> }
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={() => <Home />} />
 
-              <Route exact path="/home2" component={Home2} />
-              <Route exact path="/offres/:id" component={() => <Offer />} />
+              <Route path="/home2" component={Home2} />
               <Route exact path="/offres" component={Offers} />
-              <Route exact path="/about-us" component={AboutUs} />
-              <Route exact path="/reseau" component={Reseau} />
+              <Route path="/offres/:id" component={() => <Offer />} />
+              <Route path="/about-us" component={AboutUs} />
+              <Route path="/partners" component={partners} />
 
-              <Route exact path="/autodiag" component={Autodiag} />
+              {/* <Route exact path="/autodiag" component={Autodiag} /> */}
               
               {/* BLOG */}
-              <Route exact path="/blog/:id" component={BlogSingle} />
               <Route exact path="/blog" component={BlogList} />
+              <Route path="/blog/:id" component={BlogSingle} />
               
               {/* LÉGALS */}
               { staticPages.map((page, i) => 
@@ -93,23 +93,21 @@ function App() {
               
               {/* ACCOUNT */}
               { token ? 
-                <>
-                  <Route exact path="/profile/autodiag" component={AutodiagResult} />
-                  <Route exact path="/profile/edit" component={ProfileEdit} />
-                  <Route exact path="/profile/logout" component={() => <ProfileLogout setToken={setToken} />} />
-                  <Route exact path="/profile" component={Profile} />
-                </>
-                :
-                <>
-                  <Route path="/forgot-password" component={ForgotPassword} />
-                  <Route path="/reset-password" component={() => <ResetPassword userID={null} />} />
-                  <Route path="/profile" component={() => <Login setToken={setToken} />} />
-                  <Route path="/verif_account" component={() => <VerifAccount />} />
-                </>
+                <Route exact path="/profile" component={Profile} />
+              :
+                <Route path="/profile" component={() => <Login setToken={setToken} />} />
               }
+              
+                <Route path="/profile/autodiag" component={AutodiagResult} />
+                {/* <Route path="/profile/edit" component={ProfileEdit} /> */}
+                <Route path="/profile/logout" component={() => <ProfileLogout setToken={setToken} />} />
 
-              <Route component={PageNotFound} />
-            </Switch>
+                <Route path="/verif_account" component={() => <VerifAccount />} />
+                <Route path="/forgot-password" component={ForgotPassword} />
+                <Route path="/reset_password" component={() => <ResetPassword />} />
+
+                <Route component={PageNotFound} />
+              </Switch>
             <Footer />
             <Scrolltop />
           </BrowserRouter>

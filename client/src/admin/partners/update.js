@@ -25,10 +25,10 @@ const UpdateElement = ({slug, fields, method = 'PATCH'}) => {
 
   useEffect(() => {
     API_GET(`partners/${id}`).then(response => {
+      console.log(response);
       fields.map((_field) => {
-        if (_field['type'] !== 'file') {
-          _field.value = response[_field['name']];
-        }
+        _field.value = response[_field['name']] ?? '';
+        _field.error = {}
       });
   
       fields.push({

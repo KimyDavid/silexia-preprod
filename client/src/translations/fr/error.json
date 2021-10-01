@@ -1,0 +1,5 @@
+{
+    "Invalid password": "Mot de passe invalide",
+    "Email already registered": "Cet email existe déjà. Si vous avez oublié votre mot de passe, vous pouvez le retrouver dans \"Mot de passe oublié\"",
+    "Unknown email": "Aucun compte ne correspond à cet email"
+}

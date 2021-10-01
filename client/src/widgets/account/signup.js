@@ -7,13 +7,13 @@ const SignUpForm = ({profile = null, setToken = null}) => {
   const {handleSubmit, formState: { errors }, register} = useForm();
 
   const [sectors, setSectors] = useState([]);
-  const [types, setTypes] = useState([]);
+  // const [types, setTypes] = useState([]);
   const [sizes, setSizes] = useState([]);
 
   const [message, setMessage] = useState();
 
   const [currentSector, setCurrentSector] = useState(profile.sector);
-  const [currentType, setCurrentType] = useState(profile.type);
+  // const [currentType, setCurrentType] = useState(profile.type);
   const [currentSize, setCurrentSize] = useState(profile.size);
 
   const submitForm = data => {
@@ -25,7 +25,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
             if (response.error) {
               setMessage(response.details);
             } else if (setToken) {
-              setMessage();
+              setMessage("Inscription réussie ! Merci de confirmer votre compte grâce à l'email reçu dans votre boite mail.");
               setToken('');
               window.location.href = `${window.location.origin}/profile`;
             }
@@ -56,13 +56,13 @@ const SignUpForm = ({profile = null, setToken = null}) => {
         },
       )
     
-    fetch(`${Constants.api_url}/types`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setTypes(result);
-        },
-      )
+    // fetch(`${Constants.api_url}/types`)
+    //   .then(res => res.json())
+    //   .then(
+    //     (result) => {
+    //       setTypes(result);
+    //     },
+    //   )
       
     fetch(`${Constants.api_url}/sizes`)
       .then(res => res.json())
@@ -181,7 +181,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                           {errors['sector'] ? <span className="form-error error">Le secteur est obligatoire.</span> : '' }
                       </div>
                     </div>
-                    <div className="col-md-6">
+                    {/* <div className="col-md-6">
                       <div className="form-group">
                         <label className="form-label">Type d'entreprise</label>
                         <select className={`form-control ${errors['type'] ? 'error' : ''}`}
@@ -195,7 +195,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                         </select>
                           {errors['type'] ? <span className="form-error error">Le type est obligatoire.</span> : '' }
                       </div>
-                    </div>
+                    </div> */}
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="form-label">Taille de l'entreprise</label>
