@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Pageheading from '../widgets/Pageheading';
-import { API_GET, API_POST } from '../functions/apiRequest';
-import { sortById } from '../functions/sort';
+import Pageheading from '../Pageheading';
+import { API_GET, API_POST } from '../../functions/apiRequest';
+import { sortById } from '../../functions/sort';
 
-import Steps from './autodiag/steps';
-import Category from './autodiag/category';
-import Result from './autodiag/result';
+import Steps from './steps';
+import Category from './category';
+import Result from './result';
 
 const Autodiag = () => {
     const [autodiag, setAutodiag] = useState([]);

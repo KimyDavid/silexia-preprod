@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap'
 
-const CustomModal = ({title, body, closeButton, show, setShow}) => {
+const CustomModal = ({title, body, closeButton, show, setShow, size = 'md'}) => {
     
     return (
         <>
-            <Modal show={show} onHide={ () => setShow(false) }>
+            <Modal show={show} onHide={ () => setShow(false) } size={size}>
                 <Modal.Header closeButton>
                     <Modal.Title>{title}</Modal.Title>
                 </Modal.Header>

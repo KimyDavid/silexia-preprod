@@ -38,7 +38,7 @@ const ResetPassword = () => {
                     <section>
                         <Container>
                             <Row  className="justify-content-center">
-                                <Col className="col-5">
+                                <Col className="col-12 col-lg-5">
                                     { verified ?
                                         <ResetPasswordForm profile={profile} resetKey={key} />
                                     :

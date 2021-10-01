@@ -267,6 +267,10 @@ strong {
             h2 {
                 color: white;
             }
+
+            .lead {
+                color: white;
+            }
         }
     }
 
@@ -305,3 +309,22 @@ strong {
         max-width: 350px;
     }
 }
+
+.animated-waves {
+    animation: wave 6s linear infinite;
+    width: 300vw;
+    right: 0;
+    left: -100vw;
+}
+
+@keyframes wave {
+    0% {
+      transform: translateX(-100vw);
+    }
+    50% {
+        transform: translateX(100vw);
+    }
+    100% {
+        transform: translateX(-100vw);
+    }
+  }

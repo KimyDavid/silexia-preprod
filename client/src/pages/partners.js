@@ -7,12 +7,16 @@ import Modal from '../widgets/common/modal';
 
 const Partners = () => {
     const [partners, setPartners] = useState([]);
+    const [partnerTypes, setPartnerTypes] = useState([]);
     const [selectedPartner, setSelectedPartner] = useState();
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        API_GET('partners').then(response => setPartners(response));
+        API_GET('partners_type').then(response => {
+            setPartnerTypes(response);
+            API_GET('partners').then(response => setPartners(response));
+        });
     }, []);
     
         return (
@@ -26,17 +30,18 @@ const Partners = () => {
                 <div className="page-content">
                     {/*team start*/}
                     { partners ? partners.map((partner_type, i) => {
+                        const type = partnerTypes.find(x => x.id === partner_type.id);
+                        const description =  type.description;
                         return (
                             <div key={i} className="partner-section">
                                 { partner_type.partners ? 
-                                        <div className="container-fluid px-lg-8">
-                                            <div className="text-center">
-                                                <h2 className="mt-3 h3 font-w-5">{partner_type.label}</h2>
-                                                { partner_type.description ? <p className="lead text-center">{ partner_type.description }</p> : '' }
-                                                <p className="lead text-center">erioerg oierjgoeirjg oeigj oerjgoeijg </p>
-                                            </div>
-                                            <Team partners={partner_type.partners} setSelectedPartner={setSelectedPartner} setShowModal={setShowModal} />
+                                    <div className="container-fluid px-lg-8">
+                                        <div className="text-center">
+                                            <h2 className="mt-3 h3 font-w-5">{partner_type.label}</h2>
+                                            { description ? <p className="lead text-center">{ description }</p> : '' }
                                         </div>
+                                        <Team partners={partner_type.partners} setSelectedPartner={setSelectedPartner} setShowModal={setShowModal} />
+                                    </div>
                                 : '' }
                             </div>
                         )

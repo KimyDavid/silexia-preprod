@@ -21,14 +21,14 @@ const Pricingplan = ( {title, offer} ) => {
               <span className="badge badge-primary-soft p-2">
                 <i className="la la-users ic-3x rotation" />
               </span>
-              <h2 className="mt-4 font-w-5">Nos formules d'accompagnement</h2>
+              <h2 className="mt-4 font-w-5 h3">Nos formules d'accompagnement</h2>
             </div>
           </div>
 
           <Nav tabs className="d-flex justify-content-center border-0">
             { offer.map((item, i) => 
               <NavItem key={i} active={i === '1'}>
-                <NavLink className={`border-0 `+ ((selectedTab === i) ? 'active' : '') } onClick={() => setSelectedTab(i) } >{item.title}</NavLink>
+                <NavLink className={`mt-2 border-0 `+ ((selectedTab === i) ? 'active' : '') } onClick={() => setSelectedTab(i) } >{item.title}</NavLink>
               </NavItem>
             )}
           </Nav>

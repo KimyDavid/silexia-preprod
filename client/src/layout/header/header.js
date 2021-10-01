@@ -16,6 +16,7 @@ import {
 
 import Modal from '../../widgets/common/modal';
 import SigninForm from '../../widgets/account/signin';
+import Autodiag from '../../widgets/autodiag/autodiag';
 
 
 const Header = ({setToken}) => {
@@ -25,6 +26,7 @@ const Header = ({setToken}) => {
 
     const location = useLocation();
     const [showLogin, setShowLogin] = useState(false);
+    const [showAutodiag, setShowAutodiag] = useState(false);
   
     useEffect(() => {
       setShowLogin(false);
@@ -120,7 +122,7 @@ const Header = ({setToken}) => {
                                                 </Nav>
                                             </Collapse>
                                         </Navbar>
-                                    <Link className="btn btn-primary btn-small ml-3" to="/autodiag">Démarrer mon diagnostic</Link>
+                                    <a className="btn btn-primary btn-small ml-3" onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
                                 </div>
                                 {/*menu end*/}
                             </div>
@@ -142,6 +144,14 @@ const Header = ({setToken}) => {
                 closeButton="Fermer"
                 show={showLogin}
                 setShow={setShowLogin}
+            />
+
+            <Modal
+                size="lg"
+                body={<Autodiag />}
+                closeButton="Fermer"
+                show={showAutodiag}
+                setShow={setShowAutodiag}
             />
         </>
     );

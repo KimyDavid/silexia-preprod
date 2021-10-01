@@ -40,7 +40,7 @@ export default [
    },
    {
       "menu_title": "Réseau",
-      "path": "/reseau",
+      "path": "/partners",
       "icon": "home",
    },
    {

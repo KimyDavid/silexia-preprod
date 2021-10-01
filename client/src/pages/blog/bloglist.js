@@ -48,7 +48,7 @@ class Bloglisting1 extends Component {
                     let abstract = document.createElement('div');
                     abstract.innerHTML = item['text'];
                       return (
-                        <div key={i} className="col-12 col-lg-6 mb-6 mb-lg-0">
+                        <div key={i} className="col-12 col-md-6 col-lg-4 mb-6 mb-lg-0">
                           <div className="card border-0 bg-transparent">
                             <Link to={{pathname: `/blog/${item['id']}`, state: { items: item }}}><img className="card-img-top shadow rounded" src={item['image']} alt={item['title']} /></Link>
                             <div className="card-body pt-5">

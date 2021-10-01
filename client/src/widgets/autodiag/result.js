@@ -54,7 +54,7 @@ const Response = ({ profile }) => {
                     <div className="col-12 col-lg-6 col-xl-5">
                         <div>
                             <h3 className="font-w-4">Bravo, votre diagnostic s’est déroulé avec succès !</h3>
-                            {userAutodiag ? <p className="lead">{userAutodiag.tier}</p> : ''}
+                            {userAutodiag ? <p className="lead">{userAutodiag.global.tier}</p> : ''}
                         </div>
                         <a href="#create-account" className="btn btn-primary mt-5">Voir mon tableau de bord</a>
                     </div>

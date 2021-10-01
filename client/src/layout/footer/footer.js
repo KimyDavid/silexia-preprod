@@ -7,10 +7,10 @@ class Footer extends Component {
     render() {
         return (
             <footer className="py-11 mt-5 bg-primary position-relative" data-bg-img="assets/images/bg/03.png">
-                <div className="shape-1" style={{height: '150px', overflow: 'hidden'}}>
-                <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{height: '100%', width: '100%'}}>
-                    <path d="M0.00,49.98 C150.00,150.00 271.49,-50.00 500.00,49.98 L500.00,0.00 L0.00,0.00 Z" style={{stroke: 'none', fill: '#fff'}} />
-                </svg>
+                <div className="shape-1 animated-waves" style={{height: '150px', overflow: 'hidden'}}>
+                        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{height: '100%', width: '100%'}}>
+                            <path d="M0.00,49.98 C150.00,150.00 271.49,-50.00 500.00,49.98 L500.00,0.00 L0.00,0.00 Z" style={{stroke: 'none', fill: '#fff'}} />
+                        </svg>
                 </div>
                 <Container  className=" mt-11">
                 <Row>
@@ -26,13 +26,13 @@ class Footer extends Component {
                                 </li>
                                 <li className="mb-3 nav-item"><Link className="nav-link" to="/offres">Offres</Link> 
                                 </li>
-                                <li className="mb-3 nav-item"><Link className="nav-link" to="/reseau">Réseau</Link> 
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/partners">Réseau</Link> 
                                 </li>
                                 <li className="mb-3 nav-item"><Link className="nav-link" to="/blog">Blog</Link> 
                                 </li>
                                 <li className="mb-3 nav-item"><Link className="nav-link" to="/profile">Mon compte</Link> 
                                 </li>
-                                <li className="mb-3 nav-item"><Link className="nav-link" to="/autodiag">Autodiag</Link> 
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/home2">Home2</Link> 
                                 </li>
                             </ul>
                             </Col>

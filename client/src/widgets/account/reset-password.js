@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_POST } from '../../functions/apiRequest';
+import useToken from '../../functions/useTokenAccount';
 
 const ResetPasswordForm = ({profile, resetKey}) => {
+    const { token, setToken } = useToken();
     
     const [password, setPassword] = useState();
     const [verifPassword, setVerifPassword] = useState();
@@ -15,11 +17,14 @@ const ResetPasswordForm = ({profile, resetKey}) => {
         } else {
             API_POST(`users/${profile.id}`, 'PATCH', {'key': resetKey, 'password': password}, false).then(result => {
                 console.log(result);
-                // if (result.error) {
-                //     setError(true);
-                // } else {
-                //     setVerified(true);
-                // }
+                if (result.error) {
+                    setMessage(result.details);
+                } else {
+                    setMessage('Votre mot de passe a été mis à jour.');
+                    setTimeout(() => {
+                        window.location.href = `${window.location.origin}/profile`;
+                    }, 500);
+                }
             });
         }
     }
