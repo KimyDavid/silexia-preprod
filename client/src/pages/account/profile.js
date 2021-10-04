@@ -46,10 +46,10 @@ const Profile = () => {
                 <div className="page-content">
                     <div className="container">
                         <h2>Bonjour {token.first_name} !</h2>
-                        <p>Gérez ci-dessous les paramètres et informations de votre compte.</p>
+                        {/* <p>Gérez ci-dessous les paramètres et informations de votre compte.</p> */}
                         <h3 className="mt-5">Mes informations</h3>
                         <div className="row">
-                            <div className="col-5">
+                            <div className="col-12 col-md-5">
                                 <div className="card shadow my-3 border-0">
                                     <div className="card-body">
                                         <p><strong>{token.first_name} {token.last_name}</strong></p>

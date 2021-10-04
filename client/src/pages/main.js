@@ -92,11 +92,11 @@ function App() {
               )}
               
               {/* ACCOUNT */}
-              {/* { token ?  */}
+              { token ? 
                 <Route exact path="/profile" component={Profile} />
-              {/* // :
-              //   <Route path="/profile" component={() => <Login setToken={setToken} />} />
-              // } */}
+              :
+                <Route path="/profile" component={() => <Login setToken={setToken} />} />
+              }
               
                 <Route path="/profile/autodiag" component={AutodiagResult} />
                 {/* <Route path="/profile/edit" component={ProfileEdit} /> */}

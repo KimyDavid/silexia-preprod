@@ -133,7 +133,15 @@ const AutodiagResult = () => {
                         setShow={setShowDetails}
                     /> : '' }
                 </>
-            : '' }
+            : 
+            <div className="autodiag-loading">
+                <p>Chargement de vos résultats</p>
+                <div className="autodiag-loading-logo">
+                    <div className="loader clear-loader">
+                        <span />
+                    </div>
+                </div>
+            </div> }
         </>
     )
 }

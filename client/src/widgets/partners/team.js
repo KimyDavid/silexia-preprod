@@ -9,9 +9,19 @@ const Team2 = ({partners, setSelectedPartner, setShowModal}) => {
     setShowModal(true)
     API_GET(`partners/${partner.id}`).then(result => setSelectedPartner(result));
   }
+
+  const responsive = {
+      0:{
+          items:2,
+      },
+      768:{
+          items:4,
+      },
+  }
+
         return (
           <div className="col-12">
-            <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} > 
+            <OwlCarousel className="owl-carousel" responsive={responsive} autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} > 
               { partners ? sortByOrder(partners).map((partner, i) => 
                 <div key={i} className="mb-0">
                   <div className="p-3 partner-item d-flex align-items-center shadow bg-white rounded mt-4" onClick={() => updateSelectedPartner(partner)}>

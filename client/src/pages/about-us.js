@@ -31,7 +31,7 @@ class Aboutus extends Component {
                         </div>
 
                             {/*how it work start*/}
-                            <section className="position-relative bg-light mt-10" data-bg-img={require(`../assets/images/bg/02.png`)}>
+                            <section className="position-relative bg-light mt-3 mt-md-10" data-bg-img={require(`../assets/images/bg/02.png`)}>
                               <div className="container mt-8 mb-10">
                                 <div className="row justify-content-center text-center">
                                   <div className="col-12 col-md-12 col-lg-8 mb-lg-0 mb-8">
@@ -42,8 +42,8 @@ class Aboutus extends Component {
                                   </div>
                                 </div>
                                 {/* / .row */}
-                                <div className="row align-items-center justify-content-between mb-10 mt-8">
-                                  <div className="col-12 col-lg-4 mb-6 mb-lg-0">
+                                <div className="row align-items-center justify-content-between mb-10 mt-3 mt-md-8">
+                                  <div className="col-8 col-lg-4 mb-3 mb-lg-0">
                                     <img src={require(`../assets/images/about/innovation.svg`)} alt="Silexia valeur innovation" className="img-fluid" />
                                   </div>
                                   <div className="col-12 col-lg-6">
@@ -55,7 +55,7 @@ class Aboutus extends Component {
                                   </div>
                                 </div>
                                 <div className="row align-items-center justify-content-between mb-10">
-                                  <div className="col-12 col-lg-4 order-lg-1 mb-6 mb-lg-0">
+                                  <div className="col-8 col-lg-4 order-lg-1 mb-6 mb-lg-0">
                                     <img src={require(`../assets/images/about/europe.svg`)} alt="Silexia valeur made in europe" className="img-fluid" />
                                   </div>
                                   <div className="col-12 col-lg-6">
@@ -67,7 +67,7 @@ class Aboutus extends Component {
                                   </div>
                                 </div>
                                 <div className="row align-items-center justify-content-between">
-                                  <div className="col-12 col-lg-4 mb-6 mb-lg-0">
+                                  <div className="col-8 col-lg-4 mb-6 mb-lg-0">
                                     <img src={require(`../assets/images/about/environnement.svg`)} alt="Silexia valeur environnement" className="img-fluid" />
                                   </div>
                                   <div className="col-12 col-lg-6 mb-10">

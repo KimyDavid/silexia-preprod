@@ -36,6 +36,7 @@ class Header extends React.Component {
         [].forEach.call(elems, function(el) {
           el.classList.remove("show");
         });
+        this.toggle();
     }
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
@@ -106,7 +107,7 @@ class Header extends React.Component {
                                                                 </DropdownMenu>
                                                             </UncontrolledDropdown>
                                                             :
-                                                            <NavItem key={index}>
+                                                            <NavItem key={index} onClick={this.toggle}>
                                                                 { navLink.path.includes('://') ?
                                                                     <NavLink target="_blank" href={navLink.path}> {navLink.menu_title}</NavLink>
                                                                 : 
@@ -114,10 +115,12 @@ class Header extends React.Component {
                                                                 }
                                                             </NavItem>
                                                     ))}
+                                                    <NavItem>
+                                                        <Link onClick={this.toggle} className="btn btn-primary btn-small ml-3" to="/profile/autodiag">Mon diagnostic</Link>
+                                                    </NavItem>
                                                 </Nav>
                                             </Collapse>
                                         </Navbar>
-                                    <Link className="btn btn-primary ml-3 d-none d-lg-block" to="/profile/autodiag">Accéder à mon diagnostic</Link>
                                 </div>
                                 {/*menu end*/}
                             </div>

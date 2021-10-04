@@ -6,6 +6,15 @@ import OwlCarousel from 'react-owl-carousel';
 
 const FeatureServices = () => {
     const [offers, setOffers] = useState();
+    
+    const responsive = {
+        0:{
+            items:1,
+        },
+        768:{
+            items:3,
+        },
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -13,10 +22,10 @@ const FeatureServices = () => {
     }, []);
 
         return (
-            <div className="row mt-5">
-                <div className="col-12 mt-5">
+            <div className="row mt-0 mt-md-5">
+                <div className="col-12 mt-0 mt-md-5">
                 { offers ?  
-                    <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} > 
+                    <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} responsive={responsive}>
                         {offers.map((offer, i) => 
                             <Link to={{pathname: `offres/${toSnakeCase(offer.title)}`}} className="item" key={i}>
                                 <div className="portfolio-item position-relative overflow-hidden">

@@ -209,7 +209,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           if (item.type === 'collection') {
             return (
               
-                <Collection key={i} field={item} onCollectionChange={updateCollection} />
+                <Collection key={i} field={item} onCollectionChange={updateCollection} values={item.value} />
               
             )
           }
