@@ -18,7 +18,7 @@ passport.use('local', new LocalStrategy({
       if(!results){
         return done('Unregistered user');
       }else{
-        if(results.verif !== 1){
+        if(results.verif !== 2){
           return done('Merci de confirmer votre compte par email');
         }
 
