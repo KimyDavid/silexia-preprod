@@ -155,6 +155,7 @@ function getResultsAutodiagUser(data, callback) {
       strsql += '   GROUP BY aq.id_category ';
       strsql += ' )Results ON Results.id_category = ac.id';
       strsql += ' LEFT JOIN autodiag_tiers at2 ON at2.id_category = ac.id AND at2.deleted = 0';
+      strsql += ' WHERE ac.deleted IS NULL';
       strsql += ' GROUP BY ac.id';
       strsql += ' ORDER BY ac.order';
 
@@ -171,7 +172,7 @@ function getMainTierAutodiagUser(data, callback) {
 
   var strsql = ' SELECT id, text ';
       strsql += ' FROM Autodiag_Tiers';
-      strsql += ' WHERE Autodiag_Tiers.deleted IS NULL ';
+      strsql += ' WHERE Autodiag_Tiers.deleted = 0 ';
       strsql += ' ORDER BY Autodiag_Tiers.order';
 
       db.query(strsql, null, function (error, results) { 
