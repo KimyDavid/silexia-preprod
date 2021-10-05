@@ -27,7 +27,7 @@ class Herosection6 extends Component {
         </div>
         <div className="col-12 col-lg-7 col-xl-6 order-lg-1">
           {/* Heading */}
-          <h1 className="display-5 mt-3">Prêt à accélerer votre <br/><Typed
+          <h1 className="h2 mt-3">Prêt à accélerer votre <br/><Typed
                     className="text-primary font-w-5"
                     strings={['transition numérique','acquisition de clients','développement']}
                     typeSpeed={80}

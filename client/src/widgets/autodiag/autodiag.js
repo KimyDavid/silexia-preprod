@@ -72,7 +72,7 @@ const Autodiag = () => {
             {/*body content start*/}
             <section className="page-content">
                 <div className="container">
-                    <div className="col-12 col-lg-10 offset-lg-1">
+                    <div className="col-12">
                         { autodiag ? 
                         <>
                             

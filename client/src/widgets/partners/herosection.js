@@ -18,7 +18,7 @@ class Herosection extends Component {
                     </h1>
                     {/* Text */}
                     <p className="lead text-muted">L’agrégateur de la tech européenne et française au service de la transition numérique des TPE, PME et associations.</p>
-                    <Clientlogo logoitems={4} margintop={10} />
+                    {/* <Clientlogo logoitems={4} margintop={10} /> */}
                 </div>
             </div>
 

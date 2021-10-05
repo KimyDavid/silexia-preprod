@@ -37,7 +37,7 @@ const CreateElement = ({slug, fields}) => {
           name: 'id_category',
           type: 'number',
           value: state.id_category,
-          hidden: false,
+          hidden: true,
           options: [
             {value: [], label: ''},
           ]

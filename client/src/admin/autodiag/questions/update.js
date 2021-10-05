@@ -27,10 +27,9 @@ const UpdateElement = ({slug, fields, method = 'PUT', isFormData}) => {
 
   useEffect(() => {
     newFields = fields;
+    console.log(item);
     fields.map((_field) => {
-      if (_field['type'] !== 'file') {
-        _field.value = item[_field['name']];
-      }
+      _field.value = item[_field['name']];
     });
 
     const fieldCategory = newFields[newFields.length-1];
@@ -42,7 +41,7 @@ const UpdateElement = ({slug, fields, method = 'PUT', isFormData}) => {
           name: 'id_category',
           type: 'number',
           value: state.item.id_category,
-          hidden: false,
+          hidden: true,
           options: [
             {value: [], label: ''},
           ]

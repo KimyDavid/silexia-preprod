@@ -19,13 +19,13 @@ const Services = () => {
                                     <div> <span className="badge badge-light-soft p-2">
                                         <i className="la la-cubes ic-3x rotation" />
                                     </span>
-                                    <h2 className="mt-3 mb-0">Les domaines évalués lors de ce diagnostic</h2>
+                                    <h2 className="mb-5 mb-md-0 mt-3">Les domaines évalués lors de ce diagnostic</h2>
                                     </div>
                                 </div>
                                 { offers.map((offer, i) => 
                                     <div key={i} className={`col-lg-6 col-md-6 ${i === 0 || i === 1 ? '' : 'mt-6'}`}>
-                                        <div className="bg-primary-soft rounded">
-                                        <div className="d-flex align-items-center mb-4">
+                                        <div className="bg-primary-soft rounded mb-0">
+                                        <div className="d-flex align-items-center mb-3">
                                             <div className="mr-3">
                                                 <img className="img-fluid services-icons" src={require(`../../assets/images/icon/${offer.id}.png`)} alt="" />
                                             </div>
