@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-const Collection = ({ field, onCollectionChange, noEdit = false }) => {
+const Collection = ({ field, onCollectionChange, values, noEdit = false }) => {
   const [customId, setCustomId] = useState(1);
+  let currentCustomId = customId;
   const collectionFields = field.dataCollection.fields;
 
   const createModel = () => {
@@ -9,8 +10,8 @@ const Collection = ({ field, onCollectionChange, noEdit = false }) => {
     collectionFields.forEach((_field) => {
       newModel[_field] = "";
     });
-    newModel['customId'] = customId;
-    setCustomId(customId + 1);
+    newModel['customId'] = currentCustomId;
+    currentCustomId = currentCustomId + 1;
     return newModel;
   }
 
@@ -21,8 +22,32 @@ const Collection = ({ field, onCollectionChange, noEdit = false }) => {
 
   const [list, setList] = useState(initModel);
 
+  useEffect(() => {
+    if (values) {
+      const newList = [];
+
+      values.forEach((_val) => {
+        const newItem = {};
+        collectionFields.forEach((_field) => {
+          newItem[_field] = _val[_field];
+          if (_val['id']) {
+            newItem['id'] = _val['id'];
+          }
+        });
+        newItem['customId'] = currentCustomId;
+        currentCustomId = currentCustomId + 1;
+        newList.push(newItem);
+      });
+
+      setList(newList);
+      setCustomId(currentCustomId);
+      onCollectionChange(newList, field.name);
+    }
+  }, []);
+
   const handleAddClick = () => {
     setList([...list, createModel()]);
+    setCustomId(currentCustomId);
   };
 
   const handleInputChange = (e, index) => {
@@ -30,7 +55,7 @@ const Collection = ({ field, onCollectionChange, noEdit = false }) => {
     const newlist = [...list];
     newlist[index][name] = value;
     setList(newlist);
-    onCollectionChange(list, field.name);
+    onCollectionChange(newlist, field.name);
   };
 
   const handleRemoveClick = index => {
@@ -38,6 +63,7 @@ const Collection = ({ field, onCollectionChange, noEdit = false }) => {
     const newlist = [...list];
     newlist.splice(index, 1);
     setList(newlist);
+    onCollectionChange(newlist, field.name);
   };
 
     return (
@@ -49,7 +75,7 @@ const Collection = ({ field, onCollectionChange, noEdit = false }) => {
         <div className="d-flex flex-wrap m-n2">
           { list.map((item, i) => (
               <div key={i} className={`m-2`}>
-                <div className="form-group mb-0">{item.id ?? item.customId}
+                <div className="form-group mb-0">
                   { collectionFields.map((field, j) => (
                       <div key={j} className="form-element">
                         <label htmlFor={`${field}-${item.customId}`} className="form-label">{field}</label>
@@ -61,7 +87,6 @@ const Collection = ({ field, onCollectionChange, noEdit = false }) => {
               </div>
           ))}
         </div>
-        <div style={{ marginTop: 20 }}>{JSON.stringify(list)}</div>
       </>
     )
   }

@@ -18,6 +18,7 @@ function getCategories(data, callback) {
   var strsql = ' SELECT ';
       strsql += ' Autodiag_Categories.id,';
       strsql += ' Autodiag_Categories.label,';
+      strsql += ' Autodiag_Categories.order,';
       strsql += ' Autodiag_Categories.description,';
       strsql += ' CONCAT("[", GROUP_CONCAT(JSON_OBJECT(';
       strsql += '   "id", Autodiag_Tiers.id, ';

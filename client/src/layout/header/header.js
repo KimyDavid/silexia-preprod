@@ -119,10 +119,12 @@ const Header = ({setToken}) => {
                                                                 }
                                                             </NavItem>
                                                     ))}
+                                                    <NavItem>
+                                                        <a className="btn btn-primary btn-small mt-3 mt-lg-0 ml-lg-3" onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
+                                                    </NavItem>
                                                 </Nav>
                                             </Collapse>
                                         </Navbar>
-                                    <a className="btn btn-primary btn-small ml-3" onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
                                 </div>
                                 {/*menu end*/}
                             </div>

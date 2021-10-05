@@ -60,7 +60,7 @@ class Bloglisting1 extends Component {
                             </div>
                           </div>
 
-                          <hr className="my-8" />
+                          <hr className="my-md-8" />
                         </div> )
                     })}
                   {/* End Blog Card */}

@@ -21,7 +21,7 @@ const Index = () => {
                         {/*services end*/}
                         
                         {/*faq start*/}
-                        <section className="mt-10">
+                        <section className="mt-4 mt-md-10">
                             <div className="container">
                             <div className="row align-items-center justify-content-between">
                                 <div className="col-12 col-lg-4 mb-8 mb-lg-0">
