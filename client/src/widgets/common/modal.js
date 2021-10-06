@@ -1,7 +1,16 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap'
 
-const CustomModal = ({title, body, closeButton, show, setShow, size = 'md'}) => {
+const CustomModal = ({title, body, closeButton, show, setShow, size = 'md', submitButton = null, onSubmit = null}) => {
+
+    const hide = () => {
+        setShow(false)
+    }
+
+    const submit = () => {
+        hide();
+        onSubmit();
+    }
     
     return (
         <>
@@ -11,7 +20,8 @@ const CustomModal = ({title, body, closeButton, show, setShow, size = 'md'}) => 
                 </Modal.Header>
                 <Modal.Body>{body}</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={() => setShow(false)}>{closeButton}</Button>
+                    <Button variant="secondary" onClick={hide}>{closeButton}</Button>
+                    { submitButton ? <Button variant="primary" onClick={submit}>{submitButton}</Button> : '' }
                 </Modal.Footer>
             </Modal>
         </>

@@ -19,6 +19,7 @@ function getAutodiag(data, callback) {
       strsql += ' Autodiag_Categories.id,';
       strsql += ' Autodiag_Categories.label,';
       strsql += ' Autodiag_Categories.description,';
+      strsql += ' Autodiag_Categories.order,';
       strsql += ' CONCAT("[", GROUP_CONCAT(JSON_OBJECT(';
       strsql += '   "id", Autodiag.id, ';
       strsql += '   "label", Autodiag.label, ';

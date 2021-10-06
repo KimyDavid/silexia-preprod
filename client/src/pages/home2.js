@@ -1,18 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Herosection from '../widgets/sections/home2/herosection';
 import About from '../widgets/sections/home2/about';
 import Blog from '../widgets/sections/blog';
 import Skillbox from '../widgets/sections/home2/skillbox';
 import BrandLogo from '../widgets/sections/home2/brand';
 
-class Index extends Component {
-    constructor(props) {
-        super(props)
-    }
-    componentDidMount() {
-        window.scrollTo(0, 0)
-    }
-    render() {
+const Index = ({setShowAutodiag}) => {
         return (
             <div>
                 <Herosection />
@@ -50,9 +43,7 @@ class Index extends Component {
                         <div className="container">
                             <div className="row justify-content-center text-center">
                                 <div className="col-12 col-md-12 col-lg-8 mb-8 mb-lg-0">
-                                    <div className="mb-8"> <span className="badge badge-primary-soft p-2 font-w-6">
-                                        Brand Logo
-                                        </span>
+                                    <div className="mb-lg-8">
                                         <h2 className="mt-3">Nous travaillons à leurs côtés</h2>
                                     </div>
                                 </div>
@@ -81,7 +72,7 @@ class Index extends Component {
                 </div>
             </div>
         );
-    }
+
 }
 
 export default Index;

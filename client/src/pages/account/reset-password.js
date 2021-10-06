@@ -15,7 +15,6 @@ const ResetPassword = () => {
 
     useEffect(() => {
         API_POST('reset_password', 'POST', {'key': key}, false).then(result => {
-            console.log(result);
             if (result.error) {
                 setError(true);
             } else {

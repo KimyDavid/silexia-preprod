@@ -10,7 +10,6 @@ const VerifAccount = () => {
 
     useEffect(() => {
         API_POST('verif_account', 'POST', {'key': key}, false).then(result => {
-            console.log(result);
             if (result.error) {
                 setError(true);
             } else {

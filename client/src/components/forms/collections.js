@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from "react-i18next";
 
 const Collection = ({ field, onCollectionChange, values, noEdit = false }) => {
   const [customId, setCustomId] = useState(1);
   let currentCustomId = customId;
   const collectionFields = field.dataCollection.fields;
+
+  const { t } = useTranslation('field');
 
   const createModel = () => {
     let newModel = {};
@@ -59,7 +62,6 @@ const Collection = ({ field, onCollectionChange, values, noEdit = false }) => {
   };
 
   const handleRemoveClick = index => {
-    console.log(index);
     const newlist = [...list];
     newlist.splice(index, 1);
     setList(newlist);
@@ -74,13 +76,17 @@ const Collection = ({ field, onCollectionChange, values, noEdit = false }) => {
         </div>
         <div className="d-flex flex-wrap m-n2">
           { list.map((item, i) => (
-              <div key={i} className={`m-2`}>
+              <div key={i} className={`m-2 w-50`}>
                 <div className="form-group mb-0">
                   { collectionFields.map((field, j) => (
                       <div key={j} className="form-element">
-                        <label htmlFor={`${field}-${item.customId}`} className="form-label">{field}</label>
-                        <input name={field} id={`${field}-${item.customId}`} type="text" value={item[field]} className={`form-input`} onChange={e => handleInputChange(e, i)} />
-                      </div>
+                        <label htmlFor={`${field}-${item.customId}`} className="form-label">{t(field)}</label>
+                          { field === 'text' || field === 'label' ?
+                            <textarea className="form-textarea" name={field} id={`${field}-${item.customId}`} value={item[field]} onChange={e => handleInputChange(e, i)}></textarea>
+                          : 
+                            <input name={field} id={`${field}-${item.customId}`} type="text" value={item[field]} className={`form-input`} onChange={e => handleInputChange(e, i)} />
+                          }
+                        </div>
                   )) }
                   { noEdit || (i === 0) ? '' : <p onClick={() => handleRemoveClick(i) } className="btn btn-sm mb-2 bg-blue-500 hover:bg-blue-600 text-white btn-rounded">Supprimer</p> }
                 </div>

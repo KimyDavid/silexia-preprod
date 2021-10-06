@@ -9,6 +9,7 @@ import {I18nextProvider} from "react-i18next";
 import i18next from "i18next";
 import admin_fr from "./translations/fr/admin.json";
 import error_fr from "./translations/fr/error.json";
+import field_fr from "./translations/fr/field.json";
 
 import 'react-quill/dist/quill.snow.css';
 
@@ -21,7 +22,8 @@ i18next.init({
   resources: {
     fr: {
         admin: admin_fr,
-        error: error_fr
+        error: error_fr,
+        field: field_fr
     },
 },
 });

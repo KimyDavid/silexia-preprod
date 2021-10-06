@@ -17,32 +17,42 @@ class Clientlogo extends Component {
                 >
                 <div className="item">
                     <div className="clients-logo">
-                        <img className="img-fluid" src={require(`../../assets/images/client/07.png`)} alt="" />
+                        <img className="img-fluid" src={require(`../../assets/images/client/activateur.png`)} alt="" />
                     </div>
                 </div>
                 <div className="item">
                     <div className="clients-logo">
-                        <img className="img-fluid" src={require(`../../assets/images/client/08.png`)} alt="" />
+                        <img className="img-fluid" src={require(`../../assets/images/client/pepite.png`)} alt="" />
                     </div>
                 </div>
                 <div className="item">
                     <div className="clients-logo">
-                        <img className="img-fluid" src={require(`../../assets/images/client/09.png`)} alt="" />
+                        <img className="img-fluid" src={require(`../../assets/images/client/psl-lab.png`)} alt="" />
                     </div>
                 </div>
                 <div className="item">
                     <div className="clients-logo">
-                        <img className="img-fluid" src={require(`../../assets/images/client/10.png`)} alt="" />
+                        <img className="img-fluid" src={require(`../../assets/images/client/axonaut.png`)} alt="" />
                     </div>
                 </div>
                 <div className="item">
                     <div className="clients-logo">
-                        <img className="img-fluid" src={require(`../../assets/images/client/11.png`)} alt="" />
+                        <img className="img-fluid" src={require(`../../assets/images/client/ionos.png`)} alt="" />
                     </div>
                 </div>
                 <div className="item">
                     <div className="clients-logo">
-                        <img className="img-fluid" src={require(`../../assets/images/client/12.png`)} alt="" />
+                        <img className="img-fluid" src={require(`../../assets/images/client/wizishop.png`)} alt="" />
+                    </div>
+                </div>
+                <div className="item">
+                    <div className="clients-logo">
+                        <img className="img-fluid" src={require(`../../assets/images/client/crowdfire.png`)} alt="" />
+                    </div>
+                </div>
+                <div className="item">
+                    <div className="clients-logo">
+                        <img className="img-fluid" src={require(`../../assets/images/client/kinsta.png`)} alt="" />
                     </div>
                 </div>
                 </OwlCarousel> 

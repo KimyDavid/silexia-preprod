@@ -27,7 +27,6 @@ const UpdateElement = ({slug, fields, method = 'PUT', isFormData}) => {
 
   useEffect(() => {
     newFields = fields;
-    console.log(item);
     fields.map((_field) => {
       _field.value = item[_field['name']];
     });

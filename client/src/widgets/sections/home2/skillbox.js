@@ -17,18 +17,18 @@ const Skillbox = () => {
                             <img src={require(`../../../assets/images/about/06.png`)} alt="Image" className="img-fluid" />
                         </div>
                         <div className="col-12 col-lg-8 col-xl-8">
-                            <div className="mb-8">
+                            <div className="mb-md-8">
                                 <h2 className="font-w-6">One Platform, Deep Insight Why Choose Bootsland</h2>
                             </div>
                             <div className="row">
                                 { offers ? offers.map((offer, i) => 
                                     <div key={i} className="col-lg-6 col-md-6 mt-5">
                                         <div className="d-flex align-items-start">
-                                            <div className="mr-3 p-3 border rounded border-light shadow-primary">
-                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="" />
-                                            </div>
+                                            {/* <div className="mr-3 p-3 border rounded border-light shadow-primary">
+                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt={offer.title} />
+                                            </div> */}
                                             <div>
-                                                <h5 className="mb-2 text-primary">{offer.title}</h5>
+                                                <h6 className="mb-2 text-primary">{offer.title}</h6>
                                                 <p className="mb-0 abstract abstract-3">{offer.abstract}</p>
                                             </div>
                                         </div>
