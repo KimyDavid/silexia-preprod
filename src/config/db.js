@@ -1,7 +1,7 @@
 import mysql from 'mysql';
 
 var pool = mysql.createPool({
-    connectionLimit : 10,
+    connectionLimit : 3,
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     password:process.env.DATABASE_PASSWORD,
