@@ -10,18 +10,28 @@ yup_test.test({yup:yup, label:'exists', type:'number', _function:apiController.g
 yup_test.test({yup:yup, label:'unique', type:'string', _function:userController.getUserFromEmail, message:'Email already registered', key:'email', reverse:true})
 yup_test.test({yup:yup, label:'registered', type:'string', _function:userController.getUserFromEmail, message:'Unknown email', key:'email'})
 
-function User(data) {
-    this.id                 = data.id;
-    this.company            = data.company
-    this.email              = data.email
-    this.sector             = data.sector
-    this.type               = data.type
-    this.size               = data.size
-    this.first_name         = data.first_name
-    this.last_name          = data.last_name
-    this.function           = data.function
-    this.phone              = data.phone
-    this.verif              = data.verif
+function User(data, extraData) {
+
+    if(extraData?.list){
+        this.id                 = data.id;
+        this.company            = data.company
+        this.email              = data.email
+        this.first_name         = data.first_name
+        this.last_name          = data.last_name
+        this.date               = data.date;
+    }else{
+        this.id                 = data.id;
+        this.company            = data.company
+        this.email              = data.email
+        this.sector             = data.sector
+        this.type               = data.type
+        this.size               = data.size
+        this.first_name         = data.first_name
+        this.last_name          = data.last_name
+        this.function           = data.function
+        this.phone              = data.phone
+        this.verif              = data.verif
+    }
 }
 
 const userLoginSchema = yup.object({

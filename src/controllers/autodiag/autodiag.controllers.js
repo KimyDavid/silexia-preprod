@@ -137,27 +137,30 @@ function getResultsAutodiagUser(data, callback) {
 
   var strsql = ' SELECT ac.id, ac.label, ac.description, ';
       strsql += ' CONCAT("[", GROUP_CONCAT(JSON_OBJECT("text", at2.text, "order", at2.order) ORDER BY at2.order), "]") AS tiers,';
-      strsql += ' Results.score_user, ';
-      strsql += ' Results.score_total,';
-      strsql += ' Results.flags';
+      strsql += ' score_user,';
+      strsql += ' score_total,';
+      strsql += ' flags';
       strsql += ' FROM autodiag_categories ac ';
       strsql += ' LEFT JOIN(';
-      strsql += '   SELECT';
-      strsql += '   aq.id_category,';
-      strsql += '   aq.order,';
-      strsql += '   SUM(aa.score) AS score_total,';
-      strsql += '   SUM(IF(aua.id IS NOT NULL, aa.score, 0)) AS score_user,';
-      strsql += '   CONCAT("[", GROUP_CONCAT(IF(aua.id IS NOT NULL, aa.flag, NULL)), "]") AS flags';
-      strsql += '   FROM autodiag_answers aa';
-      strsql += '   LEFT JOIN autodiag_user_answers aua ON aua.id_answer = aa.id AND aua.id_user = ' + data.id;
-      strsql += '   INNER JOIN autodiag_questions aq ON aq.id = aa.id_question';
-      strsql += '   WHERE aq.deleted IS NULL AND aa.deleted IS NULL';
-      strsql += '   GROUP BY aq.id_category ';
-      strsql += ' )Results ON Results.id_category = ac.id';
+      strsql += ' SELECT aq.id_category, SUM(score) AS score_total';
+      strsql += ' FROM autodiag_answers aa ';
+      strsql += ' INNER JOIN autodiag_questions aq ON aq.id = aa.id_question ';
+      strsql += ' WHERE aa.deleted IS NULL AND aq.deleted IS NULL';
+      strsql += ' GROUP BY aq.id_category ';
+      strsql += ' )Score_total ON score_total.id_category = ac.id';
+      strsql += ' LEFT JOIN(';
+      strsql += ' SELECT id_category, SUM(score) AS score_user, CONCAT("[", GROUP_CONCAT(JSON_OBJECT("flag", aa.flag)), "]") AS flags';
+      strsql += ' FROM autodiag_answers aa ';
+      strsql += ' INNER JOIN autodiag_user_answers aua ON aua.id_answer = aa.id ';
+      strsql += ' INNER JOIN autodiag_questions aq ON aq.id = aa.id_question ';
+      strsql += ' WHERE aa.deleted IS NULL AND aq.deleted IS NULL AND aua.id_user = ' + data.id;
+      strsql += ' GROUP BY id_category';
+      strsql += ' )Score_user ON score_user.id_category = ac.id';
       strsql += ' LEFT JOIN autodiag_tiers at2 ON at2.id_category = ac.id AND at2.deleted = 0';
       strsql += ' WHERE ac.deleted IS NULL';
       strsql += ' GROUP BY ac.id';
       strsql += ' ORDER BY ac.order';
+
 
       db.query(strsql, null, function (error, results) { 
         for(let i=0; i<results.length; i++){
