@@ -2,41 +2,53 @@ import React, { useState, useEffect } from 'react';
 
 import Question from './question';
 
-const Category = ({category, index, categoriesLength, progressLength, onNextCategory, currentAnswers = {}}) => {
-    const [progress, setProgress] = useState(index+1);
-    const [question, setQuestion] = useState(0);
+const Category = ({currentCategory, index, nbCategoriesTotal, progressTotal, setNextCategory, goPrevCategory, currentAnswers = {}}) => {
+    const [questionIndex, setQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState(currentAnswers);
     const [error, setError] = useState();
-
-    console.log('progress : ' + progress);
+    const [progression, setProgression] = useState(1);
+    const [oldIndex, setOldIndex] = useState(0);
 
     useEffect(() => {
         setAnswers(currentAnswers);
-        if (index !== 0) {
-            const diff = category.questions.length;
-            console.log(diff);
-            setProgress(progress + index - diff);
+        if (oldIndex === index+1) {
+            setProgression(progression - 1);
+            setQuestionIndex(currentCategory.questions.length - 1);
+        } else {
+            setQuestionIndex(0);
         }
+        setOldIndex(index);
     }, [index]);
 
     function goToQuestion(_question) {
-        const diff = question - _question;
-        setQuestion(_question);
-        setProgress(progress - diff);
+        const diff = questionIndex - _question;
+        setQuestionIndex(_question);
+        setProgression(progression - diff);
     }
 
     function nextStep() {
-        if (!answers[question] || answers[question].length < 1) {
+        if (!answers[questionIndex] || answers[questionIndex].length < 1) {
             setError('Merci de sélectionner au moins une réponse');
         } else {
             setError();
-            if (question === category.questions.length-1) {
-                setQuestion(0);
-                onNextCategory(answers);
+            if (questionIndex === currentCategory.questions.length-1) {
+                setQuestionIndex(0);
+                setNextCategory(answers);
             } else {
-                setQuestion(question+1);
+                setQuestionIndex(questionIndex+1);
             }
-            setProgress(progress + 1);
+
+            if (progression < progressTotal) {
+                setProgression(progression + 1);
+            }
+        }
+    }
+
+    const prevStep = () => {
+        if (questionIndex === 0) {
+            goPrevCategory();
+        } else {
+            goToQuestion(questionIndex-1);
         }
     }
 
@@ -48,27 +60,28 @@ const Category = ({category, index, categoriesLength, progressLength, onNextCate
 
     return (
         <>
-            <div className="autodiag-container mb-5">
+            <div className="autodiag-container">
                 <header className="autodiag-header row align-items-center justify-content-between">
                     <div className="col-9">
-                        <p className="autodiag-category-title"><strong>{category.label}</strong></p>
-                        <p className="autodiag-category-description"><strong>{category.description}</strong></p>
+                        <p className="autodiag-category-title"><strong>{currentCategory.label}</strong></p>
+                        <p className="autodiag-category-description"><strong>{currentCategory.description}</strong></p>
                     </div>
                     <div className="col-3 d-flex justify-content-end">
-                        <p className="autodiag-number">{ index+1 }/{categoriesLength}</p>
+                        <p className="autodiag-number">{ index+1 }/{nbCategoriesTotal}</p>
                     </div>
                 </header>
                 <div className="autodiag-body">
-                    { question > 0 ? <p onClick={() => goToQuestion(question-1)} className="link"><i className="las la-arrow-left"></i> Question précédente</p> : '' }
+                    { progression > 1 ? <p onClick={prevStep} className="btn btn-primary autodiag-question-before"><i className="las la-arrow-left"></i>Précédent</p> : '' }
                     { error ? <p className="error message">{error}</p> : '' }
-                    <Question question={category.questions[question]} index={question} emitResponses={handleQuestionResponse} currentChoices={answers[question]} />
+                    <Question question={currentCategory.questions[questionIndex]} index={questionIndex} emitResponses={handleQuestionResponse} currentChoices={answers[questionIndex]} />
                 </div>
                 <footer className="autodiag-footer row align-items-center justify-content-between">
-                    <div className="col-12 col-md-9">
-                        <div className="autodiag-progressbar"><span style={{transform: 'scaleX(' + (progress/progressLength) + ')'}}></span></div>
+                    <div className="col-12 col-lg-9">
+                        <p className="text-primary text-center font-w-6 mb-0">{Math.round((progression/progressTotal) * 100)}%</p>
+                        <div className="autodiag-progressbar"><span style={{transform: 'scaleX(' + (progression/progressTotal) + ')'}}></span></div>
                     </div>
-                        <div className="col-12 col-md-3 mt-2 mt-md-0 d-flex justify-content-end">
-                        <button onClick={nextStep} className="autodiag-next btn btn-primary btn-small shadow w-100">{ (progress/progressLength === 1) ? 'Voir les résultats' : 'Prochaine question'}<i className="las la-arrow-right"></i></button>
+                    <div className="col-12 col-lg-3 mt-2 mt-lg-0 d-flex justify-content-end">
+                        <button onClick={nextStep} className="autodiag-next btn btn-primary btn-small shadow w-100">{ (progression/progressTotal === 1) ? 'Voir les résultats' : 'Prochaine question'}<i className="las la-arrow-right ml-2"></i></button>
                     </div>
                 </footer>
             </div>

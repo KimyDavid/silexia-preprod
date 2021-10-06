@@ -1,32 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import Pageheading from '../Pageheading';
+import Pageheading from './heading';
 import { API_GET, API_POST } from '../../functions/apiRequest';
-import { sortById } from '../../functions/sort';
+import { sortByOrder } from '../../functions/sort';
+import useAutodiagToken from '../../functions/useAutodiagToken';
+import Modal from '../../widgets/common/modal';
 
 import Steps from './steps';
 import Category from './category';
 import Result from './result';
 
 const Autodiag = () => {
-    const [autodiag, setAutodiag] = useState([]);
+    const { autodiagToken, setAutodiagToken } = useAutodiagToken();
+    const [profile, setProfile] = useState();
+    const [autodiag, setAutodiag] = useState();
     const [category, setCategory] = useState(0);
-    const [autodiagResponse, setAutodiagResponse] = useState({});
-    const [profile, setProfile] = useState({});
-    const [message, setMessage] = useState();
-    const [progressionTotal, setProgressionTotal] = useState();
-    const [progression, setProgression] = useState(0);
 
-    console.log('category : ' + category);
+    const [message, setMessage] = useState();
+    const [showConfirm, setShowConfirm] = useState(false);
+
+    const [progressionTotal, setProgressionTotal] = useState();
 
     useEffect(() => {
         API_GET('autodiag').then(response => {
-            setAutodiag(sortById(response));
-            let length = 0;
+            setAutodiag(sortByOrder(response));
+            let nbQuestions = 0;
             response.forEach((category) => {
-                length = length + 1;
-                category.questions.forEach(() => length = length + 1);
+                nbQuestions = nbQuestions + category.questions.length;
             });
-            setProgressionTotal(length);
+
+            setProgressionTotal(nbQuestions);
         });
     }, []);
 
@@ -35,55 +37,74 @@ const Autodiag = () => {
     }
 
     const updateAutodiagResponse = response => {
-        const newResponse = autodiagResponse;
+        const newResponse = autodiagToken;
         newResponse[category] = response;
-        setAutodiagResponse(newResponse);
+        setAutodiagToken(newResponse);
 
-        if (category === autodiag.length-1) {
-            let data = [];
-            for (const category in autodiagResponse) {
-                for (const question in autodiagResponse[category]) {
-                    data = data.concat(autodiagResponse[category][question]);
-                }
-            }
-            API_POST('autodiag', 'POST', {answers: data})
-                .then(response => {
-                    if (response.error) {
-                        setMessage(response.details);
-                    } else {
-                        setMessage();
-                        setCategory('done');
-                        setProfile(response);
-                    }
-                });
+        if ((category === autodiag.length-1)) {
+            setShowConfirm(true);
         } else {
             setCategory(category+1);
         }
     }
 
+    const goPrevCategory = () => {
+        setCategory(category-1);
+    }
+
+    const submitAutodiag = () => {
+        let data = [];
+        for (const category in autodiagToken) {
+            for (const question in autodiagToken[category]) {
+                data = data.concat(autodiagToken[category][question]);
+            }
+        }
+        API_POST('autodiag', 'POST', {answers: data})
+            .then(response => {
+                if (response.error) {
+                    setMessage(response.details);
+                } else {
+                    setMessage();
+                    setCategory('done');
+                    setProfile(response);
+                }
+            });
+        }
+
     return (
         <div>
             {/*hero section start*/}
-            <section className="position-relative py-6">
-                <Pageheading title={"Autodiag"} />
+            <section className="position-relative py-2">
+                <Pageheading title={"Autodiagnostic de votre entreprise"} />
+                { autodiag ? <p className="lead text-black text-center">Un questionnaire en {progressionTotal} questions</p> : '' }
             </section>
             {/*hero section end*/}
 
             {/*body content start*/}
-            <section className="page-content">
-                <div className="container">
-                    <div className="col-12">
+            <section className="page-content py-2">
+                <div className="container px-0 px-lg-2">
+                    <div className="col-12 px-0 px-lg-2">
                         { autodiag ? 
                         <>
                             
-                            { category === 'done' ? '' : <Steps steps={autodiag} currentStep={category} goStep={goToCategory}/> }
-                            { category > 0 ? <p onClick={() => goToCategory(category-1)} className="link"><i className="las la-arrow-left"></i> Catégorie précédente</p> : '' }
-                            { autodiag[category] ?
-                            <Category category={autodiag[category]} index={category} categoriesLength={autodiag.length} progressLength={progressionTotal} onNextCategory={updateAutodiagResponse} currentAnswers={autodiagResponse[category]} />
+                            { profile ? '' : 
+                                <>
+                                    <Steps steps={autodiag} currentStep={category} goStep={goToCategory}/>
+                                    { autodiagToken[0] && category === 0 ? <p className="text-center mb-1 font-italic">(Autodiag préremplis grâce à vos précédentes réponses.)</p> : '' }
+                                </>
+                            }
+                            { autodiag[category] && !autodiagToken.id ?
+                                <Category currentCategory={autodiag[category]} 
+                                    index={category} 
+                                    nbCategoriesTotal={autodiag.length} 
+                                    progressTotal={progressionTotal} 
+                                    setNextCategory={updateAutodiagResponse}
+                                    goPrevCategory={goPrevCategory} 
+                                    currentAnswers={autodiagToken[category]} />
                             : '' }
                             { message ? <p className="error message">{message}</p> : '' }
-                            { category === 'done' ?
-                            <Result profile={profile}/>
+                            { profile ?
+                                <Result profile={profile}/>
                             : '' }
                         </> : 
                         <div className="autodiag-loading-logo">
@@ -96,7 +117,19 @@ const Autodiag = () => {
                 </div>
             </section>
             {/*body content end*/}
+            
+            <Modal 
+                title={`Valider le questionnaire ?`}
+                body="Êtes-vous sûr de vouloir valider ce questionnaire ? "
+                closeButton="Fermer"
+                submitButton="Valider"
+                onSubmit={submitAutodiag}
+                show={showConfirm}
+                setShow={setShowConfirm}
+            />
         </div>
+
+        
     );
 }
 

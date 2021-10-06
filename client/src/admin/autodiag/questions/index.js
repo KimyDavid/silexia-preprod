@@ -1,5 +1,6 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
+import { useTranslation } from "react-i18next";
 
 import ListCustom from './list'
 import New from './new'
@@ -7,6 +8,7 @@ import Update from './update'
 
 const AutodiagCategories = () => {
     const slug = 'autodiag/questions';
+    const { t } = useTranslation('field');
 
     const listFields = [
       {
@@ -17,33 +19,33 @@ const AutodiagCategories = () => {
 
     const formFields = [
       {
-        label: 'Nom',
+        label: t('name'),
         error: {required: 'Merci d\'ajouter un nom'},
         name: 'label',
         type: 'text',
         placeholder: 'Ajouter un nom'
       },
       {
-        label: 'Description',
+        label: t('description'),
         error: {required: 'Merci d\'ajouter une description'},
         name: 'description',
         type: 'text',
         placeholder: 'Ajouter une description'
       },
       {
-        label: 'Ordre',
+        label: t('order'),
         error: {required: 'Merci d\'ajouter un ordre'},
         name: 'order',
         type: 'number',
         placeholder: 'Ajouter un ordre'
       },
       {
-        label: 'Réponses',
+        label: t('answers'),
         error: {required: 'Merci d\'ajouter une réponse'},
         name: 'answers',
         type: 'collection',
         dataCollection: {
-          fields: ['label', 'order', 'score']
+          fields: ['label', 'order', 'score', 'flag']
         }
       },
     ]

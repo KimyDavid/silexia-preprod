@@ -14,7 +14,7 @@ function getItem(data, callback) {
 
   var strsql = ' SELECT *';
       strsql += ' FROM ' + data.table;
-      strsql += ' WHERE deleted IS NULL';
+      strsql += ' WHERE deleted IS NULL OR deleted = 0';
       if(data.id){
         strsql += ' AND id = ' + data.id
       }

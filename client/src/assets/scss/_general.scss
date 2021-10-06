@@ -84,6 +84,23 @@ strong {
         background: $color-green-overlay;
         color: $color-green;
     }
+
+    &.warning {
+        border-left: 5px solid $color-orange;
+        background: white;
+        display: flex;
+        align-items: center;
+
+        .message-icon {
+            color: $color-orange;
+        }
+    }
+
+    &-icon {
+        margin-right: 10px;
+        line-height: 1;
+        font-size: 28px;
+    }
 }
 
 .form {
@@ -119,6 +136,20 @@ strong {
     p {
         margin: 0;
     }
+}
+
+.modal.show {
+    & + .modal-backdrop {
+        z-index: 1050;
+
+        & + .modal.show {
+            z-index: 1060;
+        }
+    }
+}
+
+.navbar-nav .nav-link {
+    text-transform: inherit;
 }
 
 .abstract {
@@ -348,6 +379,12 @@ header .nav {
     }
 }
 
+.text {
+    &-black {
+        color: rgb(26, 26, 26);
+    }
+}
+
 @media (max-width: $md) {
     .h2, h2 {
         font-size: 30px;
@@ -384,4 +421,15 @@ header .nav {
             transform: translate3d(0);
         }
     }
+}
+
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1210px;
+    }
+}
+
+.clients-logo img {
+    height: 40px;
+    object-fit: contain;
 }

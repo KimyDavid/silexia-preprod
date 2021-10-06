@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import navLinks from '../../constants/NavSilexia2';
+import navLinks from '../../constants/NavSilexia';
 import { useLocation, Link } from 'react-router-dom';
 import {
     Collapse,
@@ -19,14 +19,13 @@ import SigninForm from '../../widgets/account/signin';
 import Autodiag from '../../widgets/autodiag/autodiag';
 
 
-const Header = ({setToken}) => {
+const Header = ({setToken, setShowAutodiag, showAutodiag}) => {
     const [ isOpen, setIsOpen ] = useState(false);
     const [ visible, setVisible ] = useState(false);
     const [ loader, setLoader ] = useState(true);
 
     const location = useLocation();
     const [showLogin, setShowLogin] = useState(false);
-    const [showAutodiag, setShowAutodiag] = useState(false);
   
     useEffect(() => {
       setShowLogin(false);
@@ -92,15 +91,20 @@ const Header = ({setToken}) => {
                                                                                         {subNavLink.menu_title}
                                                                                     </DropdownToggle>
                                                                                     <DropdownMenu id={`childsubmenu_${index}`}>
-                                                                                        {subNavLink.child_routes && subNavLink.child_routes.map((ChildsubNavLink, i) =>
-                                                                                            <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path}  onClick={(e) => handleClick(e)} >{ChildsubNavLink.menu_title}
-                                                                                            </DropdownItem>
-                                                                                        )}
+                                                                                        {subNavLink.child_routes && subNavLink.child_routes.map((ChildsubNavLink, i) => {
+                                                                                            if (ChildsubNavLink.path.includes('://')) {
+                                                                                                return <a className="dropdown-item" target="_blank" key={index} tag={Link} href={ChildsubNavLink.path}>{ChildsubNavLink.menu_title}</a>
+                                                                                            } else {
+                                                                                                return <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path} onClick={(e) => handleClick(e)} >{ChildsubNavLink.menu_title}</DropdownItem>
+                                                                                            }
+                                                                                        })}
                                                                                     </DropdownMenu>
                                                                                 </UncontrolledDropdown>
                                                                             :
-                                                                            <DropdownItem key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}
-                                                                            </DropdownItem>
+                                                                                subNavLink.path.includes('://') ? 
+                                                                                    <a className="dropdown-item" target="_blank" key={index} tag={Link} href={subNavLink.path}>{subNavLink.menu_title}</a>
+                                                                                : 
+                                                                                    <DropdownItem key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
                                                                     ))}
                                                                 </DropdownMenu>
                                                             </UncontrolledDropdown>
@@ -108,7 +112,7 @@ const Header = ({setToken}) => {
                                                             <NavItem key={index}>
                                                                 { navLink.path.includes('://') ?
                                                                     // Extern link
-                                                                    <NavLink target="_blank" href={navLink.path}> {navLink.menu_title}</NavLink>
+                                                                    <NavLink target="_blank" href={navLink.path}>{navLink.menu_title}</NavLink>
                                                                 : 
                                                                     navLink.modal ? 
                                                                     // Modal Link
@@ -120,7 +124,7 @@ const Header = ({setToken}) => {
                                                             </NavItem>
                                                     ))}
                                                     <NavItem>
-                                                        <a className="btn btn-primary btn-small mt-3 mt-lg-0 ml-lg-3" onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
+                                                        <a className="btn btn-primary btn-small mt-3 mt-lg-0 ml-lg-0" onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
                                                     </NavItem>
                                                 </Nav>
                                             </Collapse>
@@ -149,7 +153,7 @@ const Header = ({setToken}) => {
             />
 
             <Modal
-                size="lg"
+                size="xl"
                 body={<Autodiag />}
                 closeButton="Fermer"
                 show={showAutodiag}

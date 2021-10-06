@@ -8,8 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import questions from '../../constants/Faq';
 
-class Faq extends Component {
-    render() {
+const Faq = ({setShowAutodiag}) =>  {
         return (
             <>
                 <Accordion className="text-left">
@@ -27,10 +26,9 @@ class Faq extends Component {
                     )) }
                 </Accordion>
                 
-                <Link to="/autodiag" className="btn btn-secondary mt-5 ml-auto">Répondre au questionnaire</Link>
+                <a onClick={() => setShowAutodiag(true)} className="btn btn-secondary mt-5 ml-auto">Répondre au questionnaire</a>
             </>
         );
-    }
 }
 
 export default Faq;

@@ -18,7 +18,6 @@ const SignUpForm = ({profile = null, setToken = null}) => {
 
   const submitForm = data => {
     if (validatePassword()) {
-      console.log(data)
       if (profile) {
         API_POST('subscribe', 'POST', data)
           .then(response => {
@@ -27,7 +26,9 @@ const SignUpForm = ({profile = null, setToken = null}) => {
             } else if (setToken) {
               setMessage("Inscription réussie ! Merci de confirmer votre compte grâce à l'email reçu dans votre boite mail.");
               setToken('');
-              window.location.href = `${window.location.origin}/profile`;
+              setTimeout(() => {
+                window.location.href = `${window.location.origin}/profile`;
+              }, 1500);
             }
           });
       }
@@ -68,6 +69,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
       .then(res => res.json())
       .then(
         (result) => {
+          console.log(result);
           setSizes(result);
         },
       )
@@ -75,7 +77,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
   
         return (
             <div className="row">
-            <div className="col-lg-8 col-md-10 ml-auto mr-auto">
+            <div className="col-12 col-lg-8 ml-auto mr-auto">
               <div className="register-form text-center">
                 <form id="contact-form" method="post" onSubmit={handleSubmit(submitForm)}>
                   { message ? <div className="messages">
@@ -170,7 +172,6 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                       <div className="form-group">
                         <label className="form-label">Secteur de l'entreprise</label>
                         <select className={`form-control ${errors['sector'] ? 'error' : ''}`}
-                        value={currentSector}
                         {...register('sector', {required: "Le secteur de l'entreprise est obligatoire."})}
                         onChange={(e) => setCurrentSector(e.target.value)}>
                           <option value="">Secteur de l'entreprise</option>
@@ -200,7 +201,6 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                       <div className="form-group">
                         <label className="form-label">Taille de l'entreprise</label>
                         <select className={`form-control ${errors['size'] ? 'error' : ''}`}
-                          value={currentSize}
                           {...register('size', {required: "La taille de l'entreprise est obligatoire."})}
                           onChange={(e) => setCurrentSize(e.target.value)}>
                           <option value="">Taille de l'entreprise</option>

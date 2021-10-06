@@ -26,7 +26,8 @@ function getAutodiagQuestions(data, callback) {
       strsql += '   "id", Autodiag_Answers.id, ';
       strsql += '   "label", Autodiag_Answers.label, ';
       strsql += '   "score", Autodiag_Answers.score,';
-      strsql += '   "order", Autodiag_Answers.order';
+      strsql += '   "order", Autodiag_Answers.order,';
+      strsql += '   "flag", Autodiag_Answers.flag';
       strsql += ' ) ORDER BY Autodiag_Answers.order), "]") AS answers';
       strsql += ' FROM Autodiag_Questions';
       strsql += ' INNER JOIN Autodiag_Answers ON Autodiag_Answers.id_question = Autodiag_Questions.id AND Autodiag_Answers.deleted IS NULL';

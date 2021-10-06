@@ -83,7 +83,7 @@ class About1 extends Component {
                         <p className="mb-0 ml-3">Prise de rendez-vous</p>
                       </div>
                     </div>
-                  </div> <Link to="/" className="btn btn-outline-primary mt-5">
+                  </div> <Link to="/diagnostic" className="btn btn-outline-primary mt-5">
                     En savoir plus
                   </Link>
                 </div>

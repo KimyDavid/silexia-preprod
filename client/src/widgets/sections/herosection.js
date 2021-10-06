@@ -1,25 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModalVideo from 'react-modal-video'
 import Typed from 'react-typed';
 
-class Herosection6 extends Component {
-  constructor() {
-    super()
-    this.state = {
-      isOpen: false
-    }
-    this.openModal = this.openModal.bind(this)
+const Herosection6 = ({setShowAutodiag}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
   }
 
-  openModal() {
-    this.setState({ isOpen: true })
-  }
-  render() {
     return (
 
       <div className="row align-items-center">
-        <ModalVideo channel='youtube' isOpen={this.state.isOpen} autoplay={true} videoId='P_wKDMcr1Tg' onClose={() => this.setState({ isOpen: false })} />
+        <ModalVideo channel='youtube' isOpen={isOpen} autoplay={true} videoId='P_wKDMcr1Tg' onClose={() => setIsOpen(false)} />
 
         <div className="col-12 col-lg-5 col-xl-6 order-lg-2 mb-8 mb-lg-0">
           {/* Image */}
@@ -36,13 +30,12 @@ class Herosection6 extends Component {
           {/* Text */}
           <p className="lead text-muted">Il n'a jamais été aussi simple de faire du <br/> numérique un allié du quotidien.</p>
           {/* Buttons */} 
-          <Link to="/autodiag" className="btn btn-primary shadow mr-1">C'est parti !</Link>
+          <a onClick={() => setShowAutodiag(true)} className="btn btn-primary shadow mr-1">C'est parti !</a>
         </div>
       </div>
 
 
     );
-  }
 }
 
 export default Herosection6;

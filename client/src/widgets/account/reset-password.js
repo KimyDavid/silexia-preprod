@@ -16,7 +16,6 @@ const ResetPasswordForm = ({profile, resetKey}) => {
             setMessage('Les mots de passe ne sont pas identiques');
         } else {
             API_POST(`users/${profile.id}`, 'PATCH', {'key': resetKey, 'password': password}, false).then(result => {
-                console.log(result);
                 if (result.error) {
                     setMessage(result.details);
                 } else {

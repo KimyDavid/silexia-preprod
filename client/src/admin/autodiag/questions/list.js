@@ -32,6 +32,7 @@ const ListElement = ({ url, slug, fields }) => {
             API_REMOVE(`${url}/questions/${id}`);
         }
     }
+    
 
     return (
         <>

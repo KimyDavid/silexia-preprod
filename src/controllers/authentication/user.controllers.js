@@ -49,7 +49,7 @@ function subscribe(data, callback) {
       insertKeyVerif({id:user.id, type:0}, callback)
     },
     function(key, callback){
-      mailController.verifAccount({email:data.body.email, link:process.env.ENDPOINT + '/verif_account?key=' + key}, callback)
+      mailController.verifAccount({email:data.body.email, link:'http://localhost:8080/verif_account?key=' + key}, callback)
     }
   ], function(err){
     callback(err, user)
@@ -124,7 +124,7 @@ function useKey(data, callback){
 
   var strsql = ' UPDATE Verif_Key';
       strsql += ' SET deleted = 1';
-      strsql += ' WHERE id_user = ' + data.id_user + ' AND Verif_Key.key = ' + mysql.escape(data.key) + ' AND deleted IS NULL';
+      strsql += ' WHERE id_user = ' + data.id_user + ' AND Verif_Key.key = ' + mysql.escape(data.key) + ' AND deleted = 0 OR deleted IS NULL';
       
       db.query(strsql, null, function (error, results) {
         if(results.affectedRows === 0){

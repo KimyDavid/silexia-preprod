@@ -17,7 +17,7 @@ const AutodiagResult = () => {
     let graphScores = [];
 
     useEffect(() => {
-        fetch(`${Constants.api_url}/autodiag/user/16`)
+        fetch(`${Constants.api_url}/autodiag/user/${token.id}`)
             .then(res => res.json())
             .then(result => {
                 setResult(result);
@@ -25,7 +25,6 @@ const AutodiagResult = () => {
     }, [])
 
     if (result) {
-        console.log(result);
         categoriesLabel = result.autodiag.map((category) => {
             return category.label;
         });
@@ -54,7 +53,8 @@ const AutodiagResult = () => {
     const options = {
         scales: {
             r: {
-                beginAtZero: true
+                beginAtZero: true,
+                suggestedMax: result ? result.global.score_total : 60
             }
         }
     }
@@ -62,7 +62,8 @@ const AutodiagResult = () => {
     const displayDetailsModal = (category) => {
         setDetails({
             'category': category.label,
-            'description': category.tier ? category.tier.text : ''
+            'description': category.tier ? category.tier.text : '',
+            'flag': category.flags ? category.flags : ''
         });
         setShowDetails(true);
     }
@@ -78,8 +79,7 @@ const AutodiagResult = () => {
                                 <i className="action-score-infos las la-question-circle"></i></h2>
                             </div>
                             <div className="col-12 col-lg-7">
-                                {/* <h3 className="mt-4 mb-0">Bonjour {token.first_name} !</h3> */}
-                                <h3 className="mt-4 mb-0">Bonjour comment !</h3>
+                                <h3 className="mt-4 mb-0">Bonjour {token.first_name} !</h3>
                                 <p className="mb-5">Voici le résultat de votre diagnostic</p>
                                 <Radar
                                     data={data}
@@ -98,11 +98,14 @@ const AutodiagResult = () => {
                             <div className="col-12 col-lg-5">
                                 <div className="account-sidebar bg-primary p-4">
                                     <h3 className="my-2 h5 font-w-5 text-white"><strong>Détails</strong> de vos résultats par catégories.</h3>
+                                    <p className="text-white">Cliquez sur les catégories pour obtenir plus de détails.</p>
                                     { result.autodiag.map((category, i) => (
                                         <div key={i} onClick={() => displayDetailsModal(category)}>
-                                            <div className="account-sidebar-card p-3 bg-white">
-                                                <p><strong>{ category.label }</strong> (score: {category.score_user ?? '0'}/{category.score_total ?? '0'})</p>
-                                                <p className="abstract abstract-2">{ category.tier ? category.tier.text : '' }</p>
+                                            <div className={`account-sidebar-card px-3 py-2 bg-white ${category.flags ? 'warning' : ''}`}>
+                                                <span className="account-score-number">{category.score_user ?? '0'}/{category.score_total ?? '0'}</span>
+                                                <p className="mb-0"><strong className="text-black">{ category.label }</strong></p>
+                                                <p className="abstract abstract-2 mb-0">{ category.tier ? category.tier.text : '' }</p>
+                                                { category.flags ? <span className="account-sidebar-card-warning la la-exclamation-triangle"></span> : ''} 
                                                 {/* <div className="account-sidebar-progressbar">
                                                     <span style={{width: 10 + '%'}}>10%</span>
                                                 </div> */}
@@ -127,7 +130,12 @@ const AutodiagResult = () => {
                     { details ? 
                     <Modal 
                         title={details.category}
-                        body={details.description}
+                        body={
+                            <>
+                                <p>{details.description}</p>
+                                { details.flag ? <p className="message warning shadow"><span className="message-icon la la-exclamation-triangle"></span>{details.flag}</p> : '' }
+                            </>
+                        }
                         closeButton="Entendu !"
                         show={showDetails}
                         setShow={setShowDetails}

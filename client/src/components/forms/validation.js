@@ -46,7 +46,6 @@ const FormValidation = ({items, onSubmit, alerts}) => {
   };
 
   const onSubmitFn = data => {
-    console.log(collection)
     if (collection) {
       collection.data.map((item) => {
         if (item.customId) {

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment , useState} from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import useToken from '../functions/useTokenAccount';
 
@@ -39,6 +39,7 @@ import PageNotFound from './utilities/404';
 function App() {
   const websiteInProgress = false;
   const { token, setToken } = useToken();
+  const [showAutodiag, setShowAutodiag] = useState(false);
 
   const staticPages = [
     {
@@ -70,11 +71,11 @@ function App() {
        :
         <div className="page-wrapper">
           <BrowserRouter>
-            { token ? <HeaderConnected/> : <Header setToken={setToken} /> }
+            { token ? <HeaderConnected/> : <Header setToken={setToken} setShowAutodiag={setShowAutodiag} showAutodiag={showAutodiag} /> }
             <Switch>
-              <Route exact path="/" component={() => <Home />} />
+              <Route exact path="/" component={() => <Home2 setShowAutodiag={setShowAutodiag}/>} />
 
-              <Route path="/home2" component={Home2} />
+              <Route path="/diagnostic" component={() => <Home setShowAutodiag={setShowAutodiag}/>} />
               <Route exact path="/offres" component={Offers} />
               <Route path="/offres/:id" component={() => <Offer />} />
               <Route path="/about-us" component={AboutUs} />
