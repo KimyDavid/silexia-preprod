@@ -46,7 +46,7 @@ function Category(data, extraData) {
 
 const TierSchema = yup.object({
     id:yup.number().integer().positive(),
-    text: yup.string().max(255).required(),
+    text: yup.string().required(),
     order:yup.number().integer().positive().required()
 })
 
