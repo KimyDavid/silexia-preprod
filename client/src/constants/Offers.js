@@ -51,7 +51,7 @@ export default {
          ]
       }
    ],
-   'relation-client': [
+   'expérience-et-parcours-client': [
       {
          'title': 'Coaching',
          'image': 'coaching',
@@ -86,7 +86,7 @@ export default {
             'La formule coaching + booster + …',
             "Recrutement d'utilisateurs pour mener des tests sur les parcours et l'expérience des utilisateurs",
             "Collecte, suivi et analyse continues des retours de vos clients",
-            "Comité mensuel d'évaluation de votre relation-client",
+            "Comité mensuel d'évaluation de votre expérience-et-parcours-client",
             "Intégration d'API tierces pour améliorer le parcours de vos utilisateurs et enrichir les fonctionnalités disponibles",
             'Amélioration continue de vos parcours utilisateurs et expérience clients par nos UX & UI designer et développeurs',
          ]

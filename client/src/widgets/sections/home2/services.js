@@ -25,7 +25,7 @@ const FeatureServices = () => {
             <div className="row mt-0 mt-md-5">
                 <div className="col-12 mt-0 mt-md-5">
                 { offers ?  
-                    <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} responsive={responsive}>
+                    <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} loop={true} autoplay={true} margin={20} responsive={responsive}>
                         {offers.map((offer, i) => 
                             <Link to={{pathname: `offres/${toSnakeCase(offer.title)}`}} className="item" key={i}>
                                 <div className="portfolio-item position-relative overflow-hidden">

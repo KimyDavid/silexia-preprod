@@ -1,7 +1,9 @@
 import Constants from '../constants/Config';
 
 export const API_GET = (slug) => {
-    return fetch(`${Constants.api_url}/${slug}`)
+    return fetch(`${Constants.api_url}/${slug}`, {
+      credentials: 'include',
+    })
         .then(res => res.json())
         .then(
             (result) => result

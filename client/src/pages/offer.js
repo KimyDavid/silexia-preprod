@@ -6,6 +6,8 @@ import Offers from '../constants/Offers';
 import OffersFlux from '../constants/OffersFlux';
 import { toSnakeCase } from '../functions/string';
 import PricingPlan from '../widgets/offers/pricingplan';
+import Blog from '../widgets/sections/blog';
+import FeatureServices from '../widgets/sections/home2/services';
 
 const Offer = () => {
     const [offers, setOffers] = useState();
@@ -39,19 +41,29 @@ const Offer = () => {
                         {/*privacy start*/}
                         <section>
                             <div className="container">
-                                <div className="row mb-10">
+                                <div className="row mb-5">
                                     <div className="col-lg-12 col-md-12 cms" dangerouslySetInnerHTML={{__html: offers.find(x => toSnakeCase(x.title) === id).text}}>
                                     </div>
                                 </div>
                             </div>
 
                                 {/*how it work start*/}
-                                <section className="position-relative bg-light mt-10" data-bg-img={require(`../assets/images/bg/02.png`)}>
-                                    <div className="container mt-8 mb-10">
+                                <section className="position-relative bg-light mt-4" data-bg-img={require(`../assets/images/bg/02.png`)}>
+                                    <div className="container mt-4 mb-4">
                                         {/* / .row */}
+                                        <div className="row">
+                                            <div className="text-center mb-6 col-12 col-md-10 offset-md-1">
+                                                <div>
+                                                <span className="badge badge-primary-soft p-2">
+                                                    <i className="la la-users ic-3x rotation" />
+                                                </span>
+                                                <h2 className="mt-4 font-w-5 h3">{ offerFlux.title }</h2>
+                                                </div>
+                                            </div>
+                                        </div>
                                         { offerFlux ? offerFlux.flux.map((item, i) => 
-                                            <div key={i} className="row align-items-center justify-content-between mb-10 mt-8">
-                                                <div className={`col-12 col-lg-4 ${ (i%2 === 0) ? 'order-lg-1' : '' } mb-6 mb-lg-0`}>
+                                            <div key={i} className="row align-items-center justify-content-between mb-3 mt-2">
+                                                <div className={`col-7 col-lg-5 ${ (i%2 === 0) ? 'order-lg-1' : '' } mb-3 mb-lg-0`}>
                                                     <img src={require(`../assets/images/offers/offre_${item.image}`)} alt={`Silexia ${item.title}`} className="img-fluid steps-img" />
                                                 </div>
                                                 <div className="col-12 col-lg-6">
@@ -79,6 +91,32 @@ const Offer = () => {
 
                             <div className="container">
                                 {offerContent ? <PricingPlan offer={offerContent} title={offers.find(x => toSnakeCase(x.title) === id).title} /> : '' }
+                            </div>
+                                    
+                            <section className="p-0">
+                                <div className="container">
+                                    <div className="row align-items-end mb-5">
+                                        <div className="col-12">
+                                            <div className="text-right">
+                                                <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
+                                                <h2 className="mt-4 mb-0 h3">Nos autres services</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <FeatureServices />
+                                </div>
+                            </section>
+
+                            <div className="container">
+                                <div className="row align-items-end mb-5 mt-10">
+                                    <div className="col-12 col-md-12 col-lg-8">
+                                        <div>
+                                            <span className="badge badge-primary-soft p-2"><i className="la la-bold ic-3x rotation" /></span>
+                                            <h2 className="mt-4 mb-0 h3">Notre blog dédié à la transition numérique des TPE/PME</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <Blog />
                             </div>
                         </section>
                         {/*privacy end*/}

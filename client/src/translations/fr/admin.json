@@ -20,9 +20,7 @@
     "users": {
         "label": "Utilisateurs",
         "all": "Toutes les utilisateurs",
-        "new": "Créer un nouvel utilisateur",
-        "update": "Modifier l'utilisateur",
-        "delete": "Supprimer l'utilisateur"
+        "detail": "Détail d'un utilisateur"
     },
     "offres": {
         "label": "Offres",

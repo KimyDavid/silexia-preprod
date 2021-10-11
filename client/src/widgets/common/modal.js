@@ -20,7 +20,7 @@ const CustomModal = ({title, body, closeButton, show, setShow, size = 'md', subm
                 </Modal.Header>
                 <Modal.Body>{body}</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={hide}>{closeButton}</Button>
+                    { closeButton ? <Button variant="secondary" onClick={hide}>{closeButton}</Button> : '' }
                     { submitButton ? <Button variant="primary" onClick={submit}>{submitButton}</Button> : '' }
                 </Modal.Footer>
             </Modal>

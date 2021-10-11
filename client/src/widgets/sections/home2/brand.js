@@ -30,7 +30,7 @@ class BrandLogo extends Component {
                 <div className="row mt-5">
                     <div className="col-6 col-md-3 mt-3 mt-md-0">
                         <div className="clients-logo">
-                            <img className="img-fluid" src={require(`../../../assets/images/client/wizishop.png`)} alt="Wisizishop" height/>
+                            <img className="img-fluid" src={require(`../../../assets/images/client/wizishop.png`)} alt="Wisizishop" />
                         </div>
                     </div>
                     <div className="col-6 col-md-3 mt-3 mt-md-0">
