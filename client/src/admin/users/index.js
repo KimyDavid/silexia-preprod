@@ -1,20 +1,16 @@
-import React from 'react'
-import ElementRoutes from '../../components/admin/create_routes'
+import React from 'react';
+import {Switch, Route} from 'react-router-dom';
+import List from './list';
+import Detail from './detail';
 
 const Users = () => {
-    const slug = 'users';
-
-    const listFields = [
-      {
-        name: 'Nom',
-        key: 'name'
-      },
-    ]
-
-    const formFields = []
+    const slug = 'admin/list_users';
 
     return (
-      <ElementRoutes slug={slug} formFields={formFields} listFields={listFields} />
+      <Switch>
+        <Route exact path={`/admin/users`} component={() => <List slug={slug} />} />
+        <Route path={`/admin/users/:id`} component={() => <Detail />} />
+      </Switch>
     )
   }
 

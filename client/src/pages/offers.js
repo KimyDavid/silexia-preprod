@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Pageheading from '../widgets/Pageheading';
 import FeatureServices from '../widgets/sections/home2/services';
+import Blog from '../widgets/sections/blog';
 
 class Index extends Component {
     constructor(props) {
@@ -14,27 +15,30 @@ class Index extends Component {
             <div>
                 {/*hero section start*/}
                 <section className="position-relative py-6">
-                    <Pageheading title={"Nos offres"} />
+                    <Pageheading title={"Nos services"} />
                 </section>
                 {/*hero section end*/}
 
                 <div className="page-content">
                     <section>
+
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-5 col-12">
-                                    <img className="img-fluid w-75" src={require(`../assets/images/about/06.png`)} alt="" />
+                                    <img className="img-fluid w-75 mb-8" src={require(`../assets/images/about/06.png`)} alt="" />
                                 </div>
                                 <div className="col-lg-7 col-12">
                                     <h2 className="title">Ce que nous faisons pour nos clients ?</h2>
-                                    <p className="lead mb-5">Activer les leviers numériques à fort impact sur leur organisation ! Découvrez comment le numérique est capable de faire évoluer votre organisation.</p>
+                                    <p className="lead mb-10">Activer les leviers numériques à fort impact sur leur organisation ! Découvrez comment le numérique est capable de faire évoluer votre organisation.</p>
                                 </div>
                             </div>
+                            
+                            <FeatureServices />
                         
-                            <div className="row justify-content-center text-center mt-8">
-                              <div className="col-12 mb-4 mb-lg-0">
+                            <div className="row justify-content-center text-center">
+                              <div className="col-12 mb-4 mb-lg-0 mt-7">
                                 <div>
-                                  <h2 className="mt-3 font-w-6 h3 mb-5">Votre bureau de pilotage du numérique dans votre organisation</h2>
+                                  <h2 className="font-w-6 h3 mb-5 mt-10">Votre bureau de pilotage du numérique dans votre organisation</h2>
                                   <div className="row text-justify">
                                     <div className="col-12 col-md-6 col-lg-4">
                                       <p className="mb-0">Avec de fortes compétences en analyse des systèmes d’information, gestion de projets numériques, marketing et conformité aux normes en vigueur, Silexia et ses partenaires font du numérique une opportunité de développement pour votre organisation. </p>
@@ -56,6 +60,16 @@ class Index extends Component {
                             <section className="position-relative bg-light mt-10" data-bg-img={require(`../assets/images/bg/02.png`)}>
                               <div className="container mt-8 mb-10">
                                 {/* / .row */}
+                                  <div className="row">
+                                      <div className="text-center mb-6 col-12 col-md-10 offset-md-1">
+                                          <div>
+                                          <span className="badge badge-primary-soft p-2">
+                                              <i className="la la-users ic-3x rotation" />
+                                          </span>
+                                          <h2 className="mt-4 font-w-5 h3">Notre méthodologie pour maximiser notre impact</h2>
+                                          </div>
+                                      </div>
+                                  </div>
                                 <div className="row align-items-center justify-content-between mb-10 mt-8">
                                   <div className="col-12 col-lg-4 mb-6 mb-lg-0">
                                     <img src={require(`../assets/images/about/innovation.svg`)} alt="Silexia valeur innovation" className="img-fluid" />
@@ -87,7 +101,7 @@ class Index extends Component {
                                   <div className="col-12 col-lg-6 mb-10">
                                     <div>
                                       <h2><span className="badge badge-primary-soft p-2">03</span></h2>
-                                      <h4 className="mt-3">Fixation d'un duget dédié au numérique et construction de votre plan d'actions</h4>
+                                      <h4 className="mt-3">Fixation d'un budget dédié au numérique et construction de votre plan d'actions</h4>
                                       <p className="mb-0">En fonction de vos besoins et objectifs, nous vous soumettons plusieurs scénarios de transition numérique chiffrés pour déterminer ensemble le budget le plus adapté à votre organisation en termes de retours sur investissements. L'objectif ? Élaborer votre plan d'actions de transition, détaillé selon les charges, coûts et temps de déploiement !</p>
                                     </div>
                                   </div>
@@ -130,10 +144,20 @@ class Index extends Component {
                             </section>
                             {/*how it work end*/}
                         </div>
-                        <div className="container">
-                            {/* / .row */}
-                            <FeatureServices />
-                        </div>
+
+
+                            <div className="container">
+                                <div className="row align-items-end mb-5 mt-10">
+                                    <div className="col-12 col-md-12 col-lg-8">
+                                        <div>
+                                            <span className="badge badge-primary-soft p-2"><i className="la la-bold ic-3x rotation" /></span>
+                                            <h2 className="mt-4 mb-0 h3">Notre blog dédié à la transition numérique des TPE/PME</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <Blog />
+                            </div>
+                        
                     </section>
                 </div>
             </div>

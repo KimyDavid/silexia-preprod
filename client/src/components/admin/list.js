@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { API_GET, API_REMOVE } from '../../functions/apiRequest';
 import { Link } from 'react-router-dom'
 import { FiDelete, FiEdit } from 'react-icons/fi'
+import useToken from '../../functions/useTokenAdmin';
 
 import SectionTitle from '../section-title'
 import Breadcrumb from '../breadcrumbs'
@@ -10,8 +11,9 @@ import Widget from '../widget'
 import { useTranslation } from "react-i18next";
 
 const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
+    const {token, setToken} = useToken();
     const { t } = useTranslation('admin');
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState();
     const [loading, setLoading] = useState(false);
     const slugTrans = slug.replace('/', '.');
 
@@ -23,8 +25,14 @@ const ListElement = ({ slug, fields, showBreadcrumbs = true }) => {
     useEffect(() => {
         setLoading(true)
         API_GET(slug).then(response => {
-            setLoading(false)
-            setItems(response)
+            console.log(response);
+            if (response.error) {
+                setToken();
+            } else {
+                setLoading(false)
+                console.log(response);
+                setItems(response)
+            }
         });
     }, []);
 

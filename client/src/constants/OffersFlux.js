@@ -3,7 +3,7 @@
  */
 export default {
    'acquisition-client': {
-      'title': 'Notre vision de l’acquisition clients chez les TPE, PME et associations',
+      'title': "Les objectifs de notre assistance dans l'accélération de votre acquisition de clients",
       'flux': [
          {
             'title': 'Développer une connaissance fine de votre cible',
@@ -22,8 +22,8 @@ export default {
          },
       ]
    },
-   'relation-client': {
-      'title': 'Notre vision de l’expérience et des parcours clients',
+   'expérience-et-parcours-client': {
+      'title': "Les objectifs de notre assistance dans l'optimisation de l'expérience et du parcours de vos clients",
       'flux': [
          {
             'title': 'S’appuyer sur des retours utilisateurs',
@@ -42,8 +42,8 @@ export default {
          },
       ]
    },
-   'métiers': {
-      'title': 'Notre vision du travail collaboratif et de la digitalisation des métiers',
+   'digitalisation-des-métiers': {
+      'title': 'Les objectifs de notre assistance dans la digitalisation de vos métiers',
       'flux': [
          {
             'title': 'Définir vos processus métiers',
@@ -63,7 +63,7 @@ export default {
       ]
    },
    "gestion-d'organisation": {
-      'title': '',
+      'title': 'Les objectifs de notre assistance dans la gestion de votre organisation',
       'flux': [
          {
             'title': 'Auditer vos processus de gestion',
@@ -83,7 +83,7 @@ export default {
       ]
    },
    "sécurité-et-conformité": {
-      'title': '',
+      'title': 'Les objectifs de notre assistance pour votre conformité et votre cybersécurité',
       'flux': [
          {
             'title': 'Cartographier votre système d’information',

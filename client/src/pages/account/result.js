@@ -63,7 +63,7 @@ const AutodiagResult = () => {
         setDetails({
             'category': category.label,
             'description': category.tier ? category.tier.text : '',
-            'flag': category.flags ? category.flags : ''
+            'flag': category.flags.length > 0 ? category.flags : ''
         });
         setShowDetails(true);
     }
@@ -101,11 +101,11 @@ const AutodiagResult = () => {
                                     <p className="text-white">Cliquez sur les catégories pour obtenir plus de détails.</p>
                                     { result.autodiag.map((category, i) => (
                                         <div key={i} onClick={() => displayDetailsModal(category)}>
-                                            <div className={`account-sidebar-card px-3 py-2 bg-white ${category.flags ? 'warning' : ''}`}>
+                                            <div className={`account-sidebar-card px-3 py-2 bg-white ${category.flags.length > 0 ? 'warning' : ''}`}>
                                                 <span className="account-score-number">{category.score_user ?? '0'}/{category.score_total ?? '0'}</span>
                                                 <p className="mb-0"><strong className="text-black">{ category.label }</strong></p>
                                                 <p className="abstract abstract-2 mb-0">{ category.tier ? category.tier.text : '' }</p>
-                                                { category.flags ? <span className="account-sidebar-card-warning la la-exclamation-triangle"></span> : ''} 
+                                                { category.flags.length > 0 ? <span className="account-sidebar-card-warning la la-exclamation-triangle"></span> : ''} 
                                                 {/* <div className="account-sidebar-progressbar">
                                                     <span style={{width: 10 + '%'}}>10%</span>
                                                 </div> */}
@@ -133,7 +133,9 @@ const AutodiagResult = () => {
                         body={
                             <>
                                 <p>{details.description}</p>
-                                { details.flag ? <p className="message warning shadow"><span className="message-icon la la-exclamation-triangle"></span>{details.flag}</p> : '' }
+                                { details.flag.map((_flag, i) => 
+                                    <p key={i} className="message warning shadow"><span className="message-icon la la-exclamation-triangle"></span>{ _flag }</p>
+                                )}
                             </>
                         }
                         closeButton="Entendu !"
