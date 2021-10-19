@@ -7,8 +7,10 @@ import {
 } from 'react-accessible-accordion';
 import { Link } from 'react-router-dom';
 import questions from '../../constants/Faq';
+import useToken from '../../functions/useTokenAccount';
 
 const Faq = ({setShowAutodiag}) =>  {
+    const { token, setToken } = useToken();
         return (
             <>
                 <Accordion className="text-left">
@@ -26,7 +28,8 @@ const Faq = ({setShowAutodiag}) =>  {
                     )) }
                 </Accordion>
                 
-                <a onClick={() => setShowAutodiag(true)} className="btn btn-secondary mt-5 ml-auto">Répondre au questionnaire</a>
+                {token ? '' : <a onClick={() => setShowAutodiag(true)} className="btn btn-secondary mt-5 ml-auto">Répondre au questionnaire</a> }
+                
             </>
         );
 }

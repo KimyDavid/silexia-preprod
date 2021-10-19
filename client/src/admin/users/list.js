@@ -48,7 +48,7 @@ const ListElement = ({ slug }) => {
                             <tr> 
                                 <th>Nom</th>
                                 <th>Email</th>
-                                <th>Téléphone</th>
+                                {/* <th>Téléphone</th> */}
                                 <th>Score</th>
                             </tr> 
                         </thead>
@@ -57,7 +57,7 @@ const ListElement = ({ slug }) => {
                                 <tr key={i}> 
                                     <td>{ item.user.first_name } { item.user.last_name }</td>
                                     <td>{ item.user.email ?? '' }</td>
-                                    <td>{ item.user.phone ?? '' }</td>
+                                    {/* <td>{ item.user.phone ?? '' }</td> */}
                                     <td>{ item.score_user_total }/{ item.score_total }</td>
                                     <td className="text-right">
                                         <Link className="btn btn-circle bg-transparent hover:bg-blue-50 text-blue-500 hover:text-blue-600 btn-raised"

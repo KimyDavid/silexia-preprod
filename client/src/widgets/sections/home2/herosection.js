@@ -8,24 +8,30 @@ class Herosection5 extends Component {
             <section className="pb-2">
             <div className="container">
               <div className="row justify-content-center mb-3">
-                <div className="col-12 col-lg-8 text-center">
+                <div className="col-12 col-lg-5 col-xl-5 order-lg-2 mb-8 mb-lg-0">
+                  {/* Image */}
+                  <img src={require(`../../../assets/images/hero/04.svg`)} className="img-fluid" alt="..." />
+                </div>
+
+                <div className="col-12 col-lg-7 text-left order-lg-1">
                   {/* Heading */}
-                  <h4>Prêt à accélerer votre <Typed
+                  <h4 className="h5 mt-lg-5">Prêt à accélerer votre <Typed
                     className="text-primary"
                     strings={['transition numérique','acquisition de clients','développement']}
                     typeSpeed={40}
                     backSpeed={50}
                     loop >
                   </Typed> ?</h4>
-                  <h1 className="display-4 mt-3 font-w-5">
+                  <h1 className="h2 mt-3 font-w-5">
                     <span className="text-primary">Silexia</span>, fournisseur de solutions numériques
                       </h1>
                   {/* Text */}
                   <p className="lead text-muted">Nous faisons du numérique une opportunité de développement pour votre organisation.</p>
                 </div>
+                
               </div>
               {/* / .row */}
-              <Videobox />
+              {/* <Videobox /> */}
             </div>
             {/* / .container */}
           </section>

@@ -94,15 +94,20 @@ class Header extends React.Component {
                                                                                         {subNavLink.menu_title}
                                                                                     </DropdownToggle>
                                                                                     <DropdownMenu id={`childsubmenu_${index}`}>
-                                                                                        {subNavLink.child_routes && subNavLink.child_routes.map((ChildsubNavLink, i) =>
-                                                                                            <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path}  onClick={this.handleClick.bind(this)} >{ChildsubNavLink.menu_title}
-                                                                                            </DropdownItem>
-                                                                                        )}
+                                                                                        {subNavLink.child_routes && subNavLink.child_routes.map((ChildsubNavLink, i) => {
+                                                                                            if (ChildsubNavLink.path.includes('://')) {
+                                                                                                return <a className="dropdown-item" target="_blank" key={index} tag={Link} href={ChildsubNavLink.path}>{ChildsubNavLink.menu_title}</a>
+                                                                                            } else {
+                                                                                                return <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path} onClick={(e) => handleClick(e)} >{ChildsubNavLink.menu_title}</DropdownItem>
+                                                                                            }
+                                                                                        })}
                                                                                     </DropdownMenu>
                                                                                 </UncontrolledDropdown>
                                                                             :
-                                                                            <DropdownItem key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}
-                                                                            </DropdownItem>
+                                                                            subNavLink.path.includes('://') ? 
+                                                                                <a className="dropdown-item" target="_blank" key={index} tag={Link} href={subNavLink.path}>{subNavLink.menu_title}</a>
+                                                                            : 
+                                                                                <DropdownItem key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
                                                                     ))}
                                                                 </DropdownMenu>
                                                             </UncontrolledDropdown>

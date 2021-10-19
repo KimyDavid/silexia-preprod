@@ -19,18 +19,26 @@ const CustomQuill = ({item, onChange}) => {
     const colors = Colors.colors;
 
     const modules = {
-        toolbar: [
-            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-            [{ 'header': 2 }],
-            ['bold', 'italic', 'underline', 'strike'],
-            [{ 'color': colors}, { 'background': colors }],
-            [{ 'align': [] }],
-            ['blockquote'],
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'script': 'sub'}, { 'script': 'super' }],
-            [{ 'indent': '-1'}, { 'indent': '+1' }],
-            ['link', 'image', 'video'],
-        ]
+        toolbar: {
+            container: [
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                [{ 'header': 2 }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'color': colors}, { 'background': colors }],
+                [{ 'align': [] }],
+                ['blockquote'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],
+                [{ 'indent': '-1'}, { 'indent': '+1' }],
+                ['link', 'image', 'video'],
+            ],
+            handlers: {
+                'color': function (value) {
+                    if (value === 'color-picker') value = window.prompt('Enter Hex Color Code');
+                    this.quill.format('color', value);
+                }
+            }
+        },
     };
 
     return (

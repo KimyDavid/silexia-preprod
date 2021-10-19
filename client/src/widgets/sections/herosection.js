@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModalVideo from 'react-modal-video'
 import Typed from 'react-typed';
+import useToken from '../../functions/useTokenAccount';
 
 const Herosection6 = ({setShowAutodiag}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { token, setToken } = useToken();
 
   const openModal = () => {
     setIsOpen(true);
@@ -30,7 +32,7 @@ const Herosection6 = ({setShowAutodiag}) => {
           {/* Text */}
           <p className="lead text-muted">Il n'a jamais été aussi simple de faire du <br/> numérique un allié du quotidien.</p>
           {/* Buttons */} 
-          <a onClick={() => setShowAutodiag(true)} className="btn btn-primary shadow mr-1">C'est parti !</a>
+          { token ? '' : <a onClick={() => setShowAutodiag(true)} className="btn btn-primary shadow mr-1">C'est parti !</a> }
         </div>
       </div>
 
