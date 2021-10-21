@@ -41,8 +41,8 @@ const ListElement = () => {
                                     <div className="text-sm font-light text-grey-500 mt-3">Email</div>
                                     <div className="text-sm font-bold">{ profile.user.email }</div>
 
-                                    <div className="text-sm font-light text-grey-500 mt-3">Téléphone</div>
-                                    <div className="text-sm font-bold">{ profile.user.phone ?? '??' }</div>
+                                    {/* <div className="text-sm font-light text-grey-500 mt-3">Téléphone</div>
+                                    <div className="text-sm font-bold">{ profile.user.phone ?? '??' }</div> */}
 
                                     <div className="text-sm font-light text-grey-500 mt-3">Date de réponse à l'autodiag</div>
                                     <div className="text-sm font-bold">{ date.getDate() }/{ date.getMonth() }/{ date.getYear() }</div>
@@ -53,14 +53,14 @@ const ListElement = () => {
                                     <div className="text-sm font-light text-grey-500">Entreprise</div>
                                     <div className="text-sm font-bold">{ profile.user.company}</div>
 
-                                    <div className="text-sm font-light text-grey-500 mt-3">Fonction</div>
+                                    {/* <div className="text-sm font-light text-grey-500 mt-3">Fonction</div>
                                     <div className="text-sm font-bold">{ profile.user.function ?? '??' }</div>
 
                                     <div className="text-sm font-light text-grey-500 mt-3">Taille de l'entreprise</div>
                                     <div className="text-sm font-bold">{ profile.user.size ?? '??' }</div>
 
                                     <div className="text-sm font-light text-grey-500 mt-3">Sector de l'entreprise</div>
-                                    <div className="text-sm font-bold">{ profile.user.sector ?? '??' }</div>
+                                    <div className="text-sm font-bold">{ profile.user.sector ?? '??' }</div> */}
                                 </div>
                             </div>
                         </div>

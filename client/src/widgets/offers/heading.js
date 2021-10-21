@@ -11,13 +11,13 @@ const OfferHeading = ({item}) => {
 
         <div className="col-12 col-lg-5 col-xl-6 order-lg-2 mb-3 mb-lg-0">
           {/* Image */}
-          <img src={item.image} className="img-fluid offer-img ml-auto" alt="..." />
+          <img src={item.image} className="img-fluid" alt="Services silexia" />
         </div>
         <div className="col-12 col-lg-7 col-xl-6 order-lg-1">
           {/* Heading */}
-          <h1 className="mt-3">{item.title}</h1>
+          <h1 className="mt-3 text-parimary">{item.title}</h1>
           {/* Text */}
-          <p className="text-muted">{item.abstract}</p>
+          <p className="text-muted" dangerouslySetInnerHTML={{__html: item.text}}></p>
           
           {/* <a onClick={() => setIsOpen(true)} className="btn popup-vimeo link-title"> <i className="la la-play-circle mr-1 ic-3x align-middle" /> Play Video</a> */}
         </div>

@@ -24,7 +24,7 @@ export default [
       "child_routes": [
          {
             "path": "/offres",
-            "menu_title": "Toutes nos services",
+            "menu_title": "Tous nos services",
          },
          {
             "path": "/offres/acquisition-client",

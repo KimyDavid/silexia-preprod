@@ -37,14 +37,10 @@ strong {
 }
 
 .columns {
-    &-3 {
-        column-count: 3;
+    &-2 {
+        column-count: 2;
         text-align: justify;
-        column-gap: 40px;
-
-        @media (max-width: $xl) {
-            column-count: 2;
-        }
+        column-gap: 30px;
 
         @media (max-width: $md) {
             column-count: 1;
@@ -225,7 +221,7 @@ strong {
 
         img {
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
     }
 }
@@ -415,9 +411,14 @@ header .nav {
     }
 }
 
-.clients-logo img {
-    height: 40px;
-    object-fit: contain;
+.clients-logo {
+    display: flex;
+    justify-content: center;
+    
+    img {
+        height: 50px;
+        object-fit: contain;
+    }
 }
 
 .nav-tabs .nav-item .nav-link {

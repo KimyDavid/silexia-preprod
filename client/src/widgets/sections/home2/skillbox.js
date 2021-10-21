@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import HomeForm from './form';
 import { API_GET } from '../../../functions/apiRequest';
 
 const Skillbox = () => {
@@ -13,27 +14,55 @@ const Skillbox = () => {
             <section>
                 <div className="container-fluid">
                     <div className="row align-items-center justify-content-between">
-                        <div className="col-12 col-lg-4 col-xl-3 mb-8 mb-lg-0 order-lg-1">
-                            <img src={require(`../../../assets/images/about/06.png`)} alt="Image" className="img-fluid" />
+                        <div className="col-12 col-xl-5 mb-8 mb-lg-0 order-lg-1">
+                            <HomeForm />
                         </div>
-                        <div className="col-12 col-lg-8 col-xl-8">
-                            <div className="mb-md-8">
-                                <h2 className="font-w-6">One Platform, Deep Insight Why Choose Bootsland</h2>
-                            </div>
+                        <div className="col-12 col-lg-8 col-xl-6">
                             <div className="row">
-                                { offers ? offers.map((offer, i) => 
-                                    <div key={i} className="col-lg-6 col-md-6 mt-5">
+                                    <div className="col-lg-6 col-md-6 mt-5">
                                         <div className="d-flex align-items-start">
                                             {/* <div className="mr-3 p-3 border rounded border-light shadow-primary">
-                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt={offer.title} />
+                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="Adaptation à votre contexte" />
                                             </div> */}
                                             <div>
-                                                <h6 className="mb-2 text-primary">{offer.title}</h6>
-                                                <p className="mb-0 abstract abstract-3">{offer.abstract}</p>
+                                                <h5 className="mb-2 text-primary">Adaptation à votre contexte</h5>
+                                                <p className="mb-0 abstract abstract-3">Votre situation est unique. Nous nous adaptons à vos enjeux en  concevant une stratégie sur-mesure en fonction du diagnostic établi ensemble.</p>
                                             </div>
                                         </div>
                                     </div>
-                                ) : '' }
+                                    <div className="col-lg-6 col-md-6 mt-5">
+                                        <div className="d-flex align-items-start">
+                                            {/* <div className="mr-3 p-3 border rounded border-light shadow-primary">
+                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="Agilité et disponibilité" />
+                                            </div> */}
+                                            <div>
+                                                <h5 className="mb-2 text-primary">Agilité et disponibilité</h5>
+                                                <p className="mb-0 abstract abstract-3">Nous déterminons avec vous les objectifs à court et moyen terme de votre organisation, projet ou produit pour lancer la dynamique qui permettra de les atteindre.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-6 col-md-6 mt-5">
+                                        <div className="d-flex align-items-start">
+                                            {/* <div className="mr-3 p-3 border rounded border-light shadow-primary">
+                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="Identification des actions à fort impact" />
+                                            </div> */}
+                                            <div>
+                                                <h5 className="mb-2 text-primary">Identification des actions à fort impact</h5>
+                                                <p className="mb-0 abstract abstract-3">Nous identifions, vous proposons et mettons en œuvre les actions numériques capables d'accélérer la réalisation de vos projets et le développement de vos activités.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-6 col-md-6 mt-5">
+                                        <div className="d-flex align-items-start">
+                                            {/* <div className="mr-3 p-3 border rounded border-light shadow-primary">
+                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="L'innovation au cœur de votre entreprise" />
+                                            </div> */}
+                                            <div>
+                                                <h5 className="mb-2 text-primary">L'innovation au cœur de votre entreprise</h5>
+                                                <p className="mb-0 abstract abstract-3">Grâce à une veille permanente autour des pratiques numériques émergentes, vous bénéficiez d'un service innovation à votre écoute et au fait de vos enjeux.</p>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>

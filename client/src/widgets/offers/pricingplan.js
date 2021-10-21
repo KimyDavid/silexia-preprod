@@ -84,7 +84,6 @@ const Pricingplan = ( {title, offer} ) => {
           <Modal 
                 title={`Demande d'information - ${selectedFormule}`}
                 body={<ContactOffre offre={selectedFormule}/>}
-                closeButton="Fermer"
                 show={showContact}
                 setShow={setShowContact}
             />
