@@ -14,7 +14,7 @@ function getItem(data, callback) {
 
   var strsql = ' SELECT *';
       strsql += ' FROM ' + data.table;
-      strsql += ' WHERE deleted IS NULL';
+      strsql += ' WHERE (deleted IS NULL OR deleted IS NOT NULL AND deleted = 0)';
       if(data.id){
         strsql += ' AND id = ' + data.id
       }
@@ -29,7 +29,7 @@ function getItem(data, callback) {
       }else if(data.sort){
         strsql += ' ORDER BY ' + data.table + '.' + data.sort
       }
-      
+
       db.query(strsql, null, function (error, results) { 
         if(data.model){
           for(let i=0; i<results.length; i++){
@@ -267,12 +267,13 @@ function updateOrder(data, callback){
   }
 
   var strsql = ' INSERT INTO ' + data.table + '(id, ' + data.table + '.order)';
-      strsql += ' SELECT tab.id, RANK() OVER(ORDER BY tab.ORDER, tab.last_modif)';
-      strsql += ' FROM ' + data.table + ' tab ';
-      strsql += ' WHERE tab.deleted IS NULL';
+      strsql += ' SELECT tab.id, @curRank := @curRank + 1 AS ranking';
+      strsql += ' FROM ' + data.table + ' tab, (SELECT @curRank := 0) r ';
+      strsql += ' WHERE (tab.deleted IS NULL OR tab.deleted IS NOT NULL AND tab.deleted = 0)';
       if(data.parent){
         strsql += ' AND tab.' + data.parent.key + ' = ' + data.parent.value
       }
+      strsql += ' ORDER BY tab.ORDER, tab.last_modif DESC';
       strsql += ' ON DUPLICATE KEY UPDATE ' + data.table + '.order = VALUES(' + data.table + '.order)';
 
       db.query(strsql, null, function (error) {   

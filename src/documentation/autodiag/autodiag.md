@@ -59,7 +59,7 @@ This part of the API handles everything that is related to the audiag and its re
 * **Success Response:**
 
   * **Code:** 201
-    **Content:** `{autodiag: [object Category(type = results)], global: {score_user, score_global, tier} }`
+    **Content:** `{user:[object User], autodiag: [object Category(type = results)], global: {score_user, score_global, tier} }`
 
 ---
 

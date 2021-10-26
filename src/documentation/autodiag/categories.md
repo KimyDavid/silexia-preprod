@@ -43,9 +43,7 @@ score_user            | int                   | Score user
 score_total           | int                   | Score total
 flags                 | Array(varchar(255))   | List of flags raised for this user
 tier                  | varchar(255)          | Text describing the user ranking
-
-
-
+answers               | Array()               | User's answers
 
 ## API
 
