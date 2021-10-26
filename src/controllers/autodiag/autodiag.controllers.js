@@ -112,22 +112,25 @@ function getAutodiagUser(data, callback) {
 
   async.parallel([
     function(callback){
+      userController.getFullUserFromId(data, callback)
+    },
+    function(callback){
       getMainTierAutodiagUser(data, callback)
     },
     function(callback){
       getResultsAutodiagUser(data, callback)
     }
   ], function(err, results){
-    let _data = {autodiag:results[1], global:null}
+    let _data = {user:results[0], autodiag:results[2], global:null}
     let total = 0
     let user_total = 0
-    for(let i=0; i<results[1].length; i++){
-      total += results[1][i].score_total ? results[1][i].score_total : 0
-      user_total += results[1][i].score_user ? results[1][i].score_user : 0
+    for(let i=0; i<results[2].length; i++){
+      total += results[2][i].score_total ? results[2][i].score_total : 0
+      user_total += results[2][i].score_user ? results[2][i].score_user : 0
     }
 
-    let ind   = Math.floor(user_total/total*results[0].length)
-    let tier  = results[0][ind === results[0].length ? ind - 1 : ind]
+    let ind   = Math.floor(user_total/total*results[1].length)
+    let tier  = results[1][ind === results[1].length ? ind - 1 : ind]
     _data.global = {score_user:user_total, score_total:total, tier:tier.text}
 
     callback(err, _data)
@@ -140,7 +143,8 @@ function getResultsAutodiagUser(data, callback) {
       strsql += ' CONCAT("[", GROUP_CONCAT(JSON_OBJECT("text", at2.text, "order", at2.order) ORDER BY at2.order), "]") AS tiers,';
       strsql += ' score_user,';
       strsql += ' score_total,';
-      strsql += ' flags';
+      strsql += ' flags,';
+      strsql += ' answers';
       strsql += ' FROM autodiag_categories ac ';
       strsql += ' LEFT JOIN(';
       strsql += ' SELECT aq.id_category, SUM(score) AS score_total';
@@ -150,7 +154,7 @@ function getResultsAutodiagUser(data, callback) {
       strsql += ' GROUP BY aq.id_category ';
       strsql += ' )Score_total ON score_total.id_category = ac.id';
       strsql += ' LEFT JOIN(';
-      strsql += ' SELECT id_category, SUM(score) AS score_user, CONCAT("[", GROUP_CONCAT(JSON_OBJECT("flag", aa.flag)), "]") AS flags';
+      strsql += ' SELECT id_category, SUM(score) AS score_user, CONCAT("[", GROUP_CONCAT(JSON_OBJECT("flag", aa.flag)), "]") AS flags, CONCAT("[", GROUP_CONCAT(JSON_OBJECT("answer", aa.label)), "]") AS answers';
       strsql += ' FROM autodiag_answers aa ';
       strsql += ' INNER JOIN autodiag_user_answers aua ON aua.id_answer = aa.id ';
       strsql += ' INNER JOIN autodiag_questions aq ON aq.id = aa.id_question ';

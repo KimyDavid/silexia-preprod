@@ -30,6 +30,7 @@ function Category(data, extraData) {
     }else if(extraData && extraData.results){
         this.score_user         = data.score_user || 0
         this.score_total        = data.score_total
+        this.answers            = parseJSON(data.answers) || []
         this.flags              = parseJSON(data.flags) || []
         this.flags = this.flags.map((item) => item.flag)
         this.flags = this.flags.filter((item) => item && item.length>0)

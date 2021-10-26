@@ -31,6 +31,7 @@ function User(data, extraData) {
         this.function           = data.function
         this.phone              = data.phone
         this.verif              = data.verif
+        this.date               = data.date
     }
 }
 

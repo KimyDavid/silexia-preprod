@@ -229,6 +229,22 @@ function getUserFromKey(data, callback){
 
 }
 
+function getFullUserFromId(data, callback) {
+
+  var strsql = ' SELECT USER.id, USER.first_name, USER.last_name, USER.phone, USER.date, USER.function, USER.company, USER.verif,';
+      strsql += ' Sectors.label AS sector, Sizes.label AS SIZE, Types.label AS type ';
+      strsql += ' FROM USER ';
+      strsql += ' LEFT JOIN Sectors ON Sectors.id = USER.sector ';
+      strsql += ' LEFT JOIN Sizes ON Sizes.id = USER.`size` ';
+      strsql += ' LEFT JOIN Types ON Types.id = USER.`type` ';
+      strsql += ' WHERE USER.id = ' + data.id;
+
+      
+      db.query(strsql, null, function (error, results) { 
+        callback(null, results.length === 1 ? new User(results[0]) : null)
+      });
+}
+
 
 export default { 
   getUserFromEmail,
@@ -240,4 +256,5 @@ export default {
   updateUser,
   insertUser,
   updatePassword,
+  getFullUserFromId,
 }
