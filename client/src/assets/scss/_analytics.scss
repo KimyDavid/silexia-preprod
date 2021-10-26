@@ -1,0 +1,38 @@
+.analytics {
+    &-dashboard {
+        width: 100%;
+    }
+
+    &-sign {
+        &-out-button {
+            padding: 3px 10px !important;
+            border: 1px solid black;
+            border-radius: 10px;
+            margin-bottom: 30px !important;
+        }
+    }
+}
+
+.gapi {
+    &-analytics {
+        &-data-chart-styles {
+            &-table {
+                &-td {
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+
+    &-view {
+        &-selector {
+            &-container {
+                margin-bottom: 40px;
+
+                table:last-child {
+                    display: none;
+                }
+            }
+        }
+    }
+}

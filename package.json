@@ -57,6 +57,7 @@
     "prop-types": "^15.7.2",
     "rc-slider": "^9.3.1",
     "react": "^17.0.2",
+    "react-analytics-charts": "^1.2.12",
     "react-beautiful-dnd": "^13.0.0",
     "react-chartjs-2": "^2.9.0",
     "react-circle": "^1.1.1",
