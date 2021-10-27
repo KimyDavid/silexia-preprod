@@ -1,5 +1,5 @@
 import React, { Fragment , useState} from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import useToken from '../functions/useTokenAccount';
 
 import '../App.css';
@@ -121,18 +121,22 @@ function App() {
       <CookieConsent
         location="bottom"
         buttonText="Accepter"
+        declineButtonText="Refuser"
         expires={150}
         enableDeclineButton
+        disableButtonStyles
+        style={{ background: "white", color: "black", fontSize: "14px", boxShadow: "0px 0px 20px rgba(0,0,0,0.2)" }}
+        buttonClasses="btn btn-primary btn-small m-3"
+        declineButtonClasses="btn btn-secondary btn-small my-3 ml-3"
         onDecline={() => {
           window['ga-disable-UA-209674431-1'] = true;
+          document.location.reload();
         }}
         onAccept={(acceptedByScrolling) => {
-          if (acceptedByScrolling) {
-            alert("Accept was triggered by user scrolling");
-          } else {
-            alert("Accept was triggered by clicking the Accept button");
-          }
-        }}>Ce site utilise Google Analytics. En continuant à naviguer, vous nous autorisez à déposer un cookie à des fins de mesure d'audience. Voir notre Politique de confidentialité.
+        }}>Ce site utilise Google Analytics. En continuant à naviguer, vous nous autorisez à déposer un cookie à des fins de mesure d'audience. Voir notre &nbsp; 
+        <Link className="link" to="/politique-de-confidentialite">
+        Politique de confidentialité.
+        </Link>
       </CookieConsent>
     </>
   );
