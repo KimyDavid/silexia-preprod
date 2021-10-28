@@ -24,12 +24,10 @@ const ListElement = ({ slug }) => {
     useEffect(() => {
         setLoading(true)
         API_GET(slug).then(response => {
-            console.log(response);
             if (response.error) {
                 setToken();
             } else {
                 setLoading(false)
-                console.log(response);
                 setItems(response)
             }
         });

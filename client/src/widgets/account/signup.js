@@ -69,7 +69,6 @@ const SignUpForm = ({profile = null, setToken = null}) => {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
           setSizes(result);
         },
       )

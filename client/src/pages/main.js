@@ -1,5 +1,5 @@
 import React, { Fragment , useState} from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import useToken from '../functions/useTokenAccount';
 
 import '../App.css';
@@ -10,7 +10,6 @@ import HeaderConnected from '../layout/header/header_connected';
 import Footer from '../layout/footer/footer';
 import Scrolltop from '../layout/back-to-top';
 import Home from './home';
-// import Autodiag from '../widgets/autodiag/autodiag';
 
 import Home2 from './home2';
 import Offers from './offers';
@@ -36,6 +35,8 @@ import Maintenance from './utilities/maintenance';
 import ComingSoon from './utilities/comingsoon';
 import PageNotFound from './utilities/404';
 
+import CookieConsent from "react-cookie-consent";
+
 function App() {
   const websiteInProgress = false;
   const { token, setToken } = useToken();
@@ -60,61 +61,84 @@ function App() {
     }];
 
   return (
-    <Fragment>{
-      websiteInProgress ?
-        <BrowserRouter>
-          <Switch>
-              <Route path="/coming-soon" component={ComingSoon} />
-              <Route path="/maintenance" component={Maintenance} />
-          </Switch>
-        </BrowserRouter>
-       :
-        <div className="page-wrapper">
+    <>
+      <Fragment>{
+        websiteInProgress ?
           <BrowserRouter>
-            { token ? <HeaderConnected/> : <Header setToken={setToken} setShowAutodiag={setShowAutodiag} showAutodiag={showAutodiag} /> }
             <Switch>
-              <Route exact path="/" component={() => <Home2 setShowAutodiag={setShowAutodiag}/>} />
-
-              <Route path="/diagnostic" component={() => <Home setShowAutodiag={setShowAutodiag}/>} />
-              <Route exact path="/offres" component={Offers} />
-              <Route path="/offres/:id" component={() => <Offer />} />
-              <Route path="/about-us" component={AboutUs} />
-              <Route path="/partners" component={partners} />
-
-              {/* <Route exact path="/autodiag" component={Autodiag} /> */}
-              
-              {/* BLOG */}
-              <Route exact path="/blog" component={BlogList} />
-              <Route path="/blog/:id" component={BlogSingle} />
-              
-              {/* LÉGALS */}
-              { staticPages.map((page, i) => 
-                <Route exact path={`/${page.url}`} component={() => <Page slug={page.slug} />} key={i} />
-              )}
-              
-              {/* ACCOUNT */}
-              { token ? 
-                <Route exact path="/profile" component={Profile} />
-              :
-                <Route path="/profile" component={() => <Login setToken={setToken} />} />
-              }
-              
-                <Route path="/profile/autodiag" component={AutodiagResult} />
-                {/* <Route path="/profile/edit" component={ProfileEdit} /> */}
-                <Route path="/profile/logout" component={() => <ProfileLogout setToken={setToken} />} />
-
-                <Route path="/verif_account" component={() => <VerifAccount />} />
-                <Route path="/forgot-password" component={ForgotPassword} />
-                <Route path="/reset_password" component={() => <ResetPassword />} />
-
-                <Route component={PageNotFound} />
-              </Switch>
-            <Footer />
-            <Scrolltop />
+                <Route path="/coming-soon" component={ComingSoon} />
+                <Route path="/maintenance" component={Maintenance} />
+            </Switch>
           </BrowserRouter>
-        </div>
-      }
-    </Fragment>
+        :
+          <div className="page-wrapper">
+            <BrowserRouter>
+              { token ? <HeaderConnected/> : <Header setToken={setToken} setShowAutodiag={setShowAutodiag} showAutodiag={showAutodiag} /> }
+              <Switch>
+                <Route exact path="/" component={() => <Home2 setShowAutodiag={setShowAutodiag}/>} />
+
+                <Route path="/diagnostic" component={() => <Home setShowAutodiag={setShowAutodiag}/>} />
+                <Route exact path="/offres" component={Offers} />
+                <Route path="/offres/:id" component={() => <Offer />} />
+                <Route path="/about-us" component={AboutUs} />
+                <Route path="/partners" component={partners} />
+
+                {/* <Route exact path="/autodiag" component={Autodiag} /> */}
+                
+                {/* BLOG */}
+                <Route exact path="/blog" component={BlogList} />
+                <Route path="/blog/:id" component={BlogSingle} />
+                
+                {/* LÉGALS */}
+                { staticPages.map((page, i) => 
+                  <Route exact path={`/${page.url}`} component={() => <Page slug={page.slug} />} key={i} />
+                )}
+                
+                {/* ACCOUNT */}
+                { token ? 
+                  <Route exact path="/profile" component={Profile} />
+                :
+                  <Route path="/profile" component={() => <Login setToken={setToken} />} />
+                }
+                
+                  <Route path="/profile/autodiag" component={AutodiagResult} />
+                  {/* <Route path="/profile/edit" component={ProfileEdit} /> */}
+                  <Route path="/profile/logout" component={() => <ProfileLogout setToken={setToken} />} />
+
+                  <Route path="/verif_account" component={() => <VerifAccount />} />
+                  <Route path="/forgot-password" component={ForgotPassword} />
+                  <Route path="/reset_password" component={() => <ResetPassword />} />
+
+                  <Route component={PageNotFound} />
+                </Switch>
+              <Footer />
+              <Scrolltop />
+            </BrowserRouter>
+          </div>
+        }
+      </Fragment>
+
+      <CookieConsent
+        location="bottom"
+        buttonText="Accepter"
+        declineButtonText="Refuser"
+        expires={150}
+        enableDeclineButton
+        disableButtonStyles
+        style={{ background: "white", color: "black", fontSize: "14px", boxShadow: "0px 0px 20px rgba(0,0,0,0.2)" }}
+        buttonClasses="btn btn-primary btn-small m-3"
+        declineButtonClasses="btn btn-secondary btn-small my-3 ml-3"
+        onDecline={() => {
+          window['ga-disable-UA-209674431-1'] = true;
+          document.location.reload();
+        }}
+        onAccept={(acceptedByScrolling) => {
+        }}>Ce site utilise Google Analytics. En continuant à naviguer, vous nous autorisez à déposer un cookie à des fins de mesure d'audience. Voir notre &nbsp; 
+        <Link className="link" to="/politique-de-confidentialite">
+        Politique de confidentialité.
+        </Link>
+      </CookieConsent>
+    </>
   );
 }
 
