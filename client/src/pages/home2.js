@@ -11,18 +11,32 @@ const Index = ({setShowAutodiag}) => {
             <div>
                 <Herosection />
                 <div className="page-content">
-                    <section className="pt-0">
+                    <section className="py-0">
                         <div className="container">
                             <Skillbox />
                         </div>
                     </section>
 
-                    <section className="pt-0">
+                    <section className="p-0">
+                        <div className="container">
+                            <div className="row align-items-end mb-lg-5">
+                                <div className="col-12">
+                                    <div className="text-left">
+                                        <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
+                                        <h2 className="mt-4 mb-0 h3">Nos services</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <FeatureServices />
+                        </div>
+                    </section>
+
+                    <section>
                         <About />
                     </section>
 
                     <div className="container">
-                        <div className="row justify-content-center text-center mt-10">
+                        <div className="row justify-content-center text-center mt-4">
                             <div className="col-12 col-md-10 mb-5 mb-lg-0">
                                 <div className="mb-8">
                                     {/* <span className="badge badge-primary-soft p-2 font-w-6">Bootsland Team</span> */}
@@ -40,33 +54,12 @@ const Index = ({setShowAutodiag}) => {
                     </div>
 
                     {/*client start*/}
-                    <section className="text-center">
+                    <section className="text-center py-4">
                         <div className="container">
-                            <div className="row justify-content-center text-center">
-                                <div className="col-12 col-md-12 col-lg-8 mb-8 mb-lg-0">
-                                    <div className="mb-lg-8">
-                                        <h2 className="mt-3">Nous travaillons à leurs côtés</h2>
-                                    </div>
-                                </div>
-                            </div>
                             <BrandLogo />
                         </div>
                     </section>
                     {/*client end*/}
-
-                    <section className="p-0">
-                        <div className="container">
-                            <div className="row align-items-end mb-5">
-                                <div className="col-12">
-                                    <div className="text-right">
-                                        <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
-                                        <h2 className="mt-4 mb-0 h3">Nos offres</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <FeatureServices />
-                        </div>
-                    </section>
 
                     {/*blog start*/}
                     <section>

@@ -39,10 +39,10 @@ class About1 extends Component {
                 </div>
                 <div className="col-12 col-lg-6 col-xl-5">
                   <div>
-                    <h2 className="font-w-6 h3">Diagnostiquez la maturité numérique de votre organisation</h2>
-                    <p className="lead">Répondez aux questionnaires de notre nouvelle webapp pour facilier vos démarches de développement numérique.</p>
+                    <h2 className="font-w-6 h4">Diagnostiquez la maturité numérique de votre organisation</h2>
+                    <p className="">Répondez aux questionnaires de notre nouvelle webapp pour facilier vos démarches de développement numérique.</p>
                   </div>
-                  <div className="d-flex flex-wrap justify-content-start">
+                  <div className="d-flex flex-wrap justify-content-start mt-6">
                     <div className="mb-3 mr-4 ml-lg-0 mr-lg-4">
                       <div className="d-flex align-items-center">
                         <div className="badge-primary-soft rounded p-1">
@@ -50,7 +50,7 @@ class About1 extends Component {
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                         </div>
-                        <p className="mb-0 ml-3">Questionnaire intelligent</p>
+                        <p className="mb-0 ml-3 text-black">Questionnaire intelligent</p>
                       </div>
                     </div>
                     <div className="mb-3 mr-4 ml-lg-0 mr-lg-4">
@@ -60,7 +60,7 @@ class About1 extends Component {
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                         </div>
-                        <p className="mb-0 ml-3">Analyse en profondeur de votre organisme</p>
+                        <p className="mb-0 ml-3 text-black">Analyse en profondeur de votre organisme</p>
                       </div>
                     </div>
                     <div className="mb-3 mr-4 ml-lg-0 mr-lg-4">
@@ -70,7 +70,7 @@ class About1 extends Component {
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                         </div>
-                        <p className="mb-0 ml-3">Résultats en moins de 10 minutes</p>
+                        <p className="mb-0 ml-3 text-black">Résultats en moins de 10 minutes</p>
                       </div>
                     </div>
                     <div className="mb-3 mr-4 ml-lg-0 mr-lg-4">
@@ -80,7 +80,7 @@ class About1 extends Component {
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                         </div>
-                        <p className="mb-0 ml-3">Recommandations personnalisées</p>
+                        <p className="mb-0 ml-3 text-black">Recommandations personnalisées</p>
                       </div>
                     </div>
                   </div> <Link to="/diagnostic" className="btn btn-outline-primary mt-5">
