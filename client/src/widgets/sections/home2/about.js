@@ -7,7 +7,7 @@ class About1 extends Component {
         return (
             <div className="container">
               <div className="row align-items-center justify-content-between">
-                <div className="col-12 col-lg-6 mb-6 mb-lg-0">
+                <div className="col-12 col-lg-6 mb-6 mb-lg-0 mt-5">
                 <OwlCarousel
                     className="owl-carousel owl-center no-pb"
                     dotData={false}
@@ -17,23 +17,11 @@ class About1 extends Component {
                     autoplay={true}
                     loop={true}
                   >
-                    <div className="item">
-                      <img className="img-fluid" src={require(`../../../assets/images/app/01.png`)} alt="" />
+                    <div className="item mobile-mockup-wrapper">
+                      <img className="img-fluid mobile-mockup" src={require(`../../../assets/images/screens/screen1.png`)} alt="Autodiagnostic Silexia" />
                     </div>
-                    <div className="item">
-                      <img className="img-fluid" src={require(`../../../assets/images/app/02.png`)} alt="" />
-                    </div>
-                    <div className="item">
-                      <img className="img-fluid" src={require(`../../../assets/images/app/03.png`)} alt="" />
-                    </div>
-                    <div className="item">
-                      <img className="img-fluid" src={require(`../../../assets/images/app/01.png`)} alt="" />
-                    </div>
-                    <div className="item">
-                      <img className="img-fluid" src={require(`../../../assets/images/app/02.png`)} alt="" />
-                    </div>
-                    <div className="item">
-                      <img className="img-fluid" src={require(`../../../assets/images/app/03.png`)} alt="" />
+                    <div className="item mobile-mockup-wrapper">
+                      <img className="img-fluid mobile-mockup" src={require(`../../../assets/images/screens/screen2.png`)} alt="Autodiagnostic Silexia" />
                     </div>
                   </OwlCarousel>
                 </div>

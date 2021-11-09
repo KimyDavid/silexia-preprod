@@ -96,32 +96,32 @@ class Header extends React.Component {
                                                                                     <DropdownMenu id={`childsubmenu_${index}`}>
                                                                                         {subNavLink.child_routes && subNavLink.child_routes.map((ChildsubNavLink, i) => {
                                                                                             if (ChildsubNavLink.path.includes('://')) {
-                                                                                                return <a className="dropdown-item" target="_blank" key={index} tag={Link} href={ChildsubNavLink.path}>{ChildsubNavLink.menu_title}</a>
+                                                                                                return <a onClick={this.toggle} className="dropdown-item" target="_blank" key={index} tag={Link} href={ChildsubNavLink.path}>{ChildsubNavLink.menu_title}</a>
                                                                                             } else {
-                                                                                                return <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path} onClick={(e) => handleClick(e)} >{ChildsubNavLink.menu_title}</DropdownItem>
+                                                                                                return <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path} onClick={(e) => this.handleClick(e)} >{ChildsubNavLink.menu_title}</DropdownItem>
                                                                                             }
                                                                                         })}
                                                                                     </DropdownMenu>
                                                                                 </UncontrolledDropdown>
                                                                             :
                                                                             subNavLink.path.includes('://') ? 
-                                                                                <a className="dropdown-item" target="_blank" key={index} tag={Link} href={subNavLink.path}>{subNavLink.menu_title}</a>
+                                                                                <a onClick={this.toggle} className="dropdown-item" target="_blank" key={index} tag={Link} href={subNavLink.path}>{subNavLink.menu_title}</a>
                                                                             : 
-                                                                                <DropdownItem key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
+                                                                                <DropdownItem onClick={this.toggle} key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
                                                                     ))}
                                                                 </DropdownMenu>
                                                             </UncontrolledDropdown>
                                                             :
                                                             <NavItem key={index} onClick={this.toggle}>
                                                                 { navLink.path.includes('://') ?
-                                                                    <NavLink target="_blank" href={navLink.path}> {navLink.menu_title}</NavLink>
+                                                                    <NavLink onClick={this.toggle} target="_blank" href={navLink.path}> {navLink.menu_title}</NavLink>
                                                                 : 
-                                                                    <NavLink href={navLink.path}> {navLink.menu_title}</NavLink>
+                                                                    <NavLink onClick={this.toggle} href={navLink.path}> {navLink.menu_title}</NavLink>
                                                                 }
                                                             </NavItem>
                                                     ))}
                                                     <NavItem>
-                                                        <Link onClick={this.toggle} className="btn btn-primary btn-small ml-3" to="/profile/autodiag">Mon diagnostic</Link>
+                                                        <Link onClick={this.toggle} className="btn btn-primary btn-small ml-lg-3" to="/profile/autodiag">Mon diagnostic</Link>
                                                     </NavItem>
                                                 </Nav>
                                             </Collapse>

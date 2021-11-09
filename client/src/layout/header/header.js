@@ -93,7 +93,7 @@ const Header = ({setToken, setShowAutodiag, showAutodiag}) => {
                                                                                     <DropdownMenu id={`childsubmenu_${index}`}>
                                                                                         {subNavLink.child_routes && subNavLink.child_routes.map((ChildsubNavLink, i) => {
                                                                                             if (ChildsubNavLink.path.includes('://')) {
-                                                                                                return <a className="dropdown-item" target="_blank" key={index} tag={Link} href={ChildsubNavLink.path}>{ChildsubNavLink.menu_title}</a>
+                                                                                                return <a onClick={toggle} className="dropdown-item" target="_blank" key={index} tag={Link} href={ChildsubNavLink.path}>{ChildsubNavLink.menu_title}</a>
                                                                                             } else {
                                                                                                 return <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path} onClick={(e) => handleClick(e)} >{ChildsubNavLink.menu_title}</DropdownItem>
                                                                                             }
@@ -104,7 +104,7 @@ const Header = ({setToken, setShowAutodiag, showAutodiag}) => {
                                                                                 subNavLink.path.includes('://') ? 
                                                                                     <a className="dropdown-item" target="_blank" key={index} tag={Link} href={subNavLink.path}>{subNavLink.menu_title}</a>
                                                                                 : 
-                                                                                    <DropdownItem key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
+                                                                                    <DropdownItem onClick={toggle} key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
                                                                     ))}
                                                                 </DropdownMenu>
                                                             </UncontrolledDropdown>
@@ -112,19 +112,19 @@ const Header = ({setToken, setShowAutodiag, showAutodiag}) => {
                                                             <NavItem key={index}>
                                                                 { navLink.path.includes('://') ?
                                                                     // Extern link
-                                                                    <NavLink target="_blank" href={navLink.path}>{navLink.menu_title}</NavLink>
+                                                                    <NavLink onClick={toggle} target="_blank" href={navLink.path}>{navLink.menu_title}</NavLink>
                                                                 : 
                                                                     navLink.modal ? 
                                                                     // Modal Link
-                                                                        location.pathname !== '/profile' ? <NavLink onClick={() => {setShowLogin(true)}}>{navLink.menu_title}</NavLink> : ''
+                                                                        location.pathname !== '/profile' ? <NavLink onClick={toggle} onClick={() => {setShowLogin(true)}}>{navLink.menu_title}</NavLink> : ''
                                                                     : 
                                                                     // Basic link
-                                                                    <NavLink href={navLink.path}> {navLink.menu_title}</NavLink>
+                                                                    <NavLink onClick={toggle} href={navLink.path}> {navLink.menu_title}</NavLink>
                                                                 }
                                                             </NavItem>
                                                     ))}
                                                     <NavItem>
-                                                        <a className="btn btn-primary btn-small mt-3 mt-lg-0 ml-lg-0" onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
+                                                        <a className="btn btn-primary btn-small mt-3 mt-lg-0 ml-lg-0" onClick={toggle} onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
                                                     </NavItem>
                                                 </Nav>
                                             </Collapse>

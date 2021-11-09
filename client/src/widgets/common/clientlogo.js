@@ -44,41 +44,42 @@ const Clientlogo = () => {
                 { partners.length > 0 ?
                 <>
                     <div className="row justify-content-center text-center">
-                        <div className="col-12 col-md-12 col-lg-8 mb-8 mb-lg-0">
+                        <div className="col-10 col-lg-8 mb-0">
                             <div className="mb-lg-8">
                                 <h2 className="mt-3 h3">Nous travaillons à leurs côtés</h2>
                             </div>
-                        </div>
-                    </div>
 
-                    <OwlCarousel
-                            className={`owl-carousel`}
-                            dotData={false}
-                            items={4}
-                            autoplay={true}
-                            margin={30}
-                            dots={false}
-                            nav={true}
-                            loop={false}
-                            responsive={responsive}
-                        >
-                            { partners.map((partner, i) =>
-                                <div className="item" key={i}>
-                                    <div className="p-3 partner-item d-flex align-items-center shadow bg-white rounded mt-4" onClick={() => updateSelectedPartner(partner)}>
-                                        <div className="w-100 text-center">
-                                        { partner.image ? <img src={partner.image} alt={`${partner.name}`} className="img-fluid mb-2 partner-img" />: '' }
-                                        <h5 className="mb-2">{partner.name}</h5>            
-                                        <p>{partner.abstract}</p>
-                                        { partner.text !== '' ? 
-                                            <a onClick={() => updateSelectedPartner(partner)} className="link-primary">En savoir plus</a>
-                                        : 
-                                            partner.url ? <a href={partner.url} className="link-primary">En savoir plus</a> : '' 
-                                        }
+                            <OwlCarousel
+                                    className={`owl-carousel`}
+                                    dotData={false}
+                                    items={4}
+                                    autoplay={true}
+                                    margin={30}
+                                    dots={false}
+                                    nav={false}
+                                    loop={false}
+                                    responsive={responsive}
+                                >
+                                    { partners.map((partner, i) =>
+                                        <div className="item" key={i}>
+                                            <div className="p-3 partner-item d-flex align-items-center shadow bg-white rounded mt-4" onClick={() => updateSelectedPartner(partner)}>
+                                                <div className="w-100 text-center">
+                                                { partner.image ? <img src={partner.image} alt={`${partner.name}`} className="img-fluid mb-2 partner-img" />: '' }
+                                                <h5 className="mb-2">{partner.name}</h5>            
+                                                <p>{partner.abstract}</p>
+                                                { partner.text !== '' ? 
+                                                    <a onClick={() => updateSelectedPartner(partner)} className="link-primary">En savoir plus</a>
+                                                : 
+                                                    partner.url ? <a href={partner.url} className="link-primary">En savoir plus</a> : '' 
+                                                }
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            ) }
-                    </OwlCarousel> 
+                                    ) }
+                            </OwlCarousel>
+
+                        </div>
+                    </div> 
                     <div className="w-100 d-flex justify-content-center">
                         <Link className="btn btn-primary" to={"partners"}>Voir tous les partenaires</Link>
                     </div>

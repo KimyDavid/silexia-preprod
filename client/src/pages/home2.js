@@ -38,7 +38,7 @@ const Index = ({setShowAutodiag}) => {
                     <div className="container">
                         <div className="row justify-content-center text-center mt-4">
                             <div className="col-12 col-md-10 mb-5 mb-lg-0">
-                                <div className="mb-8">
+                                <div className="mb-3 mb-lg-8">
                                     {/* <span className="badge badge-primary-soft p-2 font-w-6">Bootsland Team</span> */}
                                     <h2 className="mt-3 font-w-6 h4">Le numérique peut devenir le moteur de votre croissance s'il est déployé dans une stratégie adaptée à vos enjeux. </h2>
                                     <div className="mb-0 mt-5 columns-2">
