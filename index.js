@@ -84,6 +84,7 @@ app.get([
   '/conditions-generales-de-vente',
   '/politique-de-confidentialite',
   '/admin',
+  '/admin/*',
   '/verif_account',
   '/reset_password',
 ], function(req, res) {
