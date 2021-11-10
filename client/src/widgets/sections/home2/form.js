@@ -51,7 +51,7 @@ const ContactOffer = () => {
     ]
 
         return (
-            <div className="row justify-content-center text-left shadow py-5 px-10">
+            <div className="row justify-content-center text-left shadow px-5 py-5 px-xl-10">
                 <div className="col-12 ">
                     <h3 className="h4 text-primary font-w-5">Parlez nous de vous...</h3>
                     <p className="text-muted mb-5">... pour planifier une consultation innovation de 20 minutes autour de votre projet numérique.</p>

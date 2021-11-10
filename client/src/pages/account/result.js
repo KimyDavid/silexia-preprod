@@ -63,7 +63,7 @@ const AutodiagResult = () => {
         setDetails({
             'category': category.label,
             'description': category.tier ? category.tier.text : '',
-            'flag': category.flags.length > 0 ? category.flags : ''
+            'flag': category.flags.length > 0 ? category.flags : []
         });
         setShowDetails(true);
     }

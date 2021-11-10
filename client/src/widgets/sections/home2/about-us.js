@@ -12,7 +12,6 @@ class Memberaboutus extends Component {
                       {/* </div> */}
                     </div>
                     <div className="col-6">
-                      {/* <img src={require(`../../../assets/images/about/12.jpg`)} className="img-fluid rounded shadow-lg mt-10" alt="..." /> */}
                     </div>
                     <div className="col-10 ml-auto mr-auto mt-n6">
                       {/* <div className="filter-red rounded"> */}

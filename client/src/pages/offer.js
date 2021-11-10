@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import OfferHeading from '../widgets/offers/heading';
+import PageHeading from '../widgets/Pageheading';
 import { API_GET } from '../functions/apiRequest';
 import { useParams } from "react-router-dom";
 import Offers from '../constants/Offers';
@@ -30,9 +30,14 @@ const Offer = () => {
             { offers ? 
                 <>
                     {/*hero section start*/}
-                    <section>
-                        <div className="container">
-                            <OfferHeading item={offers.find(x => toSnakeCase(x.title) === id)} />
+                    <section className="position-relative py-6">
+                            <PageHeading title={offers.find(x => toSnakeCase(x.title) === id).title} />
+                    </section>
+                    <section className="py-0 container">
+                        <div className="row">
+                            <div className="col-12 col-md-10 mx-auto">
+                                <div className="text-center" dangerouslySetInnerHTML={{__html: offers.find(x => toSnakeCase(x.title) === id).text}}></div>
+                            </div>
                         </div>
                     </section>
                     {/*hero section end*/}
@@ -42,7 +47,7 @@ const Offer = () => {
                         <section className="pt-0">
                                 {/*how it work start*/}
                                 <section className="position-relative bg-light mt-4" data-bg-img={require(`../assets/images/bg/02.png`)}>
-                                    <div className="container mt-4 mb-4">
+                                    <div className="container mt-4 mb-4 pb-10">
                                         {/* / .row */}
                                         <div className="row">
                                             <div className="text-center mb-6 col-12 col-md-10 offset-md-1">
@@ -56,7 +61,7 @@ const Offer = () => {
                                         </div>
                                         { offerFlux ? offerFlux.flux.map((item, i) => 
                                             <div key={i} className="row align-items-center justify-content-between mb-3 mt-2">
-                                                <div className={`col-7 col-lg-5 ${ (i%2 === 0) ? 'order-lg-1' : '' } mb-3 mb-lg-0`}>
+                                                <div className={`col-7 col-lg-4 ${ (i%2 === 0) ? 'order-lg-1' : '' } mb-3 mb-lg-0`}>
                                                     <img src={require(`../assets/images/offers/offre_${item.image}`)} alt={`Silexia ${item.title}`} className="img-fluid steps-img" />
                                                 </div>
                                                 <div className="col-12 col-lg-6">

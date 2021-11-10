@@ -95,20 +95,14 @@ class Aboutus extends Component {
 
                         <div className="container">
                             <div className="row justify-content-center text-center">
-                              <div className="col-12 col-md-12 col-lg-10 mb-4 mb-lg-0">
+                              <div className="col-12 col-md-10 col-lg-8 mb-4 mb-lg-0">
                                 <div className="mb-8">
                                   <h2 className="mt-3 font-w-6 h3 mb-5">Votre bureau de pilotage du numérique dans votre organisation</h2>
-                                  <div className="row text-justify">
-                                    <div className="col-12 col-md-6 col-lg-4">
-                                      <p className="mb-0">Avec de fortes compétences en analyse des systèmes d’information, gestion de projets numériques, marketing et conformité aux normes en vigueur, Silexia et ses partenaires font du numérique une opportunité de développement pour votre organisation. </p>
+                                    <div className="mb-0 mt-5 columns-2">
+                                        <p>Avec de fortes compétences en analyse des systèmes d’information, gestion de projets numériques, marketing et conformité aux normes en vigueur, Silexia et ses partenaires font du numérique une opportunité de développement pour votre organisation.</p>
+                                        <p>Fournisseur de solutions numériques, nous avons à cœur de vous apporter des solutions concrètes et réalisables à court terme tout en construisant avec vous votre stratégie de développement par le numérique.</p>
+                                        <p>Que ce soit pour un simple coup de pouce, un accompagnement stratégique de plus long terme ou un besoin d’externalisation, Silexia est votre bureau de pilotage du numérique, capable de rassembler et coordonner les compétences nécessaires à la réussite de vos projets !</p>
                                     </div>
-                                    <div className="col-12 col-md-6 col-lg-4">
-                                      <p className="mb-0">Fournisseur de solutions numériques, nous avons à cœur de vous apporter des solutions concrètes et réalisables à court terme tout en construisant avec vous votre stratégie de développement par le numérique.</p>
-                                    </div>
-                                    <div className="col-12 col-lg-4">
-                                      <p className="mb-0">Que ce soit pour un simple coup de pouce, un accompagnement stratégique de plus long terme ou un besoin d’externalisation, Silexia est votre bureau de pilotage du numérique, capable de rassembler et coordonner les compétences nécessaires à la réussite de vos projets !</p>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -134,41 +128,6 @@ class Aboutus extends Component {
                             <Blog />
                         </div>
                     </section>
-
-                    
-
-                    {/* <section>
-                      <div className="container">
-                        <div className="row">
-                          <ModalVideo channel='youtube' isOpen={this.state.isOpen} autoplay={true} videoId='P_wKDMcr1Tg' onClose={() => this.setState({ isOpen: false })} />
-
-                          <div className="col-12 col-lg-6 mb-6 mb-lg-0">
-                            <div className="row align-items-center">
-                              <div className="col-6">
-                                <img src={require(`../assets/images/about/10.jpg`)} className="img-fluid rounded shadow-lg" alt="..." />
-                              </div>
-                              <div className="col-6">
-                                <img src={require(`../assets/images/about/11.jpg`)} className="img-fluid rounded shadow-lg mb-5" alt="..." />
-                                <img src={require(`../assets/images/about/12.jpg`)} className="img-fluid rounded shadow-lg" alt="..." />
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="col-12 col-lg-6 py-11 z-index-1">
-                            <div className="video-btn ml-5"> 
-                              <a className="play-btn popup-youtube" onClick={this.openModal}><i className="la la-play" /></a>
-                              <div className="spinner-eff">
-                                <div className="spinner-circle circle-2" />
-                              </div>
-                            </div>
-                            <h1 className="display-4 mt-8 font-w-5">
-                                Bootsland All In One Solution For Your Website
-                            </h1>
-                            <p className="lead text-muted">Build a Beautiful, Clean &amp; Modern Design website with flexible Bootstrap components.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </section> */}
                 </div>
             </div>
         );

@@ -15,6 +15,9 @@ const Team2 = ({partners, setSelectedPartner, setShowModal}) => {
           items:2,
       },
       768:{
+          items:3,
+      },
+      1024:{
           items:4,
       },
   }

@@ -41,6 +41,10 @@
             color: white;
             font-style: italic;
             font-weight: 200;
+
+            @media (max-width: $md) {
+                font-size: 12px;
+            }
         }
     }
 
@@ -61,7 +65,7 @@
         padding: 30px;
 
         @media (max-width: $lg) {
-            padding: 20px 20px 0 20px;
+            padding: 20px 10px 0 10px;
         }
     }
 
@@ -111,6 +115,10 @@
             margin-bottom: 0;
             font-size: 18px;
             color: $color-black;
+
+            @media (max-width: $md) {
+                font-size: 14px;
+            }
         }
 
         &-before {
@@ -151,6 +159,7 @@
 
             @media (max-width: $lg) {
                 flex: 1 100%;
+                padding: 8px 4px;
             } 
         }
 
@@ -241,6 +250,10 @@
             list-style: none;
             position: relative;
             height: $dot-size;
+
+            @media (max-width: $md) {
+                margin: 0 30px 15px;
+            }
 
             &::before {
                 content: '';

@@ -1,5 +1,6 @@
 p, li {
     font-size: 14px;
+    line-height: 1.4;
 }
 
 li {
@@ -421,6 +422,24 @@ header .nav {
     }
 }
 
+header .nav-item {
+    flex-wrap: wrap;
+}
+
+.dropdown-menu {
+    width: 100%;
+}
+
 .nav-tabs .nav-item .nav-link {
     box-shadow: 0 10px 25px 5px rgba(255, 166, 166, 0.5) !important;
+}
+
+.mobile-mockup {
+    &-wrapper {
+        padding: 30px 15px;
+    }
+
+    border-radius: 25px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #555;
 }
