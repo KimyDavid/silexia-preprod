@@ -67,7 +67,12 @@ const userUpdateSchema = yup.object({
     })
 })
 
+const userDeleteSchema = yup.object({
+    id:yup.number().required().exists('User'),
+})
+
 
 export { 
-    User, userLoginSchema, userCreateSchema, userForgetPasswordSchema, userUpdateSchema
+    User, userLoginSchema, userCreateSchema, userForgetPasswordSchema, userUpdateSchema,
+    userDeleteSchema
 }

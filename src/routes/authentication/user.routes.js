@@ -4,8 +4,9 @@ import passport from '#config/passport_local.js';
 import validateResourceMW from '#middleware/validateObject.middleware.js';
 import auth from '#middleware/auth.middleware.js';
 
-import { userLoginSchema, userCreateSchema, userForgetPasswordSchema, userUpdateSchema } from '#models/authentication/user.js';
+import { userLoginSchema, userCreateSchema, userForgetPasswordSchema, userUpdateSchema, userDeleteSchema } from '#models/authentication/user.js';
 import userController from '#controllers/authentication/user.controllers.js';
+import apiController from '#controllers/utils/api.controllers.js';
 
 const router = express.Router();
 
@@ -77,6 +78,21 @@ router.patch('/users/:id', validateResourceMW(userUpdateSchema), function(req, r
       res.status(200).json(results)
     }
   })
+});
+
+router.delete('/users/:id', auth(), validateResourceMW(userDeleteSchema), function(req, res) {
+  if(parseInt(req.user.id) !== parseInt(req.params.id)){
+    res.status(400).json({error:'Unauthorized'})
+  }else{
+    apiController.deleteItem({table:'User', id:req.params.id}, function(err, results){
+      if(err){
+        res.status(400).json({error:err})
+      }else{
+        req.logout();
+        res.status(200).json(results);
+      }
+    })
+  }
 });
 
 export default router;

@@ -130,7 +130,7 @@ verif                 | tinyint       | Account's verification status (0: unsubs
 
 * **URL**
 
-  [POST] /v1/veif_account?key=[key]
+  [POST] /v1/verif_account?key=[key]
 
 * **Data Params**
 
@@ -148,6 +148,32 @@ verif                 | tinyint       | Account's verification status (0: unsubs
     **Description:** Provided key isn't recognized in db, or has already been used
     **Content:** `{ error: 'wrong key'}`
 
+---
+
+### Delete account
+
+* **URL**
+
+  [DELETE] /v1/users/:id_user
+
+* **Data Params**
+
+  ***Required:***
+   `id_user=[int]`
+
+* **Success Response:**
+
+  * **Code:** 200 
+    **Content:** `{ id_user }`
+ 
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST 
+    **Description:** User id is unknown or user logged in is not the user that is about to be deleted
+    **Content:** `{ error: 'Unauthorized'}`
+
+* **Nota bene:**
+  * **Log out:** User is logged out after deletion is successful
 ---
 
 ### Subscribe user
