@@ -18,6 +18,7 @@
     "nprogress": "^0.2.0",
     "react": "^16.13.1",
     "react-accessible-accordion": "^2.4.5",
+    "react-analytics-charts": "^1.2.12",
     "react-animated-css": "^1.2.1",
     "react-bootstrap": "^1.0.0",
     "react-chartjs-2": "^3.0.4",
