@@ -69,10 +69,7 @@ app.use('/v1', categories)
 
 app.use('/v1', contact)
 
-app.get([
-  '/', 
-  '/*'
-], function(req, res) {
+app.get(/^(?!\/v1)^[^.]*$/, function(req, res) {
   res.sendFile('client/dist/index.html', {root:'.'});
 });
 
