@@ -11,7 +11,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 function send_mail(input, callback){    
     
     var email = {
-        from: input.from ? input.from : 'Silexia <jean-louis@taf.life>',
+        from: input.from ? input.from : 'Silexia <bonjour@silexia.fr>',
         to: input.dest
     };
 

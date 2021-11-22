@@ -88,6 +88,11 @@ function subscribeAutodiag(data, callback) {
 
 function insertAutodiagUserAnswers(data, callback) {
 
+  if(data.answers.length === 0){
+    callback(null)
+    return
+  }
+
   var strsql = ' INSERT INTO Autodiag_User_Answers(id_user, id_answer)';
       strsql += ' VALUES';
       for(let i=0; i<data.answers.length; i++){
