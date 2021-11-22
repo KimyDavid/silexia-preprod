@@ -70,23 +70,8 @@ app.use('/v1', categories)
 app.use('/v1', contact)
 
 app.get([
-  '/',
-  '/offres',
-  '/offres/*',
-  '/about-us',
-  '/blog',
-  '/blog/*',
-  '/partners',
-  '/partners/*',
-  '/profile',
-  '/autodiag',
-  '/mentions-legales',
-  '/conditions-generales-de-vente',
-  '/politique-de-confidentialite',
-  '/admin',
-  '/admin/*',
-  '/verif_account',
-  '/reset_password',
+  '/', 
+  '/*'
 ], function(req, res) {
   res.sendFile('client/dist/index.html', {root:'.'});
 });
