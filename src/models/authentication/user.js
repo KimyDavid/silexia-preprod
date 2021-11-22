@@ -59,12 +59,25 @@ const userForgetPasswordSchema = yup.object({
     email: yup.string().email().required().registered()
 })
 
-const userUpdateSchema = yup.object({
+const userUpdatePasswordSchema = yup.object({
     id:yup.number().required().exists('User'),
     key: yup.string().required(),
     password:yup.string().required().transform(function (value) {
       return bcrypt.hashSync(value, 10);
     })
+})
+
+const userUpdateSchema = yup.object({
+    id:yup.number().required().exists('User'),
+    email: yup.string().email().unique(),
+    sector: yup.number().exists('Sectors'),
+    size:yup.number().exists('Sizes'),
+    type:yup.number().exists('Types'),
+    first_name:yup.string(),
+    last_name:yup.string(),
+    function:yup.string(),
+    phone:yup.string(),
+    company: yup.string(100),
 })
 
 const userDeleteSchema = yup.object({
@@ -74,5 +87,5 @@ const userDeleteSchema = yup.object({
 
 export { 
     User, userLoginSchema, userCreateSchema, userForgetPasswordSchema, userUpdateSchema,
-    userDeleteSchema
+    userDeleteSchema, userUpdatePasswordSchema
 }

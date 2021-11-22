@@ -114,9 +114,16 @@ verif                 | tinyint       | Account's verification status (0: unsubs
 
 * **Data Params**
 
-  ***Required:***
-   `password=[string]`
-   `key=[string]`
+  ***Optional:***
+   `email=[string]`
+   `sector=[int]`
+   `size=[int]`
+   `type=[int]`
+   `first_name=[int]`
+   `last_name=[string]`
+   `function=[string]`
+   `phone=[string]`
+   `company=[string]`
 
 * **Success Response:**
 

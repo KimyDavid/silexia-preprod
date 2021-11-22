@@ -4,7 +4,7 @@ import passport from '#config/passport_local.js';
 import validateResourceMW from '#middleware/validateObject.middleware.js';
 import auth from '#middleware/auth.middleware.js';
 
-import { userLoginSchema, userCreateSchema, userForgetPasswordSchema, userUpdateSchema, userDeleteSchema } from '#models/authentication/user.js';
+import { userLoginSchema, userCreateSchema, userForgetPasswordSchema, userUpdateSchema, userDeleteSchema, userUpdatePasswordSchema } from '#models/authentication/user.js';
 import userController from '#controllers/authentication/user.controllers.js';
 import apiController from '#controllers/utils/api.controllers.js';
 
@@ -70,7 +70,7 @@ router.post('/reset_password', function(req, res) {
   })
 });
 
-router.patch('/users/:id', validateResourceMW(userUpdateSchema), function(req, res) {
+router.patch('/password/:id', validateResourceMW(userUpdatePasswordSchema), function(req, res) {
   userController.updatePassword({id:req.params.id, body:req.body}, function(err, results){
     if(err){
       res.status(400).json({error:err})
@@ -78,6 +78,20 @@ router.patch('/users/:id', validateResourceMW(userUpdateSchema), function(req, r
       res.status(200).json(results)
     }
   })
+});
+
+router.patch('/users/:id', auth(), validateResourceMW(userUpdateSchema), function(req, res) {
+  if(parseInt(req.user.id) !== parseInt(req.params.id)){
+    res.status(400).json({error:'Unauthorized'})
+  }else{
+    apiController.editItem({item:{...req.body, ...req.params}, table:'User'}, function(err, results){
+      if(err){
+        res.status(400).json({error:err})
+      }else{
+        res.status(200).json(results)
+      }
+    })
+  }
 });
 
 router.delete('/users/:id', auth(), validateResourceMW(userDeleteSchema), function(req, res) {

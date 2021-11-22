@@ -27,3 +27,28 @@ This part handles all the login and authentification process of [users](./user.m
     **Description:** Provided password doesn't match the one stored in db
     **Content:** `{ error: 'Invalid password'}`
 ---
+
+---
+
+### Update password
+  Update user's password.
+
+* **URL**
+
+  [PATCH] /v1/password/:id_user
+
+*  **URL Params**
+
+   ***Required:***
+   `id_user=[integer]`
+
+* **Data Params**
+
+  ***Required:***
+   `password=[string]`
+   `key=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200
+    **Content:** `[object User]`
