@@ -34,7 +34,7 @@ function Category(data, extraData) {
         this.flags              = parseJSON(data.flags) || []
         this.flags = this.flags.map((item) => item.flag)
         this.flags = this.flags.filter((item) => item && item.length>0)
-
+        
         let tiers = parseJSON(data.tiers)
         let ind   = Math.floor(data.score_user/data.score_total*tiers.length)
         this.tier               = tiers[ind === tiers.length ? ind - 1 : ind]

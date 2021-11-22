@@ -5,6 +5,7 @@ function Answer(data) {
     this.label              = data.label
     this.order              = data.order
     this.flag               = data.flag
+    this.revert             = data.revert
     this.score              = data.score
 }
 
