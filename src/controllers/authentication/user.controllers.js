@@ -14,7 +14,7 @@ function getUserFromEmail(data, callback) {
 
   var strsql = ' SELECT *';
       strsql += ' FROM User';
-      strsql += ' WHERE email = ' + mysql.escape(data.email)
+      strsql += ' WHERE email = ' + mysql.escape(data.email) + ' AND deleted IS NULL';
       
       db.query(strsql, null, function (error, results) { 
         callback(null, results.length === 1 ? results[0] : null)
