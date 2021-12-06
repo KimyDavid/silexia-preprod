@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Constants from '../../constants/Config';
-import useToken from '../../functions/useTokenAccount';
 import {Radar} from 'react-chartjs-2'
 import Modal from '../../widgets/common/modal';
+import Blog from '../../widgets/sections/blog';
 
-const AutodiagResult = () => {
-    const { token, setToken } = useToken();
+const AutodiagResult = ({token}) => {
     const [ result, setResult ] = useState();
     const [ details, setDetails ] = useState();
 
@@ -29,7 +28,7 @@ const AutodiagResult = () => {
             return category.label;
         });
         graphScores = result.autodiag.map((category) => {
-            return category.score_user;
+            return Math.round((category.score_user/category.score_total)*100);
         });
     }
 
@@ -54,18 +53,14 @@ const AutodiagResult = () => {
         scales: {
             r: {
                 beginAtZero: true,
-                suggestedMax: result ? result.global.score_total : 60
+                suggestedMax: 100
             }
         }
     }
 
-    const displayDetailsModal = (category) => {
-        setDetails({
-            'category': category.label,
-            'description': category.tier ? category.tier.text : '',
-            'flag': category.flags.length > 0 ? category.flags : []
-        });
-        setShowDetails(true);
+    const displayDetails = (id) => {
+        const card = document.querySelector(`.account-sidebar-card-${id}`);
+        card.classList.toggle('active');
     }
     
     return (
@@ -75,16 +70,18 @@ const AutodiagResult = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-12">
-                                <h2 className="text-center h4 mt-5 shadow py-3 font-w-5 account-score" onClick={ () => setShowGlobal(true) }>Votre score global est <strong className="text-primary">{result.global.score_user}/{result.global.score_total}</strong>
+                                <h2 className="text-center h4 mt-5 shadow py-3 font-w-5 account-score" onClick={ () => setShowGlobal(true) }>Votre score global est de <strong className="text-primary">{Math.round((result.global.score_user/result.global.score_total)*100)}%</strong>
                                 <i className="action-score-infos las la-question-circle"></i></h2>
                             </div>
                             <div className="col-12 col-lg-7">
                                 <h3 className="mt-4 mb-0">Bonjour {token.first_name} !</h3>
                                 <p className="mb-5">Voici le résultat de votre diagnostic</p>
-                                <Radar
-                                    data={data}
-                                    options={options}
-                                />
+                                <div className="account-graph">
+                                    <Radar
+                                        data={data}
+                                        options={options}
+                                    />
+                                </div>
                                 <p className="text-center mt-5"></p>
                                 {/* <div className="account-score-categories">
                                     { categories.map((category, i) => (
@@ -100,12 +97,17 @@ const AutodiagResult = () => {
                                     <h3 className="my-2 h5 font-w-5 text-white"><strong>Détails</strong> de vos résultats par catégories.</h3>
                                     <p className="text-white">Cliquez sur les catégories pour obtenir plus de détails.</p>
                                     { result.autodiag.map((category, i) => (
-                                        <div key={i} onClick={() => displayDetailsModal(category)}>
+                                        <div key={i} onClick={() => displayDetails(i)} className={`account-sidebar-card-${i}`}>
                                             <div className={`account-sidebar-card px-3 py-2 bg-white ${category.flags.length > 0 ? 'warning' : ''}`}>
-                                                <span className="account-score-number">{category.score_user ?? '0'}/{category.score_total ?? '0'}</span>
+                                                { category.flags.length > 0 ? <span className="account-sidebar-card-warning la la-exclamation-triangle"></span> : ''}
+                                                <span className="account-score-number">{Math.round((category.score_user/category.score_total)*100)}%</span>
                                                 <p className="mb-0"><strong className="text-black">{ category.label }</strong></p>
-                                                <p className="abstract abstract-2 mb-0">{ category.tier ? category.tier.text : '' }</p>
-                                                { category.flags.length > 0 ? <span className="account-sidebar-card-warning la la-exclamation-triangle"></span> : ''} 
+                                                <p className="account-sidebar-card-abstract abstract abstract-2 mb-0">{ category.tier ? category.tier.text : '' }</p>
+                                                <div class="account-sidebar-card-details">
+                                                    { category.flags.map((_flag, i) => 
+                                                        <p key={i} className="message warning shadow"><span className="message-icon la la-exclamation-triangle"></span>{ _flag }</p>
+                                                    )}
+                                                </div>
                                                 {/* <div className="account-sidebar-progressbar">
                                                     <span style={{width: 10 + '%'}}>10%</span>
                                                 </div> */}
@@ -119,6 +121,23 @@ const AutodiagResult = () => {
                         </div>
                     </div>
 
+                    {/*blog start*/}
+                    <section>
+                        <div className="container">
+                            <div className="row align-items-end mb-5">
+                                <div className="col-12 col-md-12 col-lg-8">
+                                    <div>
+                                        <span className="badge badge-primary-soft p-2"><i className="la la-bold ic-3x rotation" /></span>
+                                        <h2 className="mt-4 mb-0 h3">Notre blog dédié à la transition numérique des TPE/PME</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* / .row */}
+                            <Blog />
+                        </div>
+                    </section>
+                    {/*blog end*/}
+
                     <Modal 
                         title="Plus d'informations à propos de votre score."
                         body={result.global.tier}
@@ -127,7 +146,7 @@ const AutodiagResult = () => {
                         setShow={setShowGlobal}
                     />
 
-                    { details ? 
+                    {/* { details ? 
                     <Modal 
                         title={details.category}
                         body={
@@ -141,7 +160,7 @@ const AutodiagResult = () => {
                         closeButton="Entendu !"
                         show={showDetails}
                         setShow={setShowDetails}
-                    /> : '' }
+                    /> : '' } */}
                 </>
             : 
             <div className="autodiag-loading">

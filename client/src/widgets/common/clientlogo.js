@@ -44,7 +44,7 @@ const Clientlogo = () => {
                 { partners.length > 0 ?
                 <>
                     <div className="row justify-content-center text-center">
-                        <div className="col-10 col-lg-8 mb-0">
+                        <div className="col-12 mb-0">
                             <div className="mb-lg-8">
                                 <h2 className="mt-3 h3">Nous travaillons à leurs côtés</h2>
                             </div>

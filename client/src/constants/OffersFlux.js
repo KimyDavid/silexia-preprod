@@ -53,7 +53,7 @@ export default {
          {
             'title': 'Identifier les tâches à faible valeur ajoutée',
             'description': 'À vos côtés et aux côtés de vos collaborateurs, nous choisissons ensemble ce qui doit être optimiser et ce qui doit rester de la compétence de l’humain. Nous concevons votre plan de transition sur-mesure afin d’enclencher une dynamique d’automatisation.',
-            'image': 'step.png',
+            'image': 'metiers.png',
          },
          {
             'title': 'Intégrer des briques numériques d’automatisation',

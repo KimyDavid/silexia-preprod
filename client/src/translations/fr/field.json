@@ -1,6 +1,7 @@
 {
     "order": "Ordre d'affichage",
-    "flag": "Point d'alerte",
+    "flag": "Alerte si sélectionné",
+    "revert": "Alerte si non sélectionné",
     "name": "Nom",
     "text": "Description",
     "label": "Texte",

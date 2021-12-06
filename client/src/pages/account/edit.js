@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import SignUpForm from '../../widgets/account/signup';
 import Pageheading from '../../widgets/Pageheading';
-import useToken from '../../functions/useTokenAccount';
 
-const Profile = () => {
-    const { token, setToken } = useToken();
-    
+const Profile = ({token}) => {
         return (
             <div>
                 {/*hero section start*/}
@@ -18,7 +15,7 @@ const Profile = () => {
                     {/*login start*/}
                     <section className="register">
                         <Container>
-                            <SignUpForm profile={token} setToken={setToken} />
+                            <SignUpForm profile={token} />
                         </Container>
                     </section>
                     {/*login end*/}

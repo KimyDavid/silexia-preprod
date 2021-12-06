@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 
-const Index = ({ setToken }) => {
+const Index = () => {
   useEffect(() => {
-    setToken(null);
+    // setToken(null);
   });
 
   return (

@@ -5,12 +5,9 @@ import {
     AccordionItemTitle,
     AccordionItemBody,
 } from 'react-accessible-accordion';
-import { Link } from 'react-router-dom';
 import questions from '../../constants/Faq';
-import useToken from '../../functions/useTokenAccount';
 
-const Faq = ({setShowAutodiag}) =>  {
-    const { token, setToken } = useToken();
+const Faq = ({setShowAutodiag, token}) =>  {
         return (
             <>
                 <Accordion className="text-left">

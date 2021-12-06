@@ -64,8 +64,8 @@ export default [
       ]
    },
    {
-      "menu_title": "Blog",
-      "path": "/blog",
+      "menu_title": "Prendre rendez-vous",
+      "path": "https://outlook.office365.com/owa/calendar/Silexia@silexia.onmicrosoft.com/bookings/"
    },
    {
       "menu_title": "Mon compte",
@@ -73,7 +73,7 @@ export default [
       "type": "subMenu",
       "child_routes": [
          {
-            "path": "/profile",
+            "path": "/profile/details",
             "menu_title": "Mes informations",
          },
          {
@@ -81,9 +81,5 @@ export default [
             "menu_title": "Se déconnecter",
          },
       ]
-   },
-   {
-      "menu_title": "Prendre rendez-vous",
-      "path": "https://outlook.office365.com/owa/calendar/Silexia@silexia.onmicrosoft.com/bookings/"
    }
 ]

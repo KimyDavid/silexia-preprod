@@ -45,7 +45,7 @@ const AutodiagCategories = () => {
         name: 'answers',
         type: 'collection',
         dataCollection: {
-          fields: ['label', 'order', 'score', 'flag']
+          fields: ['label', 'order', 'score', 'flag', 'revert']
         }
       },
     ]

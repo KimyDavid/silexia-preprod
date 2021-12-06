@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import navLinks from '../../constants/NavSilexia';
+import OwlCarousel from 'react-owl-carousel';  
 import { useLocation, Link } from 'react-router-dom';
 import {
     Collapse,
@@ -17,12 +18,14 @@ import {
 import Modal from '../../widgets/common/modal';
 import SigninForm from '../../widgets/account/signin';
 import Autodiag from '../../widgets/autodiag/autodiag';
+import { API_GET } from '../../functions/apiRequest';
 
+window.fn = OwlCarousel;
 
-const Header = ({setToken, setShowAutodiag, showAutodiag}) => {
+const Header = ({setShowAutodiag, showAutodiag}) => {
     const [ isOpen, setIsOpen ] = useState(false);
-    const [ visible, setVisible ] = useState(false);
     const [ loader, setLoader ] = useState(true);
+    const [ articles, setArticles ] = useState();
 
     const location = useLocation();
     const [showLogin, setShowLogin] = useState(false);
@@ -34,17 +37,6 @@ const Header = ({setToken, setShowAutodiag, showAutodiag}) => {
     const toggle = () => {
         setIsOpen(!isOpen);
     }
-
-    const handleScroll = () => {
-        var scrollTop = (document.documentElement && document.documentElement.scrollTop) ||
-            document.body.scrollTop;
-        if (scrollTop > 100) {
-            setVisible(true);
-        }
-        else {
-            setVisible(false);
-        }
-    }
     
     const handleClick = (e) => {
         var elems = document.querySelectorAll(".childsubmenu");
@@ -54,9 +46,7 @@ const Header = ({setToken, setShowAutodiag, showAutodiag}) => {
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', () => {handleScroll()});
-
-        return window.removeEventListener('scroll', handleScroll);
+        API_GET("articles").then(result => setArticles(result));
     },[]);
 
     return (
@@ -64,9 +54,9 @@ const Header = ({setToken, setShowAutodiag, showAutodiag}) => {
             { loader ? 
                 setTimeout(() => { setLoader(false); }, 2000)
             : '' } 
-            <header className="site-header">
+            <header className="site-header header-fixed">
                 { (!loader) ?
-                    <div id="header-wrap" className={`${visible ? "fixed-header " : ""}`}>
+                    <div id="header-wrap">
                         <div className="container">
                             <div className="row">
                                 {/*menu start*/}
@@ -142,11 +132,28 @@ const Header = ({setToken, setShowAutodiag, showAutodiag}) => {
                         </div>
                     </div>
                 }
+
+                <OwlCarousel
+                    className={`header-banner`}
+                    dotData={false}
+                    items={1}
+                    autoplay={true}
+                    margin={30}
+                    dots={false}
+                    nav={false}
+                    loop={true}
+                >
+                    { articles ? articles.map((item, i) => 
+                        <div key={i} className="header-banner-item">
+                            <p><span>Actualités</span> : { item.title } <Link className="link link-primary" to={{pathname: `/blog/${item['id']}`, state: { items: item }}}>En savoir plus</Link></p>
+                        </div>
+                    ) : ''}
+                </OwlCarousel>
             </header>
 
             <Modal 
                 title={`Connexion`}
-                body={<SigninForm setToken={setToken} />}
+                body={<SigninForm />}
                 closeButton="Fermer"
                 show={showLogin}
                 setShow={setShowLogin}

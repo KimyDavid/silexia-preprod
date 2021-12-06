@@ -3,7 +3,7 @@ import Constants from '../../constants/Config';
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 
-const SigninForm = ({setToken}) => {
+const SigninForm = () => {
     const { t } = useTranslation('error');
     
     const [email, setEmail] = useState();
@@ -24,8 +24,8 @@ const SigninForm = ({setToken}) => {
             .then(result => {
                 if (result.error) {
                     setMessage(t(result.details ?? result.error));
-                } else if (setToken) {
-                    setToken(result);
+                } else {
+                    window.location.href = `${window.location.origin}/profile`;
                 }
             })
     }

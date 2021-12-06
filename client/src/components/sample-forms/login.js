@@ -3,7 +3,7 @@ import Constants from '../../constants/Config'
 import Validation from '../forms/validation'
 import Alert from '../alerts'
 
-const Login = ({setToken, message = null}) => {
+const Login = ({message = null}) => {
   const [data, onSubmit] = useState(null)
 
   useEffect(() => {
@@ -19,8 +19,10 @@ const Login = ({setToken, message = null}) => {
       .then(res => res.json())
       .then(
         (result) => {
-          if (setToken && result.admin) {
-            setToken(result);
+          if (result.admin) {
+            setTimeout(() => {
+              document.location.reload();
+            }, 1500);
           } else {
             alert('Unauthorized user')
           }

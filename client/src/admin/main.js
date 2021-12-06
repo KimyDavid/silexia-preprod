@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { API_AUTH } from '../functions/apiRequest';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import useToken from '../functions/useTokenAdmin';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Layouts from '../layout/admin'
 import Dashboard from './dashboard'
@@ -25,7 +24,7 @@ const Wrapper = ({children}) => {
 }
 
 const Main = () => {
-    const { token, setToken } = useToken();
+    const [token, setToken] = useState(null);
 
     useEffect(() => {
         API_AUTH().then(result => {
@@ -38,7 +37,7 @@ const Main = () => {
     }, []);
   
     if(!token) {
-      return <Login setToken={setToken} />
+      return <Login />
     } else {
         return (
             <Router>

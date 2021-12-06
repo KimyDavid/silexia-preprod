@@ -3,7 +3,7 @@ import SigninForm from '../../widgets/account/signin';
 import { Col, Container, Row } from 'reactstrap';
 import Pageheading from '../../widgets/Pageheading';
 
-const SignIn1 = ({setToken}) => {
+const SignIn1 = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
@@ -22,7 +22,7 @@ const SignIn1 = ({setToken}) => {
                         <Container>
                             <Row  className="justify-content-center">
                                 <Col className="col-12 col-lg-5">
-                                  <SigninForm setToken={setToken} />
+                                  <SigninForm />
                                 </Col>
                             </Row>
                         </Container>

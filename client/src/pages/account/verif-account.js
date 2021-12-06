@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const VerifAccount = () => {
     const [verified, setVerified] = useState(false);
+    const [connected, setConnected] = useState(false);
     const [error, setError] = useState(false);
     const params =  new URLSearchParams(window.location.search);
     const key = params.get('key');
@@ -28,7 +29,7 @@ const VerifAccount = () => {
                                 <h2 className="text-primary font-w-5 h3 mt-10">Votre compte a été validé !</h2>
                                 <p className="lead text-muted">Merci pour l'intéret que vous portez à Silexia. Retrouvez le résultat de votre autodiagnostic en vous connectant à votre compte.</p>
                                 <div className="col-lg-6 col-md-10 ml-auto mr-auto">
-                                    <Link className="btn btn-primary mt-3" to="/profile">Se connecter</Link>
+                                    <a className="btn btn-primary mt-3" href="/profile">Accéder à mes résultats</a>
                                 </div>
                             </div>
                         :

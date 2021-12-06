@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModalVideo from 'react-modal-video'
 import Typed from 'react-typed';
-import useToken from '../../functions/useTokenAccount';
 
-const Herosection6 = ({setShowAutodiag}) => {
+const Herosection6 = ({setShowAutodiag, token}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { token, setToken } = useToken();
 
   const openModal = () => {
     setIsOpen(true);

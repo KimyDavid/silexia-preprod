@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { API_GET } from '../../functions/apiRequest';
 import { Link } from 'react-router-dom'
-import { FiUser } from 'react-icons/fi'
-import useToken from '../../functions/useTokenAdmin';
+import { FiUser } from 'react-icons/fi';
 
 import SectionTitle from '../../components/section-title'
 import Breadcrumb from '../../components/breadcrumbs'
@@ -11,7 +10,6 @@ import Widget from '../../components/widget'
 import { useTranslation } from "react-i18next";
 
 const ListElement = ({ slug }) => {
-    const {token, setToken} = useToken();
     const { t } = useTranslation('admin');
     const [items, setItems] = useState();
     const [loading, setLoading] = useState(false);
@@ -25,7 +23,7 @@ const ListElement = ({ slug }) => {
         setLoading(true)
         API_GET(slug).then(response => {
             if (response.error) {
-                setToken();
+                alert(response.error);
             } else {
                 setLoading(false)
                 setItems(response)
