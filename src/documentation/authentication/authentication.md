@@ -28,6 +28,20 @@ This part handles all the login and authentification process of [users](./user.m
     **Content:** `{ error: 'Invalid password'}`
 ---
 
+### Logout
+
+  Logout the user on backend.
+
+* **URL**
+
+  [GET] /v1/logout
+
+* **Success Response:**
+
+  * **Code:** 200
+ 
+---
+
 ---
 
 ### Update password
