@@ -40,16 +40,10 @@ const Profile = ({ token }) => {
 
     const deleteAccount = () => {
       API_REMOVE(`users/${token.id}`)
-        .then(response => {
-            console.log(response);
-            if (response.error) {
-              setMessage(response.details);
-            } else {
-              setMessage();
-              setTimeout(() => {
-                document.location.reload();
-              }, 1500);
-            }
+          .then(() => {
+            setTimeout(() => {
+              document.location.reload();
+            }, 1500);
             setShowConfirm(false);
           });
     }

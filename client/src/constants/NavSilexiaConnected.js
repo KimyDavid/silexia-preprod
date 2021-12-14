@@ -18,6 +18,21 @@ export default [
       ]
    },
    {
+      "menu_title": "Nos clients",
+      "path": "/",
+      "type": "subMenu",
+      "child_routes": [
+         {
+            "path": "/offres",
+            "menu_title": "Entreprise",
+         },
+         {
+            "path": "/client/associations",
+            "menu_title": "Associations",
+         }
+      ]
+   },
+   {
       "menu_title": "Nos services",
       "path": "/",
       "type": "subMenu",
@@ -58,7 +73,7 @@ export default [
             "menu_title": "Le diagnostic",
          },
          {
-            "path": "https://www.silexia.fr/generateur-mentions-l%C3%A9gales",
+            "path": "/generateur-mentions-legales",
             "menu_title": "Le générateur de mentions légales",
          },
       ]

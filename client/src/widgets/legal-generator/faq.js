@@ -5,28 +5,25 @@ import {
     AccordionItemTitle,
     AccordionItemBody,
 } from 'react-accessible-accordion';
-import questions from '../../page_content/Faq';
+import questions from '../../page_content/LegalGeneratorFaq';
 
-const Faq = ({setShowAutodiag, token}) =>  {
+const Faq = () =>  {
         return (
             <>
                 <Accordion className="text-left">
                     { questions.map((faq, i) => (
                         <AccordionItem key={i} className="accordion__item mb-2">
-                            <AccordionItemTitle className="border mb-0 card-header bg-white text-primary">
+                            <AccordionItemTitle className="border mb-0 card-header bg-light text-primary">
                                 <h6 className="mb-0">
                                     <a className="text-dark" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true">{ faq.question }</a>
                                 </h6>
                             </AccordionItemTitle>
                             <AccordionItemBody>
-                                <div>{ faq.answer }</div>
+                                <div dangerouslySetInnerHTML={{__html: faq.answer}}></div>
                             </AccordionItemBody>
                         </AccordionItem>
                     )) }
                 </Accordion>
-                
-                {token ? '' : <a onClick={() => setShowAutodiag(true)} className="btn btn-secondary mt-5 ml-auto">Répondre au questionnaire</a> }
-                
             </>
         );
 }

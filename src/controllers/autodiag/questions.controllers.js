@@ -27,6 +27,7 @@ function getAutodiagQuestions(data, callback) {
       strsql += '   "label", Autodiag_Answers.label, ';
       strsql += '   "score", Autodiag_Answers.score,';
       strsql += '   "order", Autodiag_Answers.order,';
+      strsql += '   "revert", Autodiag_Answers.revert,';
       strsql += '   "flag", Autodiag_Answers.flag';
       strsql += ' ) ORDER BY Autodiag_Answers.order), "]") AS answers';
       strsql += ' FROM Autodiag_Questions';

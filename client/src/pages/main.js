@@ -15,6 +15,7 @@ import Offers from './offers';
 import Offer from './offer';
 import AboutUs from './about-us';
 import partners from './partners';
+import LegalGenerator from './legal-generator';
 
 import BlogList from './blog/bloglist';
 import BlogSingle from './blog/blogsingle';
@@ -37,6 +38,9 @@ import PageNotFound from './utilities/404';
 import CookieConsent from "react-cookie-consent";
 import { API_GET } from '../functions/apiRequest';
 
+import Client from './client';
+import Associations from '../page_content/Associations';
+
 function App() {
   const websiteInProgress = false;
   const [token, setToken] = useState(null);
@@ -53,8 +57,6 @@ function App() {
       }
     });
   }, []);
-
-  console.log(token);
 
   const staticPages = [
     {
@@ -92,12 +94,18 @@ function App() {
                 <Route exact path="/" component={() => <Home2 setShowAutodiag={setShowAutodiag}/>} />
 
                 <Route path="/diagnostic" component={() => <Home setShowAutodiag={setShowAutodiag} token={token} />} />
+
+                {/* OFFRES */}
                 <Route exact path="/offres" component={Offers} />
                 <Route path="/offres/:id" component={() => <Offer />} />
+
+                {/* PAGES */}
                 <Route path="/about-us" component={AboutUs} />
                 <Route path="/partners" component={partners} />
+                <Route path="/generateur-mentions-legales" component={LegalGenerator} />
 
-                {/* <Route exact path="/autodiag" component={Autodiag} /> */}
+                {/* CLIENTS */}
+                <Route path="/client/associations" component={() => <Client content={Associations[0]} />} />
                 
                 {/* BLOG */}
                 <Route exact path="/blog" component={BlogList} />

@@ -103,7 +103,7 @@ const AutodiagResult = ({token}) => {
                                                 <span className="account-score-number">{Math.round((category.score_user/category.score_total)*100)}%</span>
                                                 <p className="mb-0"><strong className="text-black">{ category.label }</strong></p>
                                                 <p className="account-sidebar-card-abstract abstract abstract-2 mb-0">{ category.tier ? category.tier.text : '' }</p>
-                                                <div class="account-sidebar-card-details">
+                                                <div className="account-sidebar-card-details">
                                                     { category.flags.map((_flag, i) => 
                                                         <p key={i} className="message warning shadow"><span className="message-icon la la-exclamation-triangle"></span>{ _flag }</p>
                                                     )}

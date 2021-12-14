@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form';
 import { API_POST } from '../../functions/apiRequest';
 
 const SignUpForm = ({profile = null}) => {
-  const {handleSubmit, formState: { errors }, register} = useForm();
+  const {handleSubmit, formState: { errors }, register, setValue} = useForm();
 
   const [sectors, setSectors] = useState([]);
   // const [types, setTypes] = useState([]);
@@ -32,7 +32,8 @@ const SignUpForm = ({profile = null}) => {
             }
           });
       } else {
-        if (data['email' === profile.email]) {
+        console.log(data);
+        if (data['email'] === profile.email) {
           delete data["email"];
         }
         delete data["password"];
@@ -103,6 +104,11 @@ const SignUpForm = ({profile = null}) => {
           setSizes(result);
         },
       )
+
+    if (profile) {
+      setValue('sector', profile.sector);
+      setValue('size', profile.size);
+    }
   }, []);
   
         return (
