@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import SignUpForm from '../../widgets/account/signup';
-import useToken from '../../functions/useTokenAccount';
 import { API_GET } from '../../functions/apiRequest';
 import useAutodiagToken from '../../functions/useAutodiagToken';
 
 const Response = ({profile}) => {
-    const { token, setToken } = useToken();
     const [userAutodiag, setUserAutodiag] = useState();
     const { autodiagToken, setAutodiagToken } = useAutodiagToken();
     const [loaded, setLoaded] = useState(false);
@@ -67,7 +65,7 @@ const Response = ({profile}) => {
                             </div>
                         </div>
                         <div className="col-12">
-                            <SignUpForm profile={profile} setToken={setToken} />
+                            <SignUpForm profile={profile} />
                         </div>
                     </div>
                 </div>

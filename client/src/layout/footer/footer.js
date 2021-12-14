@@ -32,8 +32,6 @@ class Footer extends Component {
                                 </li>
                                 <li className="mb-3 nav-item"><Link className="nav-link" to="/profile">Mon compte</Link> 
                                 </li>
-                                <li className="mb-3 nav-item"><Link className="nav-link" to="/home2">Home2</Link> 
-                                </li>
                             </ul>
                             </Col>
                             <Col className="col-12 col-sm-6 mt-6 mt-sm-0 navbar-dark">

@@ -18,6 +18,21 @@ export default [
       ]
    },
    {
+      "menu_title": "Nos clients",
+      "path": "/",
+      "type": "subMenu",
+      "child_routes": [
+         {
+            "path": "/offres",
+            "menu_title": "Entreprise",
+         },
+         {
+            "path": "/client/associations",
+            "menu_title": "Associations",
+         }
+      ]
+   },
+   {
       "menu_title": "Nos services",
       "path": "/",
       "type": "subMenu",
@@ -58,14 +73,14 @@ export default [
             "menu_title": "Le diagnostic",
          },
          {
-            "path": "https://www.silexia.fr/generateur-mentions-l%C3%A9gales",
+            "path": "/generateur-mentions-legales",
             "menu_title": "Le générateur de mentions légales",
          },
       ]
    },
    {
-      "menu_title": "Blog",
-      "path": "/blog",
+      "menu_title": "Prendre rendez-vous",
+      "path": "https://outlook.office365.com/owa/calendar/Silexia@silexia.onmicrosoft.com/bookings/"
    },
    {
       "menu_title": "Mon compte",
@@ -73,7 +88,7 @@ export default [
       "type": "subMenu",
       "child_routes": [
          {
-            "path": "/profile",
+            "path": "/profile/details",
             "menu_title": "Mes informations",
          },
          {
@@ -81,9 +96,5 @@ export default [
             "menu_title": "Se déconnecter",
          },
       ]
-   },
-   {
-      "menu_title": "Prendre rendez-vous",
-      "path": "https://outlook.office365.com/owa/calendar/Silexia@silexia.onmicrosoft.com/bookings/"
    }
 ]

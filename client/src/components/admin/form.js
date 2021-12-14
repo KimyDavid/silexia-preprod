@@ -31,13 +31,16 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
       data = formData;
     }
 
+    console.log(data);
+
     setLoading(true);
     API_POST(url, method, data, isFormData).then(response => {
       setLoading(false);
       if (response && response.error) {
         setMessage(response.details)
       } else {
-        window.history.back();
+        console.log(response);
+        // window.history.back();
       }
     });
   }

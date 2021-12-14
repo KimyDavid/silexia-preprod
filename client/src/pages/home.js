@@ -5,13 +5,13 @@ import FeatureServices from '../widgets/sections/home2/services';
 import Faq from '../widgets/sections/faq';
 import Blog from '../widgets/sections/blog';
 
-const Index = ({setShowAutodiag}) => {
+const Index = ({setShowAutodiag, token}) => {
 
         return (
             <div>
                 <section>
                     <div className="container">
-                        <Herosection setShowAutodiag={setShowAutodiag} />
+                        <Herosection setShowAutodiag={setShowAutodiag} token={token} />
                     </div>
                 </section>
                 <div className="page-content">
@@ -34,7 +34,7 @@ const Index = ({setShowAutodiag}) => {
                                         <img src={require(`../assets/images/about/04.svg`)} alt="Image" className="img-fluid" />
                                     </div>
                                     <div className="col-12 col-lg-8 text-center">
-                                        <Faq setShowAutodiag={setShowAutodiag}/>
+                                        <Faq setShowAutodiag={setShowAutodiag} token={token} />
                                     </div>
                                 </div>
                             </div>

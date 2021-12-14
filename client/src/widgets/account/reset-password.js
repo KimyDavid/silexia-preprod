@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_POST } from '../../functions/apiRequest';
-import useToken from '../../functions/useTokenAccount';
 
 const ResetPasswordForm = ({profile, resetKey}) => {
-    const { token, setToken } = useToken();
-    
+
     const [password, setPassword] = useState();
     const [verifPassword, setVerifPassword] = useState();
     const [message, setMessage] = useState();
@@ -15,7 +13,7 @@ const ResetPasswordForm = ({profile, resetKey}) => {
         if (password !== verifPassword) {
             setMessage('Les mots de passe ne sont pas identiques');
         } else {
-            API_POST(`users/${profile.id}`, 'PATCH', {'key': resetKey, 'password': password}, false).then(result => {
+            API_POST(`password/${profile.id}`, 'PATCH', {'key': resetKey, 'password': password}, false).then(result => {
                 if (result.error) {
                     setMessage(result.details);
                 } else {

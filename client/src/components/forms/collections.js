@@ -32,7 +32,7 @@ const Collection = ({ field, onCollectionChange, values, noEdit = false }) => {
       values.forEach((_val) => {
         const newItem = {};
         collectionFields.forEach((_field) => {
-          newItem[_field] = _val[_field];
+          newItem[_field] = _val[_field] ?? "";
           if (_val['id']) {
             newItem['id'] = _val['id'];
           }

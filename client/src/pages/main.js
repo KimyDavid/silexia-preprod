@@ -1,6 +1,5 @@
-import React, { Fragment , useState} from 'react';
+import React, { Fragment , useState, useEffect} from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import useToken from '../functions/useTokenAccount';
 
 import '../App.css';
 import '../Vendor.js';
@@ -16,6 +15,7 @@ import Offers from './offers';
 import Offer from './offer';
 import AboutUs from './about-us';
 import partners from './partners';
+import LegalGenerator from './legal-generator';
 
 import BlogList from './blog/bloglist';
 import BlogSingle from './blog/blogsingle';
@@ -24,7 +24,7 @@ import Login from './account/login';
 import ForgotPassword from './account/forgot-password';
 import ResetPassword from './account/reset-password';
 import VerifAccount from './account/verif-account';
-// import ProfileEdit from './account/edit';
+import ProfileEdit from './account/edit';
 import ProfileLogout from './account/logout';
 import Profile from './account/profile';
 import AutodiagResult from './account/result';
@@ -36,11 +36,27 @@ import ComingSoon from './utilities/comingsoon';
 import PageNotFound from './utilities/404';
 
 import CookieConsent from "react-cookie-consent";
+import { API_GET } from '../functions/apiRequest';
+
+import Client from './client';
+import Associations from '../page_content/Associations';
 
 function App() {
   const websiteInProgress = false;
-  const { token, setToken } = useToken();
+  const [token, setToken] = useState(null);
   const [showAutodiag, setShowAutodiag] = useState(false);
+
+  useEffect(() => {
+    API_GET('auth').then(result => {
+      if (result) {
+        if (result.verif > 0) {
+          setToken(result);
+        } else {
+          setToken(null);
+        }
+      }
+    });
+  }, []);
 
   const staticPages = [
     {
@@ -73,17 +89,23 @@ function App() {
         :
           <div className="page-wrapper">
             <BrowserRouter>
-              { token ? <HeaderConnected/> : <Header setToken={setToken} setShowAutodiag={setShowAutodiag} showAutodiag={showAutodiag} /> }
+              { token ? <HeaderConnected/> : <Header setShowAutodiag={setShowAutodiag} showAutodiag={showAutodiag} /> }
               <Switch>
                 <Route exact path="/" component={() => <Home2 setShowAutodiag={setShowAutodiag}/>} />
 
-                <Route path="/diagnostic" component={() => <Home setShowAutodiag={setShowAutodiag}/>} />
+                <Route path="/diagnostic" component={() => <Home setShowAutodiag={setShowAutodiag} token={token} />} />
+
+                {/* OFFRES */}
                 <Route exact path="/offres" component={Offers} />
                 <Route path="/offres/:id" component={() => <Offer />} />
+
+                {/* PAGES */}
                 <Route path="/about-us" component={AboutUs} />
                 <Route path="/partners" component={partners} />
+                <Route path="/generateur-mentions-legales" component={LegalGenerator} />
 
-                {/* <Route exact path="/autodiag" component={Autodiag} /> */}
+                {/* CLIENTS */}
+                <Route path="/client/associations" component={() => <Client content={Associations[0]} />} />
                 
                 {/* BLOG */}
                 <Route exact path="/blog" component={BlogList} />
@@ -96,14 +118,14 @@ function App() {
                 
                 {/* ACCOUNT */}
                 { token ? 
-                  <Route exact path="/profile" component={Profile} />
+                  <Route exact path="/profile" component={() => <AutodiagResult token={token} />} />
                 :
-                  <Route path="/profile" component={() => <Login setToken={setToken} />} />
+                  <Route path="/profile" component={() => <Login />} />
                 }
                 
-                  <Route path="/profile/autodiag" component={AutodiagResult} />
-                  {/* <Route path="/profile/edit" component={ProfileEdit} /> */}
-                  <Route path="/profile/logout" component={() => <ProfileLogout setToken={setToken} />} />
+                  <Route path="/profile/details" component={() => <Profile token={token} />} />
+                  <Route path="/profile/edit" component={() => <ProfileEdit token={token} />} />
+                  <Route path="/profile/logout" component={() => <ProfileLogout />} />
 
                   <Route path="/verif_account" component={() => <VerifAccount />} />
                   <Route path="/forgot-password" component={ForgotPassword} />

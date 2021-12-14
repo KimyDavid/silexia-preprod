@@ -3,8 +3,8 @@ import Constants from '../../constants/Config';
 import {useForm} from 'react-hook-form';
 import { API_POST } from '../../functions/apiRequest';
 
-const SignUpForm = ({profile = null, setToken = null}) => {
-  const {handleSubmit, formState: { errors }, register} = useForm();
+const SignUpForm = ({profile = null}) => {
+  const {handleSubmit, formState: { errors }, register, setValue} = useForm();
 
   const [sectors, setSectors] = useState([]);
   // const [types, setTypes] = useState([]);
@@ -17,17 +17,35 @@ const SignUpForm = ({profile = null, setToken = null}) => {
   const [currentSize, setCurrentSize] = useState(profile.size);
 
   const submitForm = data => {
-    if (validatePassword()) {
-      if (profile) {
+
+    if (validatePassword() && isConsent()) {
+      if (!profile.email) {
         API_POST('subscribe', 'POST', data)
           .then(response => {
             if (response.error) {
-              setMessage(response.details);
-            } else if (setToken) {
+              setMessage(response.details ?? response.error.message);
+            } else {
               setMessage("Inscription réussie ! Merci de confirmer votre compte grâce à l'email reçu dans votre boite mail.");
-              setToken('');
               setTimeout(() => {
                 window.location.href = `${window.location.origin}/profile`;
+              }, 1500);
+            }
+          });
+      } else {
+        console.log(data);
+        if (data['email'] === profile.email) {
+          delete data["email"];
+        }
+        delete data["password"];
+
+        API_POST(`users/${profile.id}`, 'PATCH', data)
+          .then(response => {
+            if (response.error) {
+              setMessage(response.details ?? response.error.message);
+            } else {
+              setMessage("Votre compte a bien été mis à jour.");
+              setTimeout(() => {
+                window.location.href = `${window.location.origin}/profile/details`;
               }, 1500);
             }
           });
@@ -44,6 +62,20 @@ const SignUpForm = ({profile = null, setToken = null}) => {
       document.querySelector('.form-error.password').classList.remove('d-none');
     } else {
       document.querySelector('.form-error.password').classList.add('d-none');
+    }
+    return valid;
+  }
+
+  function isConsent() {
+    let valid = true;
+    const consent = document.querySelector('#consent');
+    if (consent) {
+      if (!consent.checked) {
+        valid = false;
+        document.querySelector('.form-error.consent').classList.remove('d-none');
+      } else {
+        document.querySelector('.form-error.consent').classList.add('d-none');
+      }
     }
     return valid;
   }
@@ -72,6 +104,11 @@ const SignUpForm = ({profile = null, setToken = null}) => {
           setSizes(result);
         },
       )
+
+    if (profile) {
+      setValue('sector', profile.sector);
+      setValue('size', profile.size);
+    }
   }, []);
   
         return (
@@ -87,7 +124,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                       <div className="form-group">
                         <label className="form-label">Prénom</label>
                         <input 
-                          defaultValue={profile ? profile.first_name : ''}
+                          defaultValue={profile.first_name ? profile.first_name : ''}
                           {...register('first_name', {required: 'Le prénom est obligatoire.'})}
                           id="form_name" 
                           type="text"
@@ -101,7 +138,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                       <div className="form-group">
                         <label className="form-label">Nom</label>
                         <input 
-                          defaultValue={profile ? profile.last_name : ''} 
+                          defaultValue={profile.last_name ? profile.last_name : ''} 
                           id="form_name" 
                           type="text" 
                           {...register('last_name', {required: 'Le nom est obligatoire.'})}
@@ -115,7 +152,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                       <div className="form-group">
                         <label className="form-label">Email</label>
                         <input
-                          defaultValue={profile ? profile.email : ''}
+                          defaultValue={profile.email ? profile.email : ''}
                           id="form_name"
                           {...register('email', {required: "L'email est obligatoire."})}
                           type="text"
@@ -129,7 +166,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                       <div className="form-group">
                         <label className="form-label">Téléphone</label>
                         <input
-                          defaultValue={profile ? profile.phone : ''}
+                          defaultValue={profile.phone ? profile.phone : ''}
                           id="form_name"
                           {...register('phone', {required: 'Le téléphone est obligatoire.'})}
                           type="text"
@@ -143,7 +180,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                       <div className="form-group">
                         <label className="form-label">Fonction</label>
                         <input
-                          defaultValue={profile ? profile.function : ''}
+                          defaultValue={profile.function ? profile.function : ''}
                           id="form_name"
                           type="text"
                           {...register('function', {required: 'La fonction est obligatoire.'})}
@@ -157,7 +194,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                       <div className="form-group">
                         <label className="form-label">Entreprise</label>
                         <input 
-                          defaultValue={profile ? profile.company : ''}
+                          defaultValue={profile.company ? profile.company : ''}
                           id="form_name"
                           type="text"
                           className={`form-control ${errors['company'] ? 'error' : ''}`}
@@ -170,7 +207,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="form-label">Secteur de l'entreprise</label>
-                        <select className={`form-control ${errors['sector'] ? 'error' : ''}`}
+                        <select className={`form-control ${errors['sector'] ? 'error' : ''}`} value={currentSector}
                         {...register('sector', {required: "Le secteur de l'entreprise est obligatoire."})}
                         onChange={(e) => setCurrentSector(e.target.value)}>
                           <option value="">Secteur de l'entreprise</option>
@@ -199,7 +236,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="form-label">Taille de l'entreprise</label>
-                        <select className={`form-control ${errors['size'] ? 'error' : ''}`}
+                        <select className={`form-control ${errors['size'] ? 'error' : ''}`} value={currentSize}
                           {...register('size', {required: "La taille de l'entreprise est obligatoire."})}
                           onChange={(e) => setCurrentSize(e.target.value)}>
                           <option value="">Taille de l'entreprise</option>
@@ -226,13 +263,14 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                       </div>
                     </div>
                   </div>
-                  { profile ? '' : 
+                  { profile.email ? '' : 
                   <div className="row mt-5">
                     <div className="col-md-12">
                       <div className="remember-checkbox clearfix mb-5">
                         <div className="custom-control custom-checkbox">
-                          <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                          <label className="custom-control-label" htmlFor="customCheck1">I agree to the term of use and privacy policy</label>
+                          <input type="checkbox" className="custom-control-input" id="consent" />
+                          <label className="custom-control-label" htmlFor="consent">J'accepte les conditions d'utilisation et la politique de confidentialité.</label>
+                        <div className="error consent form-error d-none">Ce champ est obligatoire.</div>
                         </div>
                       </div> 
                     </div>
@@ -240,7 +278,7 @@ const SignUpForm = ({profile = null, setToken = null}) => {
                   }
                   <div className="row">
                     <div className="col-md-12">
-                      <button type="submit" className="btn btn-primary">{profile ? 'Mettre à jour' : 'Créer' } mon compte</button>
+                      <button type="submit" className="btn btn-primary">{profile.email ? 'Mettre à jour' : 'Créer' } mon compte</button>
                     </div>
                   </div>
                 </form>

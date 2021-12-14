@@ -95,7 +95,7 @@ class Aboutus extends Component {
 
                         <div className="container">
                             <div className="row justify-content-center text-center">
-                              <div className="col-12 col-md-10 col-lg-8 mb-4 mb-lg-0">
+                              <div className="col-12 col-md-10 col-lg-7 mb-4 mb-lg-0">
                                 <div className="mb-8">
                                   <h2 className="mt-3 font-w-6 h3 mb-5">Votre bureau de pilotage du numérique dans votre organisation</h2>
                                     <div className="mb-0 mt-5 columns-2">

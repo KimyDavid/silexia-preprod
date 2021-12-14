@@ -3,7 +3,6 @@ import Pageheading from './heading';
 import { API_GET, API_POST } from '../../functions/apiRequest';
 import { sortByOrder } from '../../functions/sort';
 import useAutodiagToken from '../../functions/useAutodiagToken';
-import Modal from '../../widgets/common/modal';
 
 import Steps from './steps';
 import Category from './category';
@@ -16,7 +15,6 @@ const Autodiag = () => {
     const [category, setCategory] = useState(0);
 
     const [message, setMessage] = useState();
-    const [showConfirm, setShowConfirm] = useState(false);
 
     const [progressionTotal, setProgressionTotal] = useState();
 
@@ -42,7 +40,7 @@ const Autodiag = () => {
         setAutodiagToken(newResponse);
 
         if ((category === autodiag.length-1)) {
-            setShowConfirm(true);
+            submitAutodiag();
         } else {
             setCategory(category+1);
         }
@@ -117,16 +115,6 @@ const Autodiag = () => {
                 </div>
             </section>
             {/*body content end*/}
-            
-            <Modal 
-                title={`Valider le questionnaire ?`}
-                body="Êtes-vous sûr de vouloir valider ce questionnaire ? "
-                closeButton="Fermer"
-                submitButton="Valider"
-                onSubmit={submitAutodiag}
-                show={showConfirm}
-                setShow={setShowConfirm}
-            />
         </div>
 
         
