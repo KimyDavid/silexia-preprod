@@ -3,7 +3,7 @@ import Constants from '../../constants/Config';
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 
-const SigninForm = () => {
+const SigninForm = ({setShowLogin, setShowAutodiag}) => {
     const { t } = useTranslation('error');
     
     const [email, setEmail] = useState();
@@ -30,6 +30,13 @@ const SigninForm = () => {
             })
     }
 
+    function openAutodiag() {
+        setShowAutodiag(true);
+        if (setShowLogin) {
+            setShowLogin(false);
+        }
+    }
+
     return (
         <div>
             <form id="contact-form" onSubmit={signIn}>
@@ -53,7 +60,7 @@ const SigninForm = () => {
             </form>
             <div className="mt-4">
                 <span className="text-muted mr-1">Vous n'avez pas encore de compte ?</span>
-                <Link to="/autodiag">Répondre à l'autodiag</Link>
+                <a onClick={() => openAutodiag()} className="link">Répondre à l'autodiag</a>
             </div>
         </div>
     );

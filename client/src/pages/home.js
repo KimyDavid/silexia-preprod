@@ -49,7 +49,7 @@ const Index = ({setShowAutodiag, token}) => {
                         <div className="container">
                             <div className="row align-items-end mb-5">
                                 <div className="col-12">
-                                    <div className="text-right">
+                                    <div className="text-left">
                                         <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
                                         <h2 className="mt-4 mb-0 h3">Nos offres</h2>
                                     </div>

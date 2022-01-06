@@ -27,7 +27,7 @@ class About1 extends Component {
                 </div>
                 <div className="col-12 col-lg-6 col-xl-5">
                   <div>
-                    <h2 className="font-w-6 h4">Diagnostiquez la maturité numérique de votre organisation</h2>
+                    <h2 className="h4">Diagnostiquez la maturité numérique de votre organisation</h2>
                     <p className="">Répondez aux questionnaires de notre nouvelle webapp pour facilier vos démarches de développement numérique.</p>
                   </div>
                   <div className="d-flex flex-wrap justify-content-start mt-6">

@@ -46,7 +46,7 @@ const Clientlogo = () => {
                     <div className="row justify-content-center text-center">
                         <div className="col-12 mb-0">
                             <div className="mb-lg-8">
-                                <h2 className="mt-3 h3">Nous travaillons à leurs côtés</h2>
+                                <h2 className="mt-3 h4">Nous travaillons à leurs côtés</h2>
                             </div>
 
                             <OwlCarousel
@@ -90,9 +90,13 @@ const Clientlogo = () => {
                         title={`Plus d'information sur ${selectedPartner.name}`}
                         body={
                             <>
-                                <img className="mb-2" width="220" src={selectedPartner.image} alt={selectedPartner.name} />
-                                <div dangerouslySetInnerHTML={{__html: selectedPartner.text}}></div>
-                                { selectedPartner.url ? <a href={selectedPartner.url} target="_blank" className="btn btn-primary mt-5">Voir le site web</a> : '' }
+                                <div className="text-center">
+                                    <img className="mb-2" width="220" src={selectedPartner.image} alt={selectedPartner.name} />
+                                </div>
+                                <div className="text-black" dangerouslySetInnerHTML={{__html: selectedPartner.text}}></div>
+                                <div className="text-center">
+                                    { selectedPartner.url ? <a href={selectedPartner.url} target="_blank" className="btn btn-primary mt-5">Voir le site web</a> : '' }
+                                </div>
                             </>}
                         show={showModal}
                         setShow={setShowModal}

@@ -23,7 +23,7 @@ const Index = ({setShowAutodiag}) => {
                                 <div className="col-12">
                                     <div className="text-left">
                                         <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
-                                        <h2 className="mt-4 mb-0 h3">Nos services</h2>
+                                        <h2 className="mt-4 mb-0 h4">Nos services</h2>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@ const Index = ({setShowAutodiag}) => {
                             <div className="col-12 col-md-9 mb-5 mb-lg-0">
                                 <div className="mb-3 mb-lg-8">
                                     {/* <span className="badge badge-primary-soft p-2 font-w-6">Bootsland Team</span> */}
-                                    <h2 className="mt-3 font-w-6 h4">Le numérique peut devenir le moteur de votre croissance s'il est déployé dans une stratégie adaptée à vos enjeux. </h2>
+                                    <h2 className="mt-3 h4">Le numérique peut devenir le moteur de votre croissance s'il est déployé dans une stratégie adaptée à vos enjeux. </h2>
                                     <div className="mb-0 mt-5 columns-2">
                                         <p>Pour les TPE/PME, le numérique peut apparaître comme un réel Far West où il est parfois compliqué de se repérer et de s'orienter. Avec la profusion de "solutions numériques" dans tous les domaines d'activité de l'entreprise, comment exercer un choix libre et non faussé des technologies et marques à privilégier ? </p>
                                         <p>Chez Silexia, nous vous accompagnons dans ces choix stratégiques qui conditionnent les futurs usages et pratiques de votre entreprise. Nous exerçons une veille permanente sur les technologies numériques émergentes, nous testons les produits du marché et vous recommandons ceux les plus adaptés à votre situation. </p>
@@ -68,7 +68,7 @@ const Index = ({setShowAutodiag}) => {
                                 <div className="col-12 col-md-12 col-lg-8">
                                     <div>
                                         <span className="badge badge-primary-soft p-2"><i className="la la-bold ic-3x rotation" /></span>
-                                        <h2 className="mt-4 mb-0 h3">Notre blog dédié à la transition numérique des TPE/PME</h2>
+                                        <h2 className="mt-4 mb-0 h4">Notre blog dédié à la transition numérique des TPE/PME</h2>
                                     </div>
                                 </div>
                             </div>

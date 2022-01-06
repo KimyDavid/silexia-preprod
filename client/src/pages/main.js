@@ -40,6 +40,7 @@ import { API_GET } from '../functions/apiRequest';
 
 import Client from './client';
 import Associations from '../page_content/Associations';
+import Avocats from '../page_content/Avocats';
 
 function App() {
   const websiteInProgress = false;
@@ -106,6 +107,7 @@ function App() {
 
                 {/* CLIENTS */}
                 <Route path="/client/associations" component={() => <Client content={Associations[0]} />} />
+                <Route path="/client/avocats" component={() => <Client content={Avocats[0]} />} />
                 
                 {/* BLOG */}
                 <Route exact path="/blog" component={BlogList} />
@@ -120,7 +122,7 @@ function App() {
                 { token ? 
                   <Route exact path="/profile" component={() => <AutodiagResult token={token} />} />
                 :
-                  <Route path="/profile" component={() => <Login />} />
+                  <Route path="/profile" component={() => <Login setShowAutodiag={setShowAutodiag} />} />
                 }
                 
                   <Route path="/profile/details" component={() => <Profile token={token} />} />

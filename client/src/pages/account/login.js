@@ -3,7 +3,7 @@ import SigninForm from '../../widgets/account/signin';
 import { Col, Container, Row } from 'reactstrap';
 import Pageheading from '../../widgets/Pageheading';
 
-const SignIn1 = () => {
+const SignIn1 = ({setShowAutodiag}) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
@@ -22,7 +22,7 @@ const SignIn1 = () => {
                         <Container>
                             <Row  className="justify-content-center">
                                 <Col className="col-12 col-lg-5">
-                                  <SigninForm />
+                                  <SigninForm setShowAutodiag={setShowAutodiag} />
                                 </Col>
                             </Row>
                         </Container>

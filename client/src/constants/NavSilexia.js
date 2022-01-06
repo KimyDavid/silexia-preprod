@@ -60,6 +60,10 @@ export default [
          {
             "path": "/client/associations",
             "menu_title": "Associations",
+         },
+         {
+            "path": "/client/avocats",
+            "menu_title": "Avocats",
          }
       ]
    },

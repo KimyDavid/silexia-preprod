@@ -25,7 +25,7 @@ const Skillbox = () => {
                                                 <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="Adaptation à votre contexte" />
                                             </div> */}
                                             <div>
-                                                <h5 className="mb-2">Adaptation à votre contexte</h5>
+                                                <h5 className="mb-2">Adaptation à votre <br/>contexte</h5>
                                                 <p className="mb-0">Votre situation est unique. Nous nous adaptons à vos enjeux en  concevant une stratégie sur-mesure en fonction du diagnostic établi ensemble.</p>
                                             </div>
                                         </div>
@@ -36,7 +36,7 @@ const Skillbox = () => {
                                                 <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="Agilité et disponibilité" />
                                             </div> */}
                                             <div>
-                                                <h5 className="mb-2">Agilité et disponibilité</h5>
+                                                <h5 className="mb-2">Agilité et <br/>disponibilité</h5>
                                                 <p className="mb-0">Nous déterminons avec vous les objectifs à court et moyen terme de votre organisation, projet ou produit pour lancer la dynamique qui permettra de les atteindre.</p>
                                             </div>
                                         </div>

@@ -6,15 +6,7 @@ import { API_POST } from '../../functions/apiRequest';
 const SignUpForm = ({profile = null}) => {
   const {handleSubmit, formState: { errors }, register, setValue} = useForm();
 
-  const [sectors, setSectors] = useState([]);
-  // const [types, setTypes] = useState([]);
-  const [sizes, setSizes] = useState([]);
-
   const [message, setMessage] = useState();
-
-  const [currentSector, setCurrentSector] = useState(profile.sector);
-  // const [currentType, setCurrentType] = useState(profile.type);
-  const [currentSize, setCurrentSize] = useState(profile.size);
 
   const submitForm = data => {
 
@@ -53,63 +45,32 @@ const SignUpForm = ({profile = null}) => {
     }
   }
 
-  function validatePassword() {
-    let valid = true;
-    const password = document.querySelector('.register-form [name="password"]');
-    const passwordConfirmation = document.querySelector('.register-form [name="password_validation"]');
-    if (password.value !== passwordConfirmation.value) {
-      valid = false;
-      document.querySelector('.form-error.password').classList.remove('d-none');
-    } else {
-      document.querySelector('.form-error.password').classList.add('d-none');
-    }
-    return valid;
-  }
-
-  function isConsent() {
-    let valid = true;
-    const consent = document.querySelector('#consent');
-    if (consent) {
-      if (!consent.checked) {
+    function validatePassword() {
+        let valid = true;
+        const password = document.querySelector('.register-form [name="password"]');
+        const passwordConfirmation = document.querySelector('.register-form [name="password_validation"]');
+        if (password.value !== passwordConfirmation.value) {
         valid = false;
-        document.querySelector('.form-error.consent').classList.remove('d-none');
-      } else {
-        document.querySelector('.form-error.consent').classList.add('d-none');
-      }
+        document.querySelector('.form-error.password').classList.remove('d-none');
+        } else {
+        document.querySelector('.form-error.password').classList.add('d-none');
+        }
+        return valid;
     }
-    return valid;
-  }
 
-  useEffect(() => {
-    fetch(`${Constants.api_url}/sectors`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setSectors(result);
-        },
-      )
-    
-    // fetch(`${Constants.api_url}/types`)
-    //   .then(res => res.json())
-    //   .then(
-    //     (result) => {
-    //       setTypes(result);
-    //     },
-    //   )
-      
-    fetch(`${Constants.api_url}/sizes`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setSizes(result);
-        },
-      )
-
-    if (profile) {
-      setValue('sector', profile.sector);
-      setValue('size', profile.size);
+    function isConsent() {
+        let valid = true;
+        const consent = document.querySelector('#consent');
+        if (consent) {
+        if (!consent.checked) {
+            valid = false;
+            document.querySelector('.form-error.consent').classList.remove('d-none');
+        } else {
+            document.querySelector('.form-error.consent').classList.add('d-none');
+        }
+        }
+        return valid;
     }
-  }, []);
   
         return (
             <div className="row">
@@ -164,34 +125,6 @@ const SignUpForm = ({profile = null}) => {
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label className="form-label">Téléphone</label>
-                        <input
-                          defaultValue={profile.phone ? profile.phone : ''}
-                          id="form_name"
-                          {...register('phone', {required: 'Le téléphone est obligatoire.'})}
-                          type="text"
-                          className={`form-control ${errors['phone'] ? 'error' : ''}`}
-                          placeholder="Téléphone"
-                          required="required" />
-                          {errors['phone'] ? <span className="form-error error">Le téléphone est obligatoire.</span> : '' }
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <label className="form-label">Fonction</label>
-                        <input
-                          defaultValue={profile.function ? profile.function : ''}
-                          id="form_name"
-                          type="text"
-                          {...register('function', {required: 'La fonction est obligatoire.'})}
-                          className={`form-control ${errors['function'] ? 'error' : ''}`}
-                          placeholder="Fonction"
-                          required="required" />
-                          {errors['function'] ? <span className="form-error error">La fonction est obligatoire.</span> : '' }
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
                         <label className="form-label">Entreprise</label>
                         <input 
                           defaultValue={profile.company ? profile.company : ''}
@@ -202,49 +135,6 @@ const SignUpForm = ({profile = null}) => {
                           placeholder="Nom de l'entreprise"
                           required="required" />
                           {errors['company'] ? <span className="form-error error">L'entreprise est obligatoire.</span> : '' }
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <label className="form-label">Secteur de l'entreprise</label>
-                        <select className={`form-control ${errors['sector'] ? 'error' : ''}`} value={currentSector}
-                        {...register('sector', {required: "Le secteur de l'entreprise est obligatoire."})}
-                        onChange={(e) => setCurrentSector(e.target.value)}>
-                          <option value="">Secteur de l'entreprise</option>
-                          { sectors ? sectors.map((sector, i) => (
-                              <option key={i} value={sector.id}>{sector.label}</option>
-                           )) : '' }
-                        </select>
-                          {errors['sector'] ? <span className="form-error error">Le secteur est obligatoire.</span> : '' }
-                      </div>
-                    </div>
-                    {/* <div className="col-md-6">
-                      <div className="form-group">
-                        <label className="form-label">Type d'entreprise</label>
-                        <select className={`form-control ${errors['type'] ? 'error' : ''}`}
-                        value={currentType}
-                        {...register('type', {required: "Le type de l'entreprise est obligatoire."})}
-                        onChange={(e) => setCurrentType(e.target.value)}>
-                          <option value="">Type d'entreprise</option>
-                          { types ? types.map((type, i) => (
-                              <option key={i} value={type.id}>{type.label}</option>
-                          )) : '' }
-                        </select>
-                          {errors['type'] ? <span className="form-error error">Le type est obligatoire.</span> : '' }
-                      </div>
-                    </div> */}
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <label className="form-label">Taille de l'entreprise</label>
-                        <select className={`form-control ${errors['size'] ? 'error' : ''}`} value={currentSize}
-                          {...register('size', {required: "La taille de l'entreprise est obligatoire."})}
-                          onChange={(e) => setCurrentSize(e.target.value)}>
-                          <option value="">Taille de l'entreprise</option>
-                          { sizes ? sizes.map((size, i) => (
-                            <option key={i} value={size.id}>{size.label}</option>
-                          )) : '' }
-                        </select>
-                          {errors['size'] ? <span className="form-error error">La taille est obligatoire.</span> : '' }
                       </div>
                     </div>
                   </div>

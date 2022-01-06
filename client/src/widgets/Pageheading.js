@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Particles from "react-particles-js";
 
-const Pageheading = ({title, showBreadcumbs, foldername}) => {
+const Pageheading = ({title, showBreadcumbs, foldername, subtitle}) => {
     const particlesOptions = {
         "particles": {
             "number": {
@@ -119,7 +119,12 @@ const Pageheading = ({title, showBreadcumbs, foldername}) => {
                 <Particles id="particles-js" params={particlesOptions} />
                 <div className="row  text-center">
                     <div className="col">
-                        <h1>{title}</h1>
+                        <h1>
+                            {title}
+                            { subtitle ? 
+                                <span className="d-block h3 text-primary font-w-6">{ subtitle }</span>
+                            : "" }
+                        </h1>
                         { showBreadcumbs ? <nav aria-label="breadcrumb">
                             <ol className="breadcrumb justify-content-center bg-transparent p-0 m-0">
                                 <li className="breadcrumb-item"><Link className="text-dark" to="/">Accueil</Link>

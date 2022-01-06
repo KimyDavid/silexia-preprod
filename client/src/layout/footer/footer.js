@@ -56,15 +56,11 @@ class Footer extends Component {
                             </Col>
                             <Col className="col-12 col-sm-6 mt-6 mt-sm-0">
                             <ul className="list-inline mb-0">
-                                <li className="list-inline-item"><Link className="text-light ic-2x" to="https://www.facebook.com/Silexias"><i className="la la-facebook" /></Link> 
+                                <li className="list-inline-item"><a className="text-light ic-2x" href="tel:0635266607"><i className="la la-phone" /></a> 
                                 </li>
-                                <li className="list-inline-item"><Link className="text-light ic-2x" to="tel:0635266607"><i className="la la-phone" /></Link> 
+                                <li className="list-inline-item"><a className="text-light ic-2x" href="mailto:contact@silexia.fr"><i className="la la-envelope" /></a> 
                                 </li>
-                                <li className="list-inline-item"><Link className="text-light ic-2x" to="mailto:contact@silexia.fr"><i className="la la-envelope" /></Link> 
-                                </li>
-                                <li className="list-inline-item"><Link className="text-light ic-2x" to=""><i className="la la-instagram" /></Link> 
-                                </li>
-                                <li className="list-inline-item"><Link className="text-light ic-2x" to="https://www.linkedin.com/company/silexias/"><i className="la la-linkedin" /></Link> 
+                                <li className="list-inline-item"><a className="text-light ic-2x" href="https://www.linkedin.com/company/silexias/"><i className="la la-linkedin" /></a> 
                                 </li>
                             </ul>
                             </Col>

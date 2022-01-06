@@ -21,7 +21,7 @@ const LegalGenerator = () => {
                             </div>
                         </div>
                     </div>
-                    <iframe id="JotFormIFrame-212733900685053" title="Vos mentions légales" onLoad={window.parent.scrollTo(0,0)} allowtransparency={"true"} allowFullScreen={true} allow="geolocation; microphone; camera" src="https://form.jotform.com/212733900685053?isIframeEmbed=1" style={{minWidth: '100%', height: '640px', border: 'medium none'}} scrolling="no" frameBorder={"0"}></iframe>
+                    <iframe id="JotFormIFrame-212733900685053" title="Vos mentions légales" onLoad={window.parent.scrollTo(0,0)} allowtransparency={"true"} allowFullScreen={true} allow="geolocation; microphone; camera" src="https://form.jotform.com/212733900685053?isIframeEmbed=1" style={{minWidth: '100%', height: '500px', border: 'medium none'}} scrolling="no" frameBorder={"0"}></iframe>
                 </div>
             </section>
             
