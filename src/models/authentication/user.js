@@ -41,17 +41,17 @@ const userLoginSchema = yup.object({
 })
 
 const userCreateSchema = yup.object({
-    company: yup.string(100).required(),
+    company: yup.string(100),
     email: yup.string().email().required().unique(),
     password:yup.string().required().transform(function (value) {
       return bcrypt.hashSync(value, 10);
     }),
-    sector: yup.number().required().exists('Sectors'),
+    sector: yup.number().exists('Sectors'),
     size:yup.number().exists('Sizes'),
     type:yup.number().exists('Types'),
     first_name:yup.string().required(),
-    last_name:yup.string().required(),
-    function:yup.string().required(),
+    last_name:yup.string(),
+    function:yup.string(),
     phone:yup.string()
 })
 
