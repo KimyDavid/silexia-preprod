@@ -40,7 +40,7 @@ const createPartnerSchema = yup.object({
     text:yup.string().required(),
     image: yup_test.image(yup, true),
     url:yup.string().url(),
-    abstract:yup.string(255).required(),
+    abstract:yup.string().required(),
     order: yup.number().integer().positive().required(),
     partner_type: yup.number().required().exists('Partners_Type')
 })
@@ -52,7 +52,7 @@ const updatePartnerSchema = yup.object({
     text:yup.string(),
     image: yup_test.image(yup),
     url:yup.string().url(),
-    abstract:yup.string(255),
+    abstract:yup.string(),
     order: yup.number().integer().positive(),
     partner_type: yup.number().exists('Partners_Type')
 })

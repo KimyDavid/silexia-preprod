@@ -8,7 +8,7 @@
 ----------------------|-------------  |-------------------
 id                    | int           | Identifiant
 name                  | varchar(100)  | Name
-abstract              | varchar(255)  | Abstract of content
+abstract              | text          | Abstract of content
 text                  | text          | HTML of content to display
 image                 | url           | Url of illustration
 url                   | url           | Url of partner's website
