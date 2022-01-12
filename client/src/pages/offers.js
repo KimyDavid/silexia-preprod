@@ -86,7 +86,7 @@ class Index extends Component {
                                     <div>
                                       <h2><span className="badge badge-primary-soft p-2">03</span></h2>
                                       <h4 className="mt-3">Fixation d'un budget dédié au numérique et construction de votre plan d'actions</h4>
-                                      <p className="mb-0">En fonction de vos besoins et objectifs, nous vous soumettons plusieurs scénarios de transition numérique chiffrés pour déterminer ensemble le budget le plus adapté à votre organisation en termes de retours sur investissements. L'objectif ? Élaborer votre plan d'actions de transition, détaillé selon les charges, coûts et temps de déploiement !</p>
+                                      <p className="mb-0">En fonction de vos besoins et objectifs, nous vous soumettons plusieurs scénarios de transition numérique chiffrés pour déterminer ensemble le budget le plus adapté à votre organisation en termes de retour sur investissement. L'objectif ? Élaborer votre plan d'actions de transition, détaillé selon les charges, coûts et temps de déploiement !</p>
                                     </div>
                                   </div>
                                 </div>

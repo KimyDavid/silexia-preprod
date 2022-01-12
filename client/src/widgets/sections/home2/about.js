@@ -48,7 +48,7 @@ class About1 extends Component {
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                         </div>
-                        <p className="mb-0 ml-3 text-black">Analyse en profondeur de votre organisme</p>
+                        <p className="mb-0 ml-3 text-black">Analyse en profondeur de votre organisation</p>
                       </div>
                     </div>
                     <div className="mb-3 mr-4 ml-lg-0 mr-lg-4">

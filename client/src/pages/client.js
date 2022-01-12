@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import Herosection from '../widgets/client/herosection';
 import Features from '../widgets/client/features';
 import Faq from '../widgets/client/faq';
+import Pricing from '../widgets/client/pricing';
 
-const Client = ({content}) => {
+const Client = ({title, content}) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -17,7 +18,7 @@ const Client = ({content}) => {
                     <div className="row justify-content-center">
                         <div className="col-12">
                             <div>
-                                <h2 className="h3 text-primary font-w-5 mb-0">COMMENT SILEXIA</h2>
+                                <p className="h3 text-primary font-w-5 mb-0">COMMENT SILEXIA</p>
                                 <h2 className="h2 font-w-5">{content.how.title}</h2>
                                 <p className="lead mb-0">{content.how.description}</p>
                             </div>
@@ -40,11 +41,17 @@ const Client = ({content}) => {
                 </div>
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-12 col-md-4">
-                            <h2 className="h3 text-white font-w-5 text-uppercase">{content.banner.title}</h2>
+                        <div className="col-12 col-md-5 mr-auto">
+                            { content.banner.list ? content.banner.list.map((item, i) => 
+                                <div className="d-flex align-items-center mb-4" key={i}>
+                                    <span className={`client-banner-icon la la-${item.icon}`}></span>
+                                    <p className="h6 font-w-5 text-white mb-0">{item.text}</p>
+                                </div>
+                            ) : '' }
                         </div>
-                        <div className="col-12 col-md-8">
-                            <p className="lead lead-small mb-0 text-light columns-2">{content.banner.description}</p>
+                        <div className="col-12 col-md-6 text-md-right text-left mt-5 mt-md-0">
+                            <h2 className="h3 text-white font-w-5 text-uppercase">{content.banner.title}</h2>
+                            <p className="lead lead-small mb-0 text-light">{content.banner.description}</p>
                         </div>
                     </div>
                 </div>
@@ -54,6 +61,23 @@ const Client = ({content}) => {
                     </svg>
                 </div>
             </section>
+
+            { content.offers ?
+                <section className="pt-2">
+                    <div className="container">
+                        <div className="row align-items-end justify-content-between">
+                            <div className="col-12 mb-5 mb-md-0">
+                                <div>
+                                    <p className="h3 text-primary font-w-5 mb-0">DÉCOUVREZ NOS FORMULES D'ASSISTANCE</p>
+                                    <h2 className="h2 font-w-5">{content.offers.title}</h2>
+                                    <p className="lead mb-0">{content.offers.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <Pricing offers={content.offers.list} title={title} />
+                    </div>
+                </section>
+            : "" }
             
             <section className="py-5">
                 <div className="container">

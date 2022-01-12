@@ -24,7 +24,6 @@ const SignUpForm = ({profile = null}) => {
             }
           });
       } else {
-        console.log(data);
         if (data['email'] === profile.email) {
           delete data["email"];
         }
@@ -97,19 +96,19 @@ const SignUpForm = ({profile = null}) => {
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label className="form-label">Nom</label>
+                        <label className="form-label">Entreprise</label>
                         <input 
-                          defaultValue={profile.last_name ? profile.last_name : ''} 
-                          id="form_name" 
-                          type="text" 
-                          {...register('last_name', {required: 'Le nom est obligatoire.'})}
-                          className={`form-control ${errors['last_name'] ? 'error' : ''}`}
-                          placeholder="Nom" 
+                          defaultValue={profile.company ? profile.company : ''}
+                          id="form_name"
+                          type="text"
+                          className={`form-control ${errors['company'] ? 'error' : ''}`}
+                          {...register('company', {required: "Le nom de l'entreprise est obligatoire."})}
+                          placeholder="Nom de l'entreprise"
                           required="required" />
-                          {errors['last_name'] ? <span className="form-error error">Le nom est obligatoire.</span> : '' }
+                          {errors['company'] ? <span className="form-error error">L'entreprise est obligatoire.</span> : '' }
                       </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-12">
                       <div className="form-group">
                         <label className="form-label">Email</label>
                         <input
@@ -121,20 +120,6 @@ const SignUpForm = ({profile = null}) => {
                           placeholder="Email"
                           required="required" />
                           {errors['email'] ? <span className="form-error error">L'email est obligatoire.</span> : '' }
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <label className="form-label">Entreprise</label>
-                        <input 
-                          defaultValue={profile.company ? profile.company : ''}
-                          id="form_name"
-                          type="text"
-                          className={`form-control ${errors['company'] ? 'error' : ''}`}
-                          {...register('company', {required: "Le nom de l'entreprise est obligatoire."})}
-                          placeholder="Nom de l'entreprise"
-                          required="required" />
-                          {errors['company'] ? <span className="form-error error">L'entreprise est obligatoire.</span> : '' }
                       </div>
                     </div>
                   </div>

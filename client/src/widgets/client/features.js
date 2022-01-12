@@ -5,7 +5,7 @@ const FeatureServices = ({list}) => {
         return (
             <div className="row align-items-center">
                 {list.map((_item, i) => 
-                    <div key={i} className="col-xl-4 col-lg-4 mb-lg-0">
+                    <div key={i} className="col-xs-12 col-md-6 col-lg-4 mb-lg-0">
                         <div className={`px-4 py-3 py-md-7 rounded hover-translate text-center`}>
                             <div>
                                 { _item.image ?

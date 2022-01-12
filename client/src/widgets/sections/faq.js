@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import {
     Accordion,
     AccordionItem,
@@ -8,6 +8,26 @@ import {
 import questions from '../../page_content/Faq';
 
 const Faq = ({setShowAutodiag, token}) =>  {
+    const schemaGoogle = {
+        "@context":"https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": []
+    }
+
+    useEffect(() => {
+        questions.forEach((item, i) => {
+            schemaGoogle.mainEntity.push(
+                {
+                    "@type":"Question","name": item.question,
+                    "acceptedAnswer": {
+                        "@type":"Answer",
+                        "text": item.answer
+                    }
+                }
+            )
+        });
+    }, []);
+
         return (
             <>
                 <Accordion className="text-left">
@@ -24,6 +44,10 @@ const Faq = ({setShowAutodiag, token}) =>  {
                         </AccordionItem>
                     )) }
                 </Accordion>
+
+                <script type="application/ld+json">
+                    { JSON.stringify(schemaGoogle) }
+                </script>
                 
                 {token ? '' : <a onClick={() => setShowAutodiag(true)} className="btn btn-secondary mt-5 ml-auto">Répondre au questionnaire</a> }
                 

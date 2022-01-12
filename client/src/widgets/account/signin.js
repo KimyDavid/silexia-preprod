@@ -25,7 +25,9 @@ const SigninForm = ({setShowLogin, setShowAutodiag}) => {
                 if (result.error) {
                     setMessage(t(result.details ?? result.error));
                 } else {
-                    window.location.href = `${window.location.origin}/profile`;
+                    setTimeout(() => {
+                        window.location.href = `${window.location.origin}/profile`;
+                    }, 500);
                 }
             })
     }
@@ -60,7 +62,7 @@ const SigninForm = ({setShowLogin, setShowAutodiag}) => {
             </form>
             <div className="mt-4">
                 <span className="text-muted mr-1">Vous n'avez pas encore de compte ?</span>
-                <a onClick={() => openAutodiag()} className="link">Répondre à l'autodiag</a>
+                <a onClick={() => openAutodiag()} className="link">Réaliser mon diagnostic</a>
             </div>
         </div>
     );

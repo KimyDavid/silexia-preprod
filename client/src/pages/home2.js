@@ -23,7 +23,7 @@ const Index = ({setShowAutodiag}) => {
                                 <div className="col-12">
                                     <div className="text-left">
                                         <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
-                                        <h2 className="mt-4 mb-0 h4">Nos services</h2>
+                                        <h2 className="mt-4 mb-0 h4">Nos offres</h2>
                                     </div>
                                 </div>
                             </div>

@@ -67,7 +67,7 @@ const Profile = ({ token }) => {
                                       <div className="card-body">
                                           <div className="row">
                                             <div className="col-6">
-                                              <p className="m-0 account-field-value"><span className="account-field-label">Prénom Nom</span>{token.first_name} {token.last_name}</p>
+                                              <p className="m-0 account-field-value"><span className="account-field-label">Prénom</span>{token.first_name}</p>
                                             </div>
                                             <div className="col-6">
                                               <p className="m-0 account-field-value"><span className="account-field-label">Email</span>{token.email}</p>

@@ -106,8 +106,8 @@ function App() {
                 <Route path="/generateur-mentions-legales" component={LegalGenerator} />
 
                 {/* CLIENTS */}
-                <Route path="/client/associations" component={() => <Client content={Associations[0]} />} />
-                <Route path="/client/avocats" component={() => <Client content={Avocats[0]} />} />
+                <Route path="/client/associations" component={() => <Client content={Associations[0]} title="Associations" />} />
+                <Route path="/client/avocats" component={() => <Client content={Avocats[0]}  title="Avocats"/>} />
                 
                 {/* BLOG */}
                 <Route exact path="/blog" component={BlogList} />

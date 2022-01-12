@@ -534,3 +534,21 @@ header {
         font-size: 1.1rem;
     }
 }
+
+.client {
+    &-banner {
+        &-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            color: black;
+            border-radius: 100%;
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
+            margin-right: 15px;
+            font-size: 54px;
+        }
+    }
+}

@@ -13,6 +13,7 @@ const Autodiag = () => {
     const [profile, setProfile] = useState();
     const [autodiag, setAutodiag] = useState();
     const [category, setCategory] = useState(0);
+    const [autodiagLoading, setAutodiagLoading] = useState(false);
 
     const [message, setMessage] = useState();
 
@@ -57,8 +58,10 @@ const Autodiag = () => {
                 data = data.concat(autodiagToken[category][question]);
             }
         }
+        setAutodiagLoading(true);
         API_POST('autodiag', 'POST', {answers: data})
             .then(response => {
+                setAutodiagLoading(false);
                 if (response.error) {
                     setMessage(response.details);
                 } else {
@@ -79,7 +82,7 @@ const Autodiag = () => {
             {/*hero section end*/}
 
             {/*body content start*/}
-            <section className="page-content py-2">
+            <section className={`${autodiagLoading ? 'loading' : ''} page-content py-2`}>
                 <div className="container px-0 px-lg-2">
                     <div className="col-12 px-0 px-lg-2">
                         { autodiag ? 

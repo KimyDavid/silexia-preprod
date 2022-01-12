@@ -38,14 +38,14 @@ const UserDetail = () => {
                 <>
                     <Breadcrumb items={ breadcrumbs } home={ true } icon="chevron" />
 
-                    <SectionTitle title={ t(`users.label`) } subtitle={ `${profile.user.first_name} ${profile.user.last_name}` } />
+                    <SectionTitle title={ t(`users.label`) } subtitle={ `${profile.user.first_name}` } />
 
                     <Widget>
                         <div className="row">
                             <div className="col-12 col-md-6">
                                 <div className="flex flex-col">
-                                    <div className="text-sm font-light text-grey-500">Nom</div>
-                                    <div className="text-sm font-bold">{ profile.user.first_name } { profile.user.last_name }</div>
+                                    <div className="text-sm font-light text-grey-500">Prénom</div>
+                                    <div className="text-sm font-bold">{ profile.user.first_name }</div>
 
                                     {/* <div className="text-sm font-light text-grey-500 mt-3">Téléphone</div>
                                     <div className="text-sm font-bold">{ profile.user.phone ?? '??' }</div> */}

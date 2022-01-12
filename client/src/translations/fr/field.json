@@ -1,7 +1,7 @@
 {
     "order": "Ordre d'affichage",
     "flag": "Alerte",
-    "revert": "Afficher l'alerte si non sélectionné",
+    "revert": "Afficher l'alerte si non sélectionné (revert)",
     "name": "Nom",
     "text": "Description",
     "label": "Texte",

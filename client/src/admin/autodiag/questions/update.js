@@ -50,8 +50,6 @@ const UpdateElement = ({slug, fields, method = 'PUT', isFormData}) => {
       fieldCategory.value = state.item.id_category
     }
 
-    console.log(fields);
-
     setLoaded(true);
   }, [])
 

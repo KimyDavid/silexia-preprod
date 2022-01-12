@@ -18,7 +18,7 @@ export default {
          'more': [
             'Configuration et déploiement de votre solution CRM',
             'Création de contenus écrits, visuels, vidéos',
-            'Animation et développement de vos communautés sur les réseaux sociaux',
+            'Animation et développement de votre communauté sur les réseaux sociaux',
             'Création ou refonte de site web',
             'Conception de mails marketing automatisés de prospection',
             'Conception de bases de données de contacts à prospecter',
@@ -40,7 +40,7 @@ export default {
       {
          'title': 'Service support',
          'image': 'dedie',
-         'description': 'Nous nous accupons de A à Z de votre acquisition de clientèle',
+         'description': 'Nous nous occupons de A à Z de votre acquisition de clientèle',
          'content': [
             'La formule coaching + booster + …',
             "Comité mensuel de pilotage de votre stratégie d'acquisition",
@@ -57,7 +57,7 @@ export default {
          'image': 'coaching',
          'description': "Mise en place des bases de l'optimisation de vos parcours utilisateurs",
          'content': [
-            "Atelier découverte : Les parcours utilisateurs et l'expériencce client à l'heure du numérique",
+            "Atelier découverte : Les parcours utilisateurs et l'expérience client à l'heure du numérique",
             'Schématisation de vos parcours utilisateurs',
             "Administration d'un questionnaire interactif à 5 de vos clients",
             "Mise en place d'un questionnaire de satisfaction/suivi clients",
@@ -74,7 +74,7 @@ export default {
             "Cartographie complète de vos parcours utilisateurs",
             'Audit de vos parcours utilisateurs et de votre expérience client',
             "1 rapport trimestriel sur les retours du questionnaire de satisfaction/suivi clients (pendant 1 an)",
-            'Atelier de creative thinking avecc un de vos clients de confiance',
+            'Atelier de creative thinking avec un de vos clients de confiance',
             "Optimisation de votre parcours utilisateur et de l'expérience de vos clients par nos UX & UI designer et développeurs",
          ]
       },
@@ -85,7 +85,7 @@ export default {
          'content': [
             'La formule coaching + booster + …',
             "Recrutement d'utilisateurs pour mener des tests sur les parcours et l'expérience des utilisateurs",
-            "Collecte, suivi et analyse continues des retours de vos clients",
+            "Collecte, suivi et analyses continues des retours de vos clients",
             "Comité mensuel d'évaluation de votre expérience-et-parcours-client",
             "Intégration d'API tierces pour améliorer le parcours de vos utilisateurs et enrichir les fonctionnalités disponibles",
             'Amélioration continue de vos parcours utilisateurs et expérience clients par nos UX & UI designer et développeurs',
@@ -161,7 +161,7 @@ export default {
             "Atelier découverte : la conformité au RGPD et la cybersécurité pour les petites entreprises",
             "Administration d'un questionnaire d'audit des usages numériques de votre structure",
             "Inventaire, schématisation et analyse de votre système d'information",
-            "Rédaction de votre politique de confidentialité et assistance à création de votre registre des traitements",
+            "Rédaction de votre politique de confidentialité et assistance à la création de votre registre des traitements",
             'Configuration et déploiement de votre logiciel de pilotage de votre conformité au RGPD',
             'Check-list explicatives des mesures de sécurité à implémenter',
             "5 séances de coaching personnalisé",

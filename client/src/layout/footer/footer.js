@@ -22,11 +22,15 @@ class Footer extends Component {
                             <Col className="col-12 col-sm-6 navbar-dark">
                             <h5 className="mb-4 text-white">Pages</h5>
                             <ul className="navbar-nav list-unstyled mb-0">
-                                <li className="mb-3 nav-item"><Link className="nav-link" to="/about-us">À propos</Link> 
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/about-us">Qui sommes-nous ?</Link> 
                                 </li>
-                                <li className="mb-3 nav-item"><Link className="nav-link" to="/offres">Offres</Link> 
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/offres">Nos offres</Link> 
                                 </li>
-                                <li className="mb-3 nav-item"><Link className="nav-link" to="/partners">Réseau</Link> 
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/partners">Notre réseau de collaborateurs</Link> 
+                                </li>
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/partners">Le diagnostic</Link> 
+                                </li>
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/partners">Générateur de mentions légales</Link> 
                                 </li>
                                 <li className="mb-3 nav-item"><Link className="nav-link" to="/blog">Blog</Link> 
                                 </li>
