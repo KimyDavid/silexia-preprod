@@ -18,7 +18,7 @@ yup_test.exists(yup, {table:'Offres', model:Offre}, apiController.getItem)
 const createOffreSchema = yup.object({
     title: yup.string().max(100).required(),
     text:yup.string().required(),
-    abstract:yup.string(100).required(),
+    abstract:yup.string().required(),
     order: yup.number().integer().positive().required(),
     image: yup_test.image(yup, true)
 })
@@ -27,7 +27,7 @@ const createOffreSchema = yup.object({
 const updateOffreSchema = yup.object({
     id:yup.number().required().exists(),
     title: yup.string().max(100),
-    abstract:yup.string(100),
+    abstract:yup.string(),
     order: yup.number().integer().positive(),
     text:yup.string(),
     image: yup_test.image(yup, false)

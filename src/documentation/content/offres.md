@@ -10,7 +10,7 @@ id                    | int           | Identifiant
 title                 | varchar(100)  | Title
 text                  | text          | Text (html)
 image                 | url           | Url of illustration
-abstract              | varchar(255)  | Abstract
+abstract              | text          | Abstract
 order                 | smallint      | Order
 
 ## API
