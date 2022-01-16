@@ -27,7 +27,7 @@ export default {
       'flux': [
          {
             'title': 'S’appuyer sur des retours utilisateurs',
-            'description': 'L’enjeu est d’améliorer votre relation client grâce au numérique. Pour cela, nous mobilisons directement vos clients et autres parties prenantes pour les associer aux évolutions des interfaces utilisateurs web qui leur sont destinés !',
+            'description': 'L’enjeu est d’améliorer votre relation client grâce au numérique. Pour cela, nous mobilisons directement vos clients et autres parties prenantes pour les associer aux évolutions des interfaces utilisateurs web qui leur sont destinées !',
             'image': 'brainsto.png',
          },
          {
@@ -52,7 +52,7 @@ export default {
          },
          {
             'title': 'Identifier les tâches à faible valeur ajoutée',
-            'description': 'À vos côtés et aux côtés de vos collaborateurs, nous choisissons ensemble ce qui doit être optimiser et ce qui doit rester de la compétence de l’humain. Nous concevons votre plan de transition sur-mesure afin d’enclencher une dynamique d’automatisation.',
+            'description': 'À vos côtés et aux côtés de vos collaborateurs, nous choisissons ensemble ce qui doit être optimisé et ce qui doit rester de la compétence de l’humain. Nous concevons votre plan de transition sur-mesure afin d’enclencher une dynamique d’automatisation.',
             'image': 'metiers.png',
          },
          {

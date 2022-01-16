@@ -3,7 +3,7 @@ import Constants from '../../constants/Config';
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 
-const SigninForm = () => {
+const SigninForm = ({setShowLogin, setShowAutodiag}) => {
     const { t } = useTranslation('error');
     
     const [email, setEmail] = useState();
@@ -25,9 +25,18 @@ const SigninForm = () => {
                 if (result.error) {
                     setMessage(t(result.details ?? result.error));
                 } else {
-                    window.location.href = `${window.location.origin}/profile`;
+                    setTimeout(() => {
+                        window.location.href = `${window.location.origin}/profile`;
+                    }, 500);
                 }
             })
+    }
+
+    function openAutodiag() {
+        setShowAutodiag(true);
+        if (setShowLogin) {
+            setShowLogin(false);
+        }
     }
 
     return (
@@ -53,7 +62,7 @@ const SigninForm = () => {
             </form>
             <div className="mt-4">
                 <span className="text-muted mr-1">Vous n'avez pas encore de compte ?</span>
-                <Link to="/autodiag">Répondre à l'autodiag</Link>
+                <a onClick={() => openAutodiag()} className="link">Réaliser mon diagnostic</a>
             </div>
         </div>
     );

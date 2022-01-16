@@ -12,7 +12,7 @@ const CustomQuill = ({item, onChange}) => {
     }
 
     const updateValue = (value) => {
-        setValue(value)
+        // setValue(value);
         onChange(value);
     }
 

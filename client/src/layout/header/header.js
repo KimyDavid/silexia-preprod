@@ -145,7 +145,7 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
                 >
                     { articles ? articles.map((item, i) => 
                         <div key={i} className="header-banner-item">
-                            <p><span>Actualités</span> : { item.title } <Link className="link link-primary" to={{pathname: `/blog/${item['id']}`, state: { items: item }}}>En savoir plus</Link></p>
+                            <p><span>Actualités</span> : { item.title } <Link className="link link-primary" to={{pathname: `/blog/${item['id']}`, state: { items: item }}}>Lire l'article</Link></p>
                         </div>
                     ) : ''}
                 </OwlCarousel>
@@ -153,7 +153,7 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
 
             <Modal 
                 title={`Connexion`}
-                body={<SigninForm />}
+                body={<SigninForm setShowAutodiag={setShowAutodiag} setShowLogin={setShowLogin} />}
                 closeButton="Fermer"
                 show={showLogin}
                 setShow={setShowLogin}

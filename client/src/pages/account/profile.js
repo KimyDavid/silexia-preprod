@@ -67,28 +67,13 @@ const Profile = ({ token }) => {
                                       <div className="card-body">
                                           <div className="row">
                                             <div className="col-6">
-                                              <p className="m-0 account-field-value"><span className="account-field-label">Prénom Nom</span>{token.first_name} {token.last_name}</p>
+                                              <p className="m-0 account-field-value"><span className="account-field-label">Prénom</span>{token.first_name}</p>
                                             </div>
                                             <div className="col-6">
                                               <p className="m-0 account-field-value"><span className="account-field-label">Email</span>{token.email}</p>
                                             </div>
                                             <div className="col-6">
-                                              <p className="m-0 account-field-value"><span className="account-field-label">Téléphone</span>{token.phone}</p>
-                                            </div>
-                                            <div className="col-6">
                                               <p className="m-0 account-field-value"><span className="account-field-label">Entreprise</span>{token.company}</p>
-                                            </div>
-                                            <div className="col-6">
-                                              <p className="m-0 account-field-value"><span className="account-field-label">Fonction</span>{token.function}</p>
-                                            </div>
-                                            {/* <div className="col-6">
-                                              <p className="account-field-value"><span className="account-field-label">Type d'entreprise</span>{types.filter(type => type.id === token.type)[0]?.label }</p>
-                                            </div> */}
-                                            <div className="col-6">
-                                              <p className="m-0 account-field-value"><span className="account-field-label">Taille d'entreprise</span>{sizes.filter(size => size.id === token.size)[0]?.label }</p>
-                                            </div>
-                                            <div className="col-6">
-                                              <p className="m-0 account-field-value"><span className="account-field-label">Secteur d'entreprise</span>{sectors.filter(sector => sector.id === token.sector)[0]?.label }</p>
                                             </div>
                                           </div>
                                       </div>

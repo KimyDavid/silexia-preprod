@@ -33,13 +33,13 @@ export default [
       ]
    },
    {
-      "menu_title": "Nos services",
+      "menu_title": "Nos offres",
       "path": "/",
       "type": "subMenu",
       "child_routes": [
          {
             "path": "/offres",
-            "menu_title": "Tous nos services",
+            "menu_title": "Toutes nos offres",
          },
          {
             "path": "/offres/acquisition-client",

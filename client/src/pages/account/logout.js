@@ -7,14 +7,8 @@ const Index = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    API_GET('logout').then((result) => {
-      console.log(result);
-      if (result.error) {
-          setError(true);
-      } else {
-          setVerified(true);
-          document.location.reload();
-      }
+    API_GET('logout').then(() => {
+        document.location.reload();
     });
   }, []);
 

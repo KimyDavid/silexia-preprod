@@ -19,7 +19,7 @@ class Feature extends Component {
                                 <div>
                                     <img className="w-75 mb-2" src={require(`../../assets/images/about/tasks.svg`)} alt="Assistance" />
                                 </div>
-                                <p className="mb-0 mt-3 text-primary font-w-5">Vous êtes assistée pas à pas pour générer vos mentions légales</p>
+                                <p className="mb-0 mt-3 text-primary font-w-5">Nous vous assistons pas à pas pour générer vos mentions légales</p>
                             </div>
                         </div>
                         <div className="col-lg-3 col-6 mt-6 mt-sm-0">

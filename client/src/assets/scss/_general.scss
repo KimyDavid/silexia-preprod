@@ -507,9 +507,6 @@ header {
             }
     
             .nav {
-                &-link {
-                    text-transform: inherit;
-                }
     
                 &-item {
                     margin: 0 12px;
@@ -520,6 +517,38 @@ header {
     }
 }
 
+.navbar-nav {
+    .nav {
+        &-link {
+            text-transform: inherit;
+        }
+    }
+}
+
 .nav-tabs .nav-item .nav-link {
     box-shadow: 0 10px 25px 5px rgba(255, 166, 166, 0.5) !important;
+}
+
+.lead {
+    &-small {
+        font-size: 1.1rem;
+    }
+}
+
+.client {
+    &-banner {
+        &-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            color: black;
+            border-radius: 100%;
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
+            margin-right: 15px;
+            font-size: 54px;
+        }
+    }
 }
