@@ -6,17 +6,23 @@ import Alert from '../alerts';
 const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
   const [message, setMessage] = useState(null)
   const [loading, setLoading] = useState(false)
-
+  
   const sendCreationRequest = (e) => {
     let data = e;
     let formData = new FormData();
 
+    let currentValues = {};
+    fields.forEach((field) => {
+       const value = { [field.name] : field.value };
+       Object.assign(currentValues, value);
+    });
+
     for ( let key in data ) {
-      if (data[key] === "") {
-        delete data[key];
-      } else if (data[key].length < 1) {
-        delete data[key];
-      } 
+        if (data[key] === currentValues[key] || key === 'image') {
+            if (data[key] === "" || data[key].length < 1) {
+                delete data[key];
+            }
+        }
     }
 
     if (isFormData) {
