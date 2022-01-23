@@ -26,14 +26,20 @@ const CreateElement = ({slug, fields}) => {
         _field.value = null;
       }
     });
-    fields.push({
-      label: '',
-      error: {required: ''},
-      name: 'partner_type',
-      type: 'number',
-      value: state.partner_type,
-      hidden: true
-    });
+
+    if (fields[fields.length - 1].name === 'partner_type') {
+        fields[fields.length - 1].value = state.partner_type;
+    } else {
+        fields.push({
+            label: '',
+            error: {required: ''},
+            name: 'partner_type',
+            type: 'number',
+            value: state.partner_type,
+            hidden: true
+        });
+    }
+
     setLoaded(true);
   }, [])
 

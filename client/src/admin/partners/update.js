@@ -25,19 +25,24 @@ const UpdateElement = ({slug, fields, method = 'PATCH'}) => {
 
   useEffect(() => {
     API_GET(`partners/${id}`).then(response => {
-      fields.map((_field) => {
-        _field.value = response[_field['name']] ?? '';
-        _field.error = {}
-      });
+        fields.map((_field) => {
+            _field.value = response[_field['name']] ?? '';
+            _field.error = {}
+        });
   
-      fields.push({
-        label: '',
-        error: {required: ''},
-        name: 'partner_type',
-        type: 'number',
-        value: state.partner_type,
-        hidden: true
-      });
+        if (fields[fields.length - 1].name === 'partner_type') {
+            fields[fields.length - 1].value = state.partner_type;
+        } else {
+            fields.push({
+                label: '',
+                error: {required: ''},
+                name: 'partner_type',
+                type: 'number',
+                value: state.partner_type,
+                hidden: true
+            });
+        }
+
       setLoaded(true);
     });
   }, []);

@@ -61,7 +61,7 @@ const Partners = () => {
       },
       {
         label: 'Url',
-        error: {required: 'Merci d\'écrire une url'},
+        error: {},
         name: 'url',
         type: 'text',
         placeholder: 'Entrer une url'
