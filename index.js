@@ -33,7 +33,7 @@ app.use(session({
 }))
 
 app.use(cors({
-  "origin": ["http://localhost:8080", "https://www.silexia.fr"],
+  "origin": ["http://localhost:8080", "https://www.silexia.fr", "http://www.silexia.fr"],
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
   "optionsSuccessStatus": 204,
