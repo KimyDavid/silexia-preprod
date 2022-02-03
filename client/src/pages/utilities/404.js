@@ -13,7 +13,7 @@ const PageNotFound = () => {
                     <div className="row h-100">
                         <div className="col-12 text-center h-100 d-flex align-items-center">
                             <div className="w-100">
-                                <img className="page404-image img-fluid d-inline mb-5" src={require(`../../assets/images/404.png`)} alt="" />
+                                <img className="page404-image img-fluid d-inline mb-5" src={require(`../../assets/images/404.png`)} alt="404 error" loading="lazy" />
                                 <h2>Cette page n'existe pas</h2>
                                 <div className="col-lg-6 col-md-10 ml-auto mr-auto">
                                     <h6>Il est possible que l'URL soit incorrecte ou que cette page n'existe plus.</h6>

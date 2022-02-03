@@ -50,7 +50,7 @@ class Bloglisting1 extends Component {
                       return (
                         <div key={i} className="col-12 col-md-6 col-lg-4 mb-6 mb-lg-0">
                           <div className="card border-0 bg-transparent">
-                            <Link to={{pathname: `/blog/${item['id']}`, state: { items: item }}}><img className="card-img-top shadow rounded" src={item['image']} alt={item['title']} /></Link>
+                            <Link to={{pathname: `/blog/${item['id']}`, state: { items: item }}}><img className="card-img-top shadow rounded" src={item['image']} alt={item['title']} loading="lazy"/></Link>
                             <div className="card-body pt-5">
                               <h2 className="h5 font-weight-medium">
                                 <Link className="link-title" to={{pathname: `/blog/${item['id']}`, state: { items: item }}}>{item['title']}</Link>

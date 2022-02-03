@@ -24,7 +24,6 @@ window.fn = OwlCarousel;
 
 const Header = ({setShowAutodiag, showAutodiag}) => {
     const [ isOpen, setIsOpen ] = useState(false);
-    const [ loader, setLoader ] = useState(true);
     const [ articles, setArticles ] = useState();
 
     const location = useLocation();
@@ -51,17 +50,14 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
 
     return (
         <>
-            { loader ? 
-                setTimeout(() => { setLoader(false); }, 2000)
-            : '' } 
             <header className="site-header header-fixed">
-                { (!loader) ?
+                { 
                     <div id="header-wrap">
                         <div className="container">
                             <div className="row">
                                 {/*menu start*/}
                                 <div className="col d-flex align-items-center justify-content-between"> 
-                                    <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.png`)} alt="Logo Silexia" /></Link>
+                                    <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.png`)} alt="Logo Silexia" width="120" height="40" /></Link>
                                     <Navbar className="navbar-expand-lg navbar-light ml-auto">
                                             <NavbarToggler onClick={toggle} />
                                             <Collapse isOpen={isOpen} className=" navbar-collapse" navbar>
@@ -102,7 +98,7 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
                                                             <NavItem key={index}>
                                                                 { navLink.path.includes('://') ?
                                                                     // Extern link
-                                                                    <NavLink onClick={toggle} target="_blank" href={navLink.path}>{navLink.menu_title}</NavLink>
+                                                                    <NavLink onClick={toggle} target="_blank" href={navLink.path} rel="noopener" rel="noreferrer">{navLink.menu_title}</NavLink>
                                                                 : 
                                                                     navLink.modal ? 
                                                                     // Modal Link
@@ -122,13 +118,6 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
                                 </div>
                                 {/*menu end*/}
                             </div>
-                        </div>
-                    </div>
-                    :
-                    <div id="ht-preloader">
-                        <div className="loader clear-loader">
-                            <span />
-                            <p>Silexia</p>
                         </div>
                     </div>
                 }

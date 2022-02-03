@@ -64,7 +64,7 @@ const Clientlogo = () => {
                                         <div className="item" key={i}>
                                             <div className="p-3 partner-item d-flex align-items-center shadow bg-white rounded mt-4" onClick={() => updateSelectedPartner(partner)}>
                                                 <div className="w-100 text-center">
-                                                { partner.image ? <img src={partner.image} alt={`${partner.name}`} className="img-fluid mb-2 partner-img" />: '' }
+                                                { partner.image ? <img src={partner.image} alt={`${partner.name}`} className="img-fluid mb-2 partner-img" loading="lazy" width="178" height="125" />: '' }
                                                 <h5 className="mb-2">{partner.name}</h5>            
                                                 <p>{partner.abstract}</p>
                                                 { partner.text !== '' ? 
@@ -91,7 +91,7 @@ const Clientlogo = () => {
                         body={
                             <>
                                 <div className="text-center">
-                                    <img className="mb-2" width="220" src={selectedPartner.image} alt={selectedPartner.name} />
+                                    <img className="mb-2" width="220" src={selectedPartner.image} alt={selectedPartner.name} loading="lazy"/>
                                 </div>
                                 <div className="text-black" dangerouslySetInnerHTML={{__html: selectedPartner.text}}></div>
                                 <div className="text-center">

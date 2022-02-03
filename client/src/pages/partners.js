@@ -32,19 +32,23 @@ const Partners = () => {
                     { partners ? partners.map((partner_type, i) => {
                         const type = partnerTypes.find(x => x.id === partner_type.id);
                         const description =  type.description;
-                        return (
-                            <div key={i} className="partner-section">
-                                { partner_type.partners ? 
-                                    <div className="container-fluid px-lg-8">
-                                        <div className="text-center">
-                                            <h2 className="mt-3 h3 font-w-5">{partner_type.label}</h2>
-                                            { description ? <p className="lead text-center">{ description }</p> : '' }
+                        
+                        if (partner_type.label !== "Projets clients") {
+                            return (
+                                <div key={i} className="partner-section">
+                                    { partner_type.partners ? 
+                                        <div className="container-fluid px-lg-8">
+                                            <div className="text-center">
+                                                <h2 className="mt-3 h3 font-w-5">{partner_type.label}</h2>
+                                                { description ? <p className="lead text-center">{ description }</p> : '' }
+                                            </div>
+                                            <Team partners={partner_type.partners} setSelectedPartner={setSelectedPartner} setShowModal={setShowModal} />
                                         </div>
-                                        <Team partners={partner_type.partners} setSelectedPartner={setSelectedPartner} setShowModal={setShowModal} />
-                                    </div>
-                                : '' }
-                            </div>
-                        )
+                                    : '' }
+                                </div>
+                            )
+                        }
+
                     }) : ''}
                     {/*team end*/}
 
@@ -54,7 +58,7 @@ const Partners = () => {
                         body={
                             <>
                                 <div className="text-center">
-                                    <img className="mb-2" width="220" src={selectedPartner.image} alt={selectedPartner.name} />
+                                    <img className="mb-2" width="220" src={selectedPartner.image} alt={selectedPartner.name} loading="lazy" />
                                 </div>
                                 <div className="text-black" dangerouslySetInnerHTML={{__html: selectedPartner.text}}></div>
                                 <div className="text-center">

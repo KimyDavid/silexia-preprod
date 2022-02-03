@@ -40,6 +40,7 @@ export const List = () => {
               src={item.img}
               alt="media"
               className="h-8 w-full shadow-lg rounded-full shadow-outline"
+              loading="lazy"
             />
           </div>
           <div className="flex flex-col w-full">

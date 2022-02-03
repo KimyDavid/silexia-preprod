@@ -22,7 +22,7 @@ class Testimonial1 extends Component {
               <div className="col-12 col-md-6 col-lg-6 mt-5">
                 <div className="card p-4 shadow border-0 flex-sm-row">
                   <div className="w-50 mr-sm-5 mb-3 mb-sm-0">
-                    <img alt="Image" src={require(`../../../assets/images/testimonial/02.jpg`)} className="shadow-primary img-fluid rounded-circle d-inline" />
+                    <img alt="Image" src={require(`../../../assets/images/testimonial/02.jpg`)} className="shadow-primary img-fluid rounded-circle d-inline" loading="lazy"/>
                   </div>
                   <div className="card-body p-0">
                     <p>Bootsland Amazing Landing Page All-in-one, clean code, Crative &amp; Modern design.</p>
@@ -36,7 +36,7 @@ class Testimonial1 extends Component {
               <div className="col-12 col-md-6 col-lg-6 mt-5 mt-md-0">
                 <div className="card p-4 shadow border-0 flex-sm-row">
                   <div className="w-50 mr-sm-5 mb-3 mb-sm-0">
-                    <img alt="Image" src={require(`../../../assets/images/testimonial/03.jpg`)} className="shadow-primary img-fluid rounded-circle d-inline" />
+                    <img alt="Image" src={require(`../../../assets/images/testimonial/03.jpg`)} className="shadow-primary img-fluid rounded-circle d-inline" loading="lazy"/>
                   </div>
                   <div className="card-body p-0">
                     <p>Bootsland Amazing Landing Page All-in-one, clean code, Crative &amp; Modern design.</p>
@@ -50,7 +50,7 @@ class Testimonial1 extends Component {
               <div className="col-12 col-md-6 col-lg-6 mt-5">
                 <div className="card p-4 shadow border-0 flex-sm-row">
                   <div className="w-50 mr-sm-5 mb-3 mb-sm-0">
-                    <img alt="Image" src={require(`../../../assets/images/testimonial/01.jpg`)} className="shadow-primary img-fluid rounded-circle d-inline" />
+                    <img alt="Image" src={require(`../../../assets/images/testimonial/01.jpg`)} className="shadow-primary img-fluid rounded-circle d-inline" loading="lazy"/>
                   </div>
                   <div className="card-body p-0">
                     <p>Bootsland Amazing Landing Page All-in-one, clean code, Crative &amp; Modern design.</p>

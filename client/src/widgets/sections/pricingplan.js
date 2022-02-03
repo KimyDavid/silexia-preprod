@@ -21,7 +21,7 @@ class Pricingplan extends Component {
                                 </span>
                               </div>
                               <div className="mb-5">
-                                <img className="img-fluid" src={require(`../../assets/images/svg/01.svg`)} alt="" />
+                                <img className="img-fluid" src={require(`../../assets/images/svg/01.svg`)} alt="Offre basic"  loading="lazy"/>
                               </div>
                               {/* Features */}
                               <div className="d-flex align-items-start justify-content-between">
@@ -75,7 +75,7 @@ class Pricingplan extends Component {
                                 </span>
                               </div>
                               <div className="mb-5">
-                                <img className="img-fluid" src={require(`../../assets/images/svg/02.svg`)} alt="" />
+                                <img className="img-fluid" src={require(`../../assets/images/svg/02.svg`)} alt="Offre standard" loading="lazy" />
                               </div>
                               {/* Features */}
                               <div className="d-flex align-items-start justify-content-between">
@@ -129,7 +129,7 @@ class Pricingplan extends Component {
                                 </span>
                               </div>
                               <div className="mb-5">
-                                <img className="img-fluid" src={require(`../../assets/images/svg/02.svg`)} alt="" />
+                                <img className="img-fluid" src={require(`../../assets/images/svg/02.svg`)} alt="Offre extendde"  loading="lazy" />
                               </div>
                               {/* Features */}
                               <div className="d-flex align-items-start justify-content-between">
@@ -187,7 +187,7 @@ class Pricingplan extends Component {
                                 </span>
                               </div>
                               <div className="mb-5">
-                                <img className="img-fluid" src={require(`../../assets/images/svg/01.svg`)} alt="" />
+                                <img className="img-fluid" src={require(`../../assets/images/svg/01.svg`)} alt="Offre basic" loading="lazy" />
                               </div>
                               {/* Features */}
                               <div className="d-flex align-items-start justify-content-between">
@@ -241,7 +241,7 @@ class Pricingplan extends Component {
                                 </span>
                               </div>
                               <div className="mb-5">
-                                <img className="img-fluid" src={require(`../../assets/images/svg/02.svg`)} alt="" />
+                                <img className="img-fluid" src={require(`../../assets/images/svg/02.svg`)} alt="Offre standard" loading="lazy" />
                               </div>
                               {/* Features */}
                               <div className="d-flex align-items-start justify-content-between">
@@ -295,7 +295,7 @@ class Pricingplan extends Component {
                                 </span>
                               </div>
                               <div className="mb-5">
-                                <img className="img-fluid" src={require(`../../assets/images/svg/02.svg`)} alt="" />
+                                <img className="img-fluid" src={require(`../../assets/images/svg/02.svg`)} alt="Offre extended" loading="lazy" />
                               </div>
                               {/* Features */}
                               <div className="d-flex align-items-start justify-content-between">

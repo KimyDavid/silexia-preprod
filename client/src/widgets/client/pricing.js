@@ -20,7 +20,7 @@ const Pricing = ({title, offers}) => {
                             <div className="card border-0 shadow">
                                 <div className="card-body py-4 px-4">
                                     <div className="mb-5 text-center">
-                                        <img className="mb-4" src={require(`../../assets/images/offers/${offer.image}`)} alt="" height="150"/>
+                                        <img className="mb-4" src={require(`../../assets/images/offers/${offer.image}`)} alt={`${offer.title}`} height="150" loading="lazy"/>
                                         <h4 className="text-primary">{offer.title}</h4>
                                         <h6 className="text-black font-w-5">{offer.subtitle}</h6>
                                     </div>

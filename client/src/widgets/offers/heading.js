@@ -11,7 +11,7 @@ const OfferHeading = ({item}) => {
 
         <div className="col-12 col-lg-5 col-xl-6 order-lg-2 mb-3 mb-lg-0">
           {/* Image */}
-          <img src={item.image} className="img-fluid" alt="Services silexia" />
+          <img src={item.image} className="img-fluid" alt="Services silexia"  loading="lazy"/>
         </div>
         <div className="col-12 col-lg-7 col-xl-6 order-lg-1">
           {/* Heading */}

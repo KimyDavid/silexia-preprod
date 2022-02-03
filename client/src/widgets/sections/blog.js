@@ -41,7 +41,7 @@ const Blog = ({currentArticle = null}) => {
                     <div key={i}>
                       <Link className="link-title" to={{pathname: `/blog/${item['id']}`, state: { items: item }}}>
                         <div className="card border-0 p-3">
-                        <img className="card-img-top shadow rounded" src={item['image']} alt={item['title']} />
+                        <img className="card-img-top shadow rounded" src={item['image']} alt={item['title']} loading="lazy" width="250" height="250"/>
                           <div className="card-body p-0 pt-3">
                             <h2 className="h5 font-weight-medium">{item['title']}</h2>
                             <div className="mb-2 abstract abstract-3 text-muted">{ abstract.innerText }</div>

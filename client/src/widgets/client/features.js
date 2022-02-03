@@ -9,7 +9,7 @@ const FeatureServices = ({list}) => {
                         <div className={`px-4 py-3 py-md-7 rounded hover-translate text-center`}>
                             <div>
                                 { _item.image ?
-                                    <img className="img-fluid w-75" src={require(`../../assets/images/about/${_item.image}.svg`)} alt={_item.title} />
+                                    <img className="img-fluid w-75" src={require(`../../assets/images/about/${_item.image}.svg`)} alt={_item.title} loading="lazy"/>
                                 : '' }
                             </div>
                             <h5 className="mt-4 mb-3">{_item.title}</h5>

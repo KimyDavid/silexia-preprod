@@ -27,7 +27,7 @@ const Services = () => {
                                         <div className="bg-primary-soft rounded mb-0">
                                         <div className="d-flex align-items-center mb-3">
                                             <div className="mr-3">
-                                                <img className="img-fluid services-icons" src={require(`../../assets/images/icon/${offer.id}.png`)} alt="" />
+                                                <img className="img-fluid services-icons" src={require(`../../assets/images/icon/${offer.id}.png`)} alt={`${offer.title}`} loading="lazy"/>
                                             </div>
                                             <h5 className="m-0 text-light">{offer.title}</h5>
                                         </div>

@@ -15,7 +15,7 @@ class Maintenance extends Component {
                     <div className="container-fluid pl-0 h-100">
                         <div className="row h-100">
                             <div className="col-md-7 h-100 d-flex align-items-center">
-                                <img className="img-fluid d-inline" src={require(`../../../assets/images/maintenance.png`)} alt="" />
+                                <img className="img-fluid d-inline" src={require(`../../../assets/images/maintenance.png`)} alt="Maintenance" loading="lazy" />
                             </div>
                         </div>
                     </div>

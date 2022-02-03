@@ -218,7 +218,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                 <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
                   <div className="mb-4">
-                    <img src={currentImage} width="300" alt=""/>
+                    <img src={currentImage} width="300" alt="Image uploadée" loading="lazy"/>
                   </div>
 
                   <input

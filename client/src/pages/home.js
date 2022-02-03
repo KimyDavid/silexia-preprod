@@ -31,7 +31,7 @@ const Index = ({setShowAutodiag, token}) => {
                                             <span className="badge badge-light-soft p-2"><i className="la la-question ic-3x rotation" /></span>
                                             <h2 className="mb-5 h3 font-w-5">Les réponses à vos questions</h2>
                                         </div>
-                                        <img src={require(`../assets/images/about/04.svg`)} alt="Image" className="img-fluid" />
+                                        <img src={require(`../assets/images/about/04.svg`)} alt="FAQ" className="img-fluid" loading="lazy"/>
                                     </div>
                                     <div className="col-12 col-lg-8 text-center">
                                         <Faq setShowAutodiag={setShowAutodiag} token={token} />

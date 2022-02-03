@@ -29,7 +29,7 @@ const FeatureServices = () => {
                         {offers.map((offer, i) => 
                             <Link to={{pathname: `offres/${toSnakeCase(offer.title)}`}} className="item" key={i}>
                                 <div className="portfolio-item position-relative overflow-hidden">
-                                    <img className="img-center w-100" src={offer.image ?? require("../../../assets/images/about/06.png")} alt="" />
+                                    <img className="img-center w-100" src={offer.image ?? require("../../../assets/images/about/06.png")} alt={`${offer.title}`} loading="lazy" width="300" height="260" />
                                     <div className="portfolio-title d-flex justify-content-between align-items-center">
                                         <div>
                                             <h6 className="btn-link text-white" >{offer.title}</h6>

@@ -84,7 +84,7 @@ export default [
                 "short_answer": "Que cela soit pour augmenter l'impact de vos campagnes, développer une connaissance fine de votre public ou faire prendre vie à des idées grâce à des projets numériques, la donnée est le fil conducteur de toute initiative. Elle permet de valider des hypothèses et de se donner des objectifs mesurables.",
             },
             {
-                "question": "Comment alimenter le fils d'actu web (site et réseaux) de son asso ?",
+                "question": "Comment alimenter le fil d'actu web (site et réseaux) de son association ?",
                 "answer": "<p>Construire sa stratégie de contenus pour une association est essentielle ! Cela demande d'identifier différents types de contenus à produire en fonction des destinataires que l'on chercher à viser...</p><p><Ne vous interdisez rien et testez auprès de votre communauté différents formats de contenus que cela soit écrits, visuels, vidéos, podcasts ou de simples publications de vos partenaires. /p><p><strong>Vous avez une question relative aux LegalTech vis-à-vis de votre profession ?  <a href=''>Contactez-nous !</a></strong></p>",
                 "short_answer": "Construire sa stratégie de contenus pour une association est essentielle ! Cela demande d'identifier différents types de contenus à produire en fonction des destinataires que l'on chercher à viser...",
             },

@@ -53,7 +53,7 @@ const ContactOffer = () => {
         return (
             <div className="row justify-content-center text-left shadow px-5 py-5 px-xl-10">
                 <div className="col-12 ">
-                    <h3 className="h4 text-primary font-w-5">Parlez nous de vous...</h3>
+                    <h2 className="h4 text-primary font-w-5">Parlez nous de vous...</h2>
                     <p className="text-muted mb-5">... pour planifier une consultation innovation de 20 minutes autour de vos enjeux numériques.</p>
                     <form id="contact-form" className="row" method="post" onSubmit={handleSubmit(submitForm)}>
                         { message ? <div className="messages col-12">
@@ -63,6 +63,7 @@ const ContactOffer = () => {
                             if (item.type === 'textarea') {
                                 return (
                                     <div key={i} className="form-group col-12">
+                                        <label htmlFor={`partner-${item.name}`} className="d-none">{item.label}</label>
                                         <textarea
                                         {...register(item.name, {required: item.required})}
                                         id={`partner-${item.name}`} 
@@ -76,6 +77,7 @@ const ContactOffer = () => {
                             } else {
                                 return (
                                     <div key={i} className="form-group col-md-6">
+                                        <label htmlFor={`partner-${item.name}`} className="d-none">{item.label}</label>
                                         <input 
                                         {...register(item.name, {required: item.required})}
                                         id={`partner-${item.name}`} 

@@ -21,44 +21,32 @@ const Skillbox = () => {
                             <div className="row">
                                     <div className="col-lg-6 col-md-6">
                                         <div className="d-flex align-items-start">
-                                            {/* <div className="mr-3 p-3 border rounded border-light shadow-primary">
-                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="Adaptation à votre contexte" />
-                                            </div> */}
                                             <div>
-                                                <h5 className="mb-2">Adaptation à votre <br/>contexte</h5>
+                                                <h3 className="h5 mb-2">Adaptation à votre <br/>contexte</h3>
                                                 <p className="mb-0">Votre situation est unique. Nous nous adaptons à vos enjeux en  concevant une stratégie sur-mesure en fonction du diagnostic établi ensemble.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6">
                                         <div className="d-flex align-items-start">
-                                            {/* <div className="mr-3 p-3 border rounded border-light shadow-primary">
-                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="Agilité et disponibilité" />
-                                            </div> */}
                                             <div>
-                                                <h5 className="mb-2">Agilité et <br/>disponibilité</h5>
+                                                <h3 className="h5 mb-2">Agilité et <br/>disponibilité</h3>
                                                 <p className="mb-0">Nous déterminons avec vous les objectifs à court et moyen terme de votre organisation, projet ou produit pour lancer la dynamique qui permettra de les atteindre.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6 mt-5">
                                         <div className="d-flex align-items-start">
-                                            {/* <div className="mr-3 p-3 border rounded border-light shadow-primary">
-                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="Identification des actions à fort impact" />
-                                            </div> */}
                                             <div>
-                                                <h5 className="mb-2">Identification des actions à fort impact</h5>
+                                                <h3 className="h5 mb-2">Identification des actions à fort impact</h3>
                                                 <p className="mb-0">Nous identifions, vous proposons et mettons en œuvre les actions numériques capables d'accélérer la réalisation de vos projets et le développement de vos activités.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6 mt-5">
                                         <div className="d-flex align-items-start">
-                                            {/* <div className="mr-3 p-3 border rounded border-light shadow-primary">
-                                                <img className="img-fluid" src={require(`../../../assets/images/icon/01.svg`)} alt="L'innovation au cœur de votre entreprise" />
-                                            </div> */}
                                             <div>
-                                                <h5 className="mb-2">L'innovation au cœur de votre entreprise</h5>
+                                                <h3 className="h5 mb-2">L'innovation au cœur de votre entreprise</h3>
                                                 <p className="mb-0">Grâce à une veille permanente autour des pratiques numériques émergentes, vous bénéficiez d'un service innovation à votre écoute et au fait de vos enjeux.</p>
                                             </div>
                                         </div>

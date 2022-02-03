@@ -48,7 +48,7 @@ const Response = ({profile}) => {
                 <div className="autodiag-result">
                     <div className="row align-items-center justify-content-between">
                         <div className="col-12 col-lg-6 mb-6 mb-lg-0">
-                            <img src={require(`../../assets/images/about/result.png`)} alt="Image" className="img-fluid" />
+                            <img src={require(`../../assets/images/about/result.png`)} alt="Succès autodiag" className="img-fluid" loading="lazy" />
                         </div>
                         <div className="col-12 col-lg-6 col-xl-5">
                             <div>

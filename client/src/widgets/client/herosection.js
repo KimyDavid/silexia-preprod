@@ -11,7 +11,7 @@ const Herosection = ({header}) => {
                             <a href="#banner" className="btn btn-primary mt-5">En savoir plus</a>
                         </div>
                         <div className="col-12 col-md-6 py-md-9 pb-5 pb-md-0 z-index-1 d-flex align-items-center ">
-                            <img className="w-100 thumbnail" src={require(`../../assets/images/about/${header.image}`)} alt="Générateur de mentions légales" />
+                            <img className="w-100 thumbnail" src={require(`../../assets/images/about/${header.image}`)} alt="Générateur de mentions légales" loading="lazy"/>
                         </div>
                     </div>
                 </div>

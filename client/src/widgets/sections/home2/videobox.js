@@ -24,7 +24,7 @@ class Videobox2 extends Component {
                     <div className="col-12 col-lg-10">
                         <div>
                             {/* Image */}
-                            <img src={require(`../../../assets/images/about/27.svg`)} className="img-fluid" alt="..." />
+                            <img src={require(`../../../assets/images/about/27.svg`)} className="img-fluid" alt="Popup vidéo" loading="lazy"/>
                             <div className="video-btn video-btn-pos"> 
                                 <a className="play-btn popup-youtube" onClick={this.openModal} ><i className="la la-play" /></a>
                                 <div className="spinner-eff">

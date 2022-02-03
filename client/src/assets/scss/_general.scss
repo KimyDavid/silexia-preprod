@@ -298,9 +298,16 @@ strong {
             margin-top: 40px;
             padding-bottom: 60px;
         }
+
+        .owl {
+            &-stage, &-item {
+                display: flex;
+            }
+        }
     }
 
     &-item {
+
         &:hover {
             cursor: pointer;
             transform: scale(1.03) translateY(-5px);
@@ -309,7 +316,7 @@ strong {
     }
 
     &-img {
-        max-height: 200px;
+        height: 100px !important;
         object-fit: contain;
         margin: auto;
     }
@@ -399,7 +406,7 @@ strong {
 
 @media (min-width: 1200px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {
-        max-width: 1210px;
+        max-width: 1210px !important;
     }
 }
 
@@ -478,6 +485,10 @@ strong {
         top: 0%;
         z-index: 100;
         background: white;
+
+        .btn {
+            font-size: 14px;
+        }
     }
 }
 
@@ -551,4 +562,12 @@ header {
             font-size: 54px;
         }
     }
+}
+
+.text-muted {
+    color: rgb(107, 121, 136) !important;
+}
+
+p {
+    color: #637191;
 }

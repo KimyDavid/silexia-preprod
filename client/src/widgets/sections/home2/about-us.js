@@ -8,14 +8,14 @@ class Memberaboutus extends Component {
                   <div className="row align-items-center">
                     <div className="col-6">
                       {/* <div className="filter-red rounded"> */}
-                        <img src={require(`../../../assets/images/about/silexia-filter-1.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" />
+                        <img src={require(`../../../assets/images/about/silexia-filter-1.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" loading="lazy"/>
                       {/* </div> */}
                     </div>
                     <div className="col-6">
                     </div>
                     <div className="col-10 ml-auto mr-auto mt-n6">
                       {/* <div className="filter-red rounded"> */}
-                        <img src={require(`../../../assets/images/about/silexia-filter-2.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" />
+                        <img src={require(`../../../assets/images/about/silexia-filter-2.png`)} className="img-fluid rounded shadow-lg" alt="Silexia" loading="lazy"/>
                       {/* </div> */}
                     </div>
                   </div>

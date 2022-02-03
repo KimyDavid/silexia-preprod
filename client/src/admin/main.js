@@ -1,23 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, lazy } from 'react'
 import { API_AUTH } from '../functions/apiRequest';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Layouts from '../layout/admin'
 import Dashboard from './dashboard'
-import Logout from './logout'
+// import Logout from './logout'
 
-import Pages from './pages'
-import Articles from './articles'
-import Offers from './offers'
-import Partners from './partners'
-import Sectors from './sectors'
-import Sizes from './sizes'
-// import Types from './types'
+// import Pages from './pages'
+// import Articles from './articles'
+// import Offers from './offers'
+// import Partners from './partners'
+// import Sectors from './sectors'
+// import Sizes from './sizes'
 import Login from './login'
-import AutodiagCategories from './autodiag/categories'
-import AutodiagQuestions from './autodiag/questions'
-import AutodiagTiers from './autodiag/globalTiers'
-import Users from './users'
+// import AutodiagCategories from './autodiag/categories'
+// import AutodiagQuestions from './autodiag/questions'
+// import AutodiagTiers from './autodiag/globalTiers'
+// import Users from './users'
+
+require("../assets/scss/_admin.scss");
+
+const Logout = lazy(() => import('./logout'));
+const Pages = lazy(() => import('./pages'));
+const Articles = lazy(() => import('./articles'));
+const Offers = lazy(() => import('./offers'));
+const Partners = lazy(() => import('./partners'));
+const AutodiagCategories = lazy(() => import('./autodiag/categories'));
+const AutodiagQuestions = lazy(() => import('./autodiag/questions'));
+const AutodiagTiers = lazy(() => import('./autodiag/globalTiers'));
+const Users = lazy(() => import('./users'));
 
 const Wrapper = ({children}) => {
     return <Layouts>{children}</Layouts>
@@ -46,8 +57,8 @@ const Main = () => {
                     <Articles />
                     <Offers />
                     <Partners />
-                    <Sectors />
-                    <Sizes />
+                    {/* <Sectors />
+                    <Sizes /> */}
                     {/* <Types /> */}
                     <AutodiagCategories />
                     <AutodiagQuestions />

@@ -26,10 +26,10 @@ const Team2 = ({partners, setSelectedPartner, setShowModal}) => {
           <div className="col-12">
             <OwlCarousel className="owl-carousel" responsive={responsive} autoplayHoverPause={true} dots={false} nav={true} autoplay={true} margin={20} > 
               { partners ? sortByOrder(partners).map((partner, i) => 
-                <div key={i} className="mb-0">
-                  <div className="p-3 partner-item d-flex align-items-center shadow bg-white rounded mt-4" onClick={() => updateSelectedPartner(partner)}>
+                <div key={i} className="mb-0 d-flex">
+                  <div className="p-3 partner-item d-flex shadow bg-white rounded mt-4" onClick={() => updateSelectedPartner(partner)}>
                     <div className="w-100 text-center">
-                      { partner.image ? <img src={partner.image} alt={`${partner.name}`} className="img-fluid mb-2 partner-img" />: '' }
+                      { partner.image ? <img src={partner.image} alt={`${partner.name}`} className="img-fluid mb-2 partner-img" loading="lazy" />: '' }
                       <h5 className="mb-2">{partner.name}</h5>            
                       <p>{partner.abstract}</p>
                       { partner.text !== '' ? 

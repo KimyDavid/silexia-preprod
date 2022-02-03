@@ -9,7 +9,7 @@ class Herosection extends Component {
             <div className="row align-items-center">
                 <div className="col-12 col-lg-5 col-lg-6 order-lg-2 mb-8 mb-lg-0">
                     {/* Image */}
-                    <img src={require(`../../assets/images/about/partners.svg`)} className="img-fluid" alt="..." />
+                    <img src={require(`../../assets/images/about/partners.svg`)} className="img-fluid" alt="Partenaires" loading="lazy" />
                 </div>
                 <div className="col-12 col-lg-6 order-lg-1">
                     {/* Heading */}

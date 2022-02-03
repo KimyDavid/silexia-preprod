@@ -18,10 +18,10 @@ class About1 extends Component {
                     loop={true}
                   >
                     <div className="item mobile-mockup-wrapper">
-                      <img className="img-fluid mobile-mockup" src={require(`../../../assets/images/screens/screen1.png`)} alt="Autodiagnostic Silexia" />
+                      <img className="img-fluid mobile-mockup" src={require(`../../../assets/images/screens/screen1.png`)} alt="Autodiagnostic Silexia" loading="lazy" width="165" height="250" />
                     </div>
                     <div className="item mobile-mockup-wrapper">
-                      <img className="img-fluid mobile-mockup" src={require(`../../../assets/images/screens/screen2.png`)} alt="Autodiagnostic Silexia" />
+                      <img className="img-fluid mobile-mockup" src={require(`../../../assets/images/screens/screen2.png`)} alt="Autodiagnostic Silexia" loading="lazy" width="165" height="250" />
                     </div>
                   </OwlCarousel>
                 </div>

@@ -56,7 +56,7 @@ class Index extends Component {
                                   </div>
                                 <div className="row align-items-center justify-content-between mb-10 mt-8">
                                   <div className="col-12 col-lg-4 mb-6 mb-lg-0">
-                                    <img src={require(`../assets/images/about/offers1.svg`)} alt="Silexia valeur innovation" className="img-fluid" />
+                                    <img src={require(`../assets/images/about/offers1.svg`)} alt="Silexia valeur innovation" className="img-fluid" loading="lazy"/>
                                   </div>
                                   <div className="col-12 col-lg-6">
                                     <div>
@@ -68,7 +68,7 @@ class Index extends Component {
                                 </div>
                                 <div className="row align-items-center justify-content-between mb-10">
                                   <div className="col-12 col-lg-4 order-lg-1 mb-6 mb-lg-0">
-                                    <img src={require(`../assets/images/about/offers2.svg`)} alt="Silexia valeur made in europe" className="img-fluid" />
+                                    <img src={require(`../assets/images/about/offers2.svg`)} alt="Silexia valeur made in europe" className="img-fluid" loading="lazy"/>
                                   </div>
                                   <div className="col-12 col-lg-6">
                                     <div>
@@ -80,7 +80,7 @@ class Index extends Component {
                                 </div>
                                 <div className="row align-items-center justify-content-between">
                                   <div className="col-12 col-lg-4 mb-6 mb-lg-0">
-                                    <img src={require(`../assets/images/about/offers3.svg`)} alt="Silexia valeur environnement" className="img-fluid" />
+                                    <img src={require(`../assets/images/about/offers3.svg`)} alt="Silexia valeur environnement" className="img-fluid" loading="lazy"/>
                                   </div>
                                   <div className="col-12 col-lg-6 mb-10">
                                     <div>
@@ -92,7 +92,7 @@ class Index extends Component {
                                 </div>
                                 <div className="row align-items-center justify-content-between">
                                   <div className="col-12 col-lg-4 order-lg-1 mb-6 mb-lg-0">
-                                    <img src={require(`../assets/images/about/offers4.svg`)} alt="Silexia valeur environnement" className="img-fluid" />
+                                    <img src={require(`../assets/images/about/offers4.svg`)} alt="Silexia valeur environnement" className="img-fluid" loading="lazy"/>
                                   </div>
                                   <div className="col-12 col-lg-6 mb-10">
                                     <div>
@@ -104,7 +104,7 @@ class Index extends Component {
                                 </div>
                                 <div className="row align-items-center justify-content-between">
                                   <div className="col-12 col-lg-4 mb-6 mb-lg-0">
-                                    <img src={require(`../assets/images/about/offers5.svg`)} alt="Silexia valeur environnement" className="img-fluid" />
+                                    <img src={require(`../assets/images/about/offers5.svg`)} alt="Silexia valeur environnement" className="img-fluid" loading="lazy" />
                                   </div>
                                   <div className="col-12 col-lg-6 mb-10">
                                     <div>

@@ -17,7 +17,7 @@ const Herosection6 = ({setShowAutodiag, token}) => {
 
         <div className="col-12 col-lg-5 col-xl-6 order-lg-2 mb-8 mb-lg-0">
           {/* Image */}
-          <img src={require(`../../assets/images/hero/04.svg`)} className="img-fluid" alt="..." />
+          <img src={require(`../../assets/images/hero/04.svg`)} className="img-fluid" alt="Silexia, accélerateur de transition numérique" loading="lazy" />
         </div>
         <div className="col-12 col-lg-7 col-xl-6 order-lg-1">
           {/* Heading */}

@@ -39,7 +39,7 @@ const Newsletter = () => {
 
     return (
         <div className="subscribe-form bg-warning-soft p-5 rounded">
-            <h5 className="mb-2 text-white">Newsletter</h5>
+            <p className="mb-2 text-white h5">Newsletter</p>
             <h6 className="text-light">Souscrivez à notre newsletter pour ne rien rater !</h6>
             <form id="contact-form" className="row" method="post" onSubmit={handleSubmit(submitForm)}>
                 { message ? <div className="messages col-12">

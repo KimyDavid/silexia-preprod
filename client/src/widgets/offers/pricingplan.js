@@ -39,7 +39,7 @@ const Pricingplan = ( {title, offer} ) => {
               <div className="row align-items-center justify-content-between mb-10">
                 <div className="col-12 col-md-12 col-lg-6 mb-8 mb-lg-0">
                   <div className="mb-0">
-                    { item.image ? <img src={require(`../../assets/images/offers/offre_${item.image}.svg`)} className="img-fluid w-75 mb-5" alt={`Offre Silexia ${item.title}`} /> : '' }
+                    { item.image ? <img src={require(`../../assets/images/offers/offre_${item.image}.svg`)} className="img-fluid w-75 mb-5" alt={`Offre Silexia ${item.title}`}  loading="lazy"/> : '' }
                     <h2 className="mt-3">{item.title}</h2>
                     <p className="lead mb-0">{item.description}</p>
                   </div>

@@ -1,4 +1,4 @@
-import React, { Fragment , useState, useEffect} from 'react';
+import React, { Fragment , useState, useEffect, lazy } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 import '../App.css';
@@ -8,37 +8,37 @@ import Header from '../layout/header/header';
 import HeaderConnected from '../layout/header/header_connected';
 import Footer from '../layout/footer/footer';
 import Scrolltop from '../layout/back-to-top';
-import Home from './home';
-
 import Home2 from './home2';
-import Offers from './offers';
-import Offer from './offer';
-import AboutUs from './about-us';
-import partners from './partners';
-import LegalGenerator from './legal-generator';
 
-import BlogList from './blog/bloglist';
-import BlogSingle from './blog/blogsingle';
+// import Home from './home';
+// import Offers from './offers';
+// import Offer from './offer';
+// import AboutUs from './about-us';
+// import partners from './partners';
+// import LegalGenerator from './legal-generator';
 
-import Login from './account/login';
-import ForgotPassword from './account/forgot-password';
-import ResetPassword from './account/reset-password';
-import VerifAccount from './account/verif-account';
-import ProfileEdit from './account/edit';
-import ProfileLogout from './account/logout';
-import Profile from './account/profile';
-import AutodiagResult from './account/result';
+// import BlogList from './blog/bloglist';
+// import BlogSingle from './blog/blogsingle';
 
-import Page from './legals/page';
+// import Login from './account/login';
+// import ForgotPassword from './account/forgot-password';
+// import ResetPassword from './account/reset-password';
+// import VerifAccount from './account/verif-account';
+// import ProfileEdit from './account/edit';
+// import ProfileLogout from './account/logout';
+// import Profile from './account/profile';
+// import AutodiagResult from './account/result';
 
-import Maintenance from './utilities/maintenance';
-import ComingSoon from './utilities/comingsoon';
+// import Page from './legals/page';
+
+// import Maintenance from './utilities/maintenance';
+// import ComingSoon from './utilities/comingsoon';
 import PageNotFound from './utilities/404';
 
 import CookieConsent from "react-cookie-consent";
 import { API_GET } from '../functions/apiRequest';
 
-import Client from './client';
+// import Client from './client';
 import Associations from '../page_content/Associations';
 import Avocats from '../page_content/Avocats';
 
@@ -46,6 +46,32 @@ function App() {
   const websiteInProgress = false;
   const [token, setToken] = useState(null);
   const [showAutodiag, setShowAutodiag] = useState(false);
+
+
+    // lazyload component
+    const Home = lazy(() => import('./home'));
+    const Offers = lazy(() => import('./offers'));
+    const Offer = lazy(() => import('./offer'));
+    const AboutUs = lazy(() => import('./about-us'));
+    const partners = lazy(() => import('./partners'));
+    const LegalGenerator = lazy(() => import('./legal-generator'));
+    const BlogList = lazy(() => import('./blog/bloglist'));
+    const BlogSingle = lazy(() => import('./blog/blogsingle'));
+    const Login = lazy(() => import('./account/login'));
+    const ForgotPassword = lazy(() => import('./account/forgot-password'));
+    const ResetPassword = lazy(() => import('./account/reset-password'));
+    const VerifAccount = lazy(() => import('./account/verif-account'));
+    const ProfileEdit = lazy(() => import('./account/edit'));
+    const ProfileLogout = lazy(() => import('./account/logout'));
+    const Profile = lazy(() => import('./account/profile'));
+    const AutodiagResult = lazy(() => import('./account/result'));
+    const Page = lazy(() => import('./legals/page'));
+
+    const Maintenance = lazy(() => import('./utilities/maintenance'));
+    const ComingSoon = lazy(() => import('./utilities/comingsoon'));
+
+    const Client = lazy(() => import('./client'));
+
 
   useEffect(() => {
     API_GET('auth').then(result => {

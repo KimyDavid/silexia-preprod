@@ -9,6 +9,7 @@ const Avatars = ({items}) => {
           src={item}
           alt="media"
           className={`h-8 w-8 shadow-outline rounded-full -ml-3`}
+          loading="lazy"
         />
       ))}
     </div>

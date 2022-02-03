@@ -44,7 +44,7 @@ class Aboutus extends Component {
                                 {/* / .row */}
                                 <div className="row align-items-center justify-content-between mb-10 mt-3 mt-md-8">
                                   <div className="col-8 col-lg-4 mb-3 mb-lg-0">
-                                    <img src={require(`../assets/images/about/innovation.svg`)} alt="Silexia valeur innovation" className="img-fluid" />
+                                    <img src={require(`../assets/images/about/innovation.svg`)} alt="Silexia valeur innovation" className="img-fluid" loading="lazy" />
                                   </div>
                                   <div className="col-12 col-lg-6">
                                     <div>
@@ -56,7 +56,7 @@ class Aboutus extends Component {
                                 </div>
                                 <div className="row align-items-center justify-content-between mb-10">
                                   <div className="col-8 col-lg-4 order-lg-1 mb-6 mb-lg-0">
-                                    <img src={require(`../assets/images/about/europe.svg`)} alt="Silexia valeur made in europe" className="img-fluid" />
+                                    <img src={require(`../assets/images/about/europe.svg`)} alt="Silexia valeur made in europe" className="img-fluid" loading="lazy"/>
                                   </div>
                                   <div className="col-12 col-lg-6">
                                     <div>
@@ -68,7 +68,7 @@ class Aboutus extends Component {
                                 </div>
                                 <div className="row align-items-center justify-content-between">
                                   <div className="col-8 col-lg-4 mb-6 mb-lg-0">
-                                    <img src={require(`../assets/images/about/environnement.svg`)} alt="Silexia valeur environnement" className="img-fluid" />
+                                    <img src={require(`../assets/images/about/environnement.svg`)} alt="Silexia valeur environnement" className="img-fluid" loading="lazy"/>
                                   </div>
                                   <div className="col-12 col-lg-6 mb-10">
                                     <div>

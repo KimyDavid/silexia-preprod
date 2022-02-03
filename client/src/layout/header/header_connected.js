@@ -23,7 +23,6 @@ class Header extends React.Component {
         super(props);
         this.state = {
             isOpen: false,
-            loader: true,
             articles: {},
         }
         this.toggle = this.toggle.bind(this);
@@ -48,21 +47,16 @@ class Header extends React.Component {
     }
 
     render() {
-        if (this.state.loader == true) {
-            setTimeout(function () {
-                this.setState({ loader: false });
-            }.bind(this), 2000);
-        }
         return (
             <>
                 <header className="site-header header-fixed">
-                    {(this.state.loader == false) ?
+                    {
                         <div id="header-wrap">
                             <div className="container">
                                 <div className="row">
                                     {/*menu start*/}
                                     <div className="col d-flex align-items-center justify-content-between"> 
-                                        <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.png`)} alt="Logo Silexia" /></Link>
+                                        <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.png`)} alt="Logo Silexia"  width="120" height="40"/></Link>
                                         <Navbar className="navbar-expand-lg navbar-light ml-auto">
                                                 <NavbarToggler onClick={this.toggle} />
                                                 <Collapse isOpen={this.state.isOpen} className=" navbar-collapse" navbar>
@@ -101,7 +95,7 @@ class Header extends React.Component {
                                                                 :
                                                                 <NavItem key={index} onClick={this.toggle}>
                                                                     { navLink.path.includes('://') ?
-                                                                        <NavLink onClick={this.toggle} target="_blank" href={navLink.path}> {navLink.menu_title}</NavLink>
+                                                                        <NavLink onClick={this.toggle} target="_blank" href={navLink.path} rel="noopener" rel="noreferrer"> {navLink.menu_title}</NavLink>
                                                                     : 
                                                                         <NavLink onClick={this.toggle} href={navLink.path}> {navLink.menu_title}</NavLink>
                                                                     }
@@ -116,13 +110,6 @@ class Header extends React.Component {
                                     </div>
                                     {/*menu end*/}
                                 </div>
-                            </div>
-                        </div>
-                        :
-                        <div id="ht-preloader">
-                            <div className="loader clear-loader">
-                                <span />
-                                <p>Silexia</p>
                             </div>
                         </div>
                     }

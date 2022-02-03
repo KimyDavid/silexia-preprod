@@ -40,7 +40,7 @@ class ComingSoon extends Component {
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-12 md-mt-5 text-lg-right">
-                                            <img className="img-fluid d-inline" src={require(`../../../assets/images/coming-soon-img.png`)} alt="" />
+                                            <img className="img-fluid d-inline" src={require(`../../../assets/images/coming-soon-img.png`)} alt="Coming Soon" loading="lazy"/>
                                         </div>
                                     </div>
                                 </div>

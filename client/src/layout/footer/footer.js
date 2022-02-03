@@ -55,16 +55,16 @@ class Footer extends Component {
                         <Row className="mt-5" >
                             <Col className="col-12 col-sm-6">
                                 <Link className="footer-logo text-white h2 mb-0" to="/">
-                                    <img className="logo img-fluid" src={require(`../../assets/images/logo_white.png`)} alt="Logo Silexia" />
+                                    <img className="logo img-fluid" src={require(`../../assets/images/logo_white.png`)} alt="Logo Silexia" loading="lazy" width="120" height="40"/>
                                 </Link> 
                             </Col>
                             <Col className="col-12 col-sm-6 mt-6 mt-sm-0">
                             <ul className="list-inline mb-0">
-                                <li className="list-inline-item"><a className="text-light ic-2x" href="tel:0635266607"><i className="la la-phone" /></a> 
+                                <li className="list-inline-item"><a className="text-light ic-2x" href="tel:0635266607" title="Téléphone"><i className="la la-phone" /></a> 
                                 </li>
-                                <li className="list-inline-item"><a className="text-light ic-2x" href="mailto:contact@silexia.fr"><i className="la la-envelope" /></a> 
+                                <li className="list-inline-item"><a className="text-light ic-2x" href="mailto:contact@silexia.fr" title="Email"><i className="la la-envelope" /></a> 
                                 </li>
-                                <li className="list-inline-item"><a className="text-light ic-2x" href="https://www.linkedin.com/company/silexias/"><i className="la la-linkedin" /></a> 
+                                <li className="list-inline-item"><a className="text-light ic-2x" href="https://www.linkedin.com/company/silexias/" title="Linkdin"><i className="la la-linkedin" /></a> 
                                 </li>
                             </ul>
                             </Col>

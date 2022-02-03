@@ -14,10 +14,18 @@ class Scrolltop extends Component {
         window.scroll({top: 0, left: 0, behavior: 'smooth' })
     }
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
+        if (window.innerWidth < 768) {
+            document.addEventListener('touchstart', this.handleScroll, {passive: true});
+        } else {
+            window.addEventListener('scroll', this.handleScroll);
+        }
     }
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
+        if (window.innerWidth < 768) {
+            document.addEventListener('touchstart', this.handleScroll, {passive: true});
+        } else {
+            window.removeEventListener('scroll', this.handleScroll);
+        }
     }
     handleScroll() {
         var scrollTop = (document.documentElement && document.documentElement.scrollTop) ||
@@ -36,9 +44,9 @@ class Scrolltop extends Component {
     render() {
         return (
             <div className={`scroll-top-to-bottom ${(this.state.visible) ? 'scroll-visible' : '' }`} onClick={this.ToptoBottom}>
-                <a className="smoothscroll" >
+                <p className="smoothscroll" >
                     <i className="las la-angle-up" />
-                </a>
+                </p>
             </div>
         );
     }
