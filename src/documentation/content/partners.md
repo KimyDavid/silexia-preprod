@@ -13,6 +13,7 @@ text                  | text          | HTML of content to display
 image                 | url           | Url of illustration
 url                   | url           | Url of partner's website
 order                 | int           | Order
+page                  | string        | Page to show partner on
 
 ### PartnerType
 
@@ -38,7 +39,27 @@ order                 | int           | Order
 * **Success Response:**
 
   * **Code:** 200
-    **Content:** `[ [object PartnerType] ]`
+    **Content:** `[ [object Partner] ]`
+
+---
+
+### Get partners by page
+
+ Retrieve partners by page.
+
+* **URL**
+
+  [GET] /v1/partners/page/:page
+
+*  **URL Params**
+
+   ***Required:***
+   `page=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200
+    **Content:** `[ [object Partner] ]`
 
 ---
 
@@ -83,6 +104,9 @@ Admin only.
    `partner_type=[int]`
    `order=[int]`
 
+  ***Optional:***
+   `page=[string]`
+
 * **Success Response:**
 
   * **Code:** 201
@@ -116,6 +140,7 @@ Admin only.
    `partner_type=[int]`
    `order=[int]`
    `image=[image]`
+   `page=[string]`
 
 * **Success Response:**
 
@@ -189,7 +214,7 @@ Admin only.
 
 ---
 
-### Update partner
+### Update partner type
 
  Update an existing partner type.
 

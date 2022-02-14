@@ -1,5 +1,5 @@
 import db from '#config/db.js';
-
+import mysql from 'mysql';
 import { Partner, PartnerType } from '#models/content/partner.js';
 
 function getPartners(data, callback) {
@@ -15,6 +15,9 @@ function getPartners(data, callback) {
       strsql += ' FROM partners_type pt';
       strsql += ' LEFT JOIN partners ON partners.partner_type = pt.id AND partners.deleted IS NULL';
       strsql += ' WHERE pt.deleted IS NULL';
+      if (data.page) {
+        strsql += ' AND pt.page = ' + mysql.escape(data.page)
+      }
       strsql += ' GROUP BY pt.id';
       strsql += ' ORDER BY pt.order';
 

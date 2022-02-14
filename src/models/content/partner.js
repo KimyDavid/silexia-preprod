@@ -14,6 +14,7 @@ function Partner(data) {
     this.abstract           = data.abstract
     this.text               = data.text
     this.order              = data.order
+    this.page               = data.page
 }
 
 function PartnerType(data) {
@@ -42,7 +43,8 @@ const createPartnerSchema = yup.object({
     url:yup.string().url(),
     abstract:yup.string().required(),
     order: yup.number().integer().positive().required(),
-    partner_type: yup.number().required().exists('Partners_Type')
+    partner_type: yup.number().required().exists('Partners_Type'),
+    page: yup.string(),
 })
 
 
@@ -54,7 +56,8 @@ const updatePartnerSchema = yup.object({
     url:yup.string().url(),
     abstract:yup.string(),
     order: yup.number().integer().positive(),
-    partner_type: yup.number().exists('Partners_Type')
+    partner_type: yup.number().exists('Partners_Type'),
+    page: yup.string(),
 })
 
 
