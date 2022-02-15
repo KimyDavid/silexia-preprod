@@ -30,6 +30,14 @@ router.route('/partners/:id_partner')
     })
   })
 
+router.route('/partners/page/:page')
+  .get(function(req, res) {
+    partnersController.getPartner({page:req.params.page}, function(err, results){
+      res.status(201).json(results)
+    })
+  })
+
+
 
 routes.api(
   router, 
