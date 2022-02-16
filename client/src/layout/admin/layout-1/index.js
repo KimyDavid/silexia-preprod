@@ -1,6 +1,6 @@
 import React from 'react'
 import {useSelector, shallowEqual} from 'react-redux'
-import Loader from '../../../components/loader'
+// import Loader from '../../../components/loader'
 import LeftSidebar from '../../../components/left-sidebar'
 import Navbar from '../../../components/navbar'
 import {NotificationContainer} from 'react-notifications'
@@ -38,7 +38,7 @@ const Layout1 = ({children}) => {
         data-left-sidebar={leftSidebar}
         data-right-sidebar={rightSidebar}
         className={`${background === 'dark' ? 'dark-mode' : 'default-mode'}`}>
-        <Loader />
+        {/* <Loader /> */}
         <NotificationContainer />
         <div className="wrapper">
           <LeftSidebar />

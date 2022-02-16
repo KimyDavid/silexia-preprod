@@ -64,6 +64,12 @@ const initialState = [
         title: 'Partenaires',
         items: []
       },
+      {
+        url: '/admin/projects',
+        icon: <FiCompass size={20} />,
+        title: 'Projets client',
+        items: []
+      },
     ]
   },
   {

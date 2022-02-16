@@ -64,6 +64,13 @@
         "update": "Modifier un type de partenaire",
         "delete": "Supprimer ce type de partenaire"
     },
+    "projects": {
+        "label": "Projets client",
+        "all": "Tous les projets",
+        "new": "Créer un nouveau projet",
+        "update": "Modifier un projet",
+        "delete": "Supprimer ce projet"
+    },
     "autodiag": {
         "categories": {
             "label": "Catégories de questions",

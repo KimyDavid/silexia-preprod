@@ -23,6 +23,10 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
                 delete data[key];
             }
         }
+
+        if (key === 'page' && data[key].length > 0) {
+            data[key] = data[key].join();
+        }
     }
 
     if (isFormData) {

@@ -93,7 +93,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
         {items.map((item, i) => {
           if (item.type === 'checkbox') {
             return (
-              <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
+              <div key={i} className={`${item.hidden ? 'hidden' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <div className="flex items-center justify-start space-x-2">
                   {item.options.map((option, j) => (
@@ -102,6 +102,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                         {...register(item.name, item.error)}
                         type="checkbox"
                         value={option.value}
+                        defaultChecked={item.value.includes(option.value)}
                         className={`form-checkbox h-4 w-4 ${
                           errors[item.name] ? 'text-red-500' : ''
                         }`}
@@ -120,7 +121,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           }
           if (item.type === 'radio') {
             return (
-              <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
+              <div key={i} className={`${item.hidden ? 'hidden' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <div className="flex items-center justify-start space-x-2">
                   {item.options.map((option, j) => (
@@ -147,7 +148,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           }
           if (item.type === 'select') {
             return (
-              <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
+              <div key={i} className={`${item.hidden ? 'hidden' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <select
                   {...register(item.name, item.error)}
@@ -169,7 +170,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           if (item.type === 'textarea') {
             return (
               
-                <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
+                <div key={i} className={`${item.hidden ? 'hidden' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
                   <textarea
                     {...register(item.name, item.error)}
@@ -191,7 +192,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           if (item.type === 'wysiwyg') {
             return (
               
-                <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
+                <div key={i} className={`${item.hidden ? 'hidden' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
 
                   <Quill item={item} onChange={onEditorStateChange} />
@@ -215,7 +216,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
           if (item.type === 'file') {
             return (
               
-                <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
+                <div key={i} className={`${item.hidden ? 'hidden' : ''} form-element`}>
                   {item.label && <div className="form-label">{item.label}</div>}
                   <div className="mb-4">
                     <img src={currentImage} width="300" alt="Image uploadée" loading="lazy"/>
@@ -244,9 +245,10 @@ const FormValidation = ({items, onSubmit, alerts}) => {
               
             )
           }
+
           return (
             
-              <div key={i} className={`${item.hidden ? 'd-none' : ''} form-element`}>
+              <div key={i} className={`${item.hidden ? 'hidden' : ''} form-element`}>
                 {item.label && <div className="form-label">{item.label}</div>}
                 <input
                   {...register(item.name, item.error)}
