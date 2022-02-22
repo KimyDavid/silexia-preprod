@@ -35,7 +35,8 @@ function getPartner(data, callback) {
 
   var strsql = ' SELECT pt.* ';
       strsql += ' FROM partners pt';
-      strsql += ' WHERE pt.deleted IS NULL AND pt.id = ' + data.id;
+      strsql += ' WHERE pt.deleted IS NULL';
+      strsql += ' AND pt.id = ' + data.id;
       
       db.query(strsql, null, function (error, results) { 
         callback(error, results.length === 1 ? new Partner(results[0]) : null)
@@ -43,7 +44,24 @@ function getPartner(data, callback) {
 
 }
 
+function getPartnersByPage(data, callback) {
+
+  var strsql = ' SELECT pt.* ';
+      strsql += ' FROM partners pt';
+      strsql += ' WHERE pt.deleted IS NULL';
+      strsql += ' AND pt.page = ' + mysql.escape(data.page);
+      
+      db.query(strsql, null, function (error, results) { 
+        for(let i=0; i<results.length; i++){
+          results[i] = new Partner(results[i]) 
+        }
+        callback(error, results)
+      });
+
+}
+
 export default { 
   getPartners,
-  getPartner
+  getPartner,
+  getPartnersByPage
 }
