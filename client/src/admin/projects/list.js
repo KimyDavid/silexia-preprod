@@ -25,7 +25,7 @@ const ListElement = ({ slug, fields }) => {
 
     function deleteItem(id) {
         if (window.confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
-            API_REMOVE(`${slug}/${id}`);
+            API_REMOVE(`partners/${id}`);
         }
     }
 

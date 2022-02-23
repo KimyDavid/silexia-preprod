@@ -65,6 +65,10 @@ const Projects = () => {
         type: 'radio',
         options: [
             {
+                label:'Aucune',
+                value: 'none',
+            },
+            {
                 label:'Associations',
                 value: 'asso',
             },

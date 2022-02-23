@@ -130,7 +130,7 @@ const FormValidation = ({items, onSubmit, alerts}) => {
                         type="radio"
                         value={option.value}
                         {...register(item.name, item.error)}
-                        defaultChecked={item.value.includes(option.value)}
+                        defaultChecked={item.value ? item.value.includes(option.value) : false}
                         className={`form-radio h-4 w-4 ${
                           errors[item.name] ? 'text-red-500' : ''
                         }`}
