@@ -3,6 +3,7 @@
  */
 export default [
    {
+        "id": "asso",
         "header": {
             "subtitle": "au service de votre asso",
             "description": "Nous rendons accessible le numérique à votre association en construisant avec vous votre stratégie digitale en termes de gestion, de communication et de coordination de vos parties-prenantes.",

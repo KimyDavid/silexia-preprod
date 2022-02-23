@@ -208,10 +208,10 @@ strong {
 
 .portfolio {
     &-title {    
-        padding: 15px 30px;
-        opacity: 1;
-        visibility: visible;
-        transform: translate3d(0, 53%, 0);
+        padding: 15px 30px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translate3d(0, 53%, 0) !important;
 
         h6 {
             margin-bottom: 15px;
@@ -224,6 +224,12 @@ strong {
         img {
             height: 100%;
             object-fit: contain;
+        }
+
+        &:hover {
+            .portfolio-title {
+                transform: translate3d(0, 0%, 0) !important;
+            }
         }
     }
 }
@@ -339,9 +345,9 @@ strong {
 
 .animated-waves {
     animation: wave 6s linear infinite;
-    width: 300vw;
-    right: 0;
-    left: -100vw;
+    width: 300vw !important;
+    right: 0 !important;
+    left: -100vw !important;
 }
 
 @keyframes wave {
@@ -549,7 +555,7 @@ header {
 .client {
     &-banner {
         &-icon {
-            display: flex;
+            display: flex !important;
             justify-content: center;
             align-items: center;
             background: white;

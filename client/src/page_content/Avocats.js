@@ -3,6 +3,7 @@
  */
 export default [
    {
+        "id": "avocats",
         "header": {
             "subtitle": "au coeur de votre cabinet",
             "description": "Nous facilitons l'intégration du numérique dans votre cabinet pour vous aider à faire face aux évolutions du marché du droit et du métier d'avocat !",
