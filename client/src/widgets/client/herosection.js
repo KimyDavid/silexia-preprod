@@ -5,12 +5,12 @@ const Herosection = ({header}) => {
             <section className="position-relative overflow-hidden py-0">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 col-md-6 py-md-9 pb-5 pb-md-0 z-index-1">
-                            <h1 className="h2 mt-8 font-w-5 text-primary">PRÊT À METTRE LE NUMÉRIQUE <span className="font-w-5 text-black d-block">{header.subtitle} ?</span></h1>
+                        <div className="col-12 col-md-7 py-md-9 pb-5 pb-md-0 z-index-1">
+                            <h1 className="h2 mt-8 font-w-5 text-primary">PRÊT À METTRE LE NUMÉRIQUE <span className="font-w-5 h3 text-black d-block">{header.subtitle} ?</span></h1>
                             <p className="h6">{header.description}</p>
                             <a href="#banner" className="btn btn-primary mt-5">En savoir plus</a>
                         </div>
-                        <div className="col-12 col-md-6 py-md-9 pb-5 pb-md-0 z-index-1 d-flex align-items-center ">
+                        <div className="col-12 col-md-5 py-md-9 pb-5 pb-md-0 z-index-1 d-flex align-items-center ">
                             <img className="w-100 thumbnail" src={require(`../../assets/images/about/${header.image}`)} alt="Générateur de mentions légales" loading="lazy"/>
                         </div>
                     </div>
