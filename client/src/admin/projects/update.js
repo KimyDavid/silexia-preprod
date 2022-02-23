@@ -25,7 +25,6 @@ const UpdateElement = ({slug, fields, method = 'PATCH'}) => {
 
   useEffect(() => {
     API_GET(`partners/${id}`).then(response => {
-        console.log(response);
         fields.map((_field) => {
             _field.value = response[_field['name']] ?? '';
             _field.error = {}

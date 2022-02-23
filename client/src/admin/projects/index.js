@@ -62,7 +62,7 @@ const Projects = () => {
         label: 'Page',
         error: {required: 'Merci d\'ajouter une page'},
         name: 'page',
-        type: 'checkbox',
+        type: 'radio',
         options: [
             {
                 label:'Associations',

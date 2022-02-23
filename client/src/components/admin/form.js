@@ -24,9 +24,9 @@ const FormElement = ({url, fields, method = 'POST', isFormData = false}) => {
             }
         }
 
-        if (key === 'page' && data[key].length > 0) {
-            data[key] = data[key].join();
-        }
+        // if (key === 'page' && data[key].length > 0) {
+        //     data[key] = data[key].join();
+        // }
     }
 
     if (isFormData) {
