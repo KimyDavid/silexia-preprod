@@ -537,7 +537,7 @@ header {
 .navbar-nav {
     .nav {
         &-link {
-            text-transform: inherit;
+            text-transform: inherit !important;
         }
     }
 }
