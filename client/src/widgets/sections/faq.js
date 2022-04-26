@@ -26,6 +26,7 @@ const Faq = ({setShowAutodiag, token}) =>  {
                 }
             )
         });
+        document.querySelector('#faq-sections-google-schema').append(JSON.stringify(schemaGoogle));
     }, []);
 
         return (
@@ -45,8 +46,7 @@ const Faq = ({setShowAutodiag, token}) =>  {
                     )) }
                 </Accordion>
 
-                <script type="application/ld+json">
-                    { JSON.stringify(schemaGoogle) }
+                <script id="faq-section-google-schema" type="application/ld+json">
                 </script>
                 
                 {token ? '' : <a onClick={() => setShowAutodiag(true)} className="btn btn-secondary mt-5 ml-auto">Répondre au questionnaire</a> }

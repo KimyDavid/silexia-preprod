@@ -25,6 +25,7 @@ const Faq = ({questions}) =>  {
                     }
                 )
             });
+            document.querySelector('#faq-client-google-schema').append(JSON.stringify(schemaGoogle));
         }, []);
 
         return (
@@ -44,8 +45,7 @@ const Faq = ({questions}) =>  {
                     )) }
                 </Accordion>
 
-                <script type="application/ld+json">
-                    { JSON.stringify(schemaGoogle) }
+                <script id="faq-client-google-schema" type="application/ld+json">
                 </script>
             </>
         );

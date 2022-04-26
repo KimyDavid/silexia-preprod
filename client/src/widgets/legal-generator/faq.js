@@ -24,8 +24,9 @@ const Faq = () =>  {
                         "text": item.short_answer
                     }
                 }
-            )
+            );
         });
+        document.querySelector('#faq-legal-google-schema').append(JSON.stringify(schemaGoogle));
     }, []);
 
     return (
@@ -44,8 +45,7 @@ const Faq = () =>  {
                     </AccordionItem>
                 )) }
             </Accordion>
-            <script type="application/ld+json">
-                { JSON.stringify(schemaGoogle) }
+            <script id="faq-legal-google-schema" type="application/ld+json">
             </script>
         </>
     );
