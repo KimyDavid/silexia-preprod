@@ -9,7 +9,7 @@ export default [
       "child_routes": [
          {
             "path": "/about-us",
-            "menu_title": "Qui commes-nous ?",
+            "menu_title": "Qui sommes-nous ?",
          },
          {
             "path": "/partners",
