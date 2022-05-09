@@ -149,6 +149,7 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
             />
 
             <Modal
+                id={"popup-autodiag"}
                 size="xl"
                 body={<Autodiag />}
                 closeButton="Fermer"

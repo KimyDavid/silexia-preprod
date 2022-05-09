@@ -73,25 +73,22 @@ const Autodiag = () => {
         }
 
     return (
-        <div>
-            {/*hero section start*/}
+        <>
             <section className="position-relative py-2">
                 <Pageheading title={"Autodiagnostic de votre entreprise"} />
-                { autodiag ? <p className="lead text-black text-center">Un questionnaire en {progressionTotal} questions</p> : '' }
+                { autodiag ? <p className="autodiag-popup-subtitle lead text-black text-center mb-0">Un questionnaire en {progressionTotal} questions</p> : '' }
             </section>
-            {/*hero section end*/}
 
             {/*body content start*/}
-            <section className={`${autodiagLoading ? 'loading' : ''} page-content py-2`}>
-                <div className="container px-0 px-lg-2">
-                    <div className="col-12 px-0 px-lg-2">
+            <section className={`${autodiagLoading ? 'loading' : ''} page-content py-2 d-flex`}>
+                <div className="px-0 px-lg-2 d-flex">
+                    <div className="autodiag-content col-12 px-0 px-lg-2">
                         { autodiag ? 
                         <>
                             
                             { profile ? '' : 
                                 <>
                                     <Steps steps={autodiag} currentStep={category} goStep={goToCategory}/>
-                                    { autodiagToken[0] && category === 0 ? <p className="text-center mb-1 font-italic">(Autodiag préremplis grâce à vos précédentes réponses.)</p> : '' }
                                 </>
                             }
                             { autodiag[category] && !autodiagToken.id ?
@@ -103,6 +100,7 @@ const Autodiag = () => {
                                     goPrevCategory={goPrevCategory} 
                                     currentAnswers={autodiagToken[category]} />
                             : '' }
+                            {/* { autodiagToken[0] && category === 0 ? <p className="text-center mb-1 font-italic">(Autodiag préremplis grâce à vos précédentes réponses.)</p> : '' } */}
                             { message ? <p className="error message">{message}</p> : '' }
                             { profile ?
                                 <Result profile={profile}/>
@@ -118,7 +116,7 @@ const Autodiag = () => {
                 </div>
             </section>
             {/*body content end*/}
-        </div>
+        </>
 
         
     );

@@ -119,15 +119,7 @@ const Pageheading = ({title, showBreadcumbs, foldername}) => {
                 <Particles id="particles-js" params={particlesOptions} />
                 <div className="row  text-center">
                     <div className="col">
-                        <h2>{title}</h2>
-                        { showBreadcumbs ? <nav aria-label="breadcrumb">
-                            <ol className="breadcrumb justify-content-center bg-transparent p-0 m-0">
-                                <li className="breadcrumb-item"><Link className="text-dark" to="/">Accueil</Link>
-                                </li>
-                                { foldername ? <li className="breadcrumb-item">{foldername}</li> : '' }
-                                <li className="breadcrumb-item active text-primary" aria-current="page">{title}</li>
-                            </ol>
-                        </nav> : '' }
+                        <h2 className="h3 font-w-5 mb-0 autodiag-popup-title">{title}</h2>
                     </div>
                 </div>
             </div>

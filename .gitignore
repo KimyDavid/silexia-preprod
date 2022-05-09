@@ -24,3 +24,5 @@ client/dist
 .DS_Store
 
 vendor/*
+client/src/constants/Config.js
+src/controllers/utils/mail.controllers.js

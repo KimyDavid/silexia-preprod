@@ -1,9 +1,9 @@
-.autodiag {
+.silexia .autodiag {
     &-container {
-        border: 1px solid $color-red;
-        border-radius: 15px;
-        overflow: hidden;
+        display: flex;
+        flex-direction: column;
         animation: slideIn 1s ease forwards;
+        flex: 1;
     }
 
     @keyframes slideIn {
@@ -18,12 +18,18 @@
         }
     }
 
+    &-content {
+        display: flex;
+        flex-direction: column;
+    }
+
     &-header {
-        background: $color-red;
-        padding: 10px 30px;
+        color: $color-red;
+        margin-bottom: 50px;
 
         @media (max-width: $md) {
-            padding: 10px 15px;
+            // margin-bottom: 40px;
+            display: none;
         }
 
         p {
@@ -33,12 +39,16 @@
 
     &-category {
         &-title {
-            font-size: 18px;
-            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            color: $color-red;
+            display: inline-block;
+            border-radius: 3px;
         }
+        
         &-description {
             font-size: 14px;
-            color: white;
+            color: $color-red;
             font-style: italic;
             font-weight: 200;
 
@@ -48,33 +58,38 @@
         }
     }
 
-    &-number {
-        width: 40px;
-        height: 40px;
-        background: white;
-        border-radius: 100%;
-        color: $color-red;
-        font-weight: bold;
+    &-question {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        line-height: 1;
-    }
+        flex-direction: column;
 
-    &-body {
-        padding: 30px;
+        p.text-center {
+            line-height: 1.2;
+            max-width: 600px;
+            margin: 0 auto 30px;
 
-        @media (max-width: $lg) {
-            padding: 20px 10px 0 10px;
+            @media (max-width: $md) {
+                margin: 0 auto 15px;
+            }
         }
     }
 
-    &-footer {
-        padding: 10px 30px;
-        border-top: 1px solid $color-red;
+    &-body {
+        padding: 0;
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
 
-        @media (max-width: $md) {
-            padding: 10px 15px;
+    &-footer {
+        font-size: 12px;
+        margin-top: auto;
+
+        & > div:first-child {
+            @media (min-width: $sm) {
+                order: -1 !important;
+            }
         }
     }
 
@@ -108,29 +123,56 @@
                 }
             }
         }
+
+        &-wrapper {
+            position: relative;
+            p {
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 12px;
+            }
+        }
     }
 
     &-question {
         &-title {
-            margin-bottom: 0;
-            font-size: 18px;
+            font-size: 23px;
             color: $color-black;
+            text-align: center;
+            max-width: 600px;
+            margin: auto auto 5px;
+            line-height: 1.3;
 
             @media (max-width: $md) {
-                font-size: 14px;
+                font-size: 20px;
             }
         }
 
         &-before {
-            padding: 2px 8px;
-            margin-bottom: 20px;
+            padding: 8px 0;
+            background: #e3e3e3;
+            width: 100%;
             display: inline-flex;
             font-size: 14px;
             align-items: center;
+            margin-bottom: 0;
+            justify-content: center;
+            color: #656579 !important;
+            transition: opacity .5s ease;
+
+            &.disabled {
+                opacity: 0.6;
+                pointer-events: none;
+            }
+
+            &:hover {
+                opacity: 0.6;
+            }
 
             i {
                 font-size: 20px;
-                margin-right: 5px;
             }
         }
     }
@@ -142,7 +184,8 @@
             flex-wrap: wrap;
             list-style: none;
             padding-left: 0;
-            margin-top: 30px;
+            margin-top: auto;
+            margin-bottom: 30px;
 
             @media (max-width: $lg) {
                 margin-top: 10px;
@@ -151,15 +194,13 @@
 
         &-box {
             flex: 1 33%;
+            max-width: calc(50% - 8px);
             flex-wrap: wrap;
-            margin: 6px;
-            border-radius: 4px;
-            padding: 12px;
-            background:#cc4c4414;
+            margin: 4px;
 
-            @media (max-width: $lg) {
+            @media (max-width: $md) {
                 flex: 1 100%;
-                padding: 8px 4px;
+                max-width: unset;
             } 
         }
 
@@ -167,32 +208,44 @@
 
         &-label {
             position: relative;
-            padding-top: 25px;
             cursor: pointer;
             transition: color .4s ease;
             font-size: 13px;
             margin: 0;
+            text-align: left;
+            line-height: 1.4;
+            border-radius: 4px;
+            padding: 12px;
+            background:#cc4c4414;
+            padding-left: 40px;
+            transition: background-color .5s ease;
+            height: 100%;
+            width: 100%;
+
+            @media (max-width: $lg) {
+                padding: 8px 4px 8px 40px;
+            } 
 
             &::before, &::after {
                 position: absolute;
                 content: '';
-                left: 50%;
                 border-radius: 100%;
             }
 
             &::before {
-                top: 0;
+                left: 10px;
+                top: 12px;
                 width: 18px;
                 height: 18px;
                 border: 2px solid $color-red;
-                transform: translateX(-50%);
             }
 
             &::after {
-                top: 4px;
+                top: 16px;
+                left: 14px;
                 width: 10px;
                 height: 10px;
-                transform: translateX(-50%) scale(0);
+                transform: scale(0);
                 transition: transform .4s ease;
                 background: $color-red;
             }
@@ -202,11 +255,12 @@
             }
         }
 
-        &:checked + &-label {
+        &:checked + .autodiag-choice-label {
+            background:#cc4d4433;
             color: $color-red;
 
             &::after {
-                transform: translateX(-50%) scale(1);
+                transform: scale(1);
             }
         }
     }
@@ -246,13 +300,17 @@
             display: flex;
             justify-content: space-between;
             padding: 0;
-            margin: 0 50px 30px;
+            margin: 60px 50px -80px;
             list-style: none;
             position: relative;
             height: $dot-size;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
 
             @media (max-width: $md) {
-                margin: 0 30px 15px;
+                display: none;
             }
 
             &::before {
@@ -312,6 +370,64 @@
                     transform: translateX(-50%);
                 }
             }
+        }
+    }
+
+    &-next {
+        white-space: nowrap;
+        font-size: 14px !important;
+        padding: 8px 0;
+
+        @media (max-width: $md) {
+            font-size: 12px !important;
+        }
+    }
+
+    &-popup {
+        &-title {
+            @media (max-width: $md) {
+                font-size: 24px;
+                line-height: 1.4;
+            }
+        }
+
+        &-subtitle {
+            @media (max-width: $md) {
+                font-size: 16px !important;
+            }
+        }
+    }
+}
+
+.silexia #popup-autodiag {
+    display: flex;
+    max-width: 90vw;
+    height: 100%;
+    max-height: 90vh;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .modal {
+        &-header {
+            position: absolute;
+            right: 0;
+            border: 0;
+            z-index: 1;
+        }
+
+        &-body {
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+
+            & > .page-content {
+                flex: 1;
+            }
+        }
+
+        &-footer {
+            display: none;
         }
     }
 }

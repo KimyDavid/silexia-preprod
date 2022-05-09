@@ -61,26 +61,25 @@ const Category = ({currentCategory, index, nbCategoriesTotal, progressTotal, set
     return (
         <>
             <div className="autodiag-container">
-                <header className="autodiag-header row align-items-center justify-content-between">
-                    <div className="col-9">
-                        <p className="autodiag-category-title"><strong>{currentCategory.label}</strong></p>
-                        <p className="autodiag-category-description"><strong>{currentCategory.description}</strong></p>
-                    </div>
-                    <div className="col-3 d-flex justify-content-end">
-                        <p className="autodiag-number">{ index+1 }/{nbCategoriesTotal}</p>
-                    </div>
+                <header className="autodiag-header text-center">
+                    <p className="autodiag-category-title">{currentCategory.label}</p>
+                    <p className="autodiag-category-description">{currentCategory.description}</p>
                 </header>
                 <div className="autodiag-body">
-                    { progression > 1 ? <p onClick={prevStep} className="btn btn-primary autodiag-question-before"><i className="las la-arrow-left"></i>Précédent</p> : '' }
                     { error ? <p className="error message">{error}</p> : '' }
                     <Question question={currentCategory.questions[questionIndex]} index={questionIndex} emitResponses={handleQuestionResponse} currentChoices={answers[questionIndex]} />
                 </div>
                 <footer className="autodiag-footer row align-items-center justify-content-between">
-                    <div className="col-12 col-lg-9">
-                        <p className="text-primary text-center font-w-6 mb-0">{Math.round((progression/progressTotal) * 100)}%</p>
-                        <div className="autodiag-progressbar"><span style={{transform: 'scaleX(' + (progression/progressTotal) + ')'}}></span></div>
+                    <div className="col-3 col-sm-2 col-lg-1 order-1">
+                        <p onClick={prevStep} title="Question précédente" className={`btn autodiag-question-before ${progression > 1 ? '' : 'disabled'}`}><i className="las la-arrow-left"></i></p>
                     </div>
-                    <div className="col-12 col-lg-3 mt-2 mt-lg-0 d-flex justify-content-end">
+                    <div className="col-12 col-sm-6 col-lg-8 mb-2 mb-md-0">
+                        <div className="autodiag-progressbar-wrapper">
+                            <p className="text-primary text-center font-w-6 mb-0">{Math.round((progression/progressTotal) * 100)}%</p>
+                            <div className="autodiag-progressbar"><span style={{transform: 'scaleX(' + (progression/progressTotal) + ')'}}></span></div>
+                        </div>
+                    </div>
+                    <div className="col-9 col-sm-4 col-lg-3 d-flex justify-content-end order-2">
                         <button onClick={nextStep} className="autodiag-next btn btn-primary btn-small shadow w-100">{ (progression/progressTotal === 1) ? 'Voir les résultats' : 'Prochaine question'}<i className="las la-arrow-right ml-2"></i></button>
                     </div>
                 </footer>
