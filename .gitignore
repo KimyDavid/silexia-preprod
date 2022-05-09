@@ -22,3 +22,5 @@ yarn-error.log*
 .lh
 client/dist
 .DS_Store
+
+vendor/*
