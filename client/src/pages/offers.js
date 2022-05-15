@@ -1,16 +1,23 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import Pageheading from '../widgets/Pageheading';
 import FeatureServices from '../widgets/sections/home2/services';
 import Blog from '../widgets/sections/blog';
+import { API_GET } from '../functions/apiRequest';
+import Projects from '../widgets/client/projects';
+import Modal from '../widgets/common/modal';
 
-class Index extends Component {
-    constructor(props) {
-        super(props)
-    }
-    componentDidMount() {
-        window.scrollTo(0, 0)
-    }
-    render() {
+const Index = () => {
+    const [projects, setProjects] = useState([]);
+    const [selectedProject, setSelectedProject] = useState();
+    const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        API_GET(`partners/page/entreprise`).then(response => {
+            setProjects(response);
+        });
+    }, []);
+
         return (
             <div>
                 {/*hero section start*/}
@@ -30,7 +37,7 @@ class Index extends Component {
                             <FeatureServices />
                         
                             <div className="row justify-content-center text-center">
-                              <div className="col-12 col-md-8 mb-4 mb-lg-0 mt-7">
+                              <div className="col-12 col-xl-8 mb-4 mb-lg-0 mt-7">
                                 <div>
                                   <h2 className="font-w-6 h3 mb-5 mt-10">Votre bureau de pilotage du numérique dans votre organisation</h2>
                                   <p className="columns-2">Avec de fortes compétences en analyse des systèmes d’information, gestion de projets numériques, marketing et conformité aux normes en vigueur, Silexia et ses partenaires font du numérique une opportunité de développement pour votre organisation. Fournisseur de solutions numériques, nous avons à cœur de vous apporter des solutions concrètes et réalisables à court terme tout en construisant avec vous votre stratégie de développement par le numérique. Que ce soit pour un simple coup de pouce, un accompagnement stratégique de plus long terme ou un besoin d’externalisation, Silexia est votre bureau de pilotage du numérique, capable de rassembler et coordonner les compétences nécessaires à la réussite de vos projets !</p>
@@ -130,6 +137,22 @@ class Index extends Component {
                         </div>
 
 
+                        { projects && projects.length > 0 ?
+                            <section className="p-0">
+                                <div className="container">
+                                    <div className="row align-items-end mb-lg-5">
+                                        <div className="col-12">
+                                            <div className="text-left">
+                                                <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
+                                                <h2 className="mt-4 mb-0 h4">Nos projets clients</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <Projects projects={projects} setSelectedProject={setSelectedProject} setShowModal={setShowModal} />
+                                </div>
+                            </section>
+                        : "" }
+
                             <div className="container">
                                 <div className="row align-items-end mb-5 mt-10">
                                     <div className="col-12 col-md-12 col-lg-8">
@@ -144,9 +167,24 @@ class Index extends Component {
                         
                     </section>
                 </div>
+                {selectedProject ? 
+                    <Modal 
+                        title={`${selectedProject.name}`}
+                        body={
+                            <>
+                                <div className="text-center">
+                                    <img className="mb-2" width="220" src={selectedProject.image} alt={selectedProject.name} loading="lazy" />
+                                </div>
+                                <div className="text-black" dangerouslySetInnerHTML={{__html: selectedProject.text}}></div>
+                                <div className="text-center">
+                                    { selectedProject.url ? <a href={selectedProject.url} target="_blank" className="btn btn-primary mt-5">Voir le site web</a> : '' }
+                                </div>
+                            </>}
+                        show={showModal}
+                        setShow={setShowModal}
+                    /> : '' }
             </div>
         );
-    }
 }
 
 export default Index;

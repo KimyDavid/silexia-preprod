@@ -76,6 +76,10 @@ const Projects = () => {
                 label: 'Avocats',
                 value: 'avocats',
             },
+            {
+                label: 'Entreprise',
+                value: 'entreprise',
+            },
         ],
         placeholder: 'Entrer une page'
       },

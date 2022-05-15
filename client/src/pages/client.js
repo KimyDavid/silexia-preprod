@@ -18,10 +18,6 @@ const Client = ({title, content}) => {
             setProjects(response);
         });
     }, []);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
     
     return (
         <>
@@ -126,7 +122,7 @@ const Client = ({title, content}) => {
 
             {selectedProject ? 
                 <Modal 
-                    title={`Plus d'information sur ${selectedProject.name}`}
+                    title={`${selectedProject.name}`}
                     body={
                         <>
                             <div className="text-center">
