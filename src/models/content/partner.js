@@ -10,7 +10,7 @@ function Partner(data) {
     this.name               = data.name
     this.image              = data.version ? imageController.getImage("partners_" + data.id, data.version) : null
     this.url                = data.url
-    this.type               = data.type
+    this.type               = data.partner_type
     this.abstract           = data.abstract
     this.text               = data.text
     this.order              = data.order

@@ -73,6 +73,31 @@ const Partners = () => {
         type: 'number',
         placeholder: 'Entrer un ordre'
       },
+      {
+        label: 'Afficher sur la page client :',
+        error: {required: 'Merci d\'ajouter une page'},
+        name: 'page',
+        type: 'radio',
+        options: [
+            {
+                label:'Aucune',
+                value: 'none',
+            },
+            {
+                label:'Associations',
+                value: 'asso',
+            },
+            {
+                label: 'Avocats',
+                value: 'avocats',
+            },
+            {
+                label: 'Entreprise',
+                value: 'entreprise',
+            },
+        ],
+        placeholder: 'Entrer une page'
+      },
     ]
 
     const partnersTypeForm = [

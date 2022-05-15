@@ -75,13 +75,13 @@ function App() {
 
   useEffect(() => {
     API_GET('auth').then(result => {
-      if (result) {
-        if (result.verif > 0) {
-          setToken(result);
-        } else {
-          setToken(null);
+        if (result) {
+            if (result.verif > 0) {
+                setToken(result);
+            } else {
+                setToken(null);
+            }
         }
-      }
     });
   }, []);
 

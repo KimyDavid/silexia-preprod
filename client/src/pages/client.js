@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Herosection from '../widgets/client/herosection';
 import Features from '../widgets/client/features';
 import Faq from '../widgets/client/faq';
 import Pricing from '../widgets/client/pricing';
-import Projects from '../widgets/client/projects';
-import Modal from '../widgets/common/modal';
-import { API_GET } from '../functions/apiRequest';
+import ProjectsSlider from '../widgets/client/projectsSlider';
 
 const Client = ({title, content}) => {
-    const [projects, setProjects] = useState([]);
-    const [selectedProject, setSelectedProject] = useState();
-    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        API_GET(`partners/page/${content.id}`).then(response => {
-            setProjects(response);
-        });
     }, []);
     
     return (
@@ -89,21 +81,7 @@ const Client = ({title, content}) => {
                 </section>
             : "" }
 
-            { projects && projects.length > 0 ?
-                <section className="p-0">
-                    <div className="container">
-                        <div className="row align-items-end mb-lg-5">
-                            <div className="col-12">
-                                <div className="text-left">
-                                    <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
-                                    <h2 className="mt-4 mb-0 h4">Nos projets clients</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <Projects projects={projects} setSelectedProject={setSelectedProject} setShowModal={setShowModal} />
-                    </div>
-                </section>
-            : "" }
+            { content ? <ProjectsSlider content={content} /> : '' }
             
             <section className="py-5">
                 <div className="container">
@@ -119,23 +97,6 @@ const Client = ({title, content}) => {
                 </div>
             </section>
 
-
-            {selectedProject ? 
-                <Modal 
-                    title={`${selectedProject.name}`}
-                    body={
-                        <>
-                            <div className="text-center">
-                                <img className="mb-2" width="220" src={selectedProject.image} alt={selectedProject.name} loading="lazy" />
-                            </div>
-                            <div className="text-black" dangerouslySetInnerHTML={{__html: selectedProject.text}}></div>
-                            <div className="text-center">
-                                { selectedProject.url ? <a href={selectedProject.url} target="_blank" className="btn btn-primary mt-5">Voir le site web</a> : '' }
-                            </div>
-                        </>}
-                    show={showModal}
-                    setShow={setShowModal}
-                /> : '' }
         </>
     );
 }

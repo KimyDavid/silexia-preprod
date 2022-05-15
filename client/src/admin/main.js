@@ -21,16 +21,6 @@ import Projects from './projects'
 
 require("../assets/scss/_admin.scss");
 
-// const Logout = lazy(() => import('./logout'));
-// const Pages = lazy(() => import('./pages'));
-// const Articles = lazy(() => import('./articles'));
-// const Offers = lazy(() => import('./offers'));
-// const Partners = lazy(() => import('./partners'));
-// const AutodiagCategories = lazy(() => import('./autodiag/categories'));
-// const AutodiagQuestions = lazy(() => import('./autodiag/questions'));
-// const AutodiagTiers = lazy(() => import('./autodiag/globalTiers'));
-// const Users = lazy(() => import('./users'));
-
 const Wrapper = ({children}) => {
     return <Layouts>{children}</Layouts>
 }

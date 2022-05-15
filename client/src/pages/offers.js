@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Pageheading from '../widgets/Pageheading';
 import FeatureServices from '../widgets/sections/home2/services';
 import Blog from '../widgets/sections/blog';
-import { API_GET } from '../functions/apiRequest';
-import Projects from '../widgets/client/projects';
-import Modal from '../widgets/common/modal';
+import ProjectsSlider from '../widgets/client/projectsSlider';
 
 const Index = () => {
-    const [projects, setProjects] = useState([]);
-    const [selectedProject, setSelectedProject] = useState();
-    const [showModal, setShowModal] = useState(false);
-
     useEffect(() => {
         window.scrollTo(0, 0);
-        API_GET(`partners/page/entreprise`).then(response => {
-            setProjects(response);
-        });
     }, []);
 
         return (
@@ -136,22 +127,7 @@ const Index = () => {
                             {/*how it work end*/}
                         </div>
 
-
-                        { projects && projects.length > 0 ?
-                            <section className="p-0">
-                                <div className="container">
-                                    <div className="row align-items-end mb-lg-5">
-                                        <div className="col-12">
-                                            <div className="text-left">
-                                                <span className="badge badge-primary-soft p-2"><i className="la la-clipboard-list ic-3x rotation" /></span>
-                                                <h2 className="mt-4 mb-0 h4">Nos projets clients</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <Projects projects={projects} setSelectedProject={setSelectedProject} setShowModal={setShowModal} />
-                                </div>
-                            </section>
-                        : "" }
+                        <ProjectsSlider content={{'id': 'entreprise'}} />
 
                             <div className="container">
                                 <div className="row align-items-end mb-5 mt-10">
@@ -167,22 +143,6 @@ const Index = () => {
                         
                     </section>
                 </div>
-                {selectedProject ? 
-                    <Modal 
-                        title={`${selectedProject.name}`}
-                        body={
-                            <>
-                                <div className="text-center">
-                                    <img className="mb-2" width="220" src={selectedProject.image} alt={selectedProject.name} loading="lazy" />
-                                </div>
-                                <div className="text-black" dangerouslySetInnerHTML={{__html: selectedProject.text}}></div>
-                                <div className="text-center">
-                                    { selectedProject.url ? <a href={selectedProject.url} target="_blank" className="btn btn-primary mt-5">Voir le site web</a> : '' }
-                                </div>
-                            </>}
-                        show={showModal}
-                        setShow={setShowModal}
-                    /> : '' }
             </div>
         );
 }

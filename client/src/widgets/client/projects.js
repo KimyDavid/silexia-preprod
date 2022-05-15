@@ -27,6 +27,7 @@ const Projects = ({projects, setSelectedProject, setShowModal}) => {
                 { projects.length > 0 ?  
                     <OwlCarousel className="owl-carousel" autoplayHoverPause={true} dots={false} nav={true} loop={false} autoplay={true} margin={20} responsive={responsive}>
                         {projects.map((project, i) => 
+                            project ? 
                             <div key={i} className="mb-0 d-flex">
                                 <div className="p-3 partner-item d-flex shadow bg-white rounded" onClick={() => updateSelectedProject(project)}>
                                     <div className="w-100 text-center">
@@ -40,7 +41,7 @@ const Projects = ({projects, setSelectedProject, setShowModal}) => {
                                         }
                                     </div>
                                 </div>
-                            </div>
+                            </div> : ''
                         )}
                     </OwlCarousel>
                 : null }
