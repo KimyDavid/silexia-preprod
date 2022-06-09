@@ -124,11 +124,11 @@ class Header extends React.Component {
                             nav={false}
                             loop={true}
                         >
-                            { this.state.articles.map((item, i) => 
+                            { this.state.articles.length > 0 ? this.state.articles.map((item, i) => 
                                 <div key={i} className="header-banner-item">
                                     <p><span>Actualités</span> : { item.title } <Link className="link link-primary" to={{pathname: `/blog/${item['id']}`, state: { items: item }}}>Lire l'article</Link></p>
                                 </div>
-                            )}
+                            ) : ''}
                         </OwlCarousel>
                     : '' }
                 </header>
