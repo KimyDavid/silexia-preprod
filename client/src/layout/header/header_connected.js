@@ -55,58 +55,57 @@ class Header extends React.Component {
                             <div className="container">
                                 <div className="row">
                                     {/*menu start*/}
-                                    <div className="col d-flex align-items-center justify-content-between"> 
-                                        <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.png`)} alt="Logo Silexia"  width="120" height="40"/></Link>
+                                    <div className="col d-flex align-items-center justify-content-between bg-white"> 
+                                        <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.png`)} alt="Logo Silexia" width="120" height="40" /></Link>
                                         <Navbar className="navbar-expand-lg navbar-light ml-auto">
+                                                <NavItem className="d-none d-sm-block d-lg-none">
+                                                    <a className="btn btn-primary btn-small mt-0 mr-4" href="/profile">Mon diagnostic</a>
+                                                </NavItem>
+
                                                 <NavbarToggler onClick={this.toggle} />
+
                                                 <Collapse isOpen={this.state.isOpen} className=" navbar-collapse" navbar>
                                                     <Nav className="ml-auto" navbar>
                                                         {navLinks.map((navLink, index) => (
                                                             (navLink.type && navLink.type === 'subMenu') ?
-                                                                <UncontrolledDropdown nav inNavbar key={index}>
-                                                                    <DropdownToggle nav  caret >
-                                                                        {navLink.menu_title}
-                                                                    </DropdownToggle>
-                                                                    <DropdownMenu id={`submenu_${index}`} className="childsubmenu">
-                                                                        {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
-                                                                                (subNavLink.type && subNavLink.type === 'childsubMenu') ?
-                                                                                    <UncontrolledDropdown nav inNavbar className="dropdown-submenu" key={index}>
-                                                                                        <DropdownToggle nav caret className="dropdown-item" >
-                                                                                            {subNavLink.menu_title}
-                                                                                        </DropdownToggle>
-                                                                                        <DropdownMenu id={`childsubmenu_${index}`}>
-                                                                                            {subNavLink.child_routes && subNavLink.child_routes.map((ChildsubNavLink, i) => {
-                                                                                                if (ChildsubNavLink.path.includes('://')) {
-                                                                                                    return <a onClick={this.toggle} className="dropdown-item" target="_blank" key={index} tag={Link} href={ChildsubNavLink.path}>{ChildsubNavLink.menu_title}</a>
-                                                                                                } else {
-                                                                                                    return <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path} onClick={(e) => this.handleClick(e)} >{ChildsubNavLink.menu_title}</DropdownItem>
-                                                                                                }
-                                                                                            })}
-                                                                                        </DropdownMenu>
-                                                                                    </UncontrolledDropdown>
-                                                                                :
-                                                                                subNavLink.path.includes('://') ? 
-                                                                                    <a onClick={this.toggle} className="dropdown-item" target="_blank" key={index} tag={Link} href={subNavLink.path}>{subNavLink.menu_title}</a>
-                                                                                : 
-                                                                                    <DropdownItem onClick={this.toggle} key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
-                                                                        ))}
-                                                                    </DropdownMenu>
-                                                                </UncontrolledDropdown>
+                                                                // Submenu link
+                                                                <li className="nav-item nav-item-parent" key={index}>
+                                                                    <a href={navLink.path} className="nav-link">{navLink.menu_title}</a>
+                                                                    <div className="nav-item-submenu">
+                                                                        <div className="container justify-content-center">
+                                                                            <div className="nav-item-submenu-content">
+                                                                                <p className="nav-item-submenu-title">
+                                                                                    <strong>{navLink.menu_subtitle}</strong>
+                                                                                </p>
+                                                                                {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
+                                                                                    subNavLink.path.includes('://') ? 
+                                                                                        <a className="nav-link" target="_blank" key={index} href={subNavLink.path} dangerouslySetInnerHTML={{__html: subNavLink.menu_title}}></a>
+                                                                                    : 
+                                                                                        <a className="nav-link" key={index} href={subNavLink.path} dangerouslySetInnerHTML={{__html: subNavLink.menu_title}}></a>
+                                                                                ))}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
                                                                 :
-                                                                <NavItem key={index} onClick={this.toggle}>
+                                                                <NavItem key={index}>
                                                                     { navLink.path.includes('://') ?
-                                                                        <NavLink onClick={this.toggle} target="_blank" href={navLink.path} rel="noopener" rel="noreferrer"> {navLink.menu_title}</NavLink>
+                                                                        // Extern link
+                                                                        <NavLink onClick={this.toggle} target="_blank" href={navLink.path} rel="noopener" rel="noreferrer">{navLink.menu_title}</NavLink>
                                                                     : 
+                                                                        // Basic link
                                                                         <NavLink onClick={this.toggle} href={navLink.path}> {navLink.menu_title}</NavLink>
                                                                     }
                                                                 </NavItem>
                                                         ))}
-                                                        <NavItem>
-                                                            <Link onClick={this.toggle} className="btn btn-primary btn-small ml-lg-3" to="/profile">Mon diagnostic</Link>
+                                                        <NavItem className="d-sm-none d-lg-block">
+                                                            <div className="d-flex align-items-center h-100">
+                                                                <Link onClick={this.toggle} className="btn btn-primary btn-small ml-lg-3" to="/profile">Mon diagnostic</Link>
+                                                            </div>
                                                         </NavItem>
                                                     </Nav>
                                                 </Collapse>
-                                            </Navbar>
+                                        </Navbar>
                                     </div>
                                     {/*menu end*/}
                                 </div>

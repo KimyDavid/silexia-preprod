@@ -8,11 +8,7 @@ import {
     NavbarToggler,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
+    NavLink
 } from 'reactstrap'
 
 import Modal from '../../widgets/common/modal';
@@ -36,16 +32,24 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
     const toggle = () => {
         setIsOpen(!isOpen);
     }
-    
-    const handleClick = (e) => {
-        var elems = document.querySelectorAll(".childsubmenu");
-        [].forEach.call(elems, function(el) {
-          el.classList.remove("show");
-        });
-    }
 
     useEffect(() => {
         API_GET("articles").then(result => setArticles(result));
+
+        const submenuParent = document.querySelectorAll('.nav-item-parent');
+        submenuParent.forEach(parent => {
+            parent.addEventListener('click', () => {
+                if (parent.classList.contains('active')) {
+                    parent.classList.remove('active');
+                } else {
+                    submenuParent.forEach(_parent => {
+                        _parent.classList.remove('active');
+                    });
+    
+                    parent.classList.add('active');
+                }
+            });
+        });
     },[]);
 
     return (
@@ -56,44 +60,38 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
                         <div className="container">
                             <div className="row">
                                 {/*menu start*/}
-                                <div className="col d-flex align-items-center justify-content-between"> 
+                                <div className="col d-flex align-items-center justify-content-between bg-white"> 
                                     <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.png`)} alt="Logo Silexia" width="120" height="40" /></Link>
                                     <Navbar className="navbar-expand-lg navbar-light ml-auto">
+                                            <NavItem className="d-none d-sm-block d-lg-none">
+                                                <a className="btn btn-primary btn-small mt-0 mr-4" onClick={toggle} onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
+                                            </NavItem>
+
                                             <NavbarToggler onClick={toggle} />
+
                                             <Collapse isOpen={isOpen} className=" navbar-collapse" navbar>
                                                 <Nav className="ml-auto" navbar>
                                                     {navLinks.map((navLink, index) => (
                                                         (navLink.type && navLink.type === 'subMenu') ?
                                                             // Submenu link
-                                                            <UncontrolledDropdown nav inNavbar key={index}>
-                                                                <DropdownToggle nav  caret >
-                                                                    {navLink.menu_title}
-                                                                </DropdownToggle>
-                                                                <DropdownMenu id={`submenu_${index}`} className="childsubmenu">
-                                                                    {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
-                                                                            (subNavLink.type && subNavLink.type === 'childsubMenu') ?
-                                                                                <UncontrolledDropdown nav inNavbar className="dropdown-submenu" key={index}>
-                                                                                    <DropdownToggle nav caret className="dropdown-item" >
-                                                                                        {subNavLink.menu_title}
-                                                                                    </DropdownToggle>
-                                                                                    <DropdownMenu id={`childsubmenu_${index}`}>
-                                                                                        {subNavLink.child_routes && subNavLink.child_routes.map((ChildsubNavLink, i) => {
-                                                                                            if (ChildsubNavLink.path.includes('://')) {
-                                                                                                return <a onClick={toggle} className="dropdown-item" target="_blank" key={index} tag={Link} href={ChildsubNavLink.path}>{ChildsubNavLink.menu_title}</a>
-                                                                                            } else {
-                                                                                                return <DropdownItem key={i} tag={Link} to={ChildsubNavLink.path} onClick={(e) => handleClick(e)} >{ChildsubNavLink.menu_title}</DropdownItem>
-                                                                                            }
-                                                                                        })}
-                                                                                    </DropdownMenu>
-                                                                                </UncontrolledDropdown>
-                                                                            :
+                                                            <li className="nav-item nav-item-parent" key={index}>
+                                                                <a href={navLink.path} className="nav-link">{navLink.menu_title}</a>
+                                                                <div className="nav-item-submenu">
+                                                                    <div className="container justify-content-center">
+                                                                        <div className="nav-item-submenu-content">
+                                                                            <p className="nav-item-submenu-title">
+                                                                                <strong>{navLink.menu_subtitle}</strong>
+                                                                            </p>
+                                                                            {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
                                                                                 subNavLink.path.includes('://') ? 
-                                                                                    <a className="dropdown-item" target="_blank" key={index} tag={Link} href={subNavLink.path}>{subNavLink.menu_title}</a>
+                                                                                    <a className="nav-link" target="_blank" key={index} href={subNavLink.path} dangerouslySetInnerHTML={{__html: subNavLink.menu_title}}></a>
                                                                                 : 
-                                                                                    <DropdownItem onClick={toggle} key={index} tag={Link} to={subNavLink.path}>{subNavLink.menu_title}</DropdownItem>
-                                                                    ))}
-                                                                </DropdownMenu>
-                                                            </UncontrolledDropdown>
+                                                                                    <a className="nav-link" key={index} href={subNavLink.path} dangerouslySetInnerHTML={{__html: subNavLink.menu_title}}></a>
+                                                                            ))}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
                                                             :
                                                             <NavItem key={index}>
                                                                 { navLink.path.includes('://') ?
@@ -109,12 +107,14 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
                                                                 }
                                                             </NavItem>
                                                     ))}
-                                                    <NavItem>
-                                                        <a className="btn btn-primary btn-small mt-3 mt-lg-0 ml-lg-0" onClick={toggle} onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
+                                                    <NavItem className="d-sm-none d-lg-block">
+                                                        <div className="d-flex align-items-center h-100">
+                                                            <a className="btn btn-primary btn-small mt-3 mt-lg-0 ml-lg-0" onClick={toggle} onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>
+                                                        </div>
                                                     </NavItem>
                                                 </Nav>
                                             </Collapse>
-                                        </Navbar>
+                                    </Navbar>
                                 </div>
                                 {/*menu end*/}
                             </div>

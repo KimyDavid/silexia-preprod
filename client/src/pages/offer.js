@@ -20,8 +20,8 @@ const Offer = () => {
         window.scrollTo(0, 0);
         setLoading(true)
         API_GET('offres').then(response => {
-            setOffers(response)
-            setLoading(false)
+            setOffers(response);
+            setLoading(false);
         });
     }, []);
     
@@ -31,7 +31,7 @@ const Offer = () => {
                 <>
                     {/*hero section start*/}
                     <section className="position-relative py-6">
-                            <PageHeading title={offers.find(x => toSnakeCase(x.title) === id).title} />
+                        <PageHeading title={offers.find(x => toSnakeCase(x.title) === id).title} />
                     </section>
                     <section className="py-0 container">
                         <div className="row">

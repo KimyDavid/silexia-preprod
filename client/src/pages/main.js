@@ -122,18 +122,14 @@ function App() {
 
                 <Route path="/diagnostic" component={() => <Home setShowAutodiag={setShowAutodiag} token={token} />} />
 
-                {/* OFFRES */}
-                <Route exact path="/offres" component={Offers} />
-                <Route path="/offres/:id" component={() => <Offer />} />
-
                 {/* PAGES */}
-                <Route path="/about-us" component={AboutUs} />
-                <Route path="/partners" component={partners} />
-                <Route path="/generateur-mentions-legales" component={LegalGenerator} />
+                <Route path="/success-story" component={AboutUs} />
+                <Route path="/reseau-partenaires" component={partners} />
+                <Route exact path="/generateur-mentions-legales" component={LegalGenerator} />
 
                 {/* CLIENTS */}
-                <Route path="/client/associations" component={() => <Client content={Associations[0]} title="Associations" />} />
-                <Route path="/client/avocats" component={() => <Client content={Avocats[0]}  title="Avocats"/>} />
+                <Route path="/associations" component={() => <Client content={Associations[0]} title="Associations" />} />
+                <Route path="/avocats" component={() => <Client content={Avocats[0]}  title="Avocats"/>} />
                 
                 {/* BLOG */}
                 <Route exact path="/blog" component={BlogList} />
@@ -158,6 +154,11 @@ function App() {
                   <Route path="/verif_account" component={() => <VerifAccount />} />
                   <Route path="/forgot-password" component={ForgotPassword} />
                   <Route path="/reset_password" component={() => <ResetPassword />} />
+
+
+                    {/* OFFRES */}
+                    <Route exact path="/numerique" component={Offers} />
+                    <Route path="/:id" component={() => <Offer />} />
 
                   <Route component={PageNotFound} />
                 </Switch>

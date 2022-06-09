@@ -2,7 +2,7 @@
  *  FAQ Json content
  */
 export default {
-   'acquisition-client': {
+   'acquisition-clients': {
       'title': "Les objectifs de notre assistance dans l'accélération de votre acquisition de clients",
       'flux': [
          {
@@ -22,7 +22,7 @@ export default {
          },
       ]
    },
-   'expérience-et-parcours-client': {
+   'relation-client': {
       'title': "Les objectifs de notre assistance dans l'optimisation de l'expérience et du parcours de vos clients",
       'flux': [
          {
@@ -42,7 +42,7 @@ export default {
          },
       ]
    },
-   'digitalisation-des-métiers': {
+   'automatisation': {
       'title': 'Les objectifs de notre assistance dans la digitalisation de vos métiers',
       'flux': [
          {
@@ -62,7 +62,7 @@ export default {
          },
       ]
    },
-   "gestion-d'organisation": {
+   "pilotage-entreprise": {
       'title': 'Les objectifs de notre assistance dans la gestion de votre organisation',
       'flux': [
          {
@@ -82,7 +82,7 @@ export default {
          },
       ]
    },
-   "sécurité-et-conformité": {
+   "protection-donnees": {
       'title': 'Les objectifs de notre assistance pour votre conformité et votre cybersécurité',
       'flux': [
          {

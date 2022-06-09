@@ -31,7 +31,7 @@ class Aboutus extends Component {
                         </div>
 
                             {/*how it work start*/}
-                            <section className="position-relative bg-light mt-3 mt-md-10" data-bg-img={require(`../assets/images/bg/02.png`)}>
+                            <section id="valeurs" className="position-relative bg-light mt-3 mt-md-10" data-bg-img={require(`../assets/images/bg/02.png`)}>
                               <div className="container mt-8 mb-10">
                                 <div className="row justify-content-center text-center">
                                   <div className="col-12 col-md-12 col-lg-8 mb-lg-0 mb-8">

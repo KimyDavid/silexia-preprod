@@ -26,7 +26,8 @@ const Faq = ({setShowAutodiag, token}) =>  {
                 }
             )
         });
-        document.querySelector('#faq-sections-google-schema').append(JSON.stringify(schemaGoogle));
+
+        document.querySelector('#faq-section-google-schema').append(JSON.stringify(schemaGoogle));
     }, []);
 
         return (

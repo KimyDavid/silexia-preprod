@@ -24,7 +24,7 @@ class Footer extends Component {
                             <ul className="navbar-nav list-unstyled mb-0">
                                 <li className="mb-3 nav-item"><Link className="nav-link" to="/about-us">Qui sommes-nous ?</Link> 
                                 </li>
-                                <li className="mb-3 nav-item"><Link className="nav-link" to="/offres">Nos offres</Link> 
+                                <li className="mb-3 nav-item"><Link className="nav-link" to="/numerique">Nos offres</Link> 
                                 </li>
                                 <li className="mb-3 nav-item"><Link className="nav-link" to="/partners">Notre réseau de collaborateurs</Link> 
                                 </li>
