@@ -3,93 +3,89 @@
  */
 export default [
     {
-        "menu_title": "Offres",
-        "menu_subtitle": "Le numérique pour ...",
-        "path": "/numerique",
-        "type": "subMenu",
-        "child_routes": [
-           {
-              "path": "/acquisition-clients",
-              "menu_title": "Entrer en relation avec vos <strong>cibles clients</strong>",
-           },
-           {
-              "path": "/relation-client",
-              "menu_title": "Adopter une <strong>relation client</strong> phygitale",
-           },
-           {
-              "path": "/automatisation",
-              "menu_title": "<strong>Automatiser</strong> vos tâches à faible valeur ajoutée",
-           },
-           {
-              "path": "/pilotage-entreprise",
-              "menu_title": "Intégrer les <strong>outils de pilotage</strong> adaptés à votre organisation",
-           },
-           {
-              "path": "/protection-donnees",
-              "menu_title": "Assurer la <strong>protection de vos données</strong>",
-           },
-        ]
-     },
-     {
-        "menu_title": "Partenaires",
-        "menu_subtitle": "Un partenaire de confiance au service...",
-        "path": "/",
-        "type": "subMenu",
-        "child_routes": [
-           {
-              "path": "/numerique",
-              "menu_title": "Du développement des <strong>entreprises</strong> françaises",
-           },
-           {
-              "path": "/avocats",
-              "menu_title": "De la transformation du métier d'<strong>avocat</strong>",
-           },
-           {
-              "path": "/associations",
-              "menu_title": "Du rayonnement de votre <strong>association</strong>",
-           },
-        ]
-     },
-     {
-        "menu_title": "À propos",
-        "menu_subtitle": "Notre bureau de gestion de projets numériques",
-        "path": "/",
-        "type": "subMenu",
-        "child_routes": [
-           {
-              "path": "/success-story",
-              "menu_title": "A une <strong>histoire</strong> originale",
-           },
-           {
-              "path": "/success-story#valeurs",
-              "menu_title": "Engagé pour un numérique <strong>éthique</strong>",
-           },
-           {
-              "path": "/reseau-partenaires",
-              "menu_title": "Coordonne un <strong>réseau d'experts</strong> du numérique made in Europe",
-           }
-        ]
-     },
-     {
-        "menu_title": "Services en ligne",
-        "menu_subtitle": "Nos services en ligne",
-        "path": "/",
-        "type": "subMenu",
-        "child_routes": [
-           {
-              "path": "https://outlook.office365.com/owa/calendar/Silexia@silexia.onmicrosoft.com/bookings/",
-              "menu_title": "Prenez <strong>rendez-vous</strong> avec nous",
-           },
-           {
-              "path": "/diagnostic",
-              "menu_title": "Le <strong>diagnostic</strong> de votre organisation",
-           },
-           {
-              "path": "/generateur-mentions-legales",
-              "menu_title": "Le <strong>générateur de mentions légales</strong>",
-           },
-        ]
-     },
+       "menu_title": "Ce que nous faisons",
+       "path": "/numerique",
+       "type": "subMenu",
+       "child_routes": [
+          {
+             "path": "/acquisition-clients",
+             "menu_title": "Entrer en relation avec vos cibles clients",
+          },
+          {
+             "path": "/relation-client",
+             "menu_title": "Fluidifier votre relation client",
+          },
+          {
+             "path": "/automatisation",
+             "menu_title": "Automatiser vos tâches à faible valeur ajoutée",
+          },
+          {
+             "path": "/pilotage-entreprise",
+             "menu_title": "Optimiser votre pilotage d'entreprise",
+          },
+          {
+             "path": "/protection-donnees",
+             "menu_title": "Assurer la protection de vos données",
+          },
+       ]
+    },
+    {
+       "menu_title": "Pour qui",
+       "path": "/",
+       "type": "subMenu",
+       "child_routes": [
+          {
+             "path": "/numerique",
+             "menu_title": "TPE, PME, start-up",
+          },
+          {
+             "path": "/avocats",
+             "menu_title": "Avocats, cabinets et DPO",
+          },
+          {
+             "path": "/associations",
+             "menu_title": "Entreprises de l'ESS, ONG et associations",
+          },
+       ]
+    },
+    {
+       "menu_title": "Notre histoire",
+       "path": "/",
+       "type": "subMenu",
+       "child_routes": [
+          {
+             "path": "/success-story",
+             "menu_title": "Un parcours original",
+          },
+          {
+             "path": "/success-story#valeurs",
+             "menu_title": "Engagé pour un numérique éthique",
+          },
+          {
+             "path": "/reseau-partenaires",
+             "menu_title": "Un réseau et de tech et d'experts made in Europe",
+          }
+       ]
+    },
+    {
+       "menu_title": "Nos services en ligne",
+       "path": "/",
+       "type": "subMenu",
+       "child_routes": [
+          {
+             "path": "https://outlook.office365.com/owa/calendar/Silexia@silexia.onmicrosoft.com/bookings/",
+             "menu_title": "Prenez rendez-vous avec nous",
+          },
+          {
+             "path": "/diagnostic",
+             "menu_title": "Le diagnostic de votre organisation",
+          },
+          {
+             "path": "/generateur-mentions-legales",
+             "menu_title": "Le générateur de mentions légales",
+          },
+       ]
+    },
    {
       "menu_title": "Mon compte",
       "path": "/",

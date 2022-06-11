@@ -81,7 +81,7 @@ const Autodiag = () => {
 
             {/*body content start*/}
             <section className={`${autodiagLoading ? 'loading' : ''} page-content py-2 d-flex`}>
-                <div className="px-0 px-lg-2 d-flex">
+                <div className="px-0 px-lg-2 d-flex w-100">
                     <div className="autodiag-content col-12 px-0 px-lg-2">
                         { autodiag ? 
                         <>

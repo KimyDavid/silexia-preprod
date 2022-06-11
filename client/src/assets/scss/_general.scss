@@ -516,6 +516,7 @@ header {
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
+            position: relative;
 
             &-parent {
                 @media (min-width: 991px) {
@@ -551,20 +552,32 @@ header {
 
             &-submenu {
                 position: absolute;
-                width: 100vw;
-                left: 50%;
-                top: 100%;
                 background: white;
-                transform: translateX(-50%) translateY(-100%);
                 opacity: 0;
                 transition: all .5s ease;
-                z-index: -1;
                 pointer-events: none;
                 text-align: left;
-                padding: 15px 0 30px;  
+                padding: 15px 0;  
+                width: max-content;
+                left: 50%;
+                transform: translateY(-15px) translateX(-50%);
+                top: 100%;
+                border-radius: 4px;
 
                 @media (min-width: 991px) { 
-                    box-shadow: 0 32px 30px 5px rgba(149, 176, 240, 0.18) !important;
+                    box-shadow: 0 0 30px 5px rgba(149, 176, 240, 0.18) !important;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 50%;
+                        bottom: 100%;
+                        transform: translateY(50%) rotate(45deg);
+                        background: white;
+                        width: 10px;
+                        height: 10px;
+                        box-shadow: 0 0 30px 5px rgba(149, 176, 240, 0.18) !important;
+                    }
                 }
 
                 @media (max-width: 991px) { 
@@ -590,13 +603,18 @@ header {
 
                 .nav-link {
                     display: block;
-                    margin-top: 15px;
-                    font-size: 16px;
+                    font-size: 14px;
                     font-weight: normal;
                     transition: transform .5s ease;
 
+                    &:not(:first-of-type) {
+                        @media (min-width: 991px) {                         
+                            margin-top: 15px;
+                        }
+                    }
+
                     @media (max-width: 991px) {  
-                        font-size: 14px;
+                        font-size: 14px !important;
                         margin: 0;
                     }
 
@@ -623,7 +641,7 @@ header {
                         content: '\25B6';
                         margin-right: 10px;
                         color: $color-red;
-                        font-size: 12px;
+                        font-size: 10px;
                     }
                 }
 
@@ -635,6 +653,11 @@ header {
                     opacity: 1;
                     padding: 0;
                     overflow: hidden;
+                    width: 100%;
+
+                    &-content {
+                        margin-right: auto;
+                    }
                 }
             }
         }
