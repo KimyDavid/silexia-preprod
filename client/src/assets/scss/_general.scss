@@ -596,6 +596,11 @@ header {
                     }
                 }
 
+                &-button {  
+                    padding: 4px 10px;
+                    font-size: 12px;
+                }
+
                 &-contenu {
                     display: flex;
                     flex-direction: column;

@@ -83,10 +83,14 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
                                                                                 <strong>{navLink.menu_subtitle}</strong>
                                                                             </p>
                                                                             {navLink.child_routes && navLink.child_routes.map((subNavLink, index) => (
-                                                                                subNavLink.path.includes('://') ? 
-                                                                                    <a className="nav-link" target="_blank" key={index} href={subNavLink.path} dangerouslySetInnerHTML={{__html: subNavLink.menu_title}}></a>
+                                                                                
+                                                                                (index !== (navLink.child_routes.length - 1)) ? 
+                                                                                    subNavLink.path.includes('://') ? 
+                                                                                        <a className="nav-link" target="_blank" key={index} href={subNavLink.path} dangerouslySetInnerHTML={{__html: subNavLink.menu_title}}></a>
+                                                                                    : 
+                                                                                        <a className="nav-link" key={index} href={subNavLink.path} dangerouslySetInnerHTML={{__html: subNavLink.menu_title}}></a>
                                                                                 : 
-                                                                                    <a className="nav-link" key={index} href={subNavLink.path} dangerouslySetInnerHTML={{__html: subNavLink.menu_title}}></a>
+                                                                                    <a href={subNavLink.path} target="_blank" class="btn btn-primary btn-small mt-5 nav-item-submenu-button">{subNavLink.menu_title}</a>
                                                                             ))}
                                                                         </div>
                                                                     </div>

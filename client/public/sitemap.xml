@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gloomaps scheme="1.0">
+  <link>https://www.gloomaps.com/td2TdDrCxp</link>
+  <pubdate>06/15/2022</pubdate>
+  <section>
+    <box>
+      <text>Arborescence Silexia.fr</text>
+      <member>
+        <box>
+          <text>Nous...</text>
+          <member>
+            <box>
+              <text>Entrons en relation avec vos cibles clients</text>
+              <member/>
+            </box>
+            <box>
+              <text>Fluidifions votre relation-client</text>
+              <member/>
+            </box>
+            <box>
+              <text>Automatisons vos tâches à faible valeur ajoutée</text>
+              <member/>
+            </box>
+            <box>
+              <text>Optimisons votre pilotage d'entreprise</text>
+              <member/>
+            </box>
+            <box>
+              <text>Assurons la protection de vos données</text>
+              <member/>
+            </box>
+          </member>
+        </box>
+        <box>
+          <text>Pour qui</text>
+          <member>
+            <box>
+              <text>TPE, PME, start-up</text>
+              <member/>
+            </box>
+            <box>
+              <text>Avocats, cabinets et DPO</text>
+              <member/>
+            </box>
+            <box>
+              <text>Entreprises de l'ESS, ONG et associations</text>
+              <member/>
+            </box>
+          </member>
+        </box>
+        <box>
+          <text>Ce que nous sommes</text>
+          <member>
+            <box>
+              <text>Un bureau pour vos projets numériques</text>
+            </box>
+            <box>
+              <text>Engagé pour un numérique éthique et responsable</text>
+              <member/>
+            </box>
+            <box>
+              <text>Un réseau de tech et d'experts made in Europe</text>
+              <member/>
+            </box>
+          </member>
+        </box>
+        <box>
+          <text>Nos services en ligne</text>
+          <member>
+            <box>
+              <text>Diagnostiquer votre organisation gratuitement</text>
+              <member/>
+            </box>
+            <box>
+              <text>Générer les mentions légales de votre site web</text>
+              <member/>
+            </box>
+            <box>
+              <text>Réserver mon entretien innovation</text>
+            </box>
+          </member>
+        </box>
+      </member>
+    </box>
+  </section>
+</gloomaps>
