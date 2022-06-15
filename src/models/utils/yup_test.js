@@ -50,7 +50,8 @@ const SUPPORTED_FORMATS = [
   "image/jpg",
   "image/jpeg",
   "image/gif",
-  "image/png"
+  "image/png",
+  "image/webp",
 ];
 
 function image(yup, required){
