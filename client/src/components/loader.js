@@ -6,7 +6,7 @@ const Client = () => {
     .clear-loader { transform: translateX(-50%) translateY(-50%); -webkit-transform: translateX(-50%) translateY(-50%); -o-transform: translateX(-50%) translateY(-50%); -ms-transform: translateX(-50%) translateY(-50%); -moz-transform: translateX(-50%) translateY(-50%); z-index: 999; box-sizing: border-box; display: inline-block; left: 50%; position: absolute; text-align: center; top: 50%; }
     .loader { position: absolute; top: 50%; left: 50%; margin: auto; text-align: center; transform: translateX(-50%) translateY(-50%); -webkit-transform: translateX(-50%) translateY(-50%); -o-transform: translateX(-50%) translateY(-50%); -ms-transform: translateX(-50%) translateY(-50%); -moz-transform: translateX(-50%) translateY(-50%);}
     .loader span { width: 20px; height: 20px; background-color: #546c5c; border-radius: 50%; display: inline-block; animation: motion 3s ease-in-out infinite; }
-    .loader p { color: #cc4c44; margin-top: 5px; font-size: 30px; animation: shake 5s ease-in-out infinite; }
+    .loader p { color: #dd3e3e; margin-top: 5px; font-size: 30px; animation: shake 5s ease-in-out infinite; }
     @keyframes motion{
       0%{
         transform: translateX(0) scale(1);

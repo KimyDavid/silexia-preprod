@@ -13,10 +13,10 @@ strong {
 }
 
 .logo {
-    width: 140px;
+    width: 180px;
 
     @media (max-width: $sm) {
-        width: 110px;
+        width: 160px;
     }
 }
 
@@ -798,4 +798,17 @@ header {
 
 p {
     color: #637191;
+}
+
+.footer {
+    &-logo {
+        .logo {
+            width: 220px;
+            margin-left: -16px;
+        
+            @media (max-width: $sm) {
+                width: 250px;
+            }
+        }
+    }
 }

@@ -61,7 +61,7 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
                             <div className="row">
                                 {/*menu start*/}
                                 <div className="col d-flex align-items-center justify-content-between bg-white"> 
-                                    <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.png`)} alt="Logo Silexia" width="120" height="40" /></Link>
+                                    <Link className="navbar-brand logo text-dark h2 mb-0" to="/"><img className="logo img-fluid" src={require(`../../assets/images/logo.svg`)} alt="Logo Silexia" width="120" height="40" /></Link>
                                     <Navbar className="navbar-expand-lg navbar-light ml-auto">
                                             <NavItem className="d-none d-sm-block d-lg-none">
                                                 <a className="btn btn-primary btn-small mt-0 mr-4" onClick={toggle} onClick={() => setShowAutodiag(true)}>Démarrer mon diagnostic</a>

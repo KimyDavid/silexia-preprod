@@ -101,6 +101,7 @@
   },
   "homepage": "https://github.com/MaxLeh/Site_web_Silexia#readme",
   "devDependencies": {
+    "@types/passport-local": "^1.0.35",
     "autoprefixer": "^9.8.6",
     "eslint": "^7.30.0",
     "postcss": "^8.1.14"

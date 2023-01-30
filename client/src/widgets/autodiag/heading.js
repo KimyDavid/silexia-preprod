@@ -13,7 +13,7 @@ const Pageheading = ({title, showBreadcumbs, foldername}) => {
                 }
             },
             "color": {
-                "value": "#cc4c44"
+                "value": "#dd3e3e"
             },
             "shape": {
                 "type": "circle",

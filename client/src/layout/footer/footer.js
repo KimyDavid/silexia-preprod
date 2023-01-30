@@ -55,7 +55,7 @@ class Footer extends Component {
                         <Row className="mt-5" >
                             <Col className="col-12 col-sm-6">
                                 <Link className="footer-logo text-white h2 mb-0" to="/">
-                                    <img className="logo img-fluid" src={require(`../../assets/images/logo_white.png`)} alt="Logo Silexia" loading="lazy" width="120" height="40"/>
+                                    <img className="logo img-fluid" src={require(`../../assets/images/logo_blue.svg`)} alt="Logo Silexia" loading="lazy" width="120" height="40"/>
                                 </Link> 
                             </Col>
                             <Col className="col-12 col-sm-6 mt-6 mt-sm-0">

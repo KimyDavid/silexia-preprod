@@ -38,11 +38,11 @@ const AutodiagResult = ({token}) => {
         {
           label: 'Votre score',
           backgroundColor: '#cc4d4435',
-          borderColor: '#cc4c44',
+          borderColor: '#dd3e3e',
           pointBackgroundColor: '#cc4d4435',
-          pointBorderColor: '#cc4c44',
-          pointHoverBackgroundColor: '#cc4c44',
-          pointHoverBorderColor: '#cc4c44',
+          pointBorderColor: '#dd3e3e',
+          pointHoverBackgroundColor: '#dd3e3e',
+          pointHoverBorderColor: '#dd3e3e',
           borderWidth: 1,
           data: graphScores
         },
