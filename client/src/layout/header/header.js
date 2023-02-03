@@ -90,7 +90,7 @@ const Header = ({setShowAutodiag, showAutodiag}) => {
                                                                                     : 
                                                                                         <a className="nav-link" key={index} href={subNavLink.path} dangerouslySetInnerHTML={{__html: subNavLink.menu_title}}></a>
                                                                                 : 
-                                                                                    <a href={subNavLink.path} target="_blank" class="btn btn-primary btn-small mt-5 nav-item-submenu-button">{subNavLink.menu_title}</a>
+                                                                                    <a href={subNavLink.path} key={index} target="_blank" className="btn btn-primary btn-small mt-5 nav-item-submenu-button">{subNavLink.menu_title}</a>
                                                                             ))}
                                                                         </div>
                                                                     </div>

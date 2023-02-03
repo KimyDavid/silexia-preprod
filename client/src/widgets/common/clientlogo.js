@@ -18,12 +18,14 @@ const Clientlogo = () => {
     useEffect(() => {
         API_GET('partners').then((result) => {
             let newPartners = partners;
-            result.forEach(partner => {
-                if (partner.label === "Partenaires nationaux" || partner.label === "Fournisseurs de services") {
-                    newPartners = newPartners.concat(partner.partners);
-                }
-            });
-            setPartners(newPartners);
+            if (result) {
+                result.forEach(partner => {
+                    if (partner.label === "Partenaires nationaux" || partner.label === "Fournisseurs de services") {
+                        newPartners = newPartners.concat(partner.partners);
+                    }
+                });
+                setPartners(newPartners);
+            }
         });
     }, []);
 

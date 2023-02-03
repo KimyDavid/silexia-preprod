@@ -502,6 +502,15 @@ strong {
     padding-top: 120px;
 }
 
+.body {
+    opacity: 0;
+    transition: opacity .5s ease;
+
+    &.loaded {
+        opacity: 1;
+    }
+}
+
 
 
 
@@ -808,6 +817,182 @@ p {
         
             @media (max-width: $sm) {
                 width: 250px;
+            }
+        }
+    }
+}
+
+.loader {
+    width: 200px;
+
+    &-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        z-index: 1000;
+        align-items: center;
+        transition: opacity .5s ease;
+
+        &--first {
+            animation: fade-out 1s ease 3.5s forwards;
+        }
+
+        &--red {
+            background-color: #dd3e3e;
+
+            .subtitle {
+                path {
+                    fill: white !important;
+                }
+            }
+
+            .sigle {
+                g:first-of-type path {
+                    stroke: white !important;
+                }
+            }
+        }
+
+        @keyframes fade-out {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        &.loaded.finished {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    .line-blue, .line-red {
+        stroke-width: 45px;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        fill: transparent;
+    }
+
+    &--global {
+        animation: opacity 1.5s linear infinite 1.5s;
+
+        .line-red {
+            animation: dash-reverse 1s ease forwards .3s;
+        }
+    
+        .line-blue {
+            animation: dash 1s ease forwards .3s;
+        }
+
+        @keyframes opacity {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+
+    @keyframes dash {
+        from {
+            stroke-dashoffset: 1000;
+        }
+
+        to {
+            stroke-dashoffset: 295;
+        }
+    }
+
+    @keyframes dash-reverse {
+        from {
+            stroke-dashoffset: 1330;
+        }
+
+        to {
+            stroke-dashoffset: 2000;
+        }
+    }
+
+    &--first {
+        width: 450px;
+
+        .sigle {
+            animation: reposition .6s ease forwards 1.5s;
+            transform: translateX(345px);
+        }
+
+        @keyframes reposition {
+            from {
+                transform: translateX(345px);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .line-blue, .line-red {
+            stroke-width: 45px;
+        }
+        
+        .line-blue {
+            animation: dash 1.4s ease forwards .5s;
+        }
+
+        .line-red {
+            animation: dash-reverse 1.4s ease forwards .5s;
+        }
+
+        .title {
+            path {
+                fill: #002B5E;
+                fill-rule: evenodd;
+                clip-rule: evenodd;
+                opacity: 0;
+            }
+
+            $nbLetter: 7;
+
+            @for $letter from 1 through $nbLetter {
+                path:nth-child(#{$letter}) {
+                    animation: fade-in .6s ease forwards #{1.6 + (.1* $letter)}s;
+                }
+            }
+        }
+
+        .subtitle {
+            animation: fade-in 1s ease forwards 2.4s;
+            opacity: 0;
+
+            path {
+                fill: #dd3e3e;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
     }

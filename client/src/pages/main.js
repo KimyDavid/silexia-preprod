@@ -8,188 +8,52 @@ import Header from '../layout/header/header';
 import HeaderConnected from '../layout/header/header_connected';
 import Footer from '../layout/footer/footer';
 import Scrolltop from '../layout/back-to-top';
-import Home2 from './home2';
-
-// import Home from './home';
-// import Offers from './offers';
-// import Offer from './offer';
-// import AboutUs from './about-us';
-// import partners from './partners';
-// import LegalGenerator from './legal-generator';
-
-// import BlogList from './blog/bloglist';
-// import BlogSingle from './blog/blogsingle';
-
-// import Login from './account/login';
-// import ForgotPassword from './account/forgot-password';
-// import ResetPassword from './account/reset-password';
-// import VerifAccount from './account/verif-account';
-// import ProfileEdit from './account/edit';
-// import ProfileLogout from './account/logout';
-// import Profile from './account/profile';
-// import AutodiagResult from './account/result';
-
-// import Page from './legals/page';
-
-// import Maintenance from './utilities/maintenance';
-// import ComingSoon from './utilities/comingsoon';
-import PageNotFound from './utilities/404';
-
 import CookieConsent from "react-cookie-consent";
-import { API_GET } from '../functions/apiRequest';
 
-// import Client from './client';
-import Associations from '../page_content/Associations';
-import Avocats from '../page_content/Avocats';
-
-function App() {
-  const websiteInProgress = false;
-  const [token, setToken] = useState(null);
-  const [showAutodiag, setShowAutodiag] = useState(false);
-
-
-    // lazyload component
-    const Home = lazy(() => import('./home'));
-    const Offers = lazy(() => import('./offers'));
-    const Offer = lazy(() => import('./offer'));
-    const AboutUs = lazy(() => import('./about-us'));
-    const partners = lazy(() => import('./partners'));
-    const LegalGenerator = lazy(() => import('./legal-generator'));
-    const BlogList = lazy(() => import('./blog/bloglist'));
-    const BlogSingle = lazy(() => import('./blog/blogsingle'));
-    const Login = lazy(() => import('./account/login'));
-    const ForgotPassword = lazy(() => import('./account/forgot-password'));
-    const ResetPassword = lazy(() => import('./account/reset-password'));
-    const VerifAccount = lazy(() => import('./account/verif-account'));
-    const ProfileEdit = lazy(() => import('./account/edit'));
-    const ProfileLogout = lazy(() => import('./account/logout'));
-    const Profile = lazy(() => import('./account/profile'));
-    const AutodiagResult = lazy(() => import('./account/result'));
-    const Page = lazy(() => import('./legals/page'));
-
-    const Maintenance = lazy(() => import('./utilities/maintenance'));
-    const ComingSoon = lazy(() => import('./utilities/comingsoon'));
-
-    const Client = lazy(() => import('./client'));
-
-
-  useEffect(() => {
-    API_GET('auth').then(result => {
-        if (result) {
-            if (result.verif > 0) {
-                setToken(result);
-            } else {
-                setToken(null);
-            }
-        }
-    });
-  }, []);
-
-  const staticPages = [
-    {
-      slug: 'legal_mentions',
-      url: 'mentions-legales'
-    },
-    {
-      slug: 'cgv',
-      url: 'conditions-generales-de-vente'
-    },
-    {
-      slug: 'cgu',
-      url: 'conditions-generales-utilisation'
-    },
-    {
-      slug: 'privacy_policy',
-      url: 'politique-de-confidentialite'
-    }];
+function App({token, children, setShowAutodiag, showAutodiag}) {
+    useEffect(() => {
+        const links = document.querySelectorAll('a[href]:not([href*="#"])');
+        links.forEach(_link => {
+            _link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('.body').classList.remove('loaded');
+                setTimeout(() => {
+                    location.href = _link.getAttribute('href');
+                }, 500);
+            });
+        });
+    }, [children]);
 
   return (
-    <>
-      <Fragment>{
-        websiteInProgress ?
-          <BrowserRouter>
-            <Switch>
-                <Route path="/coming-soon" component={ComingSoon} />
-                <Route path="/maintenance" component={Maintenance} />
-            </Switch>
-          </BrowserRouter>
-        :
-          <div className="page-wrapper">
-            <BrowserRouter>
-              { token ? <HeaderConnected/> : <Header setShowAutodiag={setShowAutodiag} showAutodiag={showAutodiag} /> }
-              <Switch>
-                <Route exact path="/" component={() => <Home2 setShowAutodiag={setShowAutodiag}/>} />
+    <div className="body">
+        <div className="page-wrapper">
+            { token ? <HeaderConnected/> : <Header setShowAutodiag={setShowAutodiag} showAutodiag={showAutodiag} /> }
+            { children }
+            <Footer />
+            <Scrolltop />
+        </div>
 
-                <Route path="/diagnostic" component={() => <Home setShowAutodiag={setShowAutodiag} token={token} />} />
-
-                {/* PAGES */}
-                <Route path="/success-story" component={AboutUs} />
-                <Route path="/reseau-partenaires" component={partners} />
-                <Route exact path="/generateur-mentions-legales" component={LegalGenerator} />
-
-                {/* CLIENTS */}
-                <Route path="/associations" component={() => <Client content={Associations[0]} title="Associations" />} />
-                <Route path="/avocats" component={() => <Client content={Avocats[0]}  title="Avocats"/>} />
-                
-                {/* BLOG */}
-                <Route exact path="/blog" component={BlogList} />
-                <Route path="/blog/:id" component={BlogSingle} />
-                
-                {/* LÉGALS */}
-                { staticPages.map((page, i) => 
-                  <Route exact path={`/${page.url}`} component={() => <Page slug={page.slug} />} key={i} />
-                )}
-                
-                {/* ACCOUNT */}
-                { token ? 
-                  <Route exact path="/profile" component={() => <AutodiagResult token={token} />} />
-                :
-                  <Route path="/profile" component={() => <Login setShowAutodiag={setShowAutodiag} />} />
-                }
-                
-                  <Route path="/profile/details" component={() => <Profile token={token} />} />
-                  <Route path="/profile/edit" component={() => <ProfileEdit token={token} />} />
-                  <Route path="/profile/logout" component={() => <ProfileLogout />} />
-
-                  <Route path="/verif_account" component={() => <VerifAccount />} />
-                  <Route path="/forgot-password" component={ForgotPassword} />
-                  <Route path="/reset_password" component={() => <ResetPassword />} />
-
-
-                    {/* OFFRES */}
-                    <Route exact path="/numerique" component={Offers} />
-                    <Route path="/:id" component={() => <Offer />} />
-
-                  <Route component={PageNotFound} />
-                </Switch>
-              <Footer />
-              <Scrolltop />
-            </BrowserRouter>
-          </div>
-        }
-      </Fragment>
-
-      <CookieConsent
-        location="bottom"
-        buttonText="Accepter"
-        declineButtonText="Refuser"
-        expires={150}
-        enableDeclineButton
-        disableButtonStyles
-        style={{ background: "white", color: "black", fontSize: "14px", boxShadow: "0px 0px 20px rgba(0,0,0,0.2)" }}
-        buttonClasses="btn btn-primary btn-small m-3"
-        declineButtonClasses="btn btn-secondary btn-small my-3 ml-3"
-        onDecline={() => {
-          window['ga-disable-UA-209674431-1'] = true;
-          document.location.reload();
-        }}
-        onAccept={(acceptedByScrolling) => {
-        }}>Ce site utilise Google Analytics. En continuant à naviguer, vous nous autorisez à déposer un cookie à des fins de mesure d'audience. Voir notre &nbsp; 
-        <Link className="link" to="/politique-de-confidentialite">
-        Politique de confidentialité.
-        </Link>
-      </CookieConsent>
-    </>
+        <CookieConsent
+            location="bottom"
+            buttonText="Accepter"
+            declineButtonText="Refuser"
+            expires={150}
+            enableDeclineButton
+            disableButtonStyles
+            style={{ background: "white", color: "black", fontSize: "14px", boxShadow: "0px 0px 20px rgba(0,0,0,0.2)" }}
+            buttonClasses="btn btn-primary btn-small m-3"
+            declineButtonClasses="btn btn-secondary btn-small my-3 ml-3"
+            onDecline={() => {
+                window['ga-disable-UA-209674431-1'] = true;
+                document.location.reload();
+            }}
+            onAccept={(acceptedByScrolling) => {
+            }}>Ce site utilise Google Analytics. En continuant à naviguer, vous nous autorisez à déposer un cookie à des fins de mesure d'audience. Voir notre &nbsp; 
+            <Link className="link" to="/politique-de-confidentialite">
+            Politique de confidentialité.
+            </Link>
+        </CookieConsent>
+    </div>
   );
 }
 

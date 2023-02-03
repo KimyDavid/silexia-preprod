@@ -5,6 +5,7 @@ import Blog from '../widgets/sections/blog';
 import Skillbox from '../widgets/sections/home2/skillbox';
 import BrandLogo from '../widgets/common/clientlogo';
 import FeatureServices from '../widgets/sections/home2/services';
+import FirstLoader from '../components/first-loader';
 
 const Index = ({setShowAutodiag}) => {
         return (
